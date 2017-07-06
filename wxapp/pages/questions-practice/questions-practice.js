@@ -6,6 +6,7 @@ Page({
     progressNum:0,
     progressAll:20,
     progressPercent:0,
+    content:"could you go shopping with me tomorrow？\n______ my father and i will go wuhan tomorrow",
     motto: 'Hello World',
     userInfo: {}
   },
@@ -15,8 +16,8 @@ Page({
       url: '../logs/logs'
     })
   },
-  //点击了会
-  bindTrueBtnTap: function () {
+  //点击了A
+  bindABtnTap: function () {
     // wx.navigateTo({
     //   url: '../logs/logs'
     // })
@@ -27,11 +28,41 @@ Page({
     })
 
   },
-  //点击了不会
-  bindFalseBtnTap: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
+  //点击了B
+  bindBBtnTap: function () {
+    // wx.navigateTo({
+    //   url: '../logs/logs'
+    // })
+    var that = this
+    that.setData({
+      progressNum: that.data.progressNum + 1,
+      progressPercent: (that.data.progressNum + 1) / that.data.progressAll * 100,
     })
+
+  },
+  //点击了C
+  bindCBtnTap: function () {
+    // wx.navigateTo({
+    //   url: '../logs/logs'
+    // })
+    var that = this
+    that.setData({
+      progressNum: that.data.progressNum + 1,
+      progressPercent: (that.data.progressNum + 1) / that.data.progressAll * 100,
+    })
+
+  },
+  //点击了D
+  bindDBtnTap: function () {
+    // wx.navigateTo({
+    //   url: '../logs/logs'
+    // })
+    var that = this
+    that.setData({
+      progressNum: that.data.progressNum + 1,
+      progressPercent: (that.data.progressNum + 1) / that.data.progressAll * 100,
+    })
+
   },
 
   onLoad: function () {

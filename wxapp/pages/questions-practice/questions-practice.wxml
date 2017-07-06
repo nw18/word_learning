@@ -15,15 +15,16 @@
 </view>
 
       <view  bindtap="bindViewTap" class="userinfo">
-        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+
+        <text>{{content}}</text>
       </view>
   
   <view class="btn-area" >
 
-    <button bindtap="bindTrueBtnTap" type="primary" plain="true">会</button>
-    <button bindtap="bindFalseBtnTap" type="primary" plain="false">不会</button>
-
+    <button bindtap="bindABtnTap" type="primary" plain="true">AAAAAAAAA</button>
+    <button bindtap="bindBBtnTap" type="primary" plain="false">BBBBBB</button>
+    <button bindtap="bindCBtnTap" type="primary" plain="true">CCCCCCCC</button>
+    <button bindtap="bindDBtnTap" type="primary" plain="false">DDDDDDDD</button>
   </view>
 
 </view>

@@ -78,21 +78,21 @@
 .userinfo-nickname {
   color: #aaa;
 }
-/************btn******************/
+/************select btn******************/
 .btn-area{
 
-  height: 200rpx;
+  height: 600rpx;
   width:100%;
   background-color:#6cc;
   display:flex;
-  flex-direction:row;
+  flex-direction:column;
 
 }
 .btn-area button{
   margin-top: 30rpx;
   margin-bottom: 30rpx;
-  width: 200rpx;
-  height: 100rpx;
+  width: 40%;
+  height: 20%;
   /*background-color:cyan;*/
   border: 1px solid #fff
 }
