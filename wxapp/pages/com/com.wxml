@@ -1,4 +1,8 @@
-<import src="com.wxss"/>
 <template name="diver-main">
   <view class="diver-main"></view>
+</template>
+<template name="head-top">
+  <view class="head-top">
+    <button id="back" bindtap="goBack">返回</button>
+  </view>
 </template>

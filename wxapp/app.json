@@ -5,7 +5,8 @@
     "pages/self-evaluation/self-evaluation",
     "pages/learn_over/learn_over",
     "pages/main/main",
-    "pages/questions-practice/questions-practice"
+    "pages/questions-practice/questions-practice",
+    "pages/lists/lists"
   ],
   "window": {
     "backgroundTextStyle": "light",

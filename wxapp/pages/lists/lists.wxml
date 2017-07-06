@@ -1,0 +1,4 @@
+<!--lists.wxml-->
+<import src="../com/com.wxml"/>
+<template is="head-top" data="{{title:'别告诉我你懂单词'}}"></template>
+<text>lists.wxml</text>

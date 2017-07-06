@@ -30,5 +30,10 @@ App({
     id: 100,
     description: "从今天起\n跟赵老师一起背单词",
     head_image : "/img/auth-head.png"
+  },
+  goBack:function(e){
+    wx.navigateBack({
+      delta:1
+    })
   }
 })

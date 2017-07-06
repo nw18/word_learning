@@ -13,7 +13,7 @@ Page({
     })
   },
   bindJumpTap: function(e) {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../' + e.target.id + "/" + e.target.id,
     })
   },
