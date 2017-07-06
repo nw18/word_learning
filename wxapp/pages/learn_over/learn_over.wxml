@@ -1,0 +1,18 @@
+<!--index.wxml-->
+
+<view class="container">
+    <button class="title" >
+       恭喜你今天的单词学完了！
+    </button>
+    <button class="item1 mt" bindtap="listenAgain">
+        <text> 再听一遍</text>
+    </button>
+     <button class="item1" bindtap="testAgain">
+       测试一下
+         <text>{{text}}</text>
+    </button>
+    <button class="item1" bindtap="practise">
+      真题练习
+        <text>{{text}}</text>
+    </button>
+</view>

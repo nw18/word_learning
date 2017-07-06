@@ -1,0 +1,27 @@
+/**index.wxss**/
+
+.container{
+    height: 100%;
+    width:100%;
+    background-color:beige;
+    justify-content: center;
+  
+}
+
+
+.item1{
+    height:normal;
+    width: normal;
+    padding-left: 100rpx;
+    padding-right: 100rpx;
+    padding-top: 3rpx;
+    padding-bottom: 3rpx;
+    background-color:cyan;
+    border: 1px solid #fff;
+    margin-top: 10rpx
+  
+}
+
+.mt{
+   margin-top: 40rpx
+}
