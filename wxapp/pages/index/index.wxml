@@ -6,6 +6,9 @@
   </view>
   <view class="usermotto">
     <button id="main" bindtap="bindJumpTap">main</button>
+    <button id="self-evaluation" bindtap="bindJumpTap">self-evaluation</button>
+    <button id="learn_over" bindtap="bindJumpTap">learn_over</button>
+    <button id="questions-practice" bindtap="bindJumpTap">questions-practice</button>
     <button id="logs" bindtap="bindJumpTap">logs</button>
     <text class="user-motto">{{motto}}</text>
   </view>

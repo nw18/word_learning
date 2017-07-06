@@ -17,6 +17,8 @@ Page({
       url: '../' + e.target.id + "/" + e.target.id,
     })
   },
+
+
   onLoad: function () {
     console.log('onLoad')
     var that = this

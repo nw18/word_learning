@@ -4,7 +4,8 @@
     "pages/logs/logs",
     "pages/self-evaluation/self-evaluation",
     "pages/learn_over/learn_over",
-    "pages/main/main"
+    "pages/main/main",
+    "pages/questions-practice/questions-practice"
   ],
   "window": {
     "backgroundTextStyle": "light",
