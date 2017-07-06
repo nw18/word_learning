@@ -1,14 +1,15 @@
 {
-  "pages":[
-    "pages/self-evaluation/self-evaluation",
+  "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/learn_over/learn_over"
+    "pages/self-evaluation/self-evaluation",
+    "pages/learn_over/learn_over",
+    "pages/main/main"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTitleText": "背单词",
+    "navigationBarTextStyle": "black"
   }
 }

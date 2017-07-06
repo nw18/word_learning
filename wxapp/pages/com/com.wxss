@@ -1,0 +1,6 @@
+.diver-main {
+  background: green;
+  margin: 10px;
+  height: 5px;
+  width: 100%;
+}

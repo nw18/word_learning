@@ -12,6 +12,11 @@ Page({
       url: '../learn_over/learn_over'
     })
   },
+  bindJumpTap: function(e) {
+    wx.redirectTo({
+      url: '../' + e.target.id + "/" + e.target.id,
+    })
+  },
   onLoad: function () {
     console.log('onLoad')
     var that = this

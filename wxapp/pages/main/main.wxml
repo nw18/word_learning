@@ -1,0 +1,37 @@
+<!--main.wxml-->
+<view class="main">
+  <view class="main-head">
+    <image src="{{authInfo.head_image}}" />
+    <text>{{authInfo.description}}</text>
+  </view>
+  <view class="main-diver"/>
+  <view class="main-sum">
+    <view>
+      <text class="desc">今天已学单词</text>
+      <text class="number">000</text>
+    </view>
+    <view>
+      <text class="desc">今天待学单词</text>
+      <text class="number">000</text>
+    </view>
+    <view>
+      <text class="desc">累计学习单词</text>
+      <text class="number">0000</text>
+    </view>
+  </view>
+  <view class="main-diver"/>
+  <view class="main-proc">
+    <view>
+    <text>学习进度</text> 
+      <text id='word_list'>单词列表</text>
+    </view>
+    <progress percent="30" show-info="true" active activeColor="green" backgroundColor="light"/>
+  </view>
+  <view class="main-diver"/>
+  <button>开始背单词吧</button>
+  <block wx:if="{{showAD}}">
+  <view id='ad'>
+
+  </view>
+  </block>
+</view>

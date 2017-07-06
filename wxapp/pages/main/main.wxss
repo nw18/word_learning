@@ -1,0 +1,103 @@
+/* main.wxss */
+.main {
+  height: 100%;
+  width: 100%;
+}
+
+.main button {
+  font-size: 20pt;
+  background-color: green;
+  color: white;
+  margin: 20px;
+  margin-top: 50px;
+}
+
+.main #ad {
+  height: 200px;
+  width: 100%;
+  background-color: yellowgreen;
+  position: fixed;
+  bottom: 0px;
+}
+
+.main-head {
+  height: 100px;
+  display:  flex;
+  flex-flow: row;
+  align-items: flex-end;
+}
+
+.main-head image{
+  width: 100px;
+  height: 100px;
+  margin-left: 10px;
+  border: 1px solid gray;
+}
+
+.main-head text{
+  color: darkgray;
+  font-size:  14pt;
+  margin-left: 10px;
+  height: fit-content;
+  text-align: left;
+}
+
+.main-diver {
+  background: gray;
+  margin: 10px;
+  height: 2px;
+  width: 100%-20px;
+}
+
+.main-sum {
+  height: fit-content;
+  display: flex;
+  flex-flow: row;
+}
+
+.main-sum view {
+  width: 33.33%;
+  height: 100%;
+  display:  flex;
+  flex-flow: column-reverse;
+  align-items: center;
+}
+
+.main-sum .number {
+  font: bold;
+  font-size:16pt;
+  text-align: center;
+}
+
+.main-sum .desc {
+  color: green;
+  font-size: 10pt;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.main-proc{
+  height: fit-content;
+  display: flex;
+  flex-flow: column;
+}
+
+.main-proc progress{
+  width: 100%-20px;
+  margin: 10px;
+}
+
+.main-proc text {
+  margin-left: 10px;
+  margin-top: 5px;
+  font-size: 12pt;
+  color: green;
+}
+
+.main-proc #word_list{
+  font-size: 12pt;
+  color: blue;
+  font-style:  initial;
+  float: right;
+  margin-right: 10px;
+}

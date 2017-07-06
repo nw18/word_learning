@@ -1,0 +1,4 @@
+<import src="com.wxss"/>
+<template name="diver-main">
+  <view class="diver-main"></view>
+</template>

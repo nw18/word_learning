@@ -5,6 +5,8 @@
     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
   </view>
   <view class="usermotto">
+    <button id="main" bindtap="bindJumpTap">main</button>
+    <button id="logs" bindtap="bindJumpTap">logs</button>
     <text class="user-motto">{{motto}}</text>
   </view>
 </view>
