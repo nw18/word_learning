@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/self-evaluation/self-evaluation",
     "pages/index/index",
     "pages/logs/logs",
     "pages/learn_over/learn_over"

@@ -1,0 +1,98 @@
+.container{
+    height: 100%;
+    width:100%;
+    background-color:beige;
+    /*display:flex;*/
+    /*flex-direction:row;*/
+}
+/************progress1******************/
+
+.view-area{
+  margin-top: 20rpx;
+  height: 100rpx;
+  width:100%;
+  background-color:#6cc;
+  /*display:inline;*/
+  display: flex;
+  flex-direction:row;
+  /*justify-content:flex-start;*/
+  /*margin-top: 20rpx;*/
+}
+.label-progress{
+  align-self:center;
+  /*text-align: center;*/
+  background-color:cyan;
+  border: 1px solid #ffffff
+}
+
+.view-progress{
+  
+    height: 50%;
+    width:100%;
+    margin: 20rpx;
+    background-color:cyan;
+    align-self:center;
+}
+.view-progress progress{
+    height: 100%;
+    width:100%;
+    align-self:center;
+}
+
+#label-progress-left{
+
+  /*margin-top: 20rpx;*/
+  /*margin-bottom: 20rpx;*/
+  /*float: left;*/
+  margin-left: 20rpx;
+
+  /*text-align: center;*/
+  /*align-items: flex-start;*/
+}
+#label-progress-right{
+
+  /*margin-top: 20rpx;*/
+  /*margin-bottom: 20rpx;*/
+  /*right: :20rpx;*/
+  /*float: right;*/
+  /*display: inline;*/
+   /*margin-left: 120rpx;*/
+  margin-right: 20rpx;
+
+  /*align-items: flex-end;*/
+}
+/************vodeo******************/
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+.userinfo-nickname {
+  color: #aaa;
+}
+/************btn******************/
+.btn-area{
+
+  height: 200rpx;
+  width:100%;
+  background-color:#6cc;
+  display:flex;
+  flex-direction:row;
+
+}
+.btn-area button{
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  width: 200rpx;
+  height: 100rpx;
+  /*background-color:cyan;*/
+  border: 1px solid #fff
+}
