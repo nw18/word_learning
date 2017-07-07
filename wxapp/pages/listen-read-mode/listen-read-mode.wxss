@@ -2,7 +2,6 @@
 .listen_read_mode{
     height: 100%;
     width:100%;
- 
 }
 /************progress1******************/
 
@@ -73,4 +72,21 @@
    
    display:flex;
    flex-direction:column;
+}
+.words_para{
+  margin-bottom: 20rpx
+}
+#example{
+  margin-top: 20rpx
+}
+#example_en{
+  margin-top: 20rpx
+}
+#example_cn{
+  margin-top: 20rpx
+}
+#image_help{
+   align-items: center;
+  margin-bottom: 20rpx;
+  margin-top: 20rpx;
 }

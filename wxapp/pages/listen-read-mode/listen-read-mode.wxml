@@ -35,10 +35,11 @@
   <view class="words_para">
     <label>单词释义</label>
   </view>
+  
   <!--帮助记忆-->
   <view class="words_help">
-      <label>丽丽助记</label>
-     <image id="image_voice"  src="../../img/auth-head.png" ></image>
+      <label >丽丽助记</label>
+     <image id="image_help"  src="../../img/auth-head.png" ></image>
       <label id="example">例句</label>
       <text id="example_en">英文例句</text>
       <text id="example_cn">中文例句</text>
