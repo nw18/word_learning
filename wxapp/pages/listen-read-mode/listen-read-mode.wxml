@@ -1,0 +1,47 @@
+<view class="listen_read_mode">
+
+  <view class="view-area">
+    <label id="label-progress-left" class="label-progress" >
+          <text>{{progressNum}}</text>
+    </label>
+
+    <view class="view-progress">
+        <progress percent="{{progressPercent}}"  active activeColor="green" backgroundColor="light" stroke-width="10"  />
+    </view>
+
+    <label id="label-progress-right" class="label-progress">
+        <text>{{progressAll}}</text>
+    </label>
+  </view>
+  <!--单词描述-->
+  <view class="words_read">
+    <view >
+      <text>单词</text>
+      <text class="voice_logo">音标</text>
+    </view>
+    <view >
+      <image id="image_voice" style="width: 20px; height: 20px; " src="../../img/voice.png" ></image>
+    </view>
+    <view >
+        <label>核心词汇</label>
+    </view>
+    <view >
+        <label>中考频率：</label>
+    </view>
+      <view >
+        <label>10</label>
+    </view>
+  </view>
+  <view class="words_para">
+    <label>单词释义</label>
+  </view>
+  <!--帮助记忆-->
+  <view class="words_help">
+      <label>丽丽助记</label>
+     <image id="image_voice"  src="../../img/auth-head.png" ></image>
+      <label id="example">例句</label>
+      <text id="example_en">英文例句</text>
+      <text id="example_cn">中文例句</text>
+  </view>
+  </view>
+  

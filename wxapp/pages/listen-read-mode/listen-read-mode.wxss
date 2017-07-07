@@ -1,0 +1,76 @@
+/* pages/listen_read_mode/listen_read_mode.wxss */
+.listen_read_mode{
+    height: 100%;
+    width:100%;
+ 
+}
+/************progress1******************/
+
+.view-area{
+  height: 100rpx;
+  width:100%;
+  background-color:#6cc;
+  display: flex;
+  
+}
+.label-progress{
+  align-self:center;
+  /*text-align: center;*/
+  background-color:cyan;
+  border: 1px solid #ffffff
+}
+
+.view-progress{
+  
+    height: 50%;
+    width:100%;
+    margin: 20rpx;
+    background-color:cyan;
+    align-self:center;
+}
+.view-progress progress{
+    height: 100%;
+    width:100%;
+    align-self:center;
+}
+
+#label-progress-left{
+
+  margin-left: 20rpx;
+
+}
+#label-progress-right{
+
+  /*margin-top: 20rpx;*/
+  /*margin-bottom: 20rpx;*/
+  /*right: :20rpx;*/
+  /*float: right;*/
+  /*display: inline;*/
+   /*margin-left: 120rpx;*/
+  margin-right: 20rpx;
+
+  /*align-items: flex-end;*/
+}
+.words_read{
+  height:warp;
+  width:100%;
+  display: flex;
+  margin-top: 40rpx;
+  justify-content: space-around
+}
+.voice_logo{
+  margin-left: 10rpx
+}
+.words_para{
+  margin-left: 20rpx;
+  margin-top: 40rpx;
+}
+.words_help{
+   height:warp;
+   width:100%; 
+   margin-left: 20rpx;
+   margin-right: 20rpx;
+   
+   display:flex;
+   flex-direction:column;
+}

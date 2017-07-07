@@ -7,8 +7,10 @@
   <view class="usermotto">
     <button id="main" bindtap="bindJumpTap">main</button>
     <button id="self-evaluation" bindtap="bindJumpTap">self-evaluation</button>
-    <button id="learn_over" bindtap="bindJumpTap">learn_over</button>
+    <button id="learn-over" bindtap="bindJumpTap">learn_over</button>
     <button id="questions-practice" bindtap="bindJumpTap">questions-practice</button>
     <button id="lists" bindtap="bindJumpTap">lists</button>
+     <button id="listen-read-mode" bindtap="bindJumpTap">listen_read_mode</button>
+    <text class="user-motto">{{motto}}</text>
   </view>
 </view>
