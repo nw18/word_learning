@@ -1,4 +1,4 @@
-//index.js
+//questions-praction.js
 //获取应用实例
 var app = getApp()
 Page({
@@ -6,7 +6,7 @@ Page({
     progressNum:0,
     progressAll:20,
     progressPercent:0,
-    content:"could you go shopping with me tomorrow？\n______ my father and i will go wuhan tomorrow",
+    content:"could you go shopping wigo shopping with me tomorrgo shopping with me tomorrgo shopping with me tomorrgo shopping with me tomorrgo shopping with me tomorrgo shopping with me tomorrgo shopping with me tomorrth me tomorrow？\n______ my father and i will go wuhan tomorrow",
     motto: 'Hello World',
     userInfo: {}
   },
@@ -65,6 +65,19 @@ Page({
 
   },
 
+  //点击了下一题
+  bindNextBtnTap: function () {
+    // wx.navigateTo({
+    //   url: '../logs/logs'
+    // })
+    var that = this
+    that.setData({
+      progressNum: that.data.progressNum + 1,
+      progressPercent: (that.data.progressNum + 1) / that.data.progressAll * 100,
+    })
+
+  },
+  
   onLoad: function () {
     console.log('onLoad')
     var that = this

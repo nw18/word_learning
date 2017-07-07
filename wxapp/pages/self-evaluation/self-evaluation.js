@@ -1,4 +1,4 @@
-//index.js
+//self-evaluation.js
 //获取应用实例
 var app = getApp()
 Page({
@@ -7,6 +7,7 @@ Page({
     progressAll:20,
     progressPercent:0,
     motto: 'Hello World',
+    picture: 'http://img.zcool.cn/job/groups/b445558d077800000141f02f67a5.jpg',
     userInfo: {}
   },
   //事件处理函数

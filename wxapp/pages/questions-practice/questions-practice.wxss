@@ -1,13 +1,14 @@
-.container{
+.questions-praction{
     height: 100%;
     width:100%;
+    margin-top: 40rpx;
     background-color:beige;
     /*display:flex;*/
     /*flex-direction:row;*/
 }
-/************progress1******************/
+/************view-ques-head progress1******************/
 
-.view-area{
+.view-ques-head{
   margin-top: 20rpx;
   height: 100rpx;
   width:100%;
@@ -61,25 +62,38 @@
 
   /*align-items: flex-end;*/
 }
-/************vodeo******************/
+/************label content******************/
 
-.userinfo {
+.ques-view-content {
+  height: 10%;
+  width:100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /*align-items: center;*/
+  background-color:#1cc;
+}
+.ques-view-title{
+   margin-left: 20rpx; 
+   margin-top: 20rpx;
+   height: 30rpx;
+   align-self: flex-start;
+
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.ques-view-address{
+  margin-top: -30rpx;
+  margin-right: 30rpx;
+  align-self: flex-end;
 }
-.userinfo-nickname {
-  color: #aaa;
+.label-content{
+    height: 90%;
+    width:90%;
+    border: 1px solid #ffffff;
+    margin: 30rpx;
+    align-self: flex-start;
 }
 /************select btn******************/
-.btn-area{
+.ques-btn-area{
 
   height: 600rpx;
   width:100%;
@@ -88,11 +102,32 @@
   flex-direction:column;
 
 }
-.btn-area button{
+.ques-btn-area button{
   margin-top: 30rpx;
   margin-bottom: 30rpx;
   width: 40%;
   height: 20%;
   /*background-color:cyan;*/
   border: 1px solid #fff
+}
+
+/************select btn******************/
+.ques-btn-next{
+
+  width: 100%;
+  height: 100rpx;
+  background-color:cyan;
+  display:flex;
+  flex-direction:column;
+}
+
+.ques-btn-next button{
+
+  width: 300rpx;
+  height: 80rpx;
+  background-color:cyan;
+  border: 1px solid #fff;
+
+  margin-left: 20rpx;
+  margin-top: 20rpx;
 }

@@ -1,6 +1,6 @@
-<view class="container">
+<view class="self-evaluation">
 
-<view class="view-area">
+<view class="self-view-area">
    <label id="label-progress-left" class="label-progress" >
         <text>{{progressNum}}</text>
    </label>
@@ -14,12 +14,15 @@
    </label>
 </view>
 
-      <view  bindtap="bindViewTap" class="userinfo">
-        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      </view>
-  
-  <view class="btn-area" >
+
+
+  <view  bindtap="bindViewTap" class="self-view-video">
+    <image class="self-view-video-avatar" src="{{picture}}" background-size="cover"></image>
+    <text class="self-view-video-nickname">{{userInfo.nickName}}</text>
+  </view>
+
+
+  <view class="self-btn-area" >
 
     <button bindtap="bindTrueBtnTap" type="primary" plain="true">会</button>
     <button bindtap="bindFalseBtnTap" type="primary" plain="false">不会</button>

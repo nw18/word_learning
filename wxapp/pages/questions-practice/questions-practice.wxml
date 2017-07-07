@@ -1,6 +1,6 @@
-<view class="container">
+<view class="questions-praction">
 
-<view class="view-area">
+<view class="view-ques-head">
    <label id="label-progress-left" class="label-progress" >
         <text>{{progressNum}}</text>
    </label>
@@ -14,17 +14,33 @@
    </label>
 </view>
 
-      <view  bindtap="bindViewTap" class="userinfo">
+<view  class="ques-view-content">
 
+  <view class="ques-view-title">
+    <text>"真题"</text>
+  </view>
+  <view class="ques-view-address">
+    <text>{湖北黄石}</text>
+  </view>
+  <label id="label-content-id" class="label-content">
         <text>{{content}}</text>
-      </view>
+  </label>
   
-  <view class="btn-area" >
+</view>
+  
+<view class="ques-btn-area" >
 
     <button bindtap="bindABtnTap" type="primary" plain="true">AAAAAAAAA</button>
     <button bindtap="bindBBtnTap" type="primary" plain="false">BBBBBB</button>
     <button bindtap="bindCBtnTap" type="primary" plain="true">CCCCCCCC</button>
     <button bindtap="bindDBtnTap" type="primary" plain="false">DDDDDDDD</button>
-  </view>
+</view>
+
+
+ <view class="ques-btn-next" >
+
+    <button bindtap="bindNextBtnTap" type="primary" plain="true">下一题</button>
+
+ </view>
 
 </view>
