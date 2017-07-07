@@ -14,7 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+
   },
 
   /**
@@ -68,5 +68,17 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  //////////自定义事件放下面/////////////////////////
+  onClickWordList : function (e) {
+    wx.navigateTo({
+      url: '../lists/lists',
+    })
+  },
+  onClickBegin : function (e) {
+    wx.navigateTo({
+      url: '../lists/lists',
+    })
   }
 })

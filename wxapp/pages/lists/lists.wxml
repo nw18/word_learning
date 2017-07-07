@@ -1,12 +1,12 @@
 <!--lists.wxml-->
 <import src="../com/com.wxml"/>
 <view class="lists">
-  <block wx:for="{{demo_data}}" wx:for-item="item1">
+  <block wx:for="{{demo_data}}" wx:for-item="item1" wx:key="*this">
     <view class="level-1">
       <text>{{item1.Name}}</text>
       <!-- 如果不是列表，循环添加下级 -->
       <block wx:if="{{!item1.IsList}}">
-        <block wx:for="{{item1.Children}}" wx:for-item="item2">
+        <block wx:for="{{item1.Children}}" wx:for-item="item2" wx:key="*this">
           <view class="level-2">
             <text>{{item2.Name}}</text>
             <!-- 如果是列表，展示为列表 -->

@@ -23,12 +23,12 @@
   <view class="main-proc">
     <view>
     <text>学习进度</text> 
-      <text id='word_list'>单词列表</text>
+      <text id='word_list' bindtap="onClickWordList">单词列表</text>
     </view>
     <progress percent="30" show-info="true" active activeColor="green" backgroundColor="light"/>
   </view>
   <view class="main-diver"/>
-  <button>开始背单词吧</button>
+  <button bindtap="onClickBegin">开始背单词吧</button>
   <block wx:if="{{showAD}}">
   <view id='ad'>
 

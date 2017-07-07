@@ -1,3 +1,9 @@
+var mode = 1;
+var api_roots = [
+  '',
+  'https://openapi.yqj.cn/'
+];
+
 function formatTime(date) {
   var year = date.getFullYear()
   var month = date.getMonth() + 1
@@ -16,6 +22,32 @@ function formatNumber(n) {
   return n[1] ? n : '0' + n
 }
 
+function _empty_(e) {} 
+
+function myrequest(name,data={},sucess=null,fail=null) {
+  if(mode == 0) {
+    sucess(require("./demo-data/" + name + ".js"))
+  }else {
+    wx.request({
+      url: api_roots[mode] + name,
+      data: data,
+      success: function(obj) {
+        if(obj.data.Code == 0) {
+          if(sucess != null) {
+            sucess(obj.data.Data);
+          }
+        }else {
+          if(fail != null){
+            fail(obj.data);
+          }
+        }
+      },
+      fail: fail == null ? _empty_ : sucess
+    })
+  }
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  myrequest: myrequest
 }
