@@ -1,4 +1,37 @@
 <!--lists.wxml-->
 <import src="../com/com.wxml"/>
-<template is="head-top" data="{{title:'别告诉我你懂单词'}}"></template>
-<text>lists.wxml</text>
+<view class="lists">
+  <block wx:for="{{demo_data}}" wx:for-item="item1">
+    <view class="level-1">
+      <text>{{item1.Name}}</text>
+      <!-- 如果不是列表，循环添加下级 -->
+      <block wx:if="{{!item1.IsList}}">
+        <block wx:for="{{item1.Children}}" wx:for-item="item2">
+          <view class="level-2">
+            <text>{{item2.Name}}</text>
+            <!-- 如果是列表，展示为列表 -->
+            <block wx:if="{{item2.IsList}}">
+              <!--<text id="rate">{{item2.SunWordCount/2}}/{{item2.SunWordCount}}</text>
+              <view class="list-item">
+                <text>我是列表，还会改！</text>
+              </view>-->
+              <template is="list-content" data="{{...item2}}"></template>
+            </block>
+          </view>
+        </block>
+      </block>
+      <!-- 如果是列表，展示为列表 -->
+      <block wx:if="{{item1.IsList}}">
+        <!--<text id="rate">{{item1.SunWordCount/2}}/{{item1.SunWordCount}}</text>
+        <view class="list-item">
+        <text>我是列表，还会改！</text>
+        </view>-->
+        <template is="list-content" data="{{...item1}}"></template>
+      </block>
+    </view>
+    <block wx:if="{{index < demo_data.length - 1}}">
+      <view class="lists-diver"></view>
+    </block>
+  </block>
+</view>
+

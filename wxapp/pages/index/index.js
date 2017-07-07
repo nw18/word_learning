@@ -18,7 +18,6 @@ Page({
     })
   },
 
-
   onLoad: function () {
     console.log('onLoad')
     var that = this

@@ -1,1 +1,46 @@
 /* lists.wxss */
+.lists {
+  height: 100%;
+  width: 100%;
+}
+
+.list-item{
+  width: 100% - 40px;
+  margin-left: 40px;
+  margin-top: 5px;
+}
+
+.list-item text{
+  font-size: 10pt;
+  color: lightblue;
+}
+
+#rate{
+  font-size: 10pt;
+  float: right;
+}
+
+.level-1{
+  width: 100% - 20px;
+  margin: 10px;
+}
+
+.level-1 text {
+  font-size: 14pt;
+}
+
+.level-2 {
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.level-2 text {
+  font-size: 12pt;
+}
+
+.lists-diver {
+  background: gray;
+  height: 2px;
+  width: 100%;
+}

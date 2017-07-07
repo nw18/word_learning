@@ -1,8 +1,9 @@
 <template name="diver-main">
   <view class="diver-main"></view>
 </template>
-<template name="head-top">
-  <view class="head-top">
-    <button id="back" bindtap="goBack">返回</button>
+<template name="list-content">
+  <text id="rate">{{SunWordCount/2}}/{{SunWordCount}}</text>
+    <view class="list-item">
+    <text>我是列表，还会改！</text>
   </view>
 </template>
