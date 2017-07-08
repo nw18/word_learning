@@ -1,7 +1,7 @@
 var mode = 1;
 var api_roots = [
   '',
-  'https://openapi.yqj.cn/'
+  'https://openapi.yqj.cn/MockAPI/Operative/' //模块未建立,正式地址未建立
 ];
 
 function formatTime(date) {

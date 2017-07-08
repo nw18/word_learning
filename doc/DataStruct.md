@@ -15,27 +15,25 @@
 	{
 		ID: 1001, //列表或节点的ID值
 		Name:"核心词汇", //名称
-		IsList: False, //是否为词汇列表
+		IsWordList: False, //是否为词汇列表
 		HasPractice:False, //是否包含真题练习
-		SunWordCount:40, //列表词汇量
+		SumWordCount:40, //列表词汇量
 		[Children]: [...]  //子级列表，可选
 	}
 
 > 接口参数：
 > 
 > BookID，图书ID
-> 
-> LoadExtra，是否加载Extra信息，自测时不需要这么多。
 
 # 获取词汇信息
 	{
 		ID：3001,//单词ID
-		Word:'accept',//单词本身
+		Spell:'accept',//单词本身
 		ExamRate:'10',//考试次数
 		Phonogram:'',//音标
 		VoiceURL:'',//读音地址
 		Explain:'',//汉语解释
-		Extra:[ //其他解释列表
+		ExtraList:[ //其他解释列表
 			{
 				Title:'丽丽助记',
 				Content:'',//解释类型
@@ -47,6 +45,8 @@
 > 接口参数：
 > 
 > ListID，列表ID
+> 
+> LoadExtra，是否加载Extra信息，自测时不需要这么多。
 > 
 > 返回：
 > 词汇信息列表
