@@ -6,6 +6,12 @@ Page({
     progressNum:0,
     progressAll:20,
     progressPercent:0,
+    answer:"0",
+    answerArray:["A","B","C","D"],
+    index:0,
+    // trueColor:blur,
+    // flaseColor:red,
+
     content:"could you go shopping wigo shopping with me tomorrgo shopping with me tomorrgo shopping with me tomorrgo shopping with me tomorrgo shopping with me tomorrgo shopping with me tomorrgo shopping with me tomorrth me tomorrow？\n______ my father and i will go wuhan tomorrow",
     motto: 'Hello World',
     userInfo: {}
@@ -71,12 +77,19 @@ Page({
     //   url: '../logs/logs'
     // })
     var that = this
-    that.setData({
-      progressNum: that.data.progressNum + 1,
-      progressPercent: (that.data.progressNum + 1) / that.data.progressAll * 100,
-    })
+    // that.setData({
+    //   progressNum: that.data.progressNum + 1,
+    //   progressPercent: (that.data.progressNum + 1) / that.data.progressAll * 100,
+    // })
 
+    that.setData({
+      answer: that.data.answerArray[that.data.index],
+      // index: (that.data.index + 1) % 4,
+      index: formatNumber(that.data.index),
+    })
   },
+  
+
   
   onLoad: function () {
     console.log('onLoad')
@@ -91,3 +104,10 @@ Page({
   }
 })
 
+function formatNumber(n) {
+  n++;
+  if(n==4){
+    n=0;
+  }
+  return n;
+}

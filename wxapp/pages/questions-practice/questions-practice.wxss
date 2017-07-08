@@ -108,9 +108,19 @@
   width: 40%;
   height: 20%;
   /*background-color:cyan;*/
-  border: 1px solid #fff
-}
+  /*border: 1px solid #fff*/
 
+ /*background-color: black;*/
+  /*color: white;*/
+}
+.sel-btn-true{
+   background-color: green;
+  color: white;
+}
+.sel-btn-flase{
+   background-color: red;
+  color: white;
+}
 /************select btn******************/
 .ques-btn-next{
 

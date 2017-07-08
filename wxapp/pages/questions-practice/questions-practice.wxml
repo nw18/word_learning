@@ -29,11 +29,36 @@
 </view>
   
 <view class="ques-btn-area" >
+    <block wx:if="{{answer=='A'}}">
+       <button class="sel-btn-true" bindtap="bindABtnTap" >AAAAAAAAA</button>
+    </block>
 
-    <button bindtap="bindABtnTap" type="primary" plain="true">AAAAAAAAA</button>
-    <button bindtap="bindBBtnTap" type="primary" plain="false">BBBBBB</button>
-    <button bindtap="bindCBtnTap" type="primary" plain="true">CCCCCCCC</button>
-    <button bindtap="bindDBtnTap" type="primary" plain="false">DDDDDDDD</button>
+    <block wx:elif="{{answer!='A'}}">
+         <button class="sel-btn-flase"  bindtap="bindABtnTap" >AAAAAAAAA</button>
+    </block>
+
+    <block wx:if="{{answer=='B'}}">
+       <button class="sel-btn-true"  bindtap="bindBBtnTap" >BBBBBB</button>
+    </block>
+    <block wx:elif="{{answer!='B'}}">
+         <button class="sel-btn-flase"   bindtap="bindBBtnTap" >BBBBBB</button>
+    </block>
+
+    <block wx:if="{{answer=='C'}}">
+       <button class="sel-btn-true" bindtap="bindCBtnTap" >CCCCCCCC</button>
+    </block>
+    <block wx:elif="{{answer!='C'}}">
+         <button class="sel-btn-flase"  bindtap="bindCBtnTap" >CCCCCCCC</button>
+    </block>
+
+    <block wx:if="{{answer=='D'}}">
+       <button class="sel-btn-true" bindtap="bindDBtnTap" >DDDDDDDD</button>
+    </block>
+    <block wx:elif="{{answer!='D'}}">
+         <button class="sel-btn-flase" bindtap="bindDBtnTap" >DDDDDDDD</button>
+    </block>
+
+
 </view>
 
 

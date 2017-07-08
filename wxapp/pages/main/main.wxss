@@ -6,7 +6,7 @@
 
 .main button {
   font-size: 20pt;
-  background-color: green;
+  background-color: red;
   color: white;
   margin: 20px;
   margin-top: 50px;
