@@ -1,42 +1,32 @@
-// main.js
-var app = getApp()
+// schedule.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    authInfo:app.authInfo,
-    showAD:false,
-    bookIndex:0,
-    bookList: [
-      '初中500词','高中1000词'
-    ]
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+  
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    var that = this;
-    setTimeout(function () {
-      that.setData({
-        showAD: true
-      })
-    }, 2000)
+  
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+  
   },
 
   /**
@@ -73,22 +63,11 @@ Page({
   onShareAppMessage: function () {
   
   },
-
-  //////////自定义事件放下面/////////////////////////
-  onClickWordList : function (e) {
-    wx.navigateTo({
-      url: '../lists/lists',
-    })
-  },
-
-  onClickBegin : function (e) {
-    wx.navigateTo({
-      url: '../lists/lists',
-    })
-  },
-  onBookChange: function (e) {
-    this.setData({
-      bookIndex: e.detail.value
+  /////////////////////////////////////////////////
+  onClickDay: function(e) {
+    wx.showToast({
+      title: 'round ' + Math.pow(e.target.dataset.round,32) + ' day ' + e.target.dataset.index,
+      duration: 1000
     })
   }
 })

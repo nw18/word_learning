@@ -34,4 +34,7 @@
 
   </view>
   </block>
+  <picker bindchange="onBookChange" mode="selector" value="{{bookIndex}}" range="{{bookList}}">
+    <text>{{bookList[bookIndex]}}</text>
+  </picker>
 </view>

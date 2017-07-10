@@ -13,7 +13,13 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    util.myrequest("GetActivityInfo",{},function(obj){
+    wx.showLoading({
+      title:"正在加载...",
+      mask:true
+    });
+    util.myrequest("GetActivityInfo",{
+
+    },function(obj){
       console.log(JSON.stringify(obj))
       that.setData({
         demo_data:obj

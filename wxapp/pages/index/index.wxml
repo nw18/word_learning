@@ -10,6 +10,7 @@
     <button id="learn-over" bindtap="bindJumpTap">learn_over</button>
     <button id="questions-practice" bindtap="bindJumpTap">questions-practice</button>
     <button id="lists" bindtap="bindJumpTap">lists</button>
+    <button id="schedule" bindtap="bindJumpTap">schedule</button>
      <button id="listen-read-mode" bindtap="bindJumpTap">listen_read_mode</button>
     <text class="user-motto">{{motto}}</text>
   </view>

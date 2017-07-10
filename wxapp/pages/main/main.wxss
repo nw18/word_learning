@@ -28,7 +28,7 @@
 }
 
 .main-head image{
-  width: 100px;
+  width: 75px;
   height: 100px;
   margin-left: 10px;
   border: 1px solid gray;

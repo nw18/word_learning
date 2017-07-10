@@ -7,7 +7,8 @@
     "pages/main/main",
     "pages/questions-practice/questions-practice",
     "pages/lists/lists",
-    "pages/listen-read-mode/listen-read-mode"
+    "pages/listen-read-mode/listen-read-mode",
+    "pages/schedule/schedule"
   ],
   "window": {
     "backgroundTextStyle": "light",
