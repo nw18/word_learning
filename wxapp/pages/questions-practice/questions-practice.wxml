@@ -1,26 +1,8 @@
 <view class="questions-praction">
 
-<!--<view class="view-ques-head">
-   <label id="label-progress-left" class="label-progress" >
-        <text>{{progressNum}}</text>
-   </label>
-
-   <view class="view-progress">
-       <progress percent="{{progressPercent}}"  active activeColor="green" backgroundColor="light" stroke-width="10"  />
-   </view>
-
-   <label id="label-progress-right" class="label-progress">
-      <text>{{progressAll}}</text>
-   </label>
-</view>-->
 
 <import src="../com/com.wxml"/>
-
 <template is="progress-view" data="{{progressItem}}"></template>
-
-<!--<template name="progressView">
-  <view> odd </view>
-</template>-->
 
 
 <view  class="ques-view-content">
@@ -29,27 +11,37 @@
     <text>"真题"</text>
   </view>
   <view class="ques-view-address">
-    <text>{湖北黄石}</text>
+    <text>{{quesInfo.From}}</text>
   </view>
   <label id="label-content-id" class="label-content">
-        <text>{{content}}</text>
+        <text>{{quesInfo.Content}}</text>
   </label>
   
 </view>
   
-<view class="ques-btn-area" >
-
-    <view wx:for="{{answerArray}}" wx:for-index="idx" wx:for-item="itemName">
-            <button class="sel-btn-true" id="{{itemName}}"   bindtap="bindABtnTap" > {{itemName}}</button>
+<block wx:if="{{quesInfo.Type==0}}">
+    <view class="ques-btn-area" >
+      <view wx:for="{{quesInfo.OptionList}}" wx:for-index="idx" wx:for-item="item">
+            <button wx:if="{{item.state == 0 || !item.state}}" class="sel-btn-nor" id="{{item.KeyName}}"   bindtap="bindABtnTap" > {{item.KeyName+"---"+item.Content}}</button>
+            <button wx:elif="{{item.state == 1}}" class="sel-btn-true" id="{{item.KeyName}}"   bindtap="bindABtnTap" > {{item.KeyName+"---"+item.Content}}</button>
+            <button wx:else="{{item.state == 2}}" class="sel-btn-flase" id="{{item.KeyName}}"   bindtap="bindABtnTap" > {{item.KeyName+"---"+item.Content}}</button>
+     </view>
     </view>
 
-</view>
+</block>
+<block wx:elif="{{quesInfo.Type==1}}">
+    <view  class="ques-btn-tian">  
+       <button    bindtap="bindTianBtnTap" > 查看答案</button>
+     </view>
+</block>
+<block wx:else>
+  <view  > 未知 </view>
+</block>
+
 
 
  <view class="ques-btn-next" >
-
     <button bindtap="bindNextBtnTap" type="primary" plain="true">下一题</button>
-
  </view>
 
 </view>
