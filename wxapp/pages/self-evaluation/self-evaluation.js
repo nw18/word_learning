@@ -1,18 +1,20 @@
 //self-evaluation.js
 //获取应用实例
+//http://openapi.yqj.cn/MockAPI/WordLearning/GetWordList
 var app = getApp()
 Page({
   data: {
+    wordInfoList:[],
+    index: 0,
+    wordInfo:{},
 
     progressItem: {
       progressNum: 0,
-      progressAll: 20,
+      progressAll: 0,
       progressPercent: 0,
     },
 
-    progressNum:0,
-    progressAll:20,
-    progressPercent:0,
+
     motto: 'Hello World',
     picture: 'http://img.zcool.cn/job/groups/b445558d077800000141f02f67a5.jpg',
     userInfo: {}
@@ -25,15 +27,23 @@ Page({
   },
   //点击了会
   bindTrueBtnTap: function () {
-    // wx.navigateTo({
-    //   url: '../logs/logs'
-    // })
+
     var that = this
     var perNum = that.data.progressItem.progressNum;
     perNum++
     if (perNum > that.data.progressItem.progressAll) {
-      perNum = 0;
+
+      wx.navigateTo({
+        url: '../learn-over/learn-over'
+      })
+      return;
     }
+
+    that.data.index++;
+    that.setData({
+      wordInfo: that.data.wordInfoList[that.data.index],
+    })
+
     console.log(perNum);
     that.data.progressItem.progressNum = perNum;
     that.data.progressItem.progressPercent = perNum / that.data.progressItem.progressAll * 100;
@@ -51,14 +61,40 @@ Page({
 
   onLoad: function () {
     console.log('onLoad')
-    var that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function (userInfo) {
-      //更新数据
-      that.setData({
-        userInfo: userInfo
-      })
+    this.loadWordInfoList();
+  },
+
+  loadWordInfoList:function(){
+    var that = this;
+    wx.showLoading({
+      title: '加载中',
     })
+    wx.request({
+      url: 'https://openapi.yqj.cn/MockAPI/WordLearning/GetWordList',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        wx.hideLoading({});
+        var list = res.data.Data;
+        that.setData({
+          wordInfoList: list,
+          wordInfo: list[that.data.index],
+        })
+        var perNum = that.data.index + 1;
+        that.data.progressItem.progressNum = perNum;
+        that.data.progressItem.progressAll = list.length;
+        that.data.progressItem.progressPercent = perNum / list.length * 100;
+        that.setData({
+          progressItem: that.data.progressItem,
+        })
+      },
+      fail: function (res) {
+        wx.hideLoading({})
+      },
+    })
+
   }
+  
 })
 
