@@ -8,7 +8,7 @@
 }
 /************view-ques-head progress1******************/
 
-.view-ques-head{
+.self-view-area{
   margin-top: 20rpx;
   height: 100rpx;
   width:100%;

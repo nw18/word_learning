@@ -1,6 +1,6 @@
 <view class="questions-praction">
 
-<view class="view-ques-head">
+<!--<view class="view-ques-head">
    <label id="label-progress-left" class="label-progress" >
         <text>{{progressNum}}</text>
    </label>
@@ -12,7 +12,16 @@
    <label id="label-progress-right" class="label-progress">
       <text>{{progressAll}}</text>
    </label>
-</view>
+</view>-->
+
+<import src="../com/com.wxml"/>
+
+<template is="progress-view" data="{{progressItem}}"></template>
+
+<!--<template name="progressView">
+  <view> odd </view>
+</template>-->
+
 
 <view  class="ques-view-content">
 
@@ -29,35 +38,10 @@
 </view>
   
 <view class="ques-btn-area" >
-    <block wx:if="{{answer=='A'}}">
-       <button class="sel-btn-true" bindtap="bindABtnTap" >AAAAAAAAA</button>
-    </block>
 
-    <block wx:elif="{{answer!='A'}}">
-         <button class="sel-btn-flase"  bindtap="bindABtnTap" >AAAAAAAAA</button>
-    </block>
-
-    <block wx:if="{{answer=='B'}}">
-       <button class="sel-btn-true"  bindtap="bindBBtnTap" >BBBBBB</button>
-    </block>
-    <block wx:elif="{{answer!='B'}}">
-         <button class="sel-btn-flase"   bindtap="bindBBtnTap" >BBBBBB</button>
-    </block>
-
-    <block wx:if="{{answer=='C'}}">
-       <button class="sel-btn-true" bindtap="bindCBtnTap" >CCCCCCCC</button>
-    </block>
-    <block wx:elif="{{answer!='C'}}">
-         <button class="sel-btn-flase"  bindtap="bindCBtnTap" >CCCCCCCC</button>
-    </block>
-
-    <block wx:if="{{answer=='D'}}">
-       <button class="sel-btn-true" bindtap="bindDBtnTap" >DDDDDDDD</button>
-    </block>
-    <block wx:elif="{{answer!='D'}}">
-         <button class="sel-btn-flase" bindtap="bindDBtnTap" >DDDDDDDD</button>
-    </block>
-
+    <view wx:for="{{answerArray}}" wx:for-index="idx" wx:for-item="itemName">
+            <button class="sel-btn-true" id="{{itemName}}"   bindtap="bindABtnTap" > {{itemName}}</button>
+    </view>
 
 </view>
 

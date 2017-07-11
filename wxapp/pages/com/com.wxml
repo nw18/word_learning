@@ -7,3 +7,19 @@
     <text>我是列表，还会改！</text>
   </view>
 </template>
+
+<template name="progress-view">
+  <view class="self-view-area">
+     <label id="label-progress-left" class="label-progress" >
+        <text>{{progressItem.progressNum}}</text>
+     </label>
+
+     <view class="view-progress">
+        <progress percent="{{progressItem.progressPercent}}"  active activeColor="green" backgroundColor="light" stroke-width="10"  />
+     </view>
+
+     <label id="label-progress-right" class="label-progress">
+          <text>{{progressItem.progressAll}}</text>
+     </label>
+  </view>
+</template>

@@ -3,6 +3,13 @@
 var app = getApp()
 Page({
   data: {
+
+    progressItem: {
+      progressNum: 0,
+      progressAll: 20,
+      progressPercent: 0,
+    },
+
     progressNum:0,
     progressAll:20,
     progressPercent:0,
@@ -22,9 +29,16 @@ Page({
     //   url: '../logs/logs'
     // })
     var that = this
+    var perNum = that.data.progressItem.progressNum;
+    perNum++
+    if (perNum > that.data.progressItem.progressAll) {
+      perNum = 0;
+    }
+    console.log(perNum);
+    that.data.progressItem.progressNum = perNum;
+    that.data.progressItem.progressPercent = perNum / that.data.progressItem.progressAll * 100;
     that.setData({
-      progressNum: that.data.progressNum+1,
-      progressPercent: (that.data.progressNum+1) / that.data.progressAll *100,
+      progressItem: that.data.progressItem,
     })
 
   },
