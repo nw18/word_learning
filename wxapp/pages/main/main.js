@@ -8,9 +8,10 @@ Page({
   data: {
     authInfo:app.authInfo,
     showAD:false,
-    bookIndex:0,
+    bookIndex:-1,
     bookList: [
-      '初中500词','高中1000词'
+      {name:'初中500词',id:1},
+      {name:'高中1000词',id:2}
     ]
   },
 
@@ -88,7 +89,13 @@ Page({
   },
   onBookChange: function (e) {
     this.setData({
-      bookIndex: e.detail.value
+      //bookIndex: e.detail.value
+      bookIndex: e.target.dataset.index
+    })
+  },
+  onClickBookInfo: function(e) {
+    this.setData({
+      bookIndex: -1
     })
   }
 })

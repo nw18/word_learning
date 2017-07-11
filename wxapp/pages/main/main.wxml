@@ -22,19 +22,28 @@
   <view class="main-diver"/>
   <view class="main-proc">
     <view>
-    <text>学习进度</text> 
+      <text>学习进度</text> 
+      <text id="book_info" bindtap="onClickBookInfo" wx:if="{{bookIndex >= 0}}">{{bookList[bookIndex].name}}</text>
       <text id='word_list' bindtap="onClickWordList">单词列表</text>
     </view>
     <progress percent="30" show-info="true" active activeColor="green" backgroundColor="light"/>
   </view>
   <view class="main-diver"/>
-  <button bindtap="onClickBegin">开始背单词吧</button>
+    <button bindtap="onClickBegin">开始背单词吧</button>
   <block wx:if="{{showAD}}">
   <view id='ad'>
 
   </view>
   </block>
-  <picker bindchange="onBookChange" mode="selector" value="{{bookIndex}}" range="{{bookList}}">
-    <text>{{bookList[bookIndex]}}</text>
-  </picker>
+  <view class="main-model-cover" wx:if="{{bookIndex < 0}}"></view>
+  <view class="main-model-content" wx:if="{{bookIndex < 0}}">
+    <view class="book-label">
+      <text>初中单词1500</text>
+      <button bindtap="onBookChange" data-index="0">开始学习</button>
+    </view>
+    <view class="book-label">
+      <text>高中单词3430</text>
+      <button bindtap="onBookChange" data-index="1">开始学习</button>
+    </view>
+  </view>
 </view>

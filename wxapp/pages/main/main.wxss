@@ -101,3 +101,59 @@
   float: right;
   margin-right: 10px;
 }
+
+.main-model-cover {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.main-model-content {
+  width: 540rpx;
+  height: 360rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  z-index: 9999;
+  background: #f9f9f9;
+  margin-top: -100rpx;
+  margin-left: 105rpx;
+  border-radius: 6rpx;
+  display: flex;
+  flex-flow: row;
+}
+
+.book-label {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.book-label text {
+  margin: 20rpx;
+  color: black;
+  font: bold;
+  font-size: 60rpx;
+  text-align: left;
+}
+
+.book-label button {
+  width: 200rpx;
+  background: #f9f9f9;
+  border: gray 2rpx solid;
+  border-radius: 6rpx;
+  color: black;
+  font-size: 30rpx;
+  vertical-align: middle;
+  margin: auto;
+}

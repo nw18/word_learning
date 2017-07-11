@@ -43,14 +43,14 @@ App({
 
     },
     book_list: [ // 当前老师的著作列表
-
+      
     ],
     learn_schedule: { //按BookID存储的课程列表
 
     }
   },
   //启动后加载学习信息
-  initLearnInfo: function(){
+  initLearnInfo: function(bookIndex){
 
   },
   //设定单词学习进度，需要给出总个数。

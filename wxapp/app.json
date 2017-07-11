@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/main/main",
     "pages/index/index",
     "pages/logs/logs",
     "pages/self-evaluation/self-evaluation",
     "pages/learn-over/learn-over",
-    "pages/main/main",
     "pages/questions-practice/questions-practice",
     "pages/lists/lists",
     "pages/listen-read-mode/listen-read-mode",
