@@ -14,16 +14,17 @@ Page({
       progressPercent: 0,
     },
 
+    src: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=46',
 
-    motto: 'Hello World',
     picture: 'http://img.zcool.cn/job/groups/b445558d077800000141f02f67a5.jpg',
     userInfo: {}
   },
+
   //事件处理函数
   bindViewTap: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+    // wx.navigateTo({
+    //   url: '../logs/logs'
+    // })
   },
   //点击了会
   bindTrueBtnTap: function () {
@@ -33,7 +34,7 @@ Page({
     perNum++
     if (perNum > that.data.progressItem.progressAll) {
 
-      wx.navigateTo({
+      wx.redirectTo({
         url: '../learn-over/learn-over'
       })
       return;
@@ -64,10 +65,68 @@ Page({
     this.loadWordInfoList();
   },
 
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    // 使用 wx.createAudioContext 获取 audio 上下文 context
+    this.audioCtx = wx.createAudioContext('myAudio')
+    // 自动播放
+    this.audioCtx.play()
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    var that = this;
+    var rightInterval = setInterval(function () {
+
+      console.log("这是一个三秒的定时器");
+    }, 3000);
+    that.rightInterval = rightInterval;
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  },
+
   loadWordInfoList:function(){
     var that = this;
     wx.showLoading({
       title: '加载中',
+      mask:true,
     })
     wx.request({
       url: 'https://openapi.yqj.cn/MockAPI/WordLearning/GetWordList',
@@ -77,17 +136,18 @@ Page({
       success: function (res) {
         wx.hideLoading({});
         var list = res.data.Data;
-        that.setData({
-          wordInfoList: list,
-          wordInfo: list[that.data.index],
-        })
+     
         var perNum = that.data.index + 1;
         that.data.progressItem.progressNum = perNum;
         that.data.progressItem.progressAll = list.length;
         that.data.progressItem.progressPercent = perNum / list.length * 100;
+
         that.setData({
+          wordInfoList: list,
+          wordInfo: list[that.data.index],
           progressItem: that.data.progressItem,
-        })
+        });
+
       },
       fail: function (res) {
         wx.hideLoading({})

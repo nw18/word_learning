@@ -164,17 +164,17 @@ Page({
         success: function (res) {
            wx.hideLoading({});
            var list = res.data.Data;
-           that.setData({ quesInfoList: list,
-                         quesInfo: list[that.data.index],
-           })
+    
            var perNum = that.data.index+1;
            that.data.progressItem.progressNum = perNum;
            that.data.progressItem.progressAll = list.length;
            that.data.progressItem.progressPercent = perNum / list.length * 100;
+
            that.setData({
+             quesInfoList: list,
+             quesInfo: list[that.data.index],
              progressItem: that.data.progressItem,
            })
-           
         },
         fail: function (res) {
             wx.hideLoading({})

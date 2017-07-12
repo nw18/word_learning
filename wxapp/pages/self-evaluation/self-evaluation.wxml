@@ -7,6 +7,9 @@
   <view  bindtap="bindViewTap" class="self-view-video">
     <image class="self-view-video-avatar" src="{{picture}}" background-size="cover"></image>
     <text class="self-view-video-nickname">{{wordInfo.Explain}}</text>
+
+    <audio src="{{src}}" id="myAudio" ></audio>
+    
   </view>
 
 
