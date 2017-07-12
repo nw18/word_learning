@@ -12,6 +12,6 @@
     <button id="lists" bindtap="bindJumpTap">lists</button>
     <button id="schedule" bindtap="bindJumpTap">schedule</button>
      <button id="listen-read-mode" bindtap="bindJumpTap">listen_read_mode</button>
-    <text class="user-motto">{{motto}}</text>
+    <rich-text class="user-motto" nodes="{{motto}}"></rich-text>
   </view>
 </view>

@@ -3,12 +3,15 @@ var util = require('utils/util.js')
 App({
   onLaunch: function() {
     //调用API从本地缓存中获取数据
+    //创建用户UUID
     var userID = wx.getStorageSync("userID");
     if (typeof(userID)==undefined || !userID){
       userID = util.uuid();
       wx.setStorageSync("userID",userID);
     }
     console.info("user id:" + userID);
+    //读取学习进度缓存
+    
   },
 
   getUserInfo: function(cb) {

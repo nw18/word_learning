@@ -17,7 +17,7 @@
   <block wx:for="{{[1,2,3,4,5,6,7]}}" wx:for-item="item" wx:key="*this">
     <button  data-round="2" data-index="{{item}}" bindtap="onClickDay">第{{item}}天</button> 
     <block wx:if="{{item % 3 != 0}}">  <!-- 行间添加5%间距  -->
-    <view id="rsp"/>
+        <view id="rsp"/>
     </block>
   </block>
 </view>

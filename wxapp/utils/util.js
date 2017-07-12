@@ -1,7 +1,8 @@
 var mode = 1;
 var api_roots = [
   '',
-  'https://openapi.yqj.cn/MockAPI/Operative/' //模块未建立,正式地址未建立
+  'https://openapi.yqj.cn/MockAPI/WordLearning/', //模块未建立,正式地址未建立
+  '' //正式地址
 ];
 
 function formatTime(date) {
@@ -22,8 +23,6 @@ function formatNumber(n) {
   return n[1] ? n : '0' + n
 }
 
-function _empty_(e) {} 
-
 function myrequest(name,data={},sucess=null,fail=null,complete=null) {
   if(mode == 0) {
     sucess(require("./demo-data/" + name + ".js"))
@@ -32,17 +31,23 @@ function myrequest(name,data={},sucess=null,fail=null,complete=null) {
       url: api_roots[mode] + name,
       data: data,
       success: function(obj) {
+        console.debug(obj.statusCode + ":" + JSON.stringify(obj.data));
         if(obj.data.Code == 0) {
           if(sucess != null) {
             sucess(obj.data.Data);
           }
         }else {
           if(fail != null){
-            fail(obj.data);
+            fail(obj.data.Msg);
           }
         }
       },
-      fail: fail == null ? _empty_ : sucess,
+      fail: function(err) {
+        console.error(err);
+        if(fail != null) {
+          fail(err);
+        }
+      },
       complete: function() {
         wx.hideLoading();
         if(complete!=null){
@@ -67,8 +72,17 @@ function uuid() {
   return uuid;
 }
 
+function range(start,end,setp=1) {
+  var array = new Array((end-start) / setp);
+  for(var i = start; i < end; i+=setp){
+    array.push(i);
+  }
+  return array;
+}
+
 module.exports = {
   formatTime: formatTime,
   myrequest: myrequest,
-  uuid: uuid
+  uuid: uuid,
+  range: range
 }

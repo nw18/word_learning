@@ -6,7 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    demo_data: []
+    alpha_table: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(""),
+    demo_data: [],
+    currIndex: 0
   },
   /**
    * 生命周期函数--监听页面加载
@@ -17,10 +19,9 @@ Page({
       title:"正在加载...",
       mask:true
     });
-    util.myrequest("GetActivityInfo",{
+    util.myrequest("GetWordTreeList",{
 
     },function(obj){
-      console.log(JSON.stringify(obj))
       that.setData({
         demo_data:obj
       });
@@ -74,5 +75,16 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  ////////////////////////////////////////
+  onTabChange: function(e) {
+    this.setData({
+      currIndex: e.target.dataset.index
+    });
+  },
+  onClickList: function(e) {
+    wx.navigateTo({
+      url: '../listen-read-mode/listen-read-mode?lid=' + e.target.dataset.id + '&index=' + e.target.dataset.index
+    })
   }
 })

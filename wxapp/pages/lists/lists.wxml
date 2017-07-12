@@ -1,37 +1,30 @@
 <!--lists.wxml-->
 <import src="../com/com.wxml"/>
 <view class="lists">
-  <block wx:for="{{demo_data}}" wx:for-item="item1" wx:key="*this">
-    <view class="level-1">
-      <text>{{item1.Name}}</text>
+  <view class="lists-tab" wx:if="{{demo_data.length > 0}}">
+    <text wx:for="{{demo_data}}" wx:for-item="item" wx:key="*this" class="normal{{currIndex==index?' select':''}}" bindtap="onTabChange" data-index="{{index}}">{{item.Name}}</text>
+  </view>
+  <view class="lists-content" wx:for="{{[demo_data[currIndex]]}}" wx:for-item="item1" wx:key="*this">
       <!-- 如果不是列表，循环添加下级 -->
       <block wx:if="{{!item1.IsList}}">
         <block wx:for="{{item1.Children}}" wx:for-item="item2" wx:key="*this">
-          <view class="level-2">
+          <view class="lists-item" bindtap="onClickList" data-id="{{item2.ID}}" data-index="{{item2.LearnedCount}}">
             <text>{{item2.Name}}</text>
-            <!-- 如果是列表，展示为列表 -->
-            <block wx:if="{{item2.IsList}}">
-              <!--<text id="rate">{{item2.SunWordCount/2}}/{{item2.SunWordCount}}</text>
-              <view class="list-item">
-                <text>我是列表，还会改！</text>
-              </view>-->
-              <template is="list-content" data="{{...item2}}"></template>
-            </block>
           </view>
         </block>
+        <block wx:for="{{[2,3]}}" wx:key="*this">
+          <view class="lists-item" style="border:0px" wx:if="{{item1.Children.length % 3 < item && item1.Children.length % 3 != 0}}"></view>
+        </block>
       </block>
-      <!-- 如果是列表，展示为列表 -->
-      <block wx:if="{{item1.IsList}}">
-        <!--<text id="rate">{{item1.SunWordCount/2}}/{{item1.SunWordCount}}</text>
-        <view class="list-item">
-        <text>我是列表，还会改！</text>
-        </view>-->
-        <template is="list-content" data="{{...item1}}"></template>
+      <!-- 词汇列表，按字母显示列表。 -->
+      <block wx:else>
+        <view class="lists-item" wx:for="{{alpha_table}}" wx:key="*this">
+        <text>{{item}}</text>
+        </view>
+        <block wx:for="{{[2,3]}}" wx:key="*this">
+          <view class="lists-item" style="border:0px" wx:if="{{26 % 3 < item && 26 % 3 != 0}}"></view>
+        </block>
       </block>
-    </view>
-    <block wx:if="{{index < demo_data.length - 1}}">
-      <view class="lists-diver"></view>
-    </block>
-  </block>
+  </view>
 </view>
 

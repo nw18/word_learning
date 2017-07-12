@@ -3,7 +3,18 @@
 var app = getApp()
 Page({
   data: {
-    motto: 'Hello World',
+    motto: '<p style="font-size:40px;color:red">测试HTML</p>',
+    nodes: [{
+      name: 'div',
+      attrs: {
+        class: 'div_class',
+        style: 'line-height: 60px; color: red;'
+      },
+      children: [{
+        type: 'text',
+        text: 'Hello&nbsp;World!'
+      }]
+    }],
     userInfo: {}
   },
   //事件处理函数

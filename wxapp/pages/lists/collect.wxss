@@ -1,0 +1,31 @@
+/* collect.wxss */
+.head {
+  display: flex;
+  flex-flow: row-reverse;
+  border-top: 1px gray solid;
+  border-bottom: 1px gray solid;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.head navigator{
+  margin-right: 10px;
+  border: 1px lightgray solid;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.list-item {
+  width: 100% - 20px;
+  margin: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.list-item button {
+  width: 40px;
+  position: fixed;
+  right: 10px;
+  font-size: 10px;
+}
