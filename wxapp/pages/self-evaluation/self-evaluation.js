@@ -21,10 +21,8 @@ Page({
   },
 
   //事件处理函数
-  bindViewTap: function () {
-    // wx.navigateTo({
-    //   url: '../logs/logs'
-    // })
+  bindImageViewTap: function () {
+      this.audioCtx.play()
   },
   //点击了会
   bindTrueBtnTap: function () {
@@ -56,7 +54,7 @@ Page({
   //点击了不会
   bindFalseBtnTap: function () {
     wx.navigateTo({
-      url: '../logs/logs'
+      url: '../listen-read-mode/listen-read-mode'
     })
   },
 

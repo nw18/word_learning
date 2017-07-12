@@ -31,6 +31,7 @@
 </block>
 <block wx:elif="{{quesInfo.Type==1}}">
     <view  class="ques-btn-tian">  
+        <view hidden="{{answerHidden}}"  class="answer-view">{{quesInfo.AnswerContent}}</view>
        <button    bindtap="bindTianBtnTap" > 查看答案</button>
      </view>
 </block>

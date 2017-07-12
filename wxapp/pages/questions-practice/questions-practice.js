@@ -3,13 +3,12 @@
 //https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html
 var app = getApp()
 Page({
+  isShowAnswer:false,
   data: {
-
-
     quesInfoList:[],
     index: 0,
     quesInfo:{},
-
+    answerHidden:true,
     progressItem:{
       progressNum: 0,
       progressAll: 0,
@@ -89,6 +88,10 @@ Page({
     // })
     console.log(e);
     var that = this
+    if (that.isShowAnswer){
+      return;
+    }
+    that.isShowAnswer = true;
     if (e.target.id == this.data.quesInfo.AnswerList[0]){
       console.log("正确");
       for (var i in this.data.quesInfo.OptionList) {
@@ -107,19 +110,25 @@ Page({
       for (var i in this.data.quesInfo.OptionList) {
         var opt = this.data.quesInfo.OptionList[i];
         if (e.target.id == opt.KeyName) {
-
           this.data.quesInfo.OptionList[i].state = 2;
-          that.setData({
-            quesInfo: this.data.quesInfo,
-          })
+        }
+        if (this.data.quesInfo.AnswerList[0] == opt.KeyName) {
+          this.data.quesInfo.OptionList[i].state = 1;
         }
       }
+      that.setData({
+        quesInfo: this.data.quesInfo,
+      })
+    
     }
 
   },
   //填空题点击了查看答案
   bindTianBtnTap:function(){
-
+    var that = this
+    that.setData({
+      answerHidden: false,
+    })
     console.log(this.data.quesInfo.AnswerContent);
   },
 
@@ -127,9 +136,9 @@ Page({
   bindNextBtnTap: function () {
 
     var that = this
-
+    that.isShowAnswer = false;
     if (that.data.index+1 == that.data.quesInfoList.length){
-      wx.navigateTo({
+      wx.redirectTo({
         url: '../learn-over/learn-over'
       })
       return;
@@ -148,6 +157,7 @@ Page({
     that.data.progressItem.progressPercent = perNum / that.data.progressItem.progressAll * 100;
     that.setData({
       progressItem: that.data.progressItem,
+      answerHidden: true,
     })
   },
   
