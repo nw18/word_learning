@@ -1,6 +1,9 @@
 //self-evaluation.js
 //获取应用实例
 //http://openapi.yqj.cn/MockAPI/WordLearning/GetWordList
+
+var WxNotificationCenter = require("../../WxNotificationCenter/WxNotificationCenter.js");
+
 var app = getApp()
 Page({
   data: {
@@ -26,41 +29,52 @@ Page({
   },
   //点击了会
   bindTrueBtnTap: function () {
+    // console.log("点击了会");
+    // var that = this
+    // var perNum = that.data.progressItem.progressNum;
+    // perNum++
+    // if (perNum > that.data.progressItem.progressAll) {
 
-    var that = this
-    var perNum = that.data.progressItem.progressNum;
-    perNum++
-    if (perNum > that.data.progressItem.progressAll) {
+    //   wx.redirectTo({
+    //     url: '../learn-over/learn-over'
+    //   })
+    //   return;
+    // }
 
-      wx.redirectTo({
-        url: '../learn-over/learn-over'
-      })
-      return;
-    }
+    // that.data.index++;
+    // that.setData({
+    //   wordInfo: that.data.wordInfoList[that.data.index],
+    // })
 
-    that.data.index++;
-    that.setData({
-      wordInfo: that.data.wordInfoList[that.data.index],
-    })
-
-    console.log(perNum);
-    that.data.progressItem.progressNum = perNum;
-    that.data.progressItem.progressPercent = perNum / that.data.progressItem.progressAll * 100;
-    that.setData({
-      progressItem: that.data.progressItem,
-    })
-
+    // console.log(perNum);
+    // that.data.progressItem.progressNum = perNum;
+    // that.data.progressItem.progressPercent = perNum / that.data.progressItem.progressAll * 100;
+    // that.setData({
+    //   progressItem: that.data.progressItem,
+    // }
+    knowBtnTap(this);
   },
   //点击了不会
   bindFalseBtnTap: function () {
     wx.navigateTo({
-      url: '../listen-read-mode/listen-read-mode'
+      // url: '../listen-read-mode/listen-read-mode'
+      url: '../self-evaluation-test/self-evaluation-test'
+      
     })
   },
 
+  testNotificationFn:function (e){
+
+    console.log("接受通知");
+    console.log(e);
+  },
   onLoad: function () {
     console.log('onLoad')
     this.loadWordInfoList();
+
+    //注册通知
+    var that = this
+    WxNotificationCenter.addNotification("testNotificationName", that.testNotificationFn, that)
   },
 
   /**
@@ -100,6 +114,9 @@ Page({
   onUnload: function () {
     console.log("2222在此停止定时器页面");
     clearInterval(this.rightInterval);
+
+    // 移除通知在本也完成
+    WxNotificationCenter.removeNotification("testTabNotificationName", this)
   },
 
   /**
@@ -159,3 +176,43 @@ Page({
   
 })
 
+function knowBtnTap(e){
+
+  console.log("点击了会");
+  console.log(e);
+  var that = e;
+  var perNum = that.data.progressItem.progressNum;
+  perNum++
+  if (perNum > that.data.progressItem.progressAll) {
+
+    wx.redirectTo({
+      url: '../learn-over/learn-over'
+    })
+    return;
+  }
+
+  that.data.index++;
+  that.setData({
+    wordInfo: that.data.wordInfoList[that.data.index],
+  })
+
+  console.log(perNum);
+  that.data.progressItem.progressNum = perNum;
+  that.data.progressItem.progressPercent = perNum / that.data.progressItem.progressAll * 100;
+  that.setData({
+    progressItem: that.data.progressItem,
+  })
+}
+
+//跳转到下一个单词--共外部使用
+function externNextBtnTap () {
+  console.log("本页要跳转下一页啦  ");
+  var pages = getCurrentPages();
+  var currPage = pages[pages.length - 2];   //当前页面
+  knowBtnTap(currPage);
+}
+
+module.exports = {
+
+  externNextBtnTap: externNextBtnTap,
+}
