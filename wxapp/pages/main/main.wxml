@@ -23,10 +23,11 @@
   <view class="main-proc">
     <view>
       <text>学习进度</text> 
-      <text id="book_info" bindtap="onClickBookInfo" wx:if="{{bookIndex >= 0}}">{{bookList[bookIndex].name}}</text>
-      <text id='word_list' bindtap="onClickWordList">单词列表</text>
+      <text id="book_info" bindtap="onClickBookInfo" wx:if="{{bookIndex >= 0}}">{{bookList[bookIndex].Name}}</text>
+      <navigator url="../lists/lists">单词列表</navigator>
+      <navigator url="../lists/collect">我的收藏</navigator>
     </view>
-    <progress percent="30" show-info="true" active activeColor="green" backgroundColor="light"/>
+    <progress percent="0" show-info="true" active activeColor="green" backgroundColor="light"/>
   </view>
   <view class="main-diver"/>
     <button bindtap="onClickBegin">开始背单词吧</button>
@@ -35,15 +36,14 @@
 
   </view>
   </block>
-  <view class="main-model-cover" wx:if="{{bookIndex < 0}}"></view>
-  <view class="main-model-content" wx:if="{{bookIndex < 0}}">
-    <view class="book-label">
-      <text>初中单词1500</text>
-      <button bindtap="onBookChange" data-index="0">开始学习</button>
+  <!-- 选择书本的浮层  -->
+  <block wx:if="{{bookList.length > 0}}">
+    <view class="main-model-cover" wx:if="{{bookIndex < 0}}"></view>
+    <view class="main-model-content" wx:if="{{bookIndex < 0}}">
+      <view class="book-label" wx:for="{{bookList}}">
+        <text>{{item.Name}}</text>
+        <button bindtap="onBookChange" data-index="{{index}}">开始学习</button>
+      </view>
     </view>
-    <view class="book-label">
-      <text>高中单词3430</text>
-      <button bindtap="onBookChange" data-index="1">开始学习</button>
-    </view>
-  </view>
+  </block>
 </view>

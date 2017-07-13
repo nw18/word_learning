@@ -10,8 +10,13 @@ App({
       wx.setStorageSync("userID",userID);
     }
     console.info("user id:" + userID);
+    this.authInfo.uuid = userID;
     //读取学习进度缓存
-    
+    var learnInfo = wx.getStorageSync(userID);
+    console.debug(JSON.stringify(learnInfo));
+    if (typeof (learnInfo) != undefined && learnInfo) {
+      this.learnInfo = learnInfo;
+    }
   },
 
   getUserInfo: function(cb) {
@@ -37,35 +42,37 @@ App({
   authInfo: {
     id: 100,
     description: "从今天起\n跟赵老师一起背单词",
-    head_image : "/img/auth-head.png"
+    head_image : "/img/auth-head.png",
+    uuid: ''
   },
   //存储缓存当前的学习信息
   learnInfo: {
-    book_id: '', //当前学习的BookID
-    learn_process: { //按BookID存储的学习进度表
+    bookID: -1, //当前学习的BookID
+    bookList: [ // 当前老师的著作列表
 
-    },
-    book_list: [ // 当前老师的著作列表
-      
-    ],
-    learn_schedule: { //按BookID存储的课程列表
-
+    ]
+  },
+  //
+  findBookIndex: function() {
+    for(var i = 0; i < this.learnInfo.bookList.length; i++) {
+      if(this.learnInfo.bookID == this.learnInfo.bookList[i].ID) {
+        return i;
+      }
     }
+    return -1;
   },
-  //启动后加载学习信息
-  initLearnInfo: function(bookIndex){
-
+  //
+  updateBookIndex: function(bookIndex) {
+    this.learnInfo.bookID = this.learnInfo.bookList[bookIndex].ID;
+    wx.setStorageSync(this.authInfo.uuid,this.learnInfo);
+    console.debug(JSON.stringify(this.learnInfo));
   },
-  //设定单词学习进度，需要给出总个数。
-  setLearnPosition: function(lesson_id,learn_index,sum_count) {
-
+  getBookList: function() {
+    return this.learnInfo.bookList;
   },
-  //返回已经学了多少个单词,即下一个要学的单词索引.
-  getLearnPosition: function(lesson_id) {
-
-  },
-  //查找下一个要学的单词,返回{lession_id,learn_index}
-  findNexLession: function() {
-    
+  setBookList: function(bookList) {
+    this.learnInfo.bookList = bookList;
+    wx.setStorageSync(this.authInfo.uuid, this.learnInfo);
+    console.debug(JSON.stringify(this.learnInfo));
   }
 })

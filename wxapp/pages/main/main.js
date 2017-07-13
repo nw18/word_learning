@@ -9,22 +9,30 @@ Page({
   data: {
     authInfo:app.authInfo,
     showAD:false,
-    bookIndex:-1,
-    bookList: [
-      {name:'初中500词',id:1},
-      {name:'高中1000词',id:2}
-    ]
+    bookIndex: app.findBookIndex(),
+    bookList: app.getBookList()
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    util.myrequest("BCASJDANKAJ",{
-      //未填参数。
-    },function(data){
-
-    });
+    var that = this;
+    if(this.data.bookList.length == 0){
+      wx.showLoading("加载中...");
+      util.myrequest("GetBookList",{
+        AuthID: app.authInfo.id
+      },function(data){
+        that.setData({
+          bookList: data
+        });
+        app.setBookList(data);
+      },function(err) {
+        wx.showToast(err);
+      });
+    }else {
+      this.loadLearnProcess();
+    }
   },
 
   /**
@@ -86,21 +94,41 @@ Page({
       url: '../lists/lists',
     })
   },
-
-  onClickBegin : function (e) {
-    wx.navigateTo({
-      url: '../lists/lists',
+  loadLearnProcess: function () {
+    var that = this;
+    util.myrequest("GetLearningProcess", {
+      BookID : app.learnInfo.bookID
+    }, function (data) {
+      that.setData({
+        learnProcess: data
+      });
+    }, function (err) {
+      wx.showToast(err);
     })
-  },
-  onBookChange: function (e) {
+  }
+  ,onBookChange: function (e) {
     this.setData({
       //bookIndex: e.detail.value
       bookIndex: e.target.dataset.index
-    })
+    });
+    app.updateBookIndex(e.target.dataset.index);
+    wx.showLoading("加载中...");
+    this.loadLearnProcess();
   },
   onClickBookInfo: function(e) {
     this.setData({
       bookIndex: -1
+    })
+  },
+  //查找下一个要学的单词,返回{lession_id,learn_index}
+  onClickBegin: function () {
+    //定位单词列表
+
+    //没学完跳单词学习
+
+    //学完了跳列表
+    wx.navigateTo({
+      url: '../lists/lists',
     })
   }
 })

@@ -19,3 +19,15 @@
 .usermotto {
   margin-top: 20px;
 }
+
+.pbg {
+  background-color: green;
+  width: 200px;
+  height: 10px;
+}
+
+.pfg {
+  background-color: red;
+  width: 100px;
+  height: 10px;
+}

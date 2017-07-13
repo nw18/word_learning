@@ -14,4 +14,7 @@
      <button id="listen-read-mode" bindtap="bindJumpTap">listen_read_mode</button>
     <rich-text class="user-motto" nodes="{{motto}}"></rich-text>
   </view>
+    <view class="pbg">
+      <view class="pfg"></view>
+    </view>
 </view>

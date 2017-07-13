@@ -8,7 +8,7 @@
       <!-- 如果不是列表，循环添加下级 -->
       <block wx:if="{{!item1.IsList}}">
         <block wx:for="{{item1.Children}}" wx:for-item="item2" wx:key="*this">
-          <view class="lists-item" bindtap="onClickList" data-id="{{item2.ID}}" data-index="{{item2.LearnedCount}}">
+          <view class="lists-item" bindtap="onClickList" data-id="{{item2.ID}}" data-index="{{item2.LearnedCount}}" data-query="">
             <text>{{item2.Name}}</text>
           </view>
         </block>
@@ -18,13 +18,19 @@
       </block>
       <!-- 词汇列表，按字母显示列表。 -->
       <block wx:else>
-        <view class="lists-item" wx:for="{{alpha_table}}" wx:key="*this">
-        <text>{{item}}</text>
+        <view class="lists-item" wx:for="{{alpha_table}}" wx:key="*this" data-id="0" >
+          <text>{{item}}</text>
         </view>
         <block wx:for="{{[2,3]}}" wx:key="*this">
           <view class="lists-item" style="border:0px" wx:if="{{26 % 3 < item && 26 % 3 != 0}}"></view>
         </block>
       </block>
+  </view>
+  
+  <view class="lists-buttons">
+    <button>开始学习</button>
+    <button>测试一下</button>
+    <button>真题练习</button>
   </view>
 </view>
 

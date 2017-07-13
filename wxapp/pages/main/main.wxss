@@ -94,7 +94,7 @@
   color: green;
 }
 
-.main-proc #word_list{
+.main-proc navigator{
   font-size: 12pt;
   color: blue;
   font-style:  initial;
@@ -116,27 +116,30 @@
 }
 
 .main-model-content {
-  width: 540rpx;
-  height: 360rpx;
+  width: 75%;
+  height: 75%;
   overflow: hidden;
   position: fixed;
-  top: 50%;
+  top: 12.5%;
   left: 0;
   z-index: 9999;
-  background: #f9f9f9;
-  margin-top: -100rpx;
-  margin-left: 105rpx;
   border-radius: 6rpx;
-  display: flex;
-  flex-flow: row;
-}
-
-.book-label {
-  width: 100%;
-  height: 100%;
+  margin-top: -37rpx;
+  margin-left: 94rpx;
   display: flex;
   flex-flow: column;
   align-items: center;
+}
+
+.book-label {
+  width: 300rpx;
+  height: 400rpx;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 10%;
+  background-color: white;
 }
 
 .book-label text {
@@ -154,6 +157,5 @@
   border-radius: 6rpx;
   color: black;
   font-size: 30rpx;
-  vertical-align: middle;
-  margin: auto;
+  margin-bottom: 20rpx;
 }
