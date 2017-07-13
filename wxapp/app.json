@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/lists/collect",
     "pages/index/index",
+    "pages/lists/collect",
     "pages/main/main",
     "pages/logs/logs",
     "pages/self-evaluation/self-evaluation",
@@ -9,7 +9,8 @@
     "pages/questions-practice/questions-practice",
     "pages/lists/lists",
     "pages/listen-read-mode/listen-read-mode",
-    "pages/schedule/schedule"
+    "pages/schedule/schedule",
+    "pages/self-evaluation-test/self-evaluation-test"
   ],
   "window": {
     "backgroundTextStyle": "light",
