@@ -19,18 +19,18 @@ Page({
 
     src: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=46',
 
-    picture: 'http://img.zcool.cn/job/groups/b445558d077800000141f02f67a5.jpg',
+    picture: '../../img/laba.gif',
     userInfo: {}
   },
 
   //事件处理函数
   bindImageViewTap: function () {
-      this.audioCtx.play()
+
   },
   //点击了会
   bindTrueBtnTap: function () {
     // console.log("点击了会");
-    // var that = this
+    var that = this
     // var perNum = that.data.progressItem.progressNum;
     // perNum++
     // if (perNum > that.data.progressItem.progressAll) {
@@ -49,20 +49,25 @@ Page({
     // console.log(perNum);
     // that.data.progressItem.progressNum = perNum;
     // that.data.progressItem.progressPercent = perNum / that.data.progressItem.progressAll * 100;
-    // that.setData({
-    //   progressItem: that.data.progressItem,
-    // }
+
     knowBtnTap(this);
   },
   //点击了不会
   bindFalseBtnTap: function () {
+
     wx.navigateTo({
       // url: '../listen-read-mode/listen-read-mode'
       url: '../self-evaluation-test/self-evaluation-test'
       
     })
   },
-
+  
+  funended: function () {
+    that.setData({
+      picture: '../../img/laba.png',
+    })
+    console.log("audio end");
+  },
   testNotificationFn:function (e){
 
     console.log("接受通知");
@@ -75,16 +80,28 @@ Page({
     //注册通知
     var that = this
     WxNotificationCenter.addNotification("testNotificationName", that.testNotificationFn, that)
+
+
+
+    wx.onBackgroundAudioStop(function () {
+      that.setData({
+        picture: '../../img/laba.png',
+      });
+      console.log('onBackgroundAudioStop')
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    // 使用 wx.createAudioContext 获取 audio 上下文 context
-    this.audioCtx = wx.createAudioContext('myAudio')
-    // 自动播放
-    this.audioCtx.play()
+
+    var that = this
+    wx.playBackgroundAudio({
+      //播放地址
+      dataUrl: that.data.src,
+
+    })
   },
 
   /**
@@ -158,7 +175,7 @@ Page({
         var perNum = that.data.index + 1;
         that.data.progressItem.progressNum = perNum;
         that.data.progressItem.progressAll = list.length;
-        that.data.progressItem.progressPercent = perNum / list.length * 100;
+        that.data.progressItem.progressPercent = perNum / list.length * 580;
 
         that.setData({
           wordInfoList: list,
@@ -173,7 +190,6 @@ Page({
     })
 
   }
-  
 })
 
 function knowBtnTap(e){
@@ -192,14 +208,12 @@ function knowBtnTap(e){
   }
 
   that.data.index++;
-  that.setData({
-    wordInfo: that.data.wordInfoList[that.data.index],
-  })
 
   console.log(perNum);
   that.data.progressItem.progressNum = perNum;
-  that.data.progressItem.progressPercent = perNum / that.data.progressItem.progressAll * 100;
+  that.data.progressItem.progressPercent = perNum / that.data.progressItem.progressAll * 580;
   that.setData({
+    wordInfo: that.data.wordInfoList[that.data.index],
     progressItem: that.data.progressItem,
   })
 }

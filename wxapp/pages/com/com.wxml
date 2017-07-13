@@ -10,14 +10,15 @@
 
 <template name="progress-view">
   <view class="self-view-area">
-     <label id="label-progress-left" class="label-progress" >
-        <text>{{progressItem.progressNum}}</text>
-     </label>
-
-     <view class="view-progress">
-        <progress percent="{{progressItem.progressPercent}}"  active activeColor="green" backgroundColor="light" stroke-width="10"  />
-     </view>
-
+    <view class="view-progress-bg">
+        <view style="width:{{progressItem.progressPercent}}rpx"  class="view-progress-con"></view>
+        <view class="view-progress-circle">
+            <label id="label-progress-left" class="label-progress" >
+              <text>{{progressItem.progressNum}}</text>
+            </label> 
+        </view>
+    </view>
+    
      <label id="label-progress-right" class="label-progress">
           <text>{{progressItem.progressAll}}</text>
      </label>

@@ -154,7 +154,7 @@ Page({
       perNum = 0;
     }
     that.data.progressItem.progressNum = perNum;
-    that.data.progressItem.progressPercent = perNum / that.data.progressItem.progressAll * 100;
+    that.data.progressItem.progressPercent = perNum / that.data.progressItem.progressAll * 580;
     that.setData({
       progressItem: that.data.progressItem,
       answerHidden: true,
@@ -178,7 +178,7 @@ Page({
            var perNum = that.data.index+1;
            that.data.progressItem.progressNum = perNum;
            that.data.progressItem.progressAll = list.length;
-           that.data.progressItem.progressPercent = perNum / list.length * 100;
+           that.data.progressItem.progressPercent = perNum / list.length * 580;
 
            that.setData({
              quesInfoList: list,
