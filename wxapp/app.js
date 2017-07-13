@@ -74,5 +74,11 @@ App({
     this.learnInfo.bookList = bookList;
     wx.setStorageSync(this.authInfo.uuid, this.learnInfo);
     console.debug(JSON.stringify(this.learnInfo));
+  },
+  getUserID: function() {
+    return this.authInfo.uuid;
+  },
+  getBookID: function() {
+    return this.learnInfo.bookID;
   }
 })

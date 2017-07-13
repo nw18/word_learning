@@ -5,9 +5,9 @@
   <navigator url="../listen-read-mode/listen-read-mode">再听一遍</navigator>
 </view>
 <view class="content">
-  <view class="list-item" wx:for="{{demo_data}}" wx:key="*this">
+  <view class="list-item" wx:for="{{demo_data}}" wx:key="item.ID">
     <text>{{item.Spell}}</text>
-    <button bindtap="" data-id="{{item.ID}}">X</button>
+    <button bindtap="" data-id="{{item.ID}}" data-index="{{index}}" bindtap="onClickDelete">X</button>
   </view>
 </view>
 </view>
