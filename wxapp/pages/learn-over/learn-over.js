@@ -12,13 +12,13 @@ Page({
     })
   },
   testAgain: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
+    wx.redirectTo({
+      url: '../self-evaluation/self-evaluation'
     })
   },
   practise: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
+    wx.redirectTo({
+      url: '../questions-practice/questions-practice'
     })
   },
   onLoad: function () {

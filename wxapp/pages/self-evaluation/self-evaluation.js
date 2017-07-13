@@ -90,13 +90,16 @@ Page({
    */
   onHide: function () {
 
+    console.log("1111在此停止页面");
+    clearInterval(this.rightInterval);
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    console.log("2222在此停止定时器页面");
+    clearInterval(this.rightInterval);
   },
 
   /**

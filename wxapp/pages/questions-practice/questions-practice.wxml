@@ -21,11 +21,11 @@
   
 <block wx:if="{{quesInfo.Type==0}}">
     <view class="ques-btn-area" >
-      <view wx:for="{{quesInfo.OptionList}}" wx:for-index="idx" wx:for-item="item">
+      <block wx:key="unique" wx:for="{{quesInfo.OptionList}}" wx:for-index="idx" wx:for-item="item">
             <button wx:if="{{item.state == 0 || !item.state}}" class="sel-btn-nor" id="{{item.KeyName}}"   bindtap="bindABtnTap" > {{item.KeyName+"---"+item.Content}}</button>
             <button wx:elif="{{item.state == 1}}" class="sel-btn-true" id="{{item.KeyName}}"   bindtap="bindABtnTap" > {{item.KeyName+"---"+item.Content}}</button>
             <button wx:else="{{item.state == 2}}" class="sel-btn-flase" id="{{item.KeyName}}"   bindtap="bindABtnTap" > {{item.KeyName+"---"+item.Content}}</button>
-     </view>
+     </block>
     </view>
 
 </block>
