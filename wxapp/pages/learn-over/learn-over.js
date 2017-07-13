@@ -8,7 +8,7 @@ Page({
   //事件处理函数
   listenAgain: function () {
     wx.navigateTo({
-      url: '../logs/logs'
+      url: '../listen-read-mode/listen-read-mode'
     })
   },
   testAgain: function () {

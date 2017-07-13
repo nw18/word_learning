@@ -5,9 +5,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-    progressNum: 0,
-    progressAll: 20,
-    progressPercent: 0
+      wordInfoList: [],
+      index: 0,
+      wordInfo: {},
+      time:0,
+      progressItem: {
+        progressNum: 0,
+        progressAll: 0,
+        progressPercent: 0,
+      },
+
+      src: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=46',
+
+      picture: 'http://img.zcool.cn/job/groups/b445558d077800000141f02f67a5.jpg',
+      userInfo: {}
 
   },
 
@@ -15,7 +26,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log('onLoad')
+    this.loadWordInfoList();
   },
 
   /**
@@ -29,7 +41,50 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this;
+    var preTmie = 5;
+    var perNum = that.data.progressItem.progressNum;
+    var rightInterval = setInterval(function () {
+    
+      console.log("这是一个五秒的定时器");
+// 每5秒切换一次单词
+      preTmie--;
+      if(preTmie==-1){
+        perNum++;
+        preTmie=5
+        that.data.index++;
+        // 换单词
+        that.setData({
+          wordInfo: that.data.wordInfoList[that.data.index],
+        });
+        console.log(perNum);
+        that.data.progressItem.progressNum = perNum;
+        that.data.progressItem.progressPercent = perNum / that.data.progressItem.progressAll * 100;
+        that.setData({
+          progressItem: that.data.progressItem,
+         
+        })
+      }
+     
+      if (perNum >= that.data.progressItem.progressAll) {
+        clearInterval(rightInterval)
+        wx.redirectTo({
+          url: '../learn-over/learn-over'     
+        })
+        return;
+      }
+      // 更新时间
+    that.setData({
+      time:preTmie
+    })
+   
 
+     
+
+
+
+    }, 1000);
+    that.rightInterval = rightInterval;
   },
 
   /**
@@ -43,7 +98,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    WxNotificationCenter.removeNotification("testTabNotificationName", this)
   },
 
   /**
@@ -64,6 +119,40 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+
+  },
+
+    loadWordInfoList: function () {
+    var that = this;
+    wx.showLoading({
+      title: '加载中',
+      mask: true,
+    })
+    wx.request({
+      url: 'https://openapi.yqj.cn/MockAPI/WordLearning/GetWordList',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        wx.hideLoading({});
+        var list = res.data.Data;
+
+        var perNum = that.data.index + 1;
+        that.data.progressItem.progressNum = perNum;
+        that.data.progressItem.progressAll = list.length;
+        that.data.progressItem.progressPercent = perNum / list.length * 100;
+
+        that.setData({
+          wordInfoList: list,
+          wordInfo: list[that.data.index],
+          progressItem: that.data.progressItem,
+        });
+
+      },
+      fail: function (res) {
+        wx.hideLoading({})
+      },
+    })
 
   }
 })

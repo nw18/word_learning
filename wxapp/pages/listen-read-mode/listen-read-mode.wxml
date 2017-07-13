@@ -16,11 +16,11 @@
   <!--单词描述-->
   <view class="words_read">
     <view >
-      <text>单词</text>
-      <text class="voice_logo">音标</text>
+      <text>{{wordInfo.Explain}}</text>
+      <text class="voice_logo">{{pronunciation}}</text>
     </view>
     <view >
-      <image id="image_voice" style="width: 20px; height: 20px; " src="../../img/voice.png" ></image>
+      <image id="image_voice" style="width: 20px; height: 20px; " src="{{picture}}" ></image>
     </view>
     <view >
         <label>核心词汇</label>
@@ -33,16 +33,22 @@
     </view>
   </view>
   <view class="words_para">
-    <label>单词释义</label>
+    <label>{{mean}}</label>
   </view>
   
   <!--帮助记忆-->
   <view class="words_help">
-      <label >丽丽助记</label>
-     <image id="image_help"  src="../../img/auth-head.png" ></image>
+    
       <label id="example">例句</label>
-      <text id="example_en">英文例句</text>
-      <text id="example_cn">中文例句</text>
+      <text id="example_en">{{example-en}}</text>
+      <text id="example_cn">{{example-cn}}</text>
+        <label >丽丽助记</label>
+     <image id="image_help"  src="../../img/auth-head.png" ></image>
+  </view>
+  <view class="auto-next">
+      <button>
+       <label>{{time}}</label><label>s下一个单词</label>
+      </button>
   </view>
   </view>
   

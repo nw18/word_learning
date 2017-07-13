@@ -90,3 +90,14 @@
   margin-bottom: 20rpx;
   margin-top: 20rpx;
 }
+.auto-next{
+    height:normal;
+    width: normal;
+    padding-left: 100rpx;
+    padding-right: 100rpx;
+    padding-top: 3rpx;
+    padding-bottom: 3rpx;
+    border: 1px solid #fff;
+    margin-top: 10rpx
+  
+}

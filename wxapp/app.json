@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/lists/collect",
+
     "pages/main/main",
     "pages/logs/logs",
     "pages/self-evaluation/self-evaluation",
