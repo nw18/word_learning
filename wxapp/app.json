@@ -1,6 +1,5 @@
 {
   "pages": [
-      "pages/questions-practice/questions-practice",
     "pages/index/index",
     "pages/lists/collect",
 
@@ -8,7 +7,7 @@
     "pages/logs/logs",
     "pages/self-evaluation/self-evaluation",
     "pages/learn-over/learn-over",
- 
+    "pages/questions-practice/questions-practice",
     "pages/lists/lists",
     "pages/listen-read-mode/listen-read-mode",
     "pages/schedule/schedule",
