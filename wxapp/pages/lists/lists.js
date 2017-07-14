@@ -1,5 +1,6 @@
 // lists.js
-var util = require('../../utils/util.js')
+var util = require('../../utils/util.js');
+var app = getApp();
 Page({
 
   /**
@@ -15,17 +16,24 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    wx.showLoading({
-      title:"正在加载...",
-      mask:true
-    });
-    util.myrequest("GetWordTreeList",{
-
-    },function(obj){
-      that.setData({
-        demo_data:obj
+    var learnProcess = app.getLearnProcess();
+    if(typeof(learnProcess)==undefined || !learnProcess) {
+      wx.showLoading({
+        title:"正在加载...",
+        mask:true
       });
-    },null)
+      util.myrequest("GetWordTreeList",{
+        BookID: app.getBookID
+      },function(obj){
+        that.setData({
+          demo_data:obj
+        });
+      },null)
+    }else {
+      that.setData({
+        demo_data: learnProcess.WordListTree
+      });
+    }
   },
 
   /**

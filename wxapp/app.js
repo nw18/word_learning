@@ -80,5 +80,11 @@ App({
   },
   getBookID: function() {
     return this.learnInfo.bookID;
+  },
+  setLearnProcess: function(learnProcess) {
+    this.learnProcess = learnProcess;
+  },
+  getLearnProcess: function() {
+    return this.learnProcess;
   }
 })

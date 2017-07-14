@@ -94,7 +94,23 @@
   color: green;
 }
 
-.main-proc navigator{
+.main-pro view {
+  width: 100%;
+  display: flex;
+  flex-flow:  row;
+}
+
+#book_info {
+  float: right;
+  margin-right: 10px;
+}
+
+.main-extra-buttons {
+  margin: 10px;
+  display: flex;
+  flex-flow:  row;
+}
+.main-extra-buttons navigator{
   font-size: 12pt;
   color: blue;
   font-style:  initial;

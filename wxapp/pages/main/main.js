@@ -10,7 +10,8 @@ Page({
     authInfo:app.authInfo,
     showAD:false,
     bookIndex: app.findBookIndex(),
-    bookList: app.getBookList()
+    bookList: app.getBookList(),
+    learnProcess: null
   },
 
   /**
@@ -30,7 +31,8 @@ Page({
       },function(err) {
         wx.showToast(err);
       });
-    }else {
+    } else {
+      wx.showLoading("加载中...");
       this.loadLearnProcess();
     }
   },
@@ -102,6 +104,7 @@ Page({
       that.setData({
         learnProcess: data
       });
+      app.setLearnProcess(data);
     }, function (err) {
       wx.showToast(err);
     })
@@ -122,13 +125,37 @@ Page({
   },
   //查找下一个要学的单词,返回{lession_id,learn_index}
   onClickBegin: function () {
-    //定位单词列表
-
-    //没学完跳单词学习
-
-    //学完了跳列表
-    wx.navigateTo({
-      url: '../lists/lists',
-    })
+    var learnProcess = this.data.learnProcess;
+    if (learnProcess.LearnedCount < learnProcess.SumWordCount){
+      var node_list = new Array();
+      for (var i in learnProcess.WordListTree) {
+        node_list.push(learnProcess.WordListTree[i]);
+      }
+      while(node_list.length > 0) {
+        var node = node_list.shift();
+        if (node.IsList){
+          if (node.LearnedCount < node.SumWordCount) {
+            wx.navigateTo({
+              url: '../listen-read-mode/listen-read-mode?lid=' + node.ID + "&index=" + node.FirstUnlearnIndex,
+            })
+            return;
+          }else{
+            continue;
+          }
+        }else {
+          for(var cnode in node.Children) {
+            node_list.push(cnode);
+          }
+        }
+      }
+      wx.showToast({
+        title: '哇哦,咋也没找到列表!',
+      })
+    } else {
+      //学完了跳列表
+      wx.navigateTo({
+        url: '../lists/lists',
+      });
+    }
   }
 })
