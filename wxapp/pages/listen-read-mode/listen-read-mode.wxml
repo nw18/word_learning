@@ -1,40 +1,33 @@
 <view class="listen_read_mode">
 
-  <view class="view-area">
-    <label id="label-progress-left" class="label-progress" >
-          <text>{{progressNum}}</text>
-    </label>
+<import src="../com/com.wxml"/>
+<template is="progress-view" data="{{progressItem}}"></template> 
 
-    <view class="view-progress">
-        <progress percent="{{progressPercent}}"  active activeColor="green" backgroundColor="light" stroke-width="10"  />
-    </view>
-
-    <label id="label-progress-right" class="label-progress">
-        <text>{{progressAll}}</text>
-    </label>
-  </view>
   <!--单词描述-->
-  <view class="words_read">
-    <view >
-      <text>{{wordInfo.Explain}}</text>
-      <text class="voice_logo">{{pronunciation}}</text>
+  <view class="words-read">
+    <view class="words-read-head" >
+      <text>{{"feel"}}</text>
+      <label>核心词汇</label>
+      <image  style="width: 50rpx; height: 50rpx; " src="../../img/laba.png" ></image>
     </view>
-    <view >
-      <image id="image_voice" style="width: 20px; height: 20px; " src="{{picture}}" ></image>
+    <!--音标-->
+    <view class="words-read-yibiao">
+        <label> {{"[ˈsɜ:kjələ(r)]"}}</label>
+        <image  style="width: 40rpx; height: 40rpx; " src="../../img/laba.png" ></image>
     </view>
-    <view >
-        <label>核心词汇</label>
+   <!--词性 -->
+    <block wx:key="unique" wx:for="{{cixing}}" wx:for-index="idx" wx:for-item="item">
+        <view class="words-read-cixing"> {{item}}</view>
+    </block>
+    <!--例句-->
+    <view class="ords-read-title-liju">例句</view>
+    <view class="ords-read-liju">
+        <text>{{ExtraList.liju}}</text>
     </view>
-    <view >
-        <label>中考频率：</label>
-    </view>
-      <view >
-        <label>10</label>
-    </view>
+
   </view>
-  <view class="words_para">
-    <label>{{mean}}</label>
-  </view>
+  
+
   
   <!--帮助记忆-->
   <view class="words_help">

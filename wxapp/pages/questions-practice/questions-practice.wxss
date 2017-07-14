@@ -88,7 +88,7 @@
 
   height: 300rpx;
   width:100%;
-  background-color:#fff;
+  background-color:white;
   display:flex;
   flex-direction:column;
 }
@@ -102,7 +102,7 @@
   height: 36rpx;
   align-self: flex-end;
   margin-right: 70rpx;
-  margin-top: 180rpx;
+  margin-top: 150rpx;
   padding-right: 70rpx;
   padding-left: 100rpx;
    display:flex;
@@ -116,8 +116,8 @@
   width: 200rpx; 
   height: 36rpx;
   align-self: flex-end;
-  margin-right: 70rpx;
-  margin-top: 230rpx;
+  margin-right: 80rpx;
+  margin-top: 200rpx;
   display:flex;
   flex-direction:row;
   position: fixed;
