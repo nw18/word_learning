@@ -1,35 +1,33 @@
 //index.js
 //获取应用实例
-var app = getApp()
+
 Page({
   data: {
-
+    ListID:0,
   },
   //事件处理函数
   listenAgain: function () {
+    var that = this;
     wx.navigateTo({
-      url: '../listen-read-mode/listen-read-mode'
+      url: '../listen-read-mode/listen-read-mode?ListID=' + that.data.ListID,
     })
   },
   testAgain: function () {
+    var that = this;
     wx.redirectTo({
-      url: '../self-evaluation/self-evaluation'
+      url: '../self-evaluation/self-evaluation?ListID=' + that.data.ListID,
     })
   },
   practise: function () {
+    var that = this;
     wx.redirectTo({
-      url: '../questions-practice/questions-practice'
+      url: '../questions-practice/questions-practice?ListID=' + that.data.ListID,
     })
   },
-  onLoad: function () {
-    console.log('onLoad')
-    var that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function (userInfo) {
-      //更新数据
-      that.setData({
-        userInfo: userInfo
-      })
+  onLoad: function (e) {
+    console.log(e.ListID);
+    this.setData({
+      ListID: e.ListID,
     })
   }
 })

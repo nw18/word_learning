@@ -5,6 +5,7 @@ var app = getApp()
 Page({
   isShowAnswer:false,
   data: {
+    ListID: 12345,//外部传入的
     quesInfoList:[],
     index: 0,
     quesInfo:{},
@@ -23,7 +24,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-       this.loadQuesInfoList();
+    this.setData({
+      ListID: options.ListID,
+    })
+     this.loadQuesInfoList();
   },
 
   /**
@@ -139,7 +143,7 @@ Page({
     that.isShowAnswer = false;
     if (that.data.index+1 == that.data.quesInfoList.length){
       wx.redirectTo({
-        url: '../learn-over/learn-over'
+        url: '../learn-over/learn-over?ListID=' + that.data.ListID,
       })
       return;
     }

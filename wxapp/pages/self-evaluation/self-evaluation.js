@@ -7,6 +7,7 @@ var WxNotificationCenter = require("../../WxNotificationCenter/WxNotificationCen
 var app = getApp()
 Page({
   data: {
+    ListID:12345,//外部传入的
     wordInfoList:[],
     index: 0,
     wordInfo:{},
@@ -31,25 +32,6 @@ Page({
   bindTrueBtnTap: function () {
     // console.log("点击了会");
     var that = this
-    // var perNum = that.data.progressItem.progressNum;
-    // perNum++
-    // if (perNum > that.data.progressItem.progressAll) {
-
-    //   wx.redirectTo({
-    //     url: '../learn-over/learn-over'
-    //   })
-    //   return;
-    // }
-
-    // that.data.index++;
-    // that.setData({
-    //   wordInfo: that.data.wordInfoList[that.data.index],
-    // })
-
-    // console.log(perNum);
-    // that.data.progressItem.progressNum = perNum;
-    // that.data.progressItem.progressPercent = perNum / that.data.progressItem.progressAll * 100;
-
     knowBtnTap(this);
   },
   //点击了不会
@@ -73,15 +55,18 @@ Page({
     console.log("接受通知");
     console.log(e);
   },
-  onLoad: function () {
+  ////////////////////////////////////////////////
+  onLoad: function (e) {
     console.log('onLoad')
     this.loadWordInfoList();
 
     //注册通知
-    var that = this
-    WxNotificationCenter.addNotification("testNotificationName", that.testNotificationFn, that)
+    // var that = this
+    // WxNotificationCenter.addNotification("testNotificationName", that.testNotificationFn, that)
 
-
+    this.setData({
+      ListID: e.ListID,
+    })
 
     wx.onBackgroundAudioStop(function () {
       that.setData({
@@ -133,7 +118,7 @@ Page({
     clearInterval(this.rightInterval);
 
     // 移除通知在本也完成
-    WxNotificationCenter.removeNotification("testTabNotificationName", this)
+    // WxNotificationCenter.removeNotification("testTabNotificationName", this)
   },
 
   /**
@@ -202,7 +187,7 @@ function knowBtnTap(e){
   if (perNum > that.data.progressItem.progressAll) {
 
     wx.redirectTo({
-      url: '../learn-over/learn-over'
+      url: '../learn-over/learn-over?ListID=' + that.data.ListID,
     })
     return;
   }

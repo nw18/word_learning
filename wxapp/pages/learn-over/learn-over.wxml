@@ -1,18 +1,21 @@
 <!--index.wxml-->
 
-<view class="container">
-    <button class="title" >
-       恭喜你今天的单词学完了！
-    </button>
-    <button class="item1 mt" bindtap="listenAgain">
-        <text> 再听一遍</text>
-    </button>
-     <button class="item1" bindtap="testAgain">
+<view class="learn-over">
+  <view class="image-view">
+    <image mode="aspectFit" src="../../img/laba.png"></image>
+  </view>
+
+  <view class="title">
+    恭喜你今天的单词学习完了。
+  </view>
+  
+  <button class="item1" bindtap="listenAgain">
+      再听一遍
+  </button>
+  <button class="item1" bindtap="testAgain">
        测试一下
-         <text>{{text}}</text>
-    </button>
-    <button class="item1" bindtap="practise">
+  </button>
+  <button class="item1" bindtap="practise">
       真题练习
-        <text>{{text}}</text>
-    </button>
+  </button>
 </view>
