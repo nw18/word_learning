@@ -7,16 +7,23 @@
 /************vodeo******************/
 
 .self-view-video {
+  width: 100%;
+  height: 560rpx;
+  margin-top: 11rpx;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
-  align-items: center;
+
 }
 
 .self-view-video-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%; /*圆角*/
+
+  margin-top: 190rpx;
+  margin-left: 285rpx;
+  width: 180rpx;
+  height: 180rpx;
+  background-color: #6cc;
+  align-items: center;
 }
 .self-view-video-nickname {
   color: #aaa;
@@ -24,18 +31,27 @@
 /************btn******************/
 .self-btn-area{
 
-  height: 200rpx;
+  height: 240rpx;
   width:100%;
-  background-color:#6cc;
+  background-color:#f5f5f5;
   display:flex;
   flex-direction:row;
 
 }
 .self-btn-area button{
-  margin-top: 30rpx;
+  margin-top: 100rpx;
   margin-bottom: 30rpx;
-  width: 200rpx;
-  height: 100rpx;
-  /*background-color:cyan;*/
-  border: 1px solid #fff
+  width: 250rpx;
+  height: 90rpx;
 }
+#self-btn-left{
+  color: white;
+  background-color:#ffa732;
+}
+
+#self-btn-right{
+  color: #ffa732;
+  border: 1px solid #ffa732;
+  background-color:white;
+}
+

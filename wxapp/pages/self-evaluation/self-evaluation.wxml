@@ -7,14 +7,13 @@
   <view   class="self-view-video">
     <image bindtap="bindImageViewTap" class="self-view-video-avatar" src="{{picture}}" background-size="cover" ></image>
     <text class="self-view-video-nickname">{{wordInfo.Explain}}</text>
-    <audio src="{{src}}" id="myAudio" ></audio>
   </view>
 
 
   <view class="self-btn-area" >
 
-    <button bindtap="bindTrueBtnTap" type="primary" plain="true">会</button>
-    <button bindtap="bindFalseBtnTap" type="primary" plain="false">不会</button>
+    <button  id="self-btn-left" bindtap="bindTrueBtnTap" >会</button>
+    <button id="self-btn-right" bindtap="bindFalseBtnTap" >不会</button>
 
   </view>
 
