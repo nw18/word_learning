@@ -2,7 +2,7 @@
     height: 100%;
     width:100%;
     margin-top: 0rpx;
-    background-color:beige;
+    background-color:#f5f5f5;
     /*display:flex;*/
     /*flex-direction:row;*/
 }
@@ -12,29 +12,39 @@
 .ques-view-content {
   height: 10%;
   width:100%;
+  margin-top: 10rpx;
   display: flex;
   flex-direction: column;
   /*align-items: center;*/
-  background-color:#1cc;
+  background-color:#fff;
 }
 .ques-view-title{
-   margin-left: 20rpx; 
-   margin-top: 20rpx;
-   height: 30rpx;
-   align-self: flex-start;
-
+   margin-left: 70rpx; 
+   margin-top: 50rpx;
+   height: 40rpx;
+   width: 80rpx;
+   border: 1px solid #2ab4fc;
+   color: #2ab4fc;
+   font-size: 26rpx;
+   border-radius: 10rpx; 
+   text-align: center;
+   padding-top: 12rpx;
 }
 
 .ques-view-address{
-  margin-top: -30rpx;
-  margin-right: 30rpx;
+  margin-top: -40rpx;
+  margin-right: 460rpx;
+  color: #2ab4fc;
+  font-size: 26rpx;
   align-self: flex-end;
 }
 .label-content{
     height: 90%;
-    width:90%;
-    border: 1px solid #ffffff;
-    margin: 30rpx;
+    width:610rpx;
+    margin-left: 70rpx;
+    margin-top: 40rpx;
+    margin-bottom: 40rpx;
+    color: #666666;
     align-self: flex-start;
 }
 /************select btn******************/
@@ -43,65 +53,100 @@
   /*height: 600rpx;*/
   height: 10%;
   width:100%;
-  background-color:#6cc;
+  padding-bottom: 100rpx;
+  background-color:white;
   display:flex;
   flex-direction:column;
 
 }
-.ques-btn-area button{
-  margin-top: 30rpx;
-  margin-bottom: 30rpx;
-  width: 60%;
-  height: 20%;
-
+.sel-btn{
+  margin-top: 40rpx;
+  margin-left: 70rpx;
+  width: 600rpx;
+  height: 80rpx;
+  padding-left: 40rpx;
+  padding-top: 36rpx;
+  border-radius: 11rpx; 
 }
 
 .sel-btn-nor{
-  background-color: black;
-  color: white;
+  box-shadow:-2rpx -2rpx 6rpx 6rpx whitesmoke inset;
+  background-color: white;
+  color: #666666;
 }
 
 .sel-btn-true{
-   background-color: green;
+  background-color: #47d8b3;
   color: white;
 }
 .sel-btn-flase{
-   background-color: red;
+  background-color: #fd6d55;
   color: white;
 }
 /************tian btn******************/
 .ques-btn-tian{
 
-  height: 100rpx;
+  height: 300rpx;
   width:100%;
-  background-color:#6cc;
+  background-color:#fff;
   display:flex;
   flex-direction:column;
-
 }
-.ques-btn-tian button{
 
-  width: 200rpx;
-  height: 80%;
+.answer-view{
 
+  /* background-color: wheat; */
+  color: #ffa732;
+  font-size: 36rpx;
+  /* width: 200rpx;  */
+  height: 36rpx;
+  align-self: flex-end;
+  margin-right: 70rpx;
+  margin-top: 180rpx;
+  padding-right: 70rpx;
+  padding-left: 100rpx;
+   display:flex;
+  flex-direction:row; 
+  position: fixed;
+}
+
+.ques-btn-tian-view{
+  color: #ffa732;
+  font-size: 36rpx;
+  width: 200rpx; 
+  height: 36rpx;
+  align-self: flex-end;
+  margin-right: 70rpx;
+  margin-top: 230rpx;
+  display:flex;
+  flex-direction:row;
+  position: fixed;
+}
+
+.ques-btn-tian-view image{
+  width: 36rpx; 
+  height: 36rpx;
 }
 /************next btn******************/
 .ques-btn-next{
 
   width: 100%;
-  height: 100rpx;
-  background-color:cyan;
+  height: 200rpx;
+  background-color:#f5f5f5;
   display:flex;
   flex-direction:column;
 }
 
-.ques-btn-next button{
-
-  width: 300rpx;
+.ques-btn-next-view{
+  width: 250rpx;
   height: 80rpx;
-  background-color:cyan;
-  border: 1px solid #fff;
-
-  margin-left: 20rpx;
-  margin-top: 20rpx;
+  color: white;
+  background-color:#ffa732;
+  margin-right: 70rpx;
+  margin-top: 70rpx;
+  border-radius: 11rpx; 
+  align-self: flex-end;
+  text-align: center;
+  font-size: 36rpx;
+  padding-top: 40rpx;
 }

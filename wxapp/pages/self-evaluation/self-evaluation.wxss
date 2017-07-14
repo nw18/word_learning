@@ -51,7 +51,7 @@
 
 #self-btn-right{
   color: #ffa732;
-  border: 1px solid #ffa732;
+   border: 1px solid #ffa732; 
   background-color:white;
 }
 
