@@ -3,29 +3,39 @@
   display: flex;
   flex-flow: row-reverse;
   border-top: 1px gray solid;
-  border-bottom: 1px gray solid;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10rpx;
+  padding-top: 25rpx;
+  padding-bottom: 25rpx;
+  background-color: white;
+  margin-bottom: 10rpx;
 }
 
 .head navigator{
-  margin-right: 10px;
-  border: 1px lightgray solid;
-  padding: 5px;
-  border-radius: 4px;
+  margin-right: 30rpx;
+  border: 1px solid #FFA732;
+  padding: 10rpx;
+  border-radius: 10rpx;
+  font-size: 26rpx;
+  color: #FFA732;
 }
 
 .list-item {
-  width: 100% - 20px;
-  margin: 10px;
+  width: 680rpx;
+  padding: 35rpx;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
+  background: white;
+  border-bottom: 1rpx solid #F2F2F2;
 }
 
-.list-item button {
-  width: 40px;
+.list-item image {
+  width: 50rpx;
+  height: 50rpx;
   position: fixed;
-  right: 10px;
-  font-size: 10px;
+  right: 35rpx;
+}
+.list-item text{
+  font-size: 30rpx;
+  color: #333333;
 }
