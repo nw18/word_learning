@@ -20,28 +20,23 @@
         <view class="words-read-cixing"> {{item}}</view>
     </block>
     <!--例句-->
-    <view class="ords-read-title-liju">例句</view>
+    <view class="ords-read-liju-logo">例句</view>
     <view class="ords-read-liju">
         <text>{{ExtraList.liju}}</text>
     </view>
-
+    <!--视频-->
+    <view class="ords-read-video-logo">视频讲解</view>
+    <view class="ords-read-video">
+       <video id="myVideo" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls></video>
+    </view>
+    <!--下一个单词-->
+    <view class="auto-next">
+      <view class="auto-next-button">
+         <label>{{time}}</label><label>s下一个单词</label>
+      </view>
+    </view>
   </view>
   
 
-  
-  <!--帮助记忆-->
-  <view class="words_help">
-    
-      <label id="example">例句</label>
-      <text id="example_en">{{example-en}}</text>
-      <text id="example_cn">{{example-cn}}</text>
-        <label >丽丽助记</label>
-     <image id="image_help"  src="../../img/auth-head.png" ></image>
-  </view>
-  <view class="auto-next">
-      <button>
-       <label>{{time}}</label><label>s下一个单词</label>
-      </button>
-  </view>
-  </view>
+ </view>
   

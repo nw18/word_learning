@@ -11,7 +11,7 @@
   display: flex;
   flex-direction: column;
   margin-top: 11rpx;
-  background-color: #6cc;
+  background-color: white;
 }
 
 .words-read-head{
@@ -19,7 +19,7 @@
   flex-direction: row;
   height:100rpx;
   width:100%;
-  background-color: wheat;
+  background-color: white;
   align-items: center;
 }
 .words-read-head text{
@@ -75,7 +75,7 @@
   width:100%;
 }
 /***********************例句*********************************/
-.ords-read-title-liju{
+.ords-read-liju-logo{
 
   color: #2ab4fc;
   margin-left: 70rpx;
@@ -89,58 +89,56 @@
   text-align: center;
 }
 .ords-read-liju{
-
   color: #666666;
   margin-left: 70rpx;
   margin-top: 20rpx;
   font-size: 32rpx;
   height:4%;
   width:610rpx;
-
 }
 /***********************视频*********************************/
-.voice_logo{
-  margin-left: 10rpx
-}
-.words_para{
-  margin-left: 20rpx;
-  margin-top: 40rpx;
-  
-}
-.words_help{
-   height:warp;
-   width:100%; 
-   margin-left: 20rpx;
-   margin-right: 20rpx;
-   
-   display:flex;
-   flex-direction:column;
-}
-.words_para{
-  margin-bottom: 20rpx
-}
-#example{
-  margin-top: 20rpx
-}
-#example_en{
-  margin-top: 20rpx
-}
-#example_cn{
-  margin-top: 20rpx
-}
-#image_help{
-   align-items: center;
-  margin-bottom: 20rpx;
+.ords-read-video-logo{
+
+  color: #2ab4fc;
+  margin-left: 70rpx;
   margin-top: 20rpx;
+  font-size: 32rpx;
+  height:40rpx;
+  width:180rpx;
+  border: 1px solid #2ab4fc;
+  border-radius: 10rpx;
+  padding-top: 4rpx;
+  text-align: center;
 }
+
+.ords-read-video{
+  background-color: #fff;
+  margin-top: 20rpx;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.ords-read-video video{
+  width:610rpx;
+}
+
+/***********************下一个单词*********************************/
 .auto-next{
-    height:normal;
-    width: normal;
-    padding-left: 100rpx;
-    padding-right: 100rpx;
-    padding-top: 3rpx;
-    padding-bottom: 3rpx;
-    border: 1px solid #fff;
-    margin-top: 10rpx
-  
+  background-color: #f5f5f5;
+  height:240rpx;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.auto-next-button {
+  padding-top: 45rpx;
+  text-align: center;
+  margin-top: 100rpx;
+  width: 670rpx;
+  height: 80rpx;
+  color: #fff;
+  border: 0px solid #ffa732; 
+  background-color:#ffa732;
+  border-radius: 10rpx;
 }
