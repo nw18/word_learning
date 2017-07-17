@@ -23,8 +23,14 @@
     <view class="ques-btn-area" >
       <block wx:key="unique" wx:for="{{quesInfo.OptionList}}" wx:for-index="idx" wx:for-item="item">
             <view  wx:if="{{item.state == 0 || !item.state}}" class="sel-btn-nor sel-btn" id="{{item.KeyName}}"   bindtap="bindABtnTap" > {{item.KeyName+"---"+item.Content}}</view>
-            <view wx:elif="{{item.state == 1}}" class="sel-btn-true sel-btn" id="{{item.KeyName}}"   bindtap="bindABtnTap" > {{item.KeyName+"---"+item.Content}}</view>
-            <view wx:else="{{item.state == 2}}" class="sel-btn-flase sel-btn" id="{{item.KeyName}}"   bindtap="bindABtnTap" > {{item.KeyName+"---"+item.Content}}</view>
+
+            <view wx:elif="{{item.state == 1}}" class="sel-btn-true sel-btn" id="{{item.KeyName}}"   bindtap="bindABtnTap" > {{item.KeyName+"---"+item.Content}}
+              <image src="../../img/icon-right.png"></image>
+            </view>
+
+            <view wx:else="{{item.state == 2}}" class="sel-btn-flase sel-btn" id="{{item.KeyName}}"   bindtap="bindABtnTap" > {{item.KeyName+"---"+item.Content}}
+              <image mode="aspectFit" src="../../img/icon-wrong.png"></image>
+            </view>
      </block>
     </view>
 
@@ -33,7 +39,7 @@
     <view  class="ques-btn-tian">  
         <view hidden="{{answerHidden}}"  class="answer-view">{{quesInfo.AnswerContent}}tyyuuuuuuuuuuuu</view>
         <view  class="ques-btn-tian-view"  bindtap="bindTianBtnTap" > 
-          <image src="../../img/voice.png"></image>
+          <image mode="aspectFit" src="../../img/eye-normal.png"></image>
            查看答案
         </view>
     </view>

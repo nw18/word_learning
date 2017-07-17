@@ -6,14 +6,14 @@
   <!--单词描述-->
   <view class="words-read">
     <view class="words-read-head" >
-      <text>{{wordInfo.Explain}}</text>
+      <text>{{"qq"}}</text>
       <label>核心词汇</label>
-      <image  style="width: 50rpx; height: 50rpx; " src="../../img/laba.gif" ></image>
+      <image  style="width: 50rpx; height: 50rpx; " src="../../img/icon-collect-off.png" ></image>
     </view>
     <!--音标-->
     <view class="words-read-yibiao">
         <label> {{wordInfo.Spell}}</label>
-        <image  style="width: 40rpx; height: 40rpx; " src="{{picture}}" ></image>
+        <image mode="aspectFit" style="width: 40rpx; height: 40rpx; " src="../../img/voice-small.png" ></image>
     </view>
    <!--词性 -->
     <block wx:key="unique" wx:for="{{cixing}}" wx:for-index="idx" wx:for-item="item">

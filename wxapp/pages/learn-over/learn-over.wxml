@@ -2,13 +2,13 @@
 
 <view class="learn-over">
   <view class="image-view">
-    <image mode="aspectFit" src="../../img/laba.png"></image>
+    <image mode="aspectFit" src="../../img/icon-complete.png"></image>
   </view>
 
   <view class="title">
     恭喜你今天的单词学习完了。
   </view>
-  
+
   <button class="item1" bindtap="listenAgain">
       再听一遍
   </button>

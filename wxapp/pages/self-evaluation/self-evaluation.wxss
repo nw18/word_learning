@@ -12,25 +12,19 @@
   margin-top: 11rpx;
   background-color: #ffffff;
   display: flex;
-  flex-direction: column;
-
+  justify-content: center;
 }
 
 .self-view-video-avatar {
-
   margin-top: 190rpx;
-  margin-left: 285rpx;
-  width: 180rpx;
-  height: 180rpx;
-  background-color: #6cc;
+  width: 173rpx;
+  height: 159rpx;
+  background-color: white;
   align-items: center;
 }
-.self-view-video-nickname {
-  color: #aaa;
-}
+
 /************btn******************/
 .self-btn-area{
-
   height: 240rpx;
   width:100%;
   background-color:#f5f5f5;
