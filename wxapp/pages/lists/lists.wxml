@@ -6,31 +6,39 @@
   </view>
   <view class="lists-content" wx:for="{{[demo_data[currIndex]]}}" wx:for-item="item1" wx:key="*this">
       <!-- 如果不是列表，循环添加下级 -->
-      <block wx:if="{{!item1.IsList}}">
-        <block wx:for="{{item1.Children}}" wx:for-item="item2" wx:key="*this">
-          <view class="lists-item" bindtap="onClickList" data-id="{{item2.ID}}" data-index="{{item2.LearnedCount}}" data-query="">
-            <text>{{item2.Name}}</text>
+      <block wx:if="{{currIndex < 1}}">
+        <block wx:for="{{item1.Children}}" wx:for-item="item2" wx:key="*this" wx:for-index="index2">
+          <view class="lists-item{{select_index[currIndex]==index2?' list-item-select':''}}"
+           bindtap="onClickList" data-id="{{item2.ID}}" data-startindex="{{item2.LearnedCount}}"
+           data-query="" data-index="{{index2}}">
+           <image id="wave-bg" src="/img/wave-{{item2.LearnedLevel}}0p.png" mode="scaleToFill"></image>
+          {{item2.Name}}
+          <image mode="scaleToFill" src="/img/icon-selected.png" wx:if="{{select_index[currIndex]==index2}}"></image>
           </view>
         </block>
         <block wx:for="{{[2,3]}}" wx:key="*this">
-          <view class="lists-item" style="border:0px" wx:if="{{item1.Children.length % 3 < item && item1.Children.length % 3 != 0}}"></view>
+          <view class="lists-item-empty" wx:if="{{item1.Children.length % 3 < item && item1.Children.length % 3 != 0}}"></view>
         </block>
       </block>
       <!-- 词汇列表，按字母显示列表。 -->
       <block wx:else>
-        <view class="lists-item" wx:for="{{alpha_table}}" wx:key="*this" data-id="0" >
-          <text>{{item}}</text>
+        <view wx:for-index="index2" wx:for="{{alpha_table}}" wx:key="*this" 
+         data-id="0" data-index="{{index2}}" data-query="{{item}}" bindtap="onClickList" 
+         class="lists-item{{select_index[currIndex]==index2?' list-item-select':''}}">
+        <image id="wave-bg" src="/img/wave-00p.png" mode="scaleToFill"></image>
+        {{item}}
+        <image mode="scaleToFill" src="/img/icon-selected.png" wx:if="{{select_index[currIndex]==index2}}"></image>
         </view>
         <block wx:for="{{[2,3]}}" wx:key="*this">
-          <view class="lists-item" style="border:0px" wx:if="{{26 % 3 < item && 26 % 3 != 0}}"></view>
+          <view class="lists-item-empty" style="border:0px" wx:if="{{26 % 3 < item && 26 % 3 != 0}}"></view>
         </block>
       </block>
   </view>
   
   <view class="lists-buttons">
-    <button>开始学习</button>
-    <button>测试一下</button>
-    <button>真题练习</button>
+    <button class="yellow-button">开始学习</button>
+    <button class="yellow-button">测试一下</button>
+    <button class="yellow-button">真题练习</button>
   </view>
 </view>
 

@@ -100,6 +100,10 @@ Page({
     util.myrequest("GetLearningProcess", {
       BookID: app.learnInfo.bookID
     }, function (data) {
+      that.traceList(data,function(node){
+        node.LearnedLevel = Math.floor(node.LearnedCount * 5 / node.SumWordCount) * 2;
+        return false;
+      });
       that.setData({
         learnProcess: data
       });
@@ -127,31 +131,38 @@ Page({
       url: e.target.dataset.url,
     })
   },
+  traceList: function (learnProcess,callback) {
+    var node_list = new Array();
+    for (var i in learnProcess.WordListTree) {
+      node_list.push(learnProcess.WordListTree[i]);
+    }
+    while (node_list.length > 0) {
+      var node = node_list.shift();
+      if (node.IsList) {
+        if(callback(node)){
+          return true;
+        }
+      } else {
+        for (var i in node.Children) {
+          node_list.push(node.Children[i]);
+        }
+      }
+    }
+    return false;
+  },
   //查找下一个要学的单词,返回{lession_id,learn_index}
   onClickBegin: function () {
     var learnProcess = this.data.learnProcess;
     if (learnProcess.LearnedCount < learnProcess.SumWordCount) {
-      var node_list = new Array();
-      for (var i in learnProcess.WordListTree) {
-        node_list.push(learnProcess.WordListTree[i]);
-      }
-      while (node_list.length > 0) {
-        var node = node_list.shift();
-        if (node.IsList) {
-          if (node.LearnedCount < node.SumWordCount) {
-            wx.navigateTo({
-              url: '../listen-read-mode/listen-read-mode?lid=' + node.ID + "&index=" + node.FirstUnlearnIndex,
-            })
-            return;
-          } else {
-            continue;
-          }
-        } else {
-          for (var cnode in node.Children) {
-            node_list.push(cnode);
-          }
+      this.traceList(learnProcess,function(node) {
+        if (node.LearnedCount < node.SumWordCount) {
+          wx.navigateTo({
+            url: '../listen-read-mode/listen-read-mode?lid=' + node.ID + "&index=" + node.FirstUnlearnIndex,
+          })
+          return true;
         }
-      }
+        return false;
+      })
       wx.showToast({
         title: '哇哦,咋也没找到列表!',
       })

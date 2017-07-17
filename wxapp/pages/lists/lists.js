@@ -8,8 +8,11 @@ Page({
    */
   data: {
     alpha_table: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(""),
-    demo_data: [],
-    currIndex: 0
+    select_index: [0,1,2],
+    currIndex: 0,
+    tran2int:function(i) {
+      return Math.floor(i);
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -91,6 +94,13 @@ Page({
     });
   },
   onClickList: function(e) {
+    this.data.select_index[this.data.currIndex] = e.target.dataset.index;
+    this.setData({
+      select_index: this.data.select_index
+    });
+  },
+  onClickStartLearn:function(e) {
+    
     wx.navigateTo({
       url: '../listen-read-mode/listen-read-mode?lid=' + e.target.dataset.id + '&index=' + e.target.dataset.index
     })

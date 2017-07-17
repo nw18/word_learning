@@ -1,11 +1,6 @@
 <!--main.wxml-->
 <view class="main">
-  <view class="main-head" />
-  <!-- 
-    <image src="{{authInfo.head_image}}" />
-    <text>{{authInfo.description}}</text>
-  </view>
-  <view class="main-diver" /> -->
+  <image src="/img/main-head.png" mode="widthFix" class="main-head"></image>
   <view class="main main-content1">
     <view class="main-sum" wx:if="{{learnProcess!=null}}">
       <view>
