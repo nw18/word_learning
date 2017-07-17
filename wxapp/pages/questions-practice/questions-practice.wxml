@@ -37,10 +37,16 @@
 </block>
 <block wx:elif="{{quesInfo.Type==1}}">
     <view  class="ques-btn-tian">  
-        <view hidden="{{answerHidden}}"  class="answer-view">{{quesInfo.AnswerContent}}tyyuuuuuuuuuuuu</view>
+       <block wx:if="{{answerHidden==false}}">
+          <view   class="answer-view  answer-view-show">{{quesInfo.AnswerContent}}tyyuuuuuuuuuuuu</view>
+       </block>
+       <block wx:if="{{answerHidden==true}}">
+          <view   class="answer-view  answer-view-hidden">{{quesInfo.AnswerContent}}tyyuuuuuuuuuuuu</view>
+       </block>
+
         <view  class="ques-btn-tian-view"  bindtap="bindTianBtnTap" > 
           <image mode="aspectFit" src="../../img/eye-normal.png"></image>
-           查看答案
+          <text>查看答案</text>
         </view>
     </view>
 </block>

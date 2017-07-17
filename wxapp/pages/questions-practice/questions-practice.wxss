@@ -103,22 +103,23 @@
 }
 
 .answer-view{
-
   /* background-color: wheat; */
-  color: #ffa732;
+  
   font-size: 36rpx;
   /* width: 200rpx;  */
   height: 36rpx;
   align-self: flex-end;
-  margin-right: 70rpx;
-  margin-top: 150rpx;
-  padding-right: 70rpx;
-  padding-left: 100rpx;
-   display:flex;
+  margin-right: 100rpx;
+  margin-top: 120rpx;
+  display:flex;
   flex-direction:row; 
-  position: fixed;
 }
-
+.answer-view-hidden{
+  color: white;
+}
+.answer-view-show{
+  color: #ffa732;
+}
 .ques-btn-tian-view{
   color: #ffa732;
   font-size: 36rpx;
@@ -126,15 +127,19 @@
   height: 36rpx;
   align-self: flex-end;
   margin-right: 80rpx;
-  margin-top: 200rpx;
+  margin-top: 50rpx;
   display:flex;
   flex-direction:row;
-  position: fixed;
+  justify-content: center;
+  align-items: center;
 }
-
 .ques-btn-tian-view image{
   width: 36rpx; 
   height: 36rpx;
+  align-content: center;
+}
+.ques-btn-tian-view text{
+  margin-left: 10rpx;
 }
 /************next btn******************/
 .ques-btn-next{
