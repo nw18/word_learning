@@ -1,41 +1,46 @@
 <!--main.wxml-->
 <view class="main">
-  <view class="main-head"/><!-- 
+  <view class="main-head" />
+  <!-- 
     <image src="{{authInfo.head_image}}" />
     <text>{{authInfo.description}}</text>
   </view>
   <view class="main-diver" /> -->
-  <view class="main-sum" wx:if="{{learnProcess!=null}}">
-    <view>
-      <text class="desc">今天已学</text>
-      <text class="number">{{learnProcess.TodayLearnedCount}}个</text>
+  <view class="main main-content1">
+    <view class="main-sum" wx:if="{{learnProcess!=null}}">
+      <view>
+        <text class="desc">今天已学</text>
+        <view><text class="number">{{learnProcess.TodayLearnedCount}}</text><text class="desc">个</text></view>
+      </view>
+      <view>
+        <text class="desc">今天待学</text>
+        <view><text class="number">{{learnProcess.TodayToLearnCount}}</text><text class="desc">个</text></view>
+      </view>
+      <view>
+        <text class="desc">累计学习</text>
+        <view><text class="number">{{learnProcess.SumLearnedDay}}</text><text class="desc">天</text></view>
+      </view>
     </view>
-    <view>
-      <text class="desc">今天待学</text>
-      <text class="number">{{learnProcess.TodayToLearnCount}}个</text>
-    </view>
-    <view>
-      <text class="desc">累计学习</text>
-      <text class="number">{{learnProcess.SumLearnedDay}}天</text>
+    <view class="main-diver" />
+    <view class="main-proc">
+      <view>
+        <text class="text1">学习进度</text>
+        <text class="text3">{{learnProcess.LearnedCount}}</text>
+        <text class="text2"> / {{learnProcess.SumWordCount}}</text>
+        <text class="text1" id="book_info" bindtap="onClickBookInfo" wx:if="{{bookIndex >= 0}}">{{bookList[bookIndex].Name}}</text>
+      </view>
+      <progress wx:if="{{learnProcess!=null}}" percent="{{learnProcess.LearnedCount * 100.0 / learnProcess.SumWordCount}}" active activeColor="green" backgroundColor="light" />
     </view>
   </view>
-  <view class="main-diver" />
-  <view class="main-proc">
-    <view>
-      <text>学习进度</text>
-      <text>{{learnProcess.LearnedCount}}</text>
-      <text>/{{learnProcess.SumWordCount}}</text>
-      <text id="book_info" bindtap="onClickBookInfo" wx:if="{{bookIndex >= 0}}">{{bookList[bookIndex].Name}}</text>
-    </view>
-    <progress wx:if="{{learnProcess!=null}}" percent="{{learnProcess.LearnedCount * 100.0 / learnProcess.SumWordCount}}" active activeColor="green" backgroundColor="light" />
-  </view>
-  <view class="main-extra-buttons">
-    <view>换单词书</view>
-    <view>
-      <navigator url="../lists/lists">单词列表</navigator>
-    </view>
-    <view class="classname">
-    <navigator url="../lists/collect">我的收藏</navigator>
+  <image src="../../img/back-middle.png" style="width:690rpx;height:70rpx;margin-left:30rpx;margin-right:30rpx;"></image>
+  <view class="main-content2">
+    <view class="main-extra-buttons">
+      <view bindtap="onClickBookInfo">
+        <image src="../../img/icon-change-book.png"></image>换单词书</view>
+      <view bindtap="onNavigateTo" data-url="../lists/lists">
+        <image src="../../img/icon-word-list.png" data-url="../lists/lists"></image>单词列表</view>
+      <view bindtap="onNavigateTo" data-url="../lists/collect">
+        <image src="../../img/icon-collect-on.png" data-url="../lists/collect"></image>我的收藏</view>
     </view>
   </view>
   <button class="yellow-button" bindtap="onClickBegin">开始背单词吧</button>

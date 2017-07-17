@@ -2,7 +2,6 @@
 var app = getApp();
 var util = require('../../utils/util.js')
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -42,11 +41,11 @@ Page({
    */
   onReady: function () {
     var that = this;
-    setTimeout(function () {
-      that.setData({
-        showAD: true
-      })
-    }, 2000)
+    // setTimeout(function () {
+    //   that.setData({
+    //     showAD: true
+    //   })
+    // }, 2000)
   },
 
   /**
@@ -121,6 +120,11 @@ Page({
   onClickBookInfo: function (e) {
     this.setData({
       bookIndex: -1
+    })
+  },
+  onNavigateTo: function(e) {
+    wx.navigateTo({
+      url: e.target.dataset.url,
     })
   },
   //查找下一个要学的单词,返回{lession_id,learn_index}

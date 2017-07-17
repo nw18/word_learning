@@ -81,7 +81,6 @@
 }
 
 .yellow-button{
-  height:80rpx;
   color:white;
   font-size: 30rpx;
   background-color:#ffa732;

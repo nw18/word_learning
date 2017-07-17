@@ -1,4 +1,10 @@
 /* main.wxss */
+page {  
+  display: block;  
+  min-height: 100%;  
+  background-color: #f5f5f5;
+}  
+
 .main {
   height: 100%;
   width: 100%;
@@ -23,19 +29,37 @@
   background-image: url("../../img/main-head.png");
 }
 
+.main-content1 {
+  width: 630rpx;
+border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+  background-color: white;
+  margin-top: 30rpx;
+  margin-left:30rpx;
+  margin-right: 30rpx;
+  padding: 30rpx;
+}
+.main-content2 {
+  width: 630rpx;
+  border-bottom-left-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+  background-color: white;
+  margin-left:30rpx;
+  margin-right: 30rpx;
+  padding: 30rpx;
+  margin-top: -10rpx; /*这里为啥有一块间距？？*/
+}
 .main-diver {
   background: darkgray;
   height: 1px;
-  margin-left: 35rpx;
-  margin-right: 35rpx;
-  width: 100%-70rpx;
+  width: 100%;
 }
 
 .main-sum {
   height: fit-content;
   display: flex;
   flex-flow: row;
-
+  margin-bottom: 75rpx;
 }
 
 .main-sum view {
@@ -46,50 +70,67 @@
   align-items: center;
 }
 
+.main-sum view view {
+  display:  flex;
+  flex-flow: row;
+  align-items: baseline;
+  justify-content: center;
+  margin-top: 30rpx;
+}
+
 .main-sum .number {
   font: bold;
-  font-size:16pt;
+  color: #333333;
+  font-size:40rpx;
   text-align: center;
 }
 
 .main-sum .desc {
-  color: green;
-  font-size: 10pt;
+  color: #999999;
+  font-size: 24rpx;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 20rpx;
 }
 
 .main-proc{
-  height: fit-content;
+  width: 100%;
+  margin-top: 30rpx;
   display: flex;
   flex-flow: column;
+  justify-content: center;
+}
+
+.main-proc .text1 {
+  font-size: 24rpx;
+  color: #999999;
+}
+.main-proc .text2 {
+  font-size: 26rpx;
+  color: #333333;
+}
+.main-proc .text3 {
+  margin-left: 10rpx;
+  font-size: 26rpx;
+  color: #ffa732;
 }
 
 .main-proc progress{
-  width: 100%-20px;
-  margin: 10px;
-}
-
-.main-proc text {
-  margin-left: 10px;
-  margin-top: 5px;
-  font-size: 12pt;
-  color: green;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
 }
 
 .main-pro view {
   width: 100%;
   display: flex;
   flex-flow:  row;
+  align-items: flex-end;
 }
 
 #book_info {
   float: right;
-  margin-right: 10px;
 }
 
 .main-extra-buttons {
-  margin: 35rpx;
   width: 100%;
   display: flex;
   flex-flow: row;
@@ -97,11 +138,18 @@
 
 .main-extra-buttons view {
   width: 33.33%;
-  font-size: 25rpx;
+  font-size: 26rpx;
   color: #333333;
   display: flex;
   flex-flow: column;
-  
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-extra-buttons image {
+  width: 50rpx;
+  height: 50rpx;
+  margin-bottom: 20rpx;
 }
 
 .main-model-cover {
@@ -148,7 +196,7 @@
   margin: 20rpx;
   color: black;
   font: bold;
-  font-size: 60rpx;
+  font-size: 26rpx;
   text-align: left;
 }
 
@@ -158,6 +206,6 @@
   border: gray 2rpx solid;
   border-radius: 6rpx;
   color: black;
-  font-size: 30rpx;
+  font-size: 26rpx;
   margin-bottom: 20rpx;
 }
