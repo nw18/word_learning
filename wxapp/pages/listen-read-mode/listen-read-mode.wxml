@@ -6,14 +6,14 @@
   <!--单词描述-->
   <view class="words-read">
     <view class="words-read-head" >
-      <text>{{"feel"}}</text>
+      <text>{{wordInfo.Explain}}</text>
       <label>核心词汇</label>
-      <image  style="width: 50rpx; height: 50rpx; " src="../../img/laba.png" ></image>
+      <image  style="width: 50rpx; height: 50rpx; " src="../../img/laba.gif" ></image>
     </view>
     <!--音标-->
     <view class="words-read-yibiao">
-        <label> {{"[ˈsɜ:kjələ(r)]"}}</label>
-        <image  style="width: 40rpx; height: 40rpx; " src="../../img/laba.png" ></image>
+        <label> {{wordInfo.Spell}}</label>
+        <image  style="width: 40rpx; height: 40rpx; " src="{{picture}}" ></image>
     </view>
    <!--词性 -->
     <block wx:key="unique" wx:for="{{cixing}}" wx:for-index="idx" wx:for-item="item">

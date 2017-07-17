@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+      ListID: 12345,//外部传入的
       wordInfoList: [],
       index: 0,
       wordInfo: {},
@@ -139,7 +140,7 @@ Page({
         var perNum = that.data.index + 1;
         that.data.progressItem.progressNum = perNum;
         that.data.progressItem.progressAll = list.length;
-        that.data.progressItem.progressPercent = perNum / list.length * 100;
+        that.data.progressItem.progressPercent = perNum / list.length * 580;
 
         that.setData({
           wordInfoList: list,
