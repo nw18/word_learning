@@ -7,8 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    authInfo:app.authInfo,
-    showAD:false,
+    authInfo: app.authInfo,
+    showAD: false,
     bookIndex: app.findBookIndex(),
     bookList: app.getBookList(),
     learnProcess: null
@@ -19,16 +19,16 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    if(this.data.bookList.length == 0){
+    if (this.data.bookList.length == 0) {
       wx.showLoading("加载中...");
-      util.myrequest("GetBookList",{
+      util.myrequest("GetBookList", {
         AuthID: app.authInfo.id
-      },function(data){
+      }, function (data) {
         that.setData({
           bookList: data
         });
         app.setBookList(data);
-      },function(err) {
+      }, function (err) {
         wx.showToast(err);
       });
     } else {
@@ -59,39 +59,39 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   },
 
   //////////自定义事件放下面/////////////////////////
-  onClickWordList : function (e) {
+  onClickWordList: function (e) {
     wx.navigateTo({
       url: '../lists/lists',
     })
@@ -99,7 +99,7 @@ Page({
   loadLearnProcess: function () {
     var that = this;
     util.myrequest("GetLearningProcess", {
-      BookID : app.learnInfo.bookID
+      BookID: app.learnInfo.bookID
     }, function (data) {
       that.setData({
         learnProcess: data
@@ -109,7 +109,7 @@ Page({
       wx.showToast(err);
     })
   }
-  ,onBookChange: function (e) {
+  , onBookChange: function (e) {
     this.setData({
       //bookIndex: e.detail.value
       bookIndex: e.target.dataset.index
@@ -118,7 +118,7 @@ Page({
     wx.showLoading("加载中...");
     this.loadLearnProcess();
   },
-  onClickBookInfo: function(e) {
+  onClickBookInfo: function (e) {
     this.setData({
       bookIndex: -1
     })
@@ -126,24 +126,24 @@ Page({
   //查找下一个要学的单词,返回{lession_id,learn_index}
   onClickBegin: function () {
     var learnProcess = this.data.learnProcess;
-    if (learnProcess.LearnedCount < learnProcess.SumWordCount){
+    if (learnProcess.LearnedCount < learnProcess.SumWordCount) {
       var node_list = new Array();
       for (var i in learnProcess.WordListTree) {
         node_list.push(learnProcess.WordListTree[i]);
       }
-      while(node_list.length > 0) {
+      while (node_list.length > 0) {
         var node = node_list.shift();
-        if (node.IsList){
+        if (node.IsList) {
           if (node.LearnedCount < node.SumWordCount) {
             wx.navigateTo({
               url: '../listen-read-mode/listen-read-mode?lid=' + node.ID + "&index=" + node.FirstUnlearnIndex,
             })
             return;
-          }else{
+          } else {
             continue;
           }
-        }else {
-          for(var cnode in node.Children) {
+        } else {
+          for (var cnode in node.Children) {
             node_list.push(cnode);
           }
         }
