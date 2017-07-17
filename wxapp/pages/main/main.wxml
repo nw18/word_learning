@@ -1,10 +1,10 @@
 <!--main.wxml-->
 <view class="main">
-  <view class="main-head">
+  <view class="main-head"/><!-- 
     <image src="{{authInfo.head_image}}" />
     <text>{{authInfo.description}}</text>
   </view>
-  <view class="main-diver" />
+  <view class="main-diver" /> -->
   <view class="main-sum" wx:if="{{learnProcess!=null}}">
     <view>
       <text class="desc">今天已学</text>
@@ -30,11 +30,15 @@
     <progress wx:if="{{learnProcess!=null}}" percent="{{learnProcess.LearnedCount * 100.0 / learnProcess.SumWordCount}}" active activeColor="green" backgroundColor="light" />
   </view>
   <view class="main-extra-buttons">
-    <navigator url="../lists/lists">单词列表</navigator>
+    <view>换单词书</view>
+    <view>
+      <navigator url="../lists/lists">单词列表</navigator>
+    </view>
+    <view class="classname">
     <navigator url="../lists/collect">我的收藏</navigator>
+    </view>
   </view>
-  <view class="main-diver" />
-  <button bindtap="onClickBegin">开始背单词吧</button>
+  <button class="yellow-button" bindtap="onClickBegin">开始背单词吧</button>
   <block wx:if="{{showAD}}">
     <view id='ad'></view>
   </block>

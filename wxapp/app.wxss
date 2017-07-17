@@ -79,3 +79,10 @@
   font-size: 30rpx;
   margin-left: 10rpx;
 }
+
+.yellow-button{
+  height:80rpx;
+  color:white;
+  font-size: 30rpx;
+  background-color:#ffa732;
+}
