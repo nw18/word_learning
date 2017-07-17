@@ -15,7 +15,7 @@ Page({
         progressAll: 0,
         progressPercent: 0,
       },
-      cixing: ["adj.圆形的", "n.通知","vt.触摸"],
+
       ExtraList:{
         liju: "Place \nyour hands on your shoulders and move your elbows up, back, and down, in a circular motion\n手置于肩上，肘部向上、向后、向下做圆圈运动。\nBoth sides of the river can be explored on this circular walk\n沿着这条环行线路走一圈，河的两边都可以看到。",
         shipin: "http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400"
@@ -34,6 +34,7 @@ Page({
   onLoad: function (options) {
     console.log('onLoad')
     this.loadWordInfoList();
+  
   },
 
   /**
@@ -47,6 +48,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+
 //     var that = this;
 //     var preTmie = 5;
 //     var perNum = that.data.progressItem.progressNum;
@@ -146,6 +148,8 @@ Page({
           wordInfoList: list,
           wordInfo: list[that.data.index],
           progressItem: that.data.progressItem,
+          cixing: list[that.data.index].WordDetail.ExplainList,
+         
         });
 
       },

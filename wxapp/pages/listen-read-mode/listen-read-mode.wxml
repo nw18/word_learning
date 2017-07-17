@@ -6,18 +6,18 @@
   <!--单词描述-->
   <view class="words-read">
     <view class="words-read-head" >
-      <text>{{"qq"}}</text>
+      <text>{{wordInfo.Spell}}</text>
       <label>核心词汇</label>
       <image  style="width: 50rpx; height: 50rpx; " src="../../img/icon-collect-off.png" ></image>
     </view>
     <!--音标-->
     <view class="words-read-yibiao">
-        <label> {{wordInfo.Spell}}</label>
+        <label> {{wordInfo.WordDetail.Phonogram}}</label>
         <image mode="aspectFit" style="width: 40rpx; height: 40rpx; " src="../../img/voice-small.png" ></image>
     </view>
    <!--词性 -->
     <block wx:key="unique" wx:for="{{cixing}}" wx:for-index="idx" wx:for-item="item">
-        <view class="words-read-cixing"> {{item}}</view>
+        <view class="words-read-cixing"> {{item.WordType+"."+item.WordExplain+"\n"}}</view>
     </block>
     <!--例句-->
     <view class="ords-read-liju-logo">例句</view>
