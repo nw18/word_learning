@@ -86,5 +86,13 @@ App({
   },
   getLearnProcess: function() {
     return this.learnProcess;
+  },
+  getBookName: function() {
+    for (var i = 0; i < this.learnInfo.bookList.length; i++) {
+      if (this.learnInfo.bookID == this.learnInfo.bookList[i].ID) {
+        return this.learnInfo.bookList[i].Name;
+      }
+    }
+    return "";
   }
 })

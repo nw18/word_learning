@@ -9,10 +9,7 @@ Page({
   data: {
     alpha_table: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(""),
     select_index: [0,1,2],
-    currIndex: 0,
-    tran2int:function(i) {
-      return Math.floor(i);
-    }
+    currIndex: 0
   },
   /**
    * 生命周期函数--监听页面加载
@@ -37,6 +34,9 @@ Page({
         demo_data: learnProcess.WordListTree
       });
     }
+    wx.setNavigationBarTitle({
+      title: '别告诉我你懂单词-' + app.getBookName(),
+    })
   },
 
   /**
@@ -99,10 +99,28 @@ Page({
       select_index: this.data.select_index
     });
   },
-  onClickStartLearn:function(e) {
-    
-    wx.navigateTo({
-      url: '../listen-read-mode/listen-read-mode?lid=' + e.target.dataset.id + '&index=' + e.target.dataset.index
-    })
-  }
+  onClickBottomButton:function(e) {
+    var btn_index = e.target.dataset.index;
+    var index = this.data.select_index[this.data.currIndex];
+    var id = this.data.currIndex == 0 ? this.data.demo_data[this.data.currIndex].Children[index].ID : -1;
+    var query = this.data.currIndex == 0 ? '' : this.data.alpha_table[index];
+    switch (btn_index) {
+      case "0":
+        wx.navigateTo({
+          url: '../listen-read-mode/listen-read-mode?lid=' + id + '&index=' + index
+        })
+        break;
+      case "1":
+        wx.navigateTo({
+          url: '../self-evaluation/self-evaluation?lid=' + id + '&index=' + index + "&query=" + query
+        })
+        break;
+      case "2":
+        wx.navigateTo({
+          url: '../questions-practice/questions-practice?lid=' + id + '&index=' + index + "&query=" + query
+        })
+        break;
+
+    }
+  },
 })

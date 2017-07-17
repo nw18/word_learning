@@ -36,9 +36,9 @@
   </view>
   
   <view class="lists-buttons">
-    <button class="yellow-button">开始学习</button>
-    <button class="yellow-button">测试一下</button>
-    <button class="yellow-button">真题练习</button>
+    <button class="yellow-button" bindtap="onClickBottomButton" data-index="0">开始学习</button>
+    <button class="yellow-button" bindtap="onClickBottomButton" data-index="1">测试一下</button>
+    <button class="yellow-button" bindtap="onClickBottomButton" data-index="2">真题练习</button>
   </view>
 </view>
 
