@@ -183,6 +183,11 @@
   background-color: white;
 }
 
+.book-label image {
+  width: 300rpx;
+  height: 400rpx;
+}
+/*
 .book-label text {
   margin: 20rpx;
   color: black;
@@ -199,4 +204,4 @@
   color: black;
   font-size: 26rpx;
   margin-bottom: 20rpx;
-}
+}*/

@@ -60,7 +60,7 @@
   width: 180rpx;
   height: 180rpx;
   border-radius: 10rpx;
-  box-shadow:-2rpx -2rpx 6rpx 6rpx #F2F2F2 inset;
+  /* box-shadow:-2rpx -2rpx 6rpx 6rpx #F2F2F2 inset; */
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -94,13 +94,13 @@
 /* 波浪形状背景 */
 .lists-item #wave-bg {
   position: absolute;
-  left: 0rpx;
-  top: 0rpx;
-  right: 0rpx;
-  bottom: 0rpx;
+  left: 2rpx;
+  top: 2rpx;
+  right: 2rpx;
+  bottom: 2rpx;
   z-index: -1;
-  width: 180rpx;
-  height: 180rpx;
+  width: 176rpx;
+  height: 176rpx;
 }
 .lists-buttons {
   z-index: 900;

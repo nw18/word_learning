@@ -17,6 +17,9 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    wx.showLoading({
+      title: '加载中...',
+    });
     util.myrequest("GetCollectionList",{},function(data){
       that.setData({
         demo_data:data
@@ -96,6 +99,12 @@ Page({
       });
     },function(err){
 
+    })
+  },
+  //跳转到某个单词.
+  onClickWord : function(e) {
+    wx.navigateTo({
+      url: '../listen-read-mode/listen-read-mode?mode=5&index=' + e.target.dataset.index,
     })
   }
 })

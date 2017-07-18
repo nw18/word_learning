@@ -44,11 +44,12 @@
   </block>
   <!-- 选择书本的浮层  -->
   <block wx:if="{{bookList.length > 0}}">
-    <view class="main-model-cover" wx:if="{{bookIndex < 0}}"></view>
-    <view class="main-model-content" wx:if="{{bookIndex < 0}}">
+    <view id="cancelChangeBook" class="main-model-cover" wx:if="{{bookIndex < 0}}" bindtap="onCancelChangeBook"></view>
+    <view id="cancelChangeBook" class="main-model-content" wx:if="{{bookIndex < 0}}" bindtap="onCancelChangeBook">
       <view class="book-label" wx:for="{{bookList}}">
-        <text>{{item.Name}}</text>
-        <button bindtap="onBookChange" data-index="{{index}}">开始学习</button>
+        <!-- <text>{{item.Name}}</text> -->
+        <image bindtap="onBookChange" data-index="{{index}}" src="{{bookImgs[index]}}"></image>
+        <!-- <button bindtap="onBookChange" data-index="{{index}}">开始学习</button> -->
       </view>
     </view>
   </block>

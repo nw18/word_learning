@@ -107,17 +107,17 @@ Page({
     switch (btn_index) {
       case "0":
         wx.navigateTo({
-          url: '../listen-read-mode/listen-read-mode?lid=' + id + '&index=' + index
+          url: '../listen-read-mode/listen-read-mode?mode=1&lid=' + id + '&index=' + index
         })
         break;
       case "1":
         wx.navigateTo({
-          url: '../self-evaluation/self-evaluation?lid=' + id + '&index=' + index + "&query=" + query
+          url: '../self-evaluation/self-evaluation?mode=2&lid=' + id + '&index=' + index + "&query=" + query
         })
         break;
       case "2":
         wx.navigateTo({
-          url: '../questions-practice/questions-practice?lid=' + id + '&index=' + index + "&query=" + query
+          url: '../questions-practice/questions-practice?mode=2&lid=' + id + '&index=' + index + "&query=" + query
         })
         break;
 

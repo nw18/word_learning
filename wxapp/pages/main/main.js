@@ -10,7 +10,8 @@ Page({
     showAD: false,
     bookIndex: app.findBookIndex(),
     bookList: app.getBookList(),
-    learnProcess: null
+    learnProcess: null,
+    bookImgs: ["/img/book1.png","/img/book2.png"]
   },
 
   /**
@@ -123,8 +124,16 @@ Page({
   },
   onClickBookInfo: function (e) {
     this.setData({
-      bookIndex: -1
+      bookIndex: -1,
+      lastBookIndex: this.data.bookIndex
     })
+  },
+  onCancelChangeBook: function(e) {
+    if (e.currentTarget.id  == e.target.id) {
+      this.setData({
+        bookIndex: this.data.lastBookIndex
+      })
+    }
   },
   onNavigateTo: function(e) {
     wx.navigateTo({
@@ -157,7 +166,7 @@ Page({
       this.traceList(learnProcess,function(node) {
         if (node.LearnedCount < node.SumWordCount) {
           wx.navigateTo({
-            url: '../listen-read-mode/listen-read-mode?lid=' + node.ID + "&index=" + node.FirstUnlearnIndex,
+            url: '../listen-read-mode/listen-read-mode?mode=1&lid=' + node.ID + "&index=" + node.FirstUnlearnIndex,
           })
           return true;
         }

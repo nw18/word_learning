@@ -95,3 +95,9 @@ page {
   font-size: 30rpx;
   background-color:#ffa732;
 }
+
+.gray-button{
+  color:gray;
+  font-size: 30rpx;
+  background-color: lightgray;
+}
