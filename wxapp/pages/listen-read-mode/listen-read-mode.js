@@ -1,10 +1,12 @@
 // pages/listen_read_mode/listen_read_mode.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+      mode:0,
       ListID: 12345,//外部传入的
       wordInfoList: [],
       index: 0,
@@ -32,9 +34,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('onLoad')
-    this.loadWordInfoList();
-  
+    console.log('onLoad'),
+      var modeTmp ,
+    this.setData({
+      mode: options.mode,
+      modeTmp = options.mode
+    })
+
+    if (options.mode==1){
+
+    }
+    this.loadWordInfoList(options);
+    console.log('onLoad:' + mode);
   },
 
   /**
@@ -124,7 +135,7 @@ Page({
 
   },
 
-    loadWordInfoList: function () {
+  loadWordInfoList: function (options) {
     var that = this;
     wx.showLoading({
       title: '加载中',
@@ -132,6 +143,14 @@ Page({
     })
     wx.request({
       url: 'https://openapi.yqj.cn/MockAPI/WordLearning/GetWordList',
+
+      data: {
+        ListID: options.listid,
+        IsLoadExtra:options.IsLoadExtra,
+        StartChar: options.StartChar,
+        UserID: app.getUserID(),
+      },
+
       header: {
         'Content-Type': 'application/json'
       },
