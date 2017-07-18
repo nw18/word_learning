@@ -24,3 +24,10 @@
      </label>
   </view>
 </template>
+<template name="progress-view2">
+  <view class="self-view-area">
+    <view class="view-progress-bg">
+        <view style="width:{{item}}%"  class="view-progress-con"></view>
+    </view>
+  </view>
+</template>

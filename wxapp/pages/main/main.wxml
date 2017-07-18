@@ -1,4 +1,5 @@
 <!--main.wxml-->
+<import src="../com/com.wxml"/>
 <view class="main">
   <image src="/img/main-head.png" mode="widthFix" class="main-head"></image>
   <view class="main main-content1">
@@ -24,7 +25,10 @@
         <text class="text2"> / {{learnProcess.SumWordCount}}</text>
         <text class="text3" id="book_info" bindtap="onClickBookInfo" wx:if="{{bookIndex >= 0}}">{{bookList[bookIndex].Name}}</text>
       </view>
-      <progress wx:if="{{learnProcess!=null}}" percent="{{learnProcess.LearnedCount * 100.0 / learnProcess.SumWordCount}}" active activeColor="green" backgroundColor="light" />
+      <block wx:for="{{[learnProcess.LearnedCount * 100.0 / learnProcess.SumWordCount]}}">
+        <template is="progress-view2" data="{{item}}"></template>
+      </block>
+      <!-- <progress wx:if="{{learnProcess!=null}}" percent="{{learnProcess.LearnedCount * 100.0 / learnProcess.SumWordCount}}" active activeColor="green" backgroundColor="light" /> -->
     </view>
   </view>
   <image wx:if="{{bookIndex>=0}}" src="../../img/back-middle.png" style="width:690rpx;height:70rpx;margin-left:30rpx;margin-right:30rpx;"></image>
