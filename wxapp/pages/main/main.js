@@ -31,7 +31,7 @@ Page({
       }, function (err) {
         wx.showToast(err);
       });
-    } else {
+    } else if(this.data.bookIndex >= 0){
       wx.showLoading("加载中...");
       this.loadLearnProcess();
     }

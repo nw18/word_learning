@@ -128,7 +128,7 @@
 }
 
 .main-extra-buttons view {
-  width: 33.33%;
+  width: 50%;
   font-size: 26rpx;
   color: #333333;
   display: flex;
