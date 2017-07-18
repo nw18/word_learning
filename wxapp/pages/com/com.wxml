@@ -25,9 +25,9 @@
   </view>
 </template>
 <template name="progress-view2">
-  <view class="self-view-area">
-    <view class="view-progress-bg">
-        <view style="width:{{item}}%"  class="view-progress-con"></view>
+  <view class="self-view-area2" id="progress">
+    <view class="view-progress-bg2">
+        <view style="width:{{item}}%"  class="view-progress-con2"></view>
     </view>
   </view>
 </template>

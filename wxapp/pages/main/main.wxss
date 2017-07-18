@@ -105,9 +105,8 @@
   color: #ffa732;
 }
 
-.main-proc progress{
+.main-proc #progress{
   margin-top: 30rpx;
-  margin-bottom: 30rpx;
 }
 
 .main-pro view {
@@ -205,29 +204,3 @@
   font-size: 26rpx;
   margin-bottom: 20rpx;
 }*/
-
-.self-view-area{
-  margin-top: 30rpx;
-  margin-bottom: 10rpx;
-  height: 100%;
-  width:100%;
-  background-color:#ffffff;
-  /*display:inline;*/
-  display: flex;
-  flex-direction:row;
-}
-.view-progress-bg{
-    height: 22rpx;  
-    width:100%;
-    margin-top: 0rpx;
-    margin-left: 0rpx;
-    background-color:#f2f1f1;
-    border-radius: 11rpx; 
-    display: flex;
-    flex-direction:row;
-}
-.view-progress-con{
-    height: 22rpx;
-    background-color:#ffa732;
-    border-radius: 11rpx;
-}

@@ -65,6 +65,34 @@ page {
     display: flex;
     flex-direction:column;
 }
+
+
+.self-view-area2{
+  height: 100%;
+  width:100%;
+  background-color:#ffffff;
+  /*display:inline;*/
+  display: flex;
+  flex-direction:row;
+}
+
+.view-progress-bg2{
+    height: 22rpx;  
+    width:100%;
+    margin-top: 0rpx;
+    margin-left: 0rpx;
+    background-color:#f2f1f1;
+    border-radius: 11rpx; 
+    display: flex;
+    flex-direction:row;
+}
+
+.view-progress-con2{
+    height: 22rpx;
+    background-color:#ffa732;
+    border-radius: 11rpx;
+}
+
 .label-progress{
     text-align: center;
     display: flex;
