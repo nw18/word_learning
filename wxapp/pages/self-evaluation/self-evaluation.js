@@ -7,9 +7,12 @@ var WxNotificationCenter = require("../../WxNotificationCenter/WxNotificationCen
 var app = getApp()
 Page({
   data: {
-    ListID:12345,//外部传入的
+    lid:12345,//外部传入的
+    mode: 0,//外部传入的
+    query: "",//外部传入的
+    index: 0,//外部传入的
+
     wordInfoList:[],
-    index: 0,
     wordInfo:{},
 
     progressItem: {
@@ -26,7 +29,11 @@ Page({
 
   //事件处理函数
   bindImageViewTap: function () {
-
+    var that = this
+    wx.playBackgroundAudio({
+      //播放地址
+      dataUrl: that.data.src,
+    })
   },
   //点击了会
   bindTrueBtnTap: function () {
@@ -38,27 +45,19 @@ Page({
   bindFalseBtnTap: function () {
     var that = this
     wx.navigateTo({
-      url: '../listen_read_mode/listen_read_mode?mode=3&ListID=' + that.data.ListID + '&index=' + that.data.index
+      url: '../listen_read_mode/listen_read_mode?mode=3&lid=' + that.data.lid + '&index=' + that.data.index
     })
-  },
-
-  testNotificationFn:function (e){
-
-    console.log("接受通知");
-    console.log(e);
   },
   ////////////////////////////////////////////////
   onLoad: function (e) {
     console.log('onLoad')
     this.loadWordInfoList();
 
-    //注册通知
-    // var that = this
-    // WxNotificationCenter.addNotification("testNotificationName", that.testNotificationFn, that)
-
     this.setData({
-      // ListID: e.ListID,
-      ListID: 3455,
+      lid: e.lid,
+      mode: e.mode,
+      query: e.query,
+      index: e.index,
     })
 
     wx.onBackgroundAudioStop(function () {
@@ -78,7 +77,6 @@ Page({
     wx.playBackgroundAudio({
       //播放地址
       dataUrl: that.data.src,
-
     })
   },
 
@@ -180,7 +178,7 @@ function knowBtnTap(e){
   if (perNum > that.data.progressItem.progressAll) {
 
     wx.redirectTo({
-      url: '../learn-over/learn-over?ListID=' + that.data.ListID,
+       url: '../learn-over/learn-over?index=0&lid=' + that.data.lid + '&mode=' + that.data.mode + '&query=' + that.data.query,
     })
     return;
   }

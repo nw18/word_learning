@@ -5,9 +5,12 @@ var app = getApp()
 Page({
   isShowAnswer:false,
   data: {
-    ListID: 12345,//外部传入的
+    lid: 12345,//外部传入的
+    mode: 0,//外部传入的
+    query: "",//外部传入的
+    index: 0,//外部传入的
+
     quesInfoList:[],
-    index: 0,
     quesInfo:{},
     answerHidden:true,
     progressItem:{
@@ -25,7 +28,10 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      ListID: options.ListID,
+      lid: e.lid,
+      mode: e.mode,
+      query: e.query,
+      index: e.index,
     })
      this.loadQuesInfoList();
   },
@@ -143,7 +149,7 @@ Page({
     that.isShowAnswer = false;
     if (that.data.index+1 == that.data.quesInfoList.length){
       wx.redirectTo({
-        url: '../learn-over/learn-over?ListID=' + that.data.ListID,
+        url: '../learn-over/learn-over?index=0&lid=' + that.data.lid + '&mode=' + that.data.mode + '&query=' + that.data.query,
       })
       return;
     }

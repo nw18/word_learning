@@ -3,31 +3,37 @@
 
 Page({
   data: {
-    ListID:0,
+    lid: 12345,//外部传入的
+    mode: 0,//外部传入的
+    query: "",//外部传入的
+    index: 0,//外部传入的
   },
   //事件处理函数
   listenAgain: function () {
     var that = this;
     wx.navigateTo({
-      url: '../listen-read-mode/listen-read-mode?ListID=' + that.data.ListID,
+      url: '../listen-read-mode/listen-read-mode?lid=' + that.data.lid + '&mode=' + that.data.mode + '&query=' + that.data.query + '&index=' + that.data.index,
     })
   },
   testAgain: function () {
     var that = this;
     wx.redirectTo({
-      url: '../self-evaluation/self-evaluation?ListID=' + that.data.ListID,
+      url: '../self-evaluation/self-evaluation?lid=' + that.data.lid + '&mode=' + that.data.mode + '&query=' + that.data.query + '&index=' + that.data.index,
     })
   },
   practise: function () {
     var that = this;
     wx.redirectTo({
-      url: '../questions-practice/questions-practice?ListID=' + that.data.ListID,
+      url: '../questions-practice/questions-practice?lid=' + that.data.lid + '&mode=' + that.data.mode + '&query=' + that.data.query + '&index=' + that.data.index,
     })
   },
   onLoad: function (e) {
-    console.log(e.ListID);
+    console.log(e.lid);
     this.setData({
-      ListID: e.ListID,
+      lid: e.lid,
+      mode: e.mode,
+      query: e.query,
+      index: e.index,
     })
   }
 })
