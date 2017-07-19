@@ -1,4 +1,5 @@
 // pages/listen_read_mode/listen_read_mode.js
+var test = require('../self-evaluation/self-evaluation.js')
 var app = getApp();
 Page({
 
@@ -37,9 +38,8 @@ Page({
     console.log('onLoad'),
     this.setData({
       mode: options.mode,
-      
     })
-    
+    console.log('mode' + options.mode);
     if (options.mode==1){
       // 1背单词列表页
       this.reciteWordList(options);
@@ -48,15 +48,13 @@ Page({
       this.reciteWordList(options);
     } else if (options.mode == 3) {
       // 3自考之后点击了不会查看
-      that.setData({
-        wordInfo: options.extra
-      })
+      this.reciteWordList(options);
     } else if (options.mode == 4) {
       // 4从收藏进入
       this.collectionWorldList(options);
     } else if (options.mode == 5) {
       // 5 从收藏的某个单词进入
-      
+      this.collectionWorldList(options);
     }
    
 
@@ -74,44 +72,45 @@ Page({
    */
   onShow: function () {
 
-//     var that = this;
-//     var preTmie = 5;
-//     var perNum = that.data.progressItem.progressNum;
-//     var rightInterval = setInterval(function () {
+    var that = this;
+    var preTmie = 5;
+    var perNum = that.data.progressItem.progressNum;
+    perNum++;
+    var rightInterval = setInterval(function () {
     
-//       console.log("这是一个五秒的定时器");
-// // 每5秒切换一次单词
-//       preTmie--;
-//       if(preTmie==-1){
-//         perNum++;
-//         preTmie=5
-//         that.data.index++;
-//         // 换单词
-//         that.setData({
-//           wordInfo: that.data.wordInfoList[that.data.index],
-//         });
-//         console.log(perNum);
-//         that.data.progressItem.progressNum = perNum;
-//         that.data.progressItem.progressPercent = perNum / that.data.progressItem.progressAll * 100;
-//         that.setData({
-//           progressItem: that.data.progressItem,
+      console.log("这是一个五秒的定时器");
+// 每5秒切换一次单词
+      preTmie--;
+      if(preTmie==-1){
+        perNum++;
+        preTmie=6
+        that.data.index++;
+        // 换单词
+        that.setData({
+          wordInfo: that.data.wordInfoList[that.data.index],
+        });
+        console.log(perNum);
+        that.data.progressItem.progressNum = perNum;
+        that.data.progressItem.progressPercent = perNum / that.data.progressItem.progressAll * 580;
+        that.setData({
+          progressItem: that.data.progressItem,
          
-//         })
-//       }
+        })
+      }
      
-//       if (perNum >= that.data.progressItem.progressAll) {
-//         clearInterval(rightInterval)
-//         wx.redirectTo({
-//           url: '../learn-over/learn-over'     
-//         })
-//         return;
-//       }
-//       // 更新时间
-//     that.setData({
-//       time:preTmie
-//     })
-//     }, 1000);
-//     that.rightInterval = rightInterval;
+      if (perNum >= that.data.progressItem.progressAll) {
+        clearInterval(rightInterval)
+        wx.redirectTo({
+          url: '../learn-over/learn-over'     
+        })
+        return;
+      }
+      // 更新时间
+    that.setData({
+      time:preTmie
+    })
+    }, 1000);
+    that.rightInterval = rightInterval;
   },
 
   /**
@@ -159,7 +158,7 @@ Page({
       url: 'https://openapi.yqj.cn/MockAPI/WordLearning/GetWordList',
 
       data: {
-        ListID: options.listid,
+        ListID: options.lid,
         IsLoadExtra:options.IsLoadExtra,
         StartChar: options.StartChar,
         UserID: app.getUserID(),
@@ -234,5 +233,10 @@ Page({
       },
     })
 
+  },
+
+  nextClick: function () {
+    test.externNextBtnTap();
+    wx.navigateBack();
   }
 })
