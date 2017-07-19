@@ -36,11 +36,9 @@ Page({
   },
   //点击了不会
   bindFalseBtnTap: function () {
-
+    var that = this
     wx.navigateTo({
-      // url: '../listen-read-mode/listen-read-mode'
-      url: '../self-evaluation-test/self-evaluation-test'
-      
+      url: '../listen_read_mode/listen_read_mode?mode=3&ListID=' + that.data.ListID + '&index=' + that.data.index
     })
   },
 
@@ -59,7 +57,8 @@ Page({
     // WxNotificationCenter.addNotification("testNotificationName", that.testNotificationFn, that)
 
     this.setData({
-      ListID: e.ListID,
+      // ListID: e.ListID,
+      ListID: 3455,
     })
 
     wx.onBackgroundAudioStop(function () {

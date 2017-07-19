@@ -1,6 +1,6 @@
 // self-evaluation-test.js
 var test = require('../self-evaluation/self-evaluation.js')
-var WxNotificationCenter = require("../../WxNotificationCenter/WxNotificationCenter.js");
+
 Page({
 
   /**
@@ -15,7 +15,6 @@ Page({
     test.externNextBtnTap();
     wx.navigateBack();
 
-    WxNotificationCenter.postNotificationName("testNotificationName","shuai -------");
   },
   bindTrueBtnTap: function () {
 
@@ -25,7 +24,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    console.log(options);
   },
 
   /**
