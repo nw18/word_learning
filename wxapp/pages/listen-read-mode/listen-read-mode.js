@@ -35,17 +35,31 @@ Page({
    */
   onLoad: function (options) {
     console.log('onLoad'),
-      var modeTmp ,
     this.setData({
       mode: options.mode,
-      modeTmp = options.mode
+      
     })
-
+    
     if (options.mode==1){
-
+      // 1背单词列表页
+      this.reciteWordList(options);
+    } else if (options.mode==2){
+      // 2背单词首字符的方式
+      this.reciteWordList(options);
+    } else if (options.mode == 3) {
+      // 3自考之后点击了不会查看
+      that.setData({
+        wordInfo: options.extra
+      })
+    } else if (options.mode == 4) {
+      // 4从收藏进入
+      this.collectionWorldList(options);
+    } else if (options.mode == 5) {
+      // 5 从收藏的某个单词进入
+      
     }
-    this.loadWordInfoList(options);
-    console.log('onLoad:' + mode);
+   
+
   },
 
   /**
@@ -135,7 +149,7 @@ Page({
 
   },
 
-  loadWordInfoList: function (options) {
+  reciteWordList: function (options) {
     var that = this;
     wx.showLoading({
       title: '加载中',
@@ -169,6 +183,49 @@ Page({
           progressItem: that.data.progressItem,
           cixing: list[that.data.index].WordDetail.ExplainList,
          
+        });
+
+      },
+      fail: function (res) {
+        wx.hideLoading({})
+      },
+    })
+
+  },
+  collectionWorldList: function (options) {
+    var that = this;
+    wx.showLoading({
+      title: '加载中',
+      mask: true,
+    })
+    wx.request({
+      url: 'https://openapi.yqj.cn/MockAPI/WordLearning/GetCollectionList',
+
+      data: {
+        UserID: app.getUserID(),
+        WordID: app.getWorldID(),
+        BookID: app.getBookID(),
+       
+      },
+
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        wx.hideLoading({});
+        var list = res.data.Data;
+
+        var perNum = that.data.index + 1;
+        that.data.progressItem.progressNum = perNum;
+        that.data.progressItem.progressAll = list.length;
+        that.data.progressItem.progressPercent = perNum / list.length * 580;
+
+        that.setData({
+          wordInfoList: list,
+          wordInfo: list[that.data.index],
+          progressItem: that.data.progressItem,
+          cixing: list[that.data.index].WordDetail.ExplainList,
+
         });
 
       },
