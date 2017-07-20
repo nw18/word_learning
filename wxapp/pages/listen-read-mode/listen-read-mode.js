@@ -67,64 +67,95 @@ Page({
 
   },
 
+  jumpControl : {
+    preTime: 5,
+    perNum : 0,
+    tickHandler:-1,
+    switchhandler:-1,
+    setupTick: function(that) {
+      this.preTime = 5;
+      this.perNum = that.data.progressItem.progressNum;
+      this.perNum++;
+      var jumpControl = this;
+      this.tickHandler = setInterval(function(){
+        jumpControl.tickCount(that);
+      },1000);
+    },
+    
+    tickCount: function (that) {
+      console.log("tick count:" + this.preTime);
+      // 每5秒切换一次单词
+      if (this.preTime <= 0) {
+        //切换单词增加200ms停顿
+        this.clearAllPending();
+        var jumpControl = this;
+        this.switchhandler = setTimeout(function () {
+          jumpControl.switchQuestion(that);
+        }, 200,that);
+      }
+      // 更新时间
+      that.setData({
+        time: this.preTime--
+      })
+    },
+
+    switchQuestion: function (that) {
+      this.perNum++;
+      this.preTime = 5
+      that.data.index++;
+      // 换单词
+      that.setData({
+        wordInfo: that.data.wordInfoList[that.data.index],
+      });
+      console.log(this.perNum);
+      that.data.progressItem.progressNum = this.perNum;
+      that.data.progressItem.progressPercent = this.perNum / that.data.progressItem.progressAll * 580;
+      that.setData({
+        progressItem: that.data.progressItem,
+      });
+      if (this.perNum >= that.data.progressItem.progressAll) {
+        wx.redirectTo({
+          url: '../learn-over/learn-over'
+        })
+      } else {
+        //继续开始倒计时
+        var jumpControl = this;
+        this.tickHandler = setInterval(function () {
+          jumpControl.tickCount(that);
+        }, 1000);
+      }
+      this.switchHandler = -1;
+    },
+    clearAllPending: function() {
+      if(this.tickHandler != -1) {
+        clearInterval(this.tickHandler);
+        this.tickHandler = -1;
+      }
+      if(this.switchHandler != -1) {
+        clearTimeout(this.switchHandler);
+        this.switchHandler = -1;
+      }
+    }
+  },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
-    var that = this;
-    var preTmie = 5;
-    var perNum = that.data.progressItem.progressNum;
-    perNum++;
-    var rightInterval = setInterval(function () {
-    
-      console.log("这是一个五秒的定时器");
-// 每5秒切换一次单词
-      preTmie--;
-      if(preTmie==-1){
-        perNum++;
-        preTmie=6
-        that.data.index++;
-        // 换单词
-        that.setData({
-          wordInfo: that.data.wordInfoList[that.data.index],
-        });
-        console.log(perNum);
-        that.data.progressItem.progressNum = perNum;
-        that.data.progressItem.progressPercent = perNum / that.data.progressItem.progressAll * 580;
-        that.setData({
-          progressItem: that.data.progressItem,
-         
-        })
-      }
-     
-      if (perNum >= that.data.progressItem.progressAll) {
-        clearInterval(rightInterval)
-        wx.redirectTo({
-          url: '../learn-over/learn-over'     
-        })
-        return;
-      }
-      // 更新时间
-    that.setData({
-      time:preTmie
-    })
-    }, 1000);
-    that.rightInterval = rightInterval;
+    this.jumpControl.setupTick(this);
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    clearInterval(this.rightInterval);
+    this.jumpControl.clearAllPending();
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    clearInterval(this.rightInterval);
+    this.jumpControl.clearAllPending();
   },
 
   /**
@@ -202,7 +233,6 @@ Page({
 
       data: {
         UserID: app.getUserID(),
-        WordID: app.getWorldID(),
         BookID: app.getBookID(),
        
       },
