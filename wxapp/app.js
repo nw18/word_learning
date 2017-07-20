@@ -120,5 +120,17 @@ App({
   },
   isCollectOverdue: function () {
     return this.changeMark[1][0] > this.changeMark[1][1];
+  },
+
+  currentList : null,
+  getCurrentList: function() {
+    return this.currentList;
+  },
+  setCurrentList: function(list) {
+    if(list && list.length > 0){
+      this.currentList = list;
+    }else {
+      this.currentList = null;
+    }
   }
 })

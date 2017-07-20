@@ -20,19 +20,14 @@ Page({
       progressAll: 0,
       progressPercent: 0,
     },
-
-
     ExtraList: {
       liju: "Place \nyour hands on your shoulders and move your elbows up, back, and down, in a circular motion\n手置于肩上，肘部向上、向后、向下做圆圈运动。\nBoth sides of the river can be explored on this circular walk\n沿着这条环行线路走一圈，河的两边都可以看到。",
       shipin: "http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400"
     },
-
     src: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=46',
-
     picture: 'http://img.zcool.cn/job/groups/b445558d077800000141f02f67a5.jpg',
     collectionPic:'../../img / icon - collect - off.png',
     userInfo: {}
-
   },
 
   /**
@@ -218,42 +213,44 @@ Page({
 
   },
 
+  setWordList: function (list, that) {
+    var perNum = that.data.index + 1;
+    that.data.progressItem.progressNum = perNum;
+    that.data.progressItem.progressAll = list.length;
+    that.data.progressItem.progressPercent = perNum / list.length * 580;
+    that.setData({
+      wordInfoList: list,
+      wordInfo: list[that.data.index],
+      progressItem: that.data.progressItem,
+      cixing: list[that.data.index].WordDetail.ExplainList,
+    });
+  },
   reciteWordList: function (options) {
     var that = this;
+    if(app.getCurrentList() != null) {
+      that.setWordList(app.getCurrentList(), that);
+      return;
+    }
     wx.showLoading({
       title: '加载中',
       mask: true,
     })
     wx.request({
       url: 'https://openapi.yqj.cn/MockAPI/WordLearning/GetWordList',
-
       data: {
-        lid: options.lid,
+        ListID: options.lid,
         IsLoadExtra: true,
         StartChar: options.query,
         UserID: app.getUserID(),
         mode:options.mode,
       },
-
       header: {
         'Content-Type': 'application/json'
       },
       success: function (res) {
         wx.hideLoading({});
         var list = res.data.Data;
-
-        var perNum = that.data.index + 1;
-        that.data.progressItem.progressNum = perNum;
-        that.data.progressItem.progressAll = list.length;
-        that.data.progressItem.progressPercent = perNum / list.length * 580;
-
-        that.setData({
-          wordInfoList: list,
-          wordInfo: list[that.data.index],
-          progressItem: that.data.progressItem,
-          cixing: list[that.data.index].WordDetail.ExplainList,
-        });
-
+        that.setWordList(list,that);
       },
       fail: function (res) {
         wx.hideLoading({})
@@ -263,39 +260,28 @@ Page({
   },
   collectionWorldList: function (options) {
     var that = this;
+    if (app.getCurrentList() != null) {
+      that.setWordList(app.getCurrentList(), that);
+      return;
+    }
     wx.showLoading({
       title: '加载中',
       mask: true,
     })
     wx.request({
       url: 'https://openapi.yqj.cn/MockAPI/WordLearning/GetCollectionList',
-
       data: {
         UserID: app.getUserID(),
         BookID: app.getBookID(),
       
       },
-
       header: {
         'Content-Type': 'application/json'
       },
       success: function (res) {
         wx.hideLoading({});
         var list = res.data.Data;
-
-        var perNum = that.data.index + 1;
-        that.data.progressItem.progressNum = perNum;
-        that.data.progressItem.progressAll = list.length;
-        that.data.progressItem.progressPercent = perNum / list.length * 580;
-
-        that.setData({
-          wordInfoList: list,
-          wordInfo: list[that.data.index],
-          progressItem: that.data.progressItem,
-          cixing: list[that.data.index].WordDetail.ExplainList,
-
-        });
-
+        that.setWordList(list, that);
       },
       fail: function (res) {
         wx.hideLoading({})
