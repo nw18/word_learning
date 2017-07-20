@@ -84,12 +84,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var that = this;
-    var rightInterval = setInterval(function () {
+    // var that = this;
+    // var rightInterval = setInterval(function () {
 
-      console.log("这是一个三秒的定时器");
-    }, 3000);
-    that.rightInterval = rightInterval;
+    //   console.log("这是一个三秒的定时器");
+    // }, 3000);
+    // that.rightInterval = rightInterval;
   },
 
   /**
@@ -97,16 +97,16 @@ Page({
    */
   onHide: function () {
 
-    console.log("1111在此停止页面");
-    clearInterval(this.rightInterval);
+    // console.log("1111在此停止页面");
+    // clearInterval(this.rightInterval);
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    console.log("2222在此停止定时器页面");
-    clearInterval(this.rightInterval);
+    // console.log("2222在此停止定时器页面");
+    // clearInterval(this.rightInterval);
 
     // 移除通知在本也完成
     // WxNotificationCenter.removeNotification("testTabNotificationName", this)
