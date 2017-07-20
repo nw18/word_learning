@@ -45,7 +45,7 @@ Page({
   bindFalseBtnTap: function () {
     var that = this
     wx.navigateTo({
-      url: '../listen_read_mode/listen_read_mode?mode=3&lid=' + that.data.lid + '&index=' + that.data.index
+      url: '../listen-read-mode/listen-read-mode?mode=3&lid=' + that.data.lid + '&index=' + that.data.index
     })
   },
   ////////////////////////////////////////////////
