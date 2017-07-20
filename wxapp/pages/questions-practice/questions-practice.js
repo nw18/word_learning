@@ -30,8 +30,7 @@ Page({
       lid: e.lid,
       mode: e.mode,
       query: e.query,
-      // index: e.index,
-      index: 0,
+      index: e.index,
     })
      this.loadQuesInfoList();
   },
@@ -187,7 +186,8 @@ Page({
            var list = res.data.Data;
            console.log(list);
 
-           var perNum = that.data.index+1;
+           var perNum = that.data.index;
+           perNum++;
            that.data.progressItem.progressNum = perNum;
            that.data.progressItem.progressAll = list.length;
            that.data.progressItem.progressPercent = perNum / list.length * 580;

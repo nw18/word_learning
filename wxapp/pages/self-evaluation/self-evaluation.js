@@ -50,7 +50,7 @@ Page({
   },
   ////////////////////////////////////////////////
   onLoad: function (e) {
-    console.log('onLoad')
+    console.log(e)
     this.loadWordInfoList();
 
     this.setData({
@@ -149,7 +149,9 @@ Page({
         wx.hideLoading({});
         var list = res.data.Data;
      
-        var perNum = that.data.index + 1;
+        var perNum = that.data.index;
+        perNum++;
+
         that.data.progressItem.progressNum = perNum;
         that.data.progressItem.progressAll = list.length;
         that.data.progressItem.progressPercent = perNum / list.length * 580;
