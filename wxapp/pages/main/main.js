@@ -32,7 +32,6 @@ Page({
         wx.showToast(err);
       });
     } else if(this.data.bookIndex >= 0){
-      wx.showLoading("加载中...");
       this.loadLearnProcess();
     }
   },
@@ -53,6 +52,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    if(app.isProcessOverdue()) {
+      this.loadLearnProcess();
+    }
   },
 
   /**
@@ -98,8 +100,10 @@ Page({
   },
   loadLearnProcess: function () {
     var that = this;
+    wx.showLoading("加载中...");
     util.myrequest("GetLearningProcess", {
-      BookID: app.learnInfo.bookID
+      BookID: app.getBookID(),
+      UserID: app.getUserID()
     }, function (data) {
       that.traceList(data,function(node){
         node.LearnedLevel = Math.floor(node.LearnedCount * 5 / node.SumWordCount) * 2;
@@ -109,6 +113,7 @@ Page({
         learnProcess: data
       });
       app.setLearnProcess(data);
+      app.setProcessLoad();
     }, function (err) {
       wx.showToast(err);
     })
@@ -119,7 +124,6 @@ Page({
       bookIndex: e.target.dataset.index
     });
     app.updateBookIndex(e.target.dataset.index);
-    wx.showLoading("加载中...");
     this.loadLearnProcess();
   },
   onClickBookInfo: function (e) {

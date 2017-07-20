@@ -20,7 +20,9 @@ Page({
     wx.showLoading({
       title: '加载中...',
     });
-    util.myrequest("GetCollectionList",{},function(data){
+    util.myrequest("GetCollectionList",{
+      UserID:app.getUserID()
+    }, function(data){
       that.setData({
         demo_data:data
       });
@@ -38,7 +40,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    if(app.isCollectOverdue()) {
+      this.onLoad();
+    }
   },
 
   /**

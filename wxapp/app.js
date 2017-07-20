@@ -52,6 +52,10 @@ App({
 
     ]
   },
+  changeMark: [
+    [new Date(), new Date()],
+    [new Date(), new Date()]
+  ],
   //
   findBookIndex: function() {
     for(var i = 0; i < this.learnInfo.bookList.length; i++) {
@@ -94,5 +98,27 @@ App({
       }
     }
     return "";
+  },
+  //
+  setStatus: function(index1,index2) {
+    this.changeMark[index1][index2] = new Date();
+  },
+  setProcessChange:function() {
+    this.setStatus(0,0);
+  },
+  setProcessLoad: function () {
+    this.setStatus(0, 1);
+  },
+  isProcessOverdue: function() {
+    return this.changeMark[0][0] > this.changeMark[0][1];
+  },
+  setCollectChange: function () {
+    this.setStatus(1, 0);
+  },
+  setCollectLoad: function () {
+    this.setStatus(1, 1);
+  },
+  isCollectOverdue: function () {
+    return this.changeMark[1][0] > this.changeMark[1][1];
   }
 })

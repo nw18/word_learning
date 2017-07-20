@@ -15,27 +15,37 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
     var learnProcess = app.getLearnProcess();
     if(typeof(learnProcess)==undefined || !learnProcess) {
-      wx.showLoading({
-        title:"正在加载...",
-        mask:true
-      });
-      util.myrequest("GetWordTreeList",{
-        BookID: app.getBookID
-      },function(obj){
-        that.setData({
-          demo_data:obj
-        });
-      },null)
+      this.loadData();
     }else {
-      that.setData({
+      this.setData({
         demo_data: learnProcess.WordListTree
       });
     }
     wx.setNavigationBarTitle({
       title: '别告诉我你懂单词-' + app.getBookName(),
+    })
+  },
+
+  loadData: function () {
+    var that = this;
+    wx.showLoading("加载中...");
+    util.myrequest("GetLearningProcess", {
+      BookID: app.getBookID(),
+      UserID: app.getUserID()
+    }, function (data) {
+      that.traceList(data, function (node) {
+        node.LearnedLevel = Math.floor(node.LearnedCount * 5 / node.SumWordCount) * 2;
+        return false;
+      });
+      that.setData({
+        demo_data: data.WordListTree
+      });
+      app.setLearnProcess(data);
+      app.setProcessLoad();
+    }, function (err) {
+      wx.showToast(err);
     })
   },
 
@@ -50,7 +60,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    if(app.isProcessOverdue()){
+      this.loadData();
+    }
   },
 
   /**

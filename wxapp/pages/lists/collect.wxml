@@ -5,9 +5,11 @@
   <navigator url="../listen-read-mode/listen-read-mode?mode=4">再听一遍</navigator>
 </view>
 <view class="content">
-  <view class="list-item" wx:for="{{demo_data}}" wx:key="item.ID" bindtap="onClickWord" data-id="{{item.ID}}" data-index="{{index}}">
+  <block wx:for="{{demo_data}}" wx:key="item.ID">
+  <view class="list-item" wx:if="{{!item.hidden}}" bindtap="onClickWord" data-id="{{item.ID}}" data-index="{{index}}">
     <text>{{item.Spell}}</text>
     <!-- <image src="/img/icon-collect-on.png" mode="scaleToFill" data-id="{{item.ID}}" data-index="{{index}}" bindtap="onClickDelete"/> -->
   </view>
+  </block>
 </view>
 </view>
