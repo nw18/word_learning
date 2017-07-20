@@ -68,8 +68,9 @@
   padding-top: 36rpx;
   border-radius: 11rpx; 
   display:flex;
-  flex-direction:row;  
-
+  flex-direction:row; 
+  color: #666666; 
+  background-color: white;
 }
 .sel-btn image{
   width: 39rpx; 
@@ -77,21 +78,25 @@
   margin-top: 3rpx;
   margin-left: 100rpx; 
 }
-
 .sel-btn-nor{
   box-shadow:-2rpx -2rpx 6rpx 6rpx whitesmoke inset;
-  background-color: white;
-  color: #666666;
 }
-
 .sel-btn-true{
-  background-color: #47d8b3;
-  color: white;
+  border: 2px solid #47d8b3; 
+  display:flex;
+  flex-direction:row; 
+  justify-content: space-between; 
 }
 .sel-btn-flase{
-  background-color: #fd6d55;
-  color: white;
+  border: 2px solid #fd6d55; 
+  display:flex;
+  flex-direction:row; 
+  justify-content: space-between; 
 }
+.textMargin{
+  margin-right: 30rpx;
+}
+
 /************tian btn******************/
 .ques-btn-tian{
 

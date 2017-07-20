@@ -1,7 +1,6 @@
 //questions-praction.js
 //获取应用实例
 //https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html
-var app = getApp()
 Page({
   isShowAnswer:false,
   data: {
@@ -20,18 +19,19 @@ Page({
     },
 
     btnClass: "sel-btn-true",
-
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function (e) {
+
     this.setData({
       lid: e.lid,
       mode: e.mode,
       query: e.query,
-      index: e.index,
+      // index: e.index,
+      index: 0,
     })
      this.loadQuesInfoList();
   },
@@ -182,9 +182,11 @@ Page({
           'Content-Type': 'application/json'
         },
         success: function (res) {
+          console.log(res);
            wx.hideLoading({});
            var list = res.data.Data;
-    
+           console.log(list);
+
            var perNum = that.data.index+1;
            that.data.progressItem.progressNum = perNum;
            that.data.progressItem.progressAll = list.length;
