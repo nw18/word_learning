@@ -21,6 +21,11 @@
       真题练习
     </button>
   </block>
+  <block wx:elif="{{mode==4}}">
+    <button class="item1-disabled">
+      真题练习
+    </button>
+  </block>
   <block wx:else>
     <button class="item1" bindtap="practise">
       真题练习
