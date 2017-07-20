@@ -8,7 +8,7 @@
     <view class="words-read-head" >
       <text>{{wordInfo.Spell}}</text>
       <label>核心词汇</label>
-      <image  style="width: 50rpx; height: 50rpx; " src="../../img/icon-collect-off.png" ></image>
+      <image bindtap="collection"  style="width: 50rpx; height: 50rpx; " src="{{collectionPic}}" ></image>
     </view>
     <!--音标-->
     <view class="words-read-yibiao">

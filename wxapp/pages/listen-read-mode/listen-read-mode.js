@@ -11,6 +11,7 @@ Page({
     lid: 12345,//外部传入的
     wordInfoList: [],
     index: 0,
+    jumpIndex:0,
     wordInfo: {},
     time: 5,
     hasTick:false,
@@ -103,6 +104,10 @@ Page({
       this.preTime = 5
       that.data.index++;
       // 换单词
+      wx.playBackgroundAudio({
+        //播放地址
+        dataUrl: that.data.src,
+      })
       that.setData({
         time: this.preTime,
         wordInfo: that.data.wordInfoList[that.data.index],
@@ -154,7 +159,7 @@ Page({
         case 1://背单词列表页
         case 2://背单词首字符的方式
           wx.redirectTo({
-            url: '../learn-over/learn-over?mode=' + that.data.mode + '&lid=' + that.data.lid + '&query=' + that.data.query + '&index=' + that.data.index
+            url: '../learn-over/learn-over?mode=' + that.data.mode + '&lid=' + that.data.lid + '&query=' + that.data.query + '&index=' + that.data.jumpIndex
           })
           break;
         case 3://自测不会
@@ -251,6 +256,32 @@ Page({
         wx.hideLoading({});
         var list = res.data.Data;
         that.setWordList(list,that);
+        if (options.mode == 3) {
+          var perNum = parseInt(options.index) + 1;
+          that.data.progressItem.progressNum = perNum;
+          that.data.progressItem.progressAll = list.length;
+          that.data.progressItem.progressPercent = perNum / list.length * 580;
+
+          that.setData({
+            wordInfoList: list,
+            wordInfo: list[options.index],
+            progressItem: that.data.progressItem,
+            cixing: list[options.index].WordDetail.ExplainList,
+          });
+          return;
+         }
+        var perNum = that.data.index + 1;
+        that.data.jumpIndex=that.data.index;
+        that.data.progressItem.progressNum = perNum;
+        that.data.progressItem.progressAll = list.length;
+        that.data.progressItem.progressPercent = perNum / list.length * 580;
+
+        that.setData({
+          wordInfoList: list,
+          wordInfo: list[that.data.index],
+          progressItem: that.data.progressItem,
+          cixing: list[that.data.index].WordDetail.ExplainList,
+        });
       },
       fail: function (res) {
         wx.hideLoading({})
