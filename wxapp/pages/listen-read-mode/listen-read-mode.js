@@ -8,17 +8,19 @@ Page({
    */
   data: {
     mode: 0,
-    ListID: 12345,//外部传入的
+    lid: 12345,//外部传入的
     wordInfoList: [],
     index: 0,
     wordInfo: {},
     time: 5,
     hasTick:false,
+    isCollected:false,
     progressItem: {
       progressNum: 0,
       progressAll: 0,
       progressPercent: 0,
     },
+
 
     ExtraList: {
       liju: "Place \nyour hands on your shoulders and move your elbows up, back, and down, in a circular motion\n手置于肩上，肘部向上、向后、向下做圆圈运动。\nBoth sides of the river can be explored on this circular walk\n沿着这条环行线路走一圈，河的两边都可以看到。",
@@ -28,6 +30,7 @@ Page({
     src: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=46',
 
     picture: 'http://img.zcool.cn/job/groups/b445558d077800000141f02f67a5.jpg',
+    collectionPic:'../../img / icon - collect - off.png',
     userInfo: {}
 
   },
@@ -108,13 +111,21 @@ Page({
       that.setData({
         time: this.preTime,
         wordInfo: that.data.wordInfoList[that.data.index],
+        isCollected: that.data.wordInfoList[that.data.index].IsCollected
       });
+   
+      if (that.data.wordInfoList[that.data.index].IsCollected){
+        collectionPic: '../../img/icon-collect-off.png';
+      }else{
+        collectionPic: '../../img/icon-collect-off.png';
+      }
       console.log(this.perNum);
       that.data.progressItem.progressNum = this.perNum;
       that.data.progressItem.progressPercent = this.perNum / that.data.progressItem.progressAll * 580;
       that.setData({
         progressItem: that.data.progressItem,
       });
+
       this.switchHandler = -1;
     },
     clearAllPending: function () {
@@ -147,17 +158,21 @@ Page({
       switch (that.data.mode) {
         case 1://背单词列表页
         case 2://背单词首字符的方式
-        case 4://点收藏的再听一遍 //还没加参数
           wx.redirectTo({
-            url: '../learn-over/learn-over'
+            url: '../learn-over/learn-over?mode=' + that.data.mode + '&lid=' + that.data.lid + '&query=' + that.data.query + '&index=' + that.data.index
           })
           break;
         case 3://自测不会
           test.externNextBtnTap();
           wx.navigateBack();
           break;
+        case 4://点收藏的再听一遍 //还没加参数
         case 5: //点收藏的某个单词,到最后返回收藏
-          wx.navigateBack();
+          // wx.navigateBack();
+          wx.redirectTo({
+            url: '../lists/collect'
+          })
+          break;
       }
     }
   },
@@ -213,10 +228,11 @@ Page({
       url: 'https://openapi.yqj.cn/MockAPI/WordLearning/GetWordList',
 
       data: {
-        ListID: options.lid,
-        IsLoadExtra: options.IsLoadExtra,
-        StartChar: options.StartChar,
+        lid: options.lid,
+        IsLoadExtra: true,
+        StartChar: options.query,
         UserID: app.getUserID(),
+        mode:options.mode,
       },
 
       header: {
@@ -236,7 +252,6 @@ Page({
           wordInfo: list[that.data.index],
           progressItem: that.data.progressItem,
           cixing: list[that.data.index].WordDetail.ExplainList,
-
         });
 
       },
@@ -258,7 +273,7 @@ Page({
       data: {
         UserID: app.getUserID(),
         BookID: app.getBookID(),
-
+      
       },
 
       header: {
@@ -292,5 +307,69 @@ Page({
   nextClick: function () {
     this.jumpControl.clearAllPending();
     this.jumpControl.gotoNextQues(this);
-  }
+  },
+  collection: function () {
+    if (isCollected){
+      this.rmCollection();
+    }else{
+      this.addCollection();
+    }
+
+  },
+
+  rmCollection:function(){
+    var that = this;
+    wx.showLoading({
+      title: '加载中',
+      mask: true,
+    })
+    wx.request({
+      url: 'https://openapi.yqj.cn/MockAPI/WordLearning/RmvCollection',
+
+      data: {
+        UserID:app.getUserID(),
+        BookID:app.getBookId(),
+      },
+
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        wx.hideLoading({});
+      },
+      fail: function (res) {
+        wx.hideLoading({})
+      },
+    })
+  },
+  addCollection: function () {
+    var that = this;
+    wx.showLoading({
+      title: '加载中',
+      mask: true,
+    })
+    wx.request({
+      url: 'https://openapi.yqj.cn/MockAPI/WordLearning/AddCollection',
+
+      data: {
+        UserID: app.getUserID(),
+        WordID: wordInfo.ID,
+        BookID: app.getBookId(),
+      },
+
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        wx.hideLoading({});
+      },
+      fail: function (res) {
+        wx.hideLoading({})
+      },
+    })
+  },
+
+
+
+
 })
