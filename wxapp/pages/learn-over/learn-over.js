@@ -31,7 +31,8 @@ Page({
     console.log(e.lid);
     this.setData({
       lid: e.lid,
-      mode: e.mode,
+      // mode: e.mode,
+      mode: 2,
       query: e.query,
       index: e.index,
     })

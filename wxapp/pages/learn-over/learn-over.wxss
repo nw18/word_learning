@@ -29,3 +29,11 @@
   background-color: #ffa732;
   margin-top: 44rpx;
 }
+.item1-disabled{
+  height: 80rpx;
+  width: 460rpx;
+  margin-top: 44rpx;
+  color:gray;
+  font-size: 30rpx;
+  background-color: lightgray;
+}

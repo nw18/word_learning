@@ -15,7 +15,16 @@
   <button class="item1" bindtap="testAgain">
        测试一下
   </button>
-  <button class="item1" bindtap="practise">
+
+  <block wx:if="{{mode==2}}">
+    <button class="item1-disabled">
       真题练习
-  </button>
+    </button>
+  </block>
+  <block wx:else>
+    <button class="item1" bindtap="practise">
+      真题练习
+    </button>
+  </block>
+
 </view>
