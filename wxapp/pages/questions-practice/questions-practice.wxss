@@ -27,12 +27,16 @@
    color: #2ab4fc;
    font-size: 26rpx;
    border-radius: 10rpx; 
-   text-align: center;
-   padding-top: 12rpx;
+   /* text-align: center; */
+   display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+   /* padding-top: 12rpx; */
 }
 
 .ques-view-address{
-  margin-top: -40rpx;
+   margin-top: -33rpx; 
   margin-right: 460rpx;
   color: #2ab4fc;
   font-size: 26rpx;

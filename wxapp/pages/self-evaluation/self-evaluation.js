@@ -2,10 +2,9 @@
 //获取应用实例
 //http://openapi.yqj.cn/MockAPI/WordLearning/GetWordList
 
-var WxNotificationCenter = require("../../WxNotificationCenter/WxNotificationCenter.js");
 
-var app = getApp()
 Page({
+  isKnow:false,
   data: {
     lid:12345,//外部传入的
     mode: 0,//外部传入的
@@ -30,6 +29,7 @@ Page({
   //事件处理函数
   bindImageViewTap: function () {
     var that = this
+   
     wx.playBackgroundAudio({
       //播放地址
       dataUrl: that.data.src,
@@ -84,12 +84,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // var that = this;
-    // var rightInterval = setInterval(function () {
+    console.log("--------onShow")
+    if (this.isKnow==true){
+      this.isKnow =false;
 
-    //   console.log("这是一个三秒的定时器");
-    // }, 3000);
-    // that.rightInterval = rightInterval;
+      var that = this
+      setTimeout(function () {
+        knowBtnTap(that);
+      }, 400);
+    
+    }
   },
 
   /**
@@ -107,9 +111,6 @@ Page({
   onUnload: function () {
     // console.log("2222在此停止定时器页面");
     // clearInterval(this.rightInterval);
-
-    // 移除通知在本也完成
-    // WxNotificationCenter.removeNotification("testTabNotificationName", this)
   },
 
   /**
@@ -164,28 +165,22 @@ Page({
         wx.hideLoading({})
       },
     })
-
   }
 })
 
 function knowBtnTap(e){
-
-  console.log("点击了会");
-  console.log(e);
   var that = e;
   var perNum = that.data.progressItem.progressNum;
   perNum++
   if (perNum > that.data.progressItem.progressAll) {
 
     wx.redirectTo({
-       url: '../learn-over/learn-over?index=0&lid=' + that.data.lid + '&mode=' + that.data.mode + '&query=' + that.data.query,
+      url: '../learn-over/learn-over?index=0&lid=' + that.data.lid + '&mode=' + that.data.mode + '&query=' + that.data.query,
     })
     return;
   }
-
   that.data.index++;
-
-  console.log(perNum);
+  console.log("UUUUUUUUUUU"+perNum);
   that.data.progressItem.progressNum = perNum;
   that.data.progressItem.progressPercent = perNum / that.data.progressItem.progressAll * 580;
   that.setData({
@@ -196,10 +191,12 @@ function knowBtnTap(e){
 
 //跳转到下一个单词--共外部使用
 function externNextBtnTap () {
-  console.log("本页要跳转下一页啦  ");
   var pages = getCurrentPages();
-  var currPage = pages[pages.length - 2];   //当前页面
-  knowBtnTap(currPage);
+  for (var i in pages){
+    if (pages[i].route == "pages/self-evaluation/self-evaluation"){
+      pages[i].isKnow = true;
+    }
+  }
 }
 
 module.exports = {
