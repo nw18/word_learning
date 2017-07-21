@@ -1,8 +1,8 @@
 <!--collect.wxml-->
 <view class="collect">
 <view class="head">
-  <navigator url="../self-evaluation/self-evaluation?mode=4">测试一下</navigator>
-  <navigator url="../listen-read-mode/listen-read-mode?mode=4">再听一遍</navigator>
+  <navigator url="../self-evaluation/self-evaluation?mode=4&index=0&lid=-1">测试一下</navigator>
+  <navigator url="../listen-read-mode/listen-read-mode?mode=4&index=0&lid=-1">再听一遍</navigator>
 </view>
 <view class="content">
   <block wx:for="{{demo_data}}" wx:key="item.ID">

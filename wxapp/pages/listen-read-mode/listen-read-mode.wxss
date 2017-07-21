@@ -21,6 +21,7 @@
   width:100%;
   background-color: white;
   align-items: center;
+  position: relative;
 }
 .words-read-head text{
   color: #ffa732;
@@ -39,7 +40,10 @@
 }
 
 .words-read-head image{
-   margin-left: 350rpx;
+  width: 50rpx;
+  height: 50rpx;
+  position: fixed;
+  right: 35rpx;
 }
 /***********************音标*********************************/
 .words-read-yibiao{
