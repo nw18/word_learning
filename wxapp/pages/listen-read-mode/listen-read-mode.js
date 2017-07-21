@@ -22,7 +22,7 @@ Page({
       progressPercent: 0,
     },
     ExtraList: {
-      liju: "Place \nyour hands on your shoulders and move your elbows up, back, and down, in a circular motion\n手置于肩上，肘部向上、向后、向下做圆圈运动。\nBoth sides of the river can be explored on this circular walk\n沿着这条环行线路走一圈，河的两边都可以看到。",
+      Content: "Place \nyour hands on your shoulders and move your elbows up, back, and down, in a circular motion\n手置于肩上，肘部向上、向后、向下做圆圈运动。\nBoth sides of the river can be explored on this circular walk\n沿着这条环行线路走一圈，河的两边都可以看到。",
       shipin: "http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400"
     },
     src: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=46',
@@ -169,9 +169,10 @@ Page({
         case 4://点收藏的再听一遍 //还没加参数
         case 5: //点收藏的某个单词,到最后返回收藏
           // wx.navigateBack();
-          wx.redirectTo({
-            url: '../lists/collect'
-          })
+          // wx.redirectTo({
+          //   url: '../lists/collect'
+          // })
+          wx.navigateBack();
           break;
       }
     }
@@ -228,6 +229,7 @@ Page({
       wordInfo: list[that.data.index],
       progressItem: that.data.progressItem,
       cixing: list[that.data.index].WordDetail.ExplainList,
+      liju: list[that.data.index].ExtraList
     });
   },
   reciteWordList: function (options) {
@@ -267,6 +269,7 @@ Page({
             wordInfo: list[options.index],
             progressItem: that.data.progressItem,
             cixing: list[options.index].WordDetail.ExplainList,
+            liju: list[that.data.index].ExtraList
           });
           return;
          }
@@ -281,6 +284,7 @@ Page({
           wordInfo: list[that.data.index],
           progressItem: that.data.progressItem,
           cixing: list[that.data.index].WordDetail.ExplainList,
+          liju: list[that.data.index].ExtraList
         });
       },
       fail: function (res) {

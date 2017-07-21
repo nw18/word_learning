@@ -20,10 +20,13 @@
         <view class="words-read-cixing"> {{item.WordType+"."+item.WordExplain+"\n"}}</view>
     </block>
     <!--例句-->
-    <view class="ords-read-liju-logo">例句</view>
-    <view class="ords-read-liju">
-        <text>{{ExtraList.liju}}</text>
-    </view>
+    
+     <block wx:key="unique" wx:for="{{liju}}" wx:for-index="idx" wx:for-item="item">
+     <view class="ords-read-liju-logo">{{item.Title}}</view>
+      <view class="ords-read-liju">
+          <text>{{item.Content}}</text>
+      </view>
+     </block>
     <!--视频-->
     <view class="ords-read-video-logo">视频讲解</view>
     <view class="ords-read-video">
@@ -32,7 +35,7 @@
     <!--下一个单词-->
     <view class="auto-next">
       <view  bindtap="nextClick" class="auto-next-button">
-         <label wx:if="{{hasTick}}">{{time}}</label><label wx:if="{{mode==1||mode==2}}">s下一个单词</label><label wx:if="{{mode==3||mode==4||mode==5}}">下一个单词</label>
+         <label wx:if="{{hasTick}}">{{time}}s</label><label>下一个单词</label>
       </view>
     </view>
   </view>
