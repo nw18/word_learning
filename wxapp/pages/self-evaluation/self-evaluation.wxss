@@ -37,6 +37,10 @@
   margin-bottom: 30rpx;
   width: 250rpx;
   height: 90rpx;
+  display:flex;
+  flex-direction:row;
+  justify-content: center;
+  align-items: center;
 }
 #self-btn-left{
   color: white;

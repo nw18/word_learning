@@ -26,7 +26,7 @@
 
             <view wx:elif="{{item.state == 1}}" class="sel-btn-true sel-btn" id="{{item.KeyName}}"   bindtap="bindABtnTap" > {{item.KeyName+"---"+item.Content}}
               <!-- <image src="../../img/icon-right.png"></image> -->
-              <text  class="textMargin" style="color:#47d8b3">答案正确</text>
+              <text  class="textMargin" style="color:#47d8b3">{{sureResultStr}}</text>
             </view>
 
             <view wx:else="{{item.state == 2}}" class="sel-btn-flase sel-btn" id="{{item.KeyName}}"   bindtap="bindABtnTap" > {{item.KeyName+"---"+item.Content}}

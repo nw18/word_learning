@@ -1,6 +1,9 @@
 //questions-praction.js
 //获取应用实例
 //https://mp.weixin.qq.com/debug/wxadoc/dev/api/api-react.html
+
+var util = require('../../utils/util.js');
+var app = getApp();
 Page({
   isShowAnswer:false,
   data: {
@@ -12,6 +15,7 @@ Page({
     quesInfoList:[],
     quesInfo:{},
     answerHidden:true,
+    sureResultStr:"答对了",
     progressItem:{
       progressNum: 0,
       progressAll: 0,
@@ -110,10 +114,10 @@ Page({
           this.data.quesInfo.OptionList[i].state = 1;
           that.setData({
             quesInfo: this.data.quesInfo,
+            sureResultStr: "答对了"
           })
         }
       }
-      
     }else{
       console.log("错误");
       for (var i in this.data.quesInfo.OptionList) {
@@ -127,6 +131,7 @@ Page({
       }
       that.setData({
         quesInfo: this.data.quesInfo,
+        sureResultStr:"正确答案"
       })
     
     }
@@ -171,38 +176,35 @@ Page({
   },
   
   loadQuesInfoList: function () {
+
+
     var that = this;
     wx.showLoading({
-      title: '加载中',
+      title: '加载中...',
+      mask: true,
     })
-      wx.request({
-      url: 'https://openapi.yqj.cn/MockAPI/WordLearning/GetQuesList',
-        header: {
-          'Content-Type': 'application/json'
-        },
-        success: function (res) {
-          console.log(res);
-           wx.hideLoading({});
-           var list = res.data.Data;
-           console.log(list);
 
-           var perNum = that.data.index;
-           perNum++;
-           that.data.progressItem.progressNum = perNum;
-           that.data.progressItem.progressAll = list.length;
-           that.data.progressItem.progressPercent = perNum / list.length * 580;
 
-           that.setData({
-             quesInfoList: list,
-             quesInfo: list[that.data.index],
-             progressItem: that.data.progressItem,
-           })
-        },
-        fail: function (res) {
-            wx.hideLoading({})
-        },
+    util.myrequest("GetQuesList", {
+      ListID: that.data.lid,
+      // UserID: app.getUserID(),
+    }, function (data) {
+      var list = data;
+      var perNum = that.data.index;
 
+      perNum++;
+      that.data.progressItem.progressNum = perNum;
+      that.data.progressItem.progressAll = list.length;
+      that.data.progressItem.progressPercent = perNum / list.length * 580;
+
+      that.setData({
+        quesInfoList: list,
+        quesInfo: list[that.data.index],
+        progressItem: that.data.progressItem,
       })
+    }, function (err) {
+      wx.showToast(err);
+    })
   }
   
 })

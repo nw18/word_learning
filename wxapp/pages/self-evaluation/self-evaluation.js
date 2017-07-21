@@ -2,7 +2,8 @@
 //获取应用实例
 //http://openapi.yqj.cn/MockAPI/WordLearning/GetWordList
 
-
+var util = require('../../utils/util.js');
+var app = getApp();
 Page({
   isKnow:false,
   data: {
@@ -135,37 +136,39 @@ Page({
   },
 
   loadWordInfoList:function(){
+
     var that = this;
     wx.showLoading({
-      title: '加载中',
-      mask:true,
+      title: '加载中...',
+      mask: true,
     })
-    wx.request({
-      url: 'https://openapi.yqj.cn/MockAPI/WordLearning/GetWordList',
-      header: {
-        'Content-Type': 'application/json'
-      },
-      success: function (res) {
-        wx.hideLoading({});
-        var list = res.data.Data;
-     
-        var perNum = that.data.index;
-        perNum++;
+    var reqStr = "GetWordList";
+    if (that.data.mode == 3){
+      reqStr = "GetCollectionList";
+    }
 
-        that.data.progressItem.progressNum = perNum;
-        that.data.progressItem.progressAll = list.length;
-        that.data.progressItem.progressPercent = perNum / list.length * 580;
+    util.myrequest(reqStr, {
+      ListID: that.data.lid,
+      IsLoadExtra: true,
+      StartChar: that.data.query,
+      UserID: app.getUserID(),
+    }, function (data) {
+      var list = data;
 
-        that.setData({
-          wordInfoList: list,
-          wordInfo: list[that.data.index],
-          progressItem: that.data.progressItem,
-        });
+      var perNum = that.data.index;
+      perNum++;
 
-      },
-      fail: function (res) {
-        wx.hideLoading({})
-      },
+      that.data.progressItem.progressNum = perNum;
+      that.data.progressItem.progressAll = list.length;
+      that.data.progressItem.progressPercent = perNum / list.length * 580;
+
+      that.setData({
+        wordInfoList: list,
+        wordInfo: list[that.data.index],
+        progressItem: that.data.progressItem,
+      });
+    }, function (err) {
+      wx.showToast(err);
     })
   }
 })
