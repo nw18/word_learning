@@ -104,20 +104,25 @@ Page({
       this.preTime = 5
       that.data.index++;
       // 换单词
+   
+      that.setData({
+        time: this.preTime,
+        wordInfo: that.data.wordInfoList[that.data.index],
+        isCollected: that.data.wordInfoList[that.data.index].IsCollected,
+        src: that.data.wordInfoList[that.data.index].WordDetail.VoiceURL
+      });
       wx.playBackgroundAudio({
         //播放地址
         dataUrl: that.data.src,
       })
-      that.setData({
-        time: this.preTime,
-        wordInfo: that.data.wordInfoList[that.data.index],
-        isCollected: that.data.wordInfoList[that.data.index].IsCollected
-      });
-   
       if (that.data.wordInfoList[that.data.index].IsCollected){
-        collectionPic: '../../img/icon-collect-off.png';
+        that.setData({
+          collectionPic: '../../img/icon-collect-on.png'
+        });
       }else{
-        collectionPic: '../../img/icon-collect-off.png';
+        that.setData({
+          collectionPic: '../../img/icon-collect-off.png'
+        });
       }
       console.log(this.perNum);
       that.data.progressItem.progressNum = this.perNum;
@@ -228,8 +233,6 @@ Page({
       wordInfoList: list,
       wordInfo: list[that.data.index],
       progressItem: that.data.progressItem,
-      cixing: list[that.data.index].WordDetail.ExplainList,
-      liju: list[that.data.index].ExtraList
     });
   },
   reciteWordList: function (options) {
@@ -268,8 +271,6 @@ Page({
             wordInfoList: list,
             wordInfo: list[options.index],
             progressItem: that.data.progressItem,
-            cixing: list[options.index].WordDetail.ExplainList,
-            liju: list[that.data.index].ExtraList
           });
           return;
          }
@@ -283,8 +284,6 @@ Page({
           wordInfoList: list,
           wordInfo: list[that.data.index],
           progressItem: that.data.progressItem,
-          cixing: list[that.data.index].WordDetail.ExplainList,
-          liju: list[that.data.index].ExtraList
         });
       },
       fail: function (res) {
@@ -317,6 +316,15 @@ Page({
         wx.hideLoading({});
         var list = res.data.Data;
         that.setWordList(list, that);
+        if (that.data.wordInfoList[that.data.index].IsCollected) {
+          that.setData({
+            collectionPic: '../../img/icon-collect-on.png'
+          });
+        } else {
+          that.setData({
+            collectionPic: '../../img/icon-collect-off.png'
+          });
+        }
       },
       fail: function (res) {
         wx.hideLoading({})
@@ -330,9 +338,12 @@ Page({
     this.jumpControl.gotoNextQues(this);
   },
   collection: function () {
-    if (isCollected){
+    if (this.data.isCollected){
+      console.log("yyyyyyyyy");
       this.rmCollection();
+     
     }else{
+      console.log("nnnnnnn");
       this.addCollection();
     }
 
@@ -344,12 +355,13 @@ Page({
       title: '加载中',
       mask: true,
     })
+    this.jumpControl.clearAllPending();
     wx.request({
       url: 'https://openapi.yqj.cn/MockAPI/WordLearning/RmvCollection',
 
       data: {
         UserID:app.getUserID(),
-        BookID:app.getBookId(),
+        BookID:app.getBookID(),
       },
 
       header: {
@@ -357,9 +369,16 @@ Page({
       },
       success: function (res) {
         wx.hideLoading({});
+        that.setData({
+         
+          collectionPic: '../../img/icon-collect-off.png'
+        });
       },
       fail: function (res) {
         wx.hideLoading({})
+        that.setData({
+          collectionPic: '../../img/icon-collect-on.png'
+        });
       },
     })
   },
@@ -367,15 +386,16 @@ Page({
     var that = this;
     wx.showLoading({
       title: '加载中',
-      mask: true,
-    })
+      mask: true
+    });
+    this.jumpControl.clearAllPending();
     wx.request({
       url: 'https://openapi.yqj.cn/MockAPI/WordLearning/AddCollection',
 
       data: {
         UserID: app.getUserID(),
-        WordID: wordInfo.ID,
-        BookID: app.getBookId(),
+        WordID: that.data.wordInfo.ID,
+        BookID: app.getBookID(),
       },
 
       header: {
@@ -383,9 +403,18 @@ Page({
       },
       success: function (res) {
         wx.hideLoading({});
+        that.setData({
+          collectionPic:'../../img/icon-collect-on.png'
+        });
+       
+        console.log("ccccccc");
       },
       fail: function (res) {
         wx.hideLoading({})
+        that.setData({
+          collectionPic: '../../img/icon-collect-off.png'
+        });
+    
       },
     })
   },

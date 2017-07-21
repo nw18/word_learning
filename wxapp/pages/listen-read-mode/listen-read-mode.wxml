@@ -16,15 +16,16 @@
         <image mode="aspectFit" style="width: 40rpx; height: 40rpx; " src="../../img/voice-small.png" ></image>
     </view>
    <!--词性 -->
-    <block wx:key="unique" wx:for="{{cixing}}" wx:for-index="idx" wx:for-item="item">
+    <block wx:key="unique" wx:for="{{wordInfo.WordDetail.ExplainList}}" wx:for-index="idx" wx:for-item="item">
         <view class="words-read-cixing"> {{item.WordType+"."+item.WordExplain+"\n"}}</view>
     </block>
     <!--例句-->
     
-     <block wx:key="unique" wx:for="{{liju}}" wx:for-index="idx" wx:for-item="item">
+     <block wx:key="unique" wx:for="{{wordInfo.ExtraList}}" wx:for-index="idx" wx:for-item="item">
      <view class="ords-read-liju-logo">{{item.Title}}</view>
       <view class="ords-read-liju">
-          <text>{{item.Content}}</text>
+          <text wx:if="{{item.ContentType=='text/*'}}">{{item.Content}}</text>
+           <video id="myVideo" wx:if="{{item.ContentType=='video/*'}}" src="{{item.Content}}" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls></video>
       </view>
      </block>
     <!--视频-->
