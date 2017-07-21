@@ -22,11 +22,14 @@
 .list-item {
   width: 680rpx;
   padding: 35rpx;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
   background: white;
   border-bottom: 1rpx solid #F2F2F2;
+  position: relative;
 }
 
 .list-item image {
@@ -35,7 +38,21 @@
   position: fixed;
   right: 35rpx;
 }
-.list-item text{
-  font-size: 30rpx;
-  color: #333333;
+
+.line-1 .spell{
+  font-size: 26rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.line-1 .phono{
+  margin-left: 20rpx;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.line-2 text {
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  color: #999;
 }

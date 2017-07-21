@@ -1,15 +1,23 @@
 <!--collect.wxml-->
 <view class="collect">
-<view class="head">
-  <navigator url="../self-evaluation/self-evaluation?mode=4&index=0&lid=-1">测试一下</navigator>
-  <navigator url="../listen-read-mode/listen-read-mode?mode=4&index=0&lid=-1">再听一遍</navigator>
-</view>
-<view class="content">
-  <block wx:for="{{demo_data}}" wx:key="item.ID">
-  <view class="list-item" wx:if="{{!item.hidden}}" bindtap="onClickWord" data-id="{{item.ID}}" data-index="{{index}}">
-    <text>{{item.Spell}}</text>
-    <!-- <image src="/img/icon-collect-on.png" mode="scaleToFill" data-id="{{item.ID}}" data-index="{{index}}" bindtap="onClickDelete"/> -->
+  <view class="head">
+    <navigator url="../self-evaluation/self-evaluation?mode=4&index=0&lid=-1">测试一下</navigator>
+    <navigator url="../listen-read-mode/listen-read-mode?mode=4&index=0&lid=-1">再听一遍</navigator>
   </view>
-  </block>
-</view>
+  <view class="content">
+    <block wx:for="{{demo_data}}" wx:key="item.ID">
+      <view class="list-item" wx:if="{{!item.hidden}}" bindtap="onClickWord" data-id="{{item.ID}}" data-index="{{index}}">
+        <view>
+          <view class="line-1">
+            <text class="spell">{{item.Spell}}</text>
+            <text class="phono">{{item.WordDetail.Phonogram}}</text>
+          </view>
+          <view class="line-2">
+            <text>{{item.WordDetail.ExplainList[0].WordType + item.WordDetail.ExplainList[0].WordExplain}}</text>
+          </view>
+        </view>
+        <image src="/img/icon-right-arrow.png" mode="scaleToFill" />
+      </view>
+    </block>
+  </view>
 </view>
