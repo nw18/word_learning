@@ -109,7 +109,7 @@ Page({
   //跳转到某个单词.
   onClickWord : function(e) {
     wx.navigateTo({
-      url: '../listen-read-mode/listen-read-mode?mode=5&index=' + e.target.dataset.index,
+      url: '../listen-read-mode/listen-read-mode?mode=5&index=' + e.currentTarget.dataset.index,
     })
   }
 })

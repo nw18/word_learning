@@ -5,7 +5,7 @@
     <navigator url="../listen-read-mode/listen-read-mode?mode=4&index=0&lid=-1">再听一遍</navigator>
   </view>
   <view class="content">
-    <block wx:for="{{demo_data}}" wx:key="item.ID">
+    <block wx:for="{{demo_data}}" wx:key="*this">
       <view class="list-item" wx:if="{{!item.hidden}}" bindtap="onClickWord" data-id="{{item.ID}}" data-index="{{index}}">
         <view>
           <view class="line-1">

@@ -74,7 +74,6 @@ Page({
     setupTick: function (that) {
       this.preTime = 5;
       this.perNum = that.data.progressItem.progressNum;
-      this.perNum++;
       if (that.data.hasTick) {
         var jumpControl = this;
         this.tickHandler = setInterval(function () {
@@ -186,7 +185,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.jumpControl.setupTick(this);
   },
 
   /**
@@ -224,21 +222,31 @@ Page({
 
   },
 
-  setWordList: function (list, that) {
-    var perNum = that.data.index + 1;
+  setWordList: function (list, that,index) {
+    if(index == undefined) {
+      index = 0;
+    }
+    if(index >= list.length) {
+      index = 0;
+      console.error("index out of range: " + index + "/" + list.length);
+    }
+    that.data.index = index;
+    var perNum = index + 1;
     that.data.progressItem.progressNum = perNum;
     that.data.progressItem.progressAll = list.length;
     that.data.progressItem.progressPercent = perNum / list.length * 580;
     that.setData({
       wordInfoList: list,
-      wordInfo: list[that.data.index],
+      wordInfo: list[index],
       progressItem: that.data.progressItem,
     });
+    this.jumpControl.setupTick(this);
   },
   reciteWordList: function (options) {
     var that = this;
+    var index = options.index == "undefined" || options.index == undefined ? 0 : parseInt(options.index);
     if(app.getCurrentList() != null) {
-      that.setWordList(app.getCurrentList(), that);
+      that.setWordList(app.getCurrentList(), that,index);
       return;
     }
     wx.showLoading({
@@ -260,31 +268,31 @@ Page({
       success: function (res) {
         wx.hideLoading({});
         var list = res.data.Data;
-        that.setWordList(list,that);
-        if (options.mode == 3) {
-          var perNum = parseInt(options.index) + 1;
-          that.data.progressItem.progressNum = perNum;
-          that.data.progressItem.progressAll = list.length;
-          that.data.progressItem.progressPercent = perNum / list.length * 580;
+        that.setWordList(list,that,index);
+        // if (options.mode == 3) {
+        //   var perNum = parseInt(options.index) + 1;
+        //   that.data.progressItem.progressNum = perNum;
+        //   that.data.progressItem.progressAll = list.length;
+        //   that.data.progressItem.progressPercent = perNum / list.length * 580;
 
-          that.setData({
-            wordInfoList: list,
-            wordInfo: list[options.index],
-            progressItem: that.data.progressItem,
-          });
-          return;
-         }
-        var perNum = that.data.index + 1;
-        that.data.jumpIndex=that.data.index;
-        that.data.progressItem.progressNum = perNum;
-        that.data.progressItem.progressAll = list.length;
-        that.data.progressItem.progressPercent = perNum / list.length * 580;
+        //   that.setData({
+        //     wordInfoList: list,
+        //     wordInfo: list[options.index],
+        //     progressItem: that.data.progressItem,
+        //   });
+        //   return;
+        //  }
+        // var perNum = that.data.index + 1;
+        // that.data.jumpIndex=that.data.index;
+        // that.data.progressItem.progressNum = perNum;
+        // that.data.progressItem.progressAll = list.length;
+        // that.data.progressItem.progressPercent = perNum / list.length * 580;
 
-        that.setData({
-          wordInfoList: list,
-          wordInfo: list[that.data.index],
-          progressItem: that.data.progressItem,
-        });
+        // that.setData({
+        //   wordInfoList: list,
+        //   wordInfo: list[that.data.index],
+        //   progressItem: that.data.progressItem,
+        // });
       },
       fail: function (res) {
         wx.hideLoading({})
@@ -294,8 +302,9 @@ Page({
   },
   collectionWorldList: function (options) {
     var that = this;
+    var index = options.index == "undefined" || options.index == undefined ? 0 : parseInt(options.index);
     if (app.getCurrentList() != null) {
-      that.setWordList(app.getCurrentList(), that);
+      that.setWordList(app.getCurrentList(), that,index);
       return;
     }
     wx.showLoading({
@@ -315,7 +324,7 @@ Page({
       success: function (res) {
         wx.hideLoading({});
         var list = res.data.Data;
-        that.setWordList(list, that);
+        that.setWordList(list, that, index);
         if (that.data.wordInfoList[that.data.index].IsCollected) {
           that.setData({
             collectionPic: '../../img/icon-collect-on.png'
@@ -406,7 +415,6 @@ Page({
         that.setData({
           collectionPic:'../../img/icon-collect-on.png'
         });
-       
         console.log("ccccccc");
       },
       fail: function (res) {
@@ -414,12 +422,7 @@ Page({
         that.setData({
           collectionPic: '../../img/icon-collect-off.png'
         });
-    
       },
     })
   },
-
-
-
-
 })
