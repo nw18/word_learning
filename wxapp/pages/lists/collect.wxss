@@ -35,7 +35,7 @@
 .list-item image {
   width: 50rpx;
   height: 50rpx;
-  position: fixed;
+  position: absolute;
   right: 35rpx;
 }
 

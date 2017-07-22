@@ -6,12 +6,14 @@
 }
 /***********************Head**********************************/
 .words-read{
-  height:3%;
-  width:100%;
+  width:100% - 120rpx;
   display: flex;
   flex-direction: column;
   margin-top: 11rpx;
   background-color: white;
+  padding-bottom: 40rpx; 
+  padding-left: 60rpx;
+  padding-right: 60rpx;
 }
 
 .words-read-head{
@@ -25,29 +27,28 @@
 }
 .words-read-head text{
   color: #ffa732;
-  font-size: 50rpx;
-  margin-left: 70rpx;
+  font-size: 30rpx;
 }
 
 .words-read-head label{
   color: white;
   background-color: #ffa732;
-  font-size: 28rpx;
-  height: 30rpx;
-  width: 130rpx;
+  font-size: 24rpx;
+  height: fit-content;
+  width: fit-content;
   text-align: center;
+  padding: 4rpx;
   margin-left: 20rpx;
 }
 
 .words-read-head image{
   width: 50rpx;
   height: 50rpx;
-  position: fixed;
-  right: 35rpx;
+  position: absolute;
+  right: 0rpx;
 }
 /***********************音标*********************************/
 .words-read-yibiao{
-
   display: flex;
   flex-direction: row;
   height:80rpx;
@@ -59,11 +60,10 @@
 
   color: #666666;
   /* background-color: #ffa732; */
-  font-size: 30rpx;
+  font-size: 26rpx;
   height: 30rpx;
   /* width: 130rpx; */
   text-align: center;
-  margin-left: 70rpx;
 }
 .words-read-yibiao image{
   margin-left: 30rpx;
@@ -72,9 +72,8 @@
 .words-read-cixing{
 
   color: #666666;
-  margin-left: 70rpx;
   margin-top: 20rpx;
-  font-size: 32rpx;
+  font-size: 26rpx;
   height:40rpx;
   width:100%;
 }
@@ -82,11 +81,13 @@
 .ords-read-liju-logo{
 
   color: #2ab4fc;
-  margin-left: 70rpx;
   margin-top: 20rpx;
-  font-size: 32rpx;
-  height:40rpx;
-  width:100rpx;
+  font-size: 26rpx;
+  height:fit-content;
+  width: fit-content;
+  padding: 5rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
   border: 1px solid #2ab4fc;
   border-radius: 10rpx;
   padding-top: 4rpx;
@@ -94,9 +95,8 @@
 }
 .ords-read-liju{
   color: #666666;
-  margin-left: 70rpx;
   margin-top: 20rpx;
-  font-size: 32rpx;
+  font-size: 26rpx;
   height:4%;
   width:610rpx;
 }
@@ -104,9 +104,8 @@
 .ords-read-video-logo{
 
   color: #2ab4fc;
-  margin-left: 70rpx;
   margin-top: 20rpx;
-  font-size: 32rpx;
+  font-size: 26rpx;
   height:40rpx;
   width:180rpx;
   border: 1px solid #2ab4fc;
@@ -136,13 +135,16 @@
   justify-content: center;
 }
 .auto-next-button {
-  padding-top: 45rpx;
-  text-align: center;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
   margin-top: 100rpx;
   width: 670rpx;
   height: 80rpx;
   color: #fff;
-  border: 0px solid #ffa732; 
+  font-size: 30rpx;
+  border: 0px; 
   background-color:#ffa732;
   border-radius: 10rpx;
 }
