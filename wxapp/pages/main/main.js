@@ -105,8 +105,12 @@ Page({
       BookID: app.getBookID(),
       UserID: app.getUserID()
     }, function (data) {
+      data.TodayToLearnCount = 0;
       that.traceList(data,function(node){
         node.LearnedLevel = Math.floor(node.LearnedCount * 5 / node.SumWordCount) * 2;
+        if (node.LearnedCount > 0) {
+          data.TodayToLearnCount += node.SumWordCount - node.LearnedCount;
+        }
         return false;
       });
       that.setData({
@@ -167,7 +171,7 @@ Page({
   onClickBegin: function () {
     var learnProcess = this.data.learnProcess;
     if (learnProcess.LearnedCount < learnProcess.SumWordCount) {
-      this.traceList(learnProcess,function(node) {
+      if(!this.traceList(learnProcess,function(node) {
         if (node.LearnedCount < node.SumWordCount) {
           wx.navigateTo({
             url: '../listen-read-mode/listen-read-mode?mode=1&lid=' + node.ID + "&index=" + node.FirstUnlearnIndex,
@@ -175,10 +179,11 @@ Page({
           return true;
         }
         return false;
-      })
-      wx.showToast({
-        title: '哇哦,咋也没找到列表!',
-      })
+      })){
+        wx.showToast({
+          title: '哇哦,咋也没找到列表!',
+        })
+      }
     } else {
       //学完了跳列表
       wx.navigateTo({

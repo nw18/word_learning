@@ -23,7 +23,7 @@
       <!-- 词汇列表，按字母显示列表。 -->
       <block wx:else>
         <view wx:for-index="index2" wx:for="{{alpha_table}}" wx:key="*this" 
-         data-id="0" data-index="{{index2}}" data-query="{{item}}" bindtap="onClickList" 
+         data-id="{{item1.ID}}" data-index="{{index2}}" data-query="{{item}}" bindtap="onClickList" 
          class="lists-item{{select_index[currIndex]==index2?' list-item-select':''}}">
         <image id="wave-bg" src="/img/wave-00p.png" mode="scaleToFill"></image>
         {{item}}

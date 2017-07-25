@@ -215,7 +215,15 @@ Page({
     if(index == undefined) {
       index = 0;
     }
-    if(index >= list.length) {
+    if(index < 0) { //对于小于零的参数查找第一个未学习的位置.
+      for(var i = 0; i < list.length; i++) {
+        if (!list[i].IsLearned) {
+          index = i;
+          break;
+        }
+      }
+    }
+    if(index >= list.length || index < 0) {
       index = 0;
       console.error("index out of range: " + index + "/" + list.length);
     }
