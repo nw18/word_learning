@@ -87,6 +87,20 @@ Page({
   onShareAppMessage: function () {
 
   },
+  //记录进度
+  setStudentPress: function () {
+    var that = this
+    util.myrequest("SetQuesLearned", {
+      BookID: app.getBookList(),
+      QuesID: that.data.quesInfo.ID,
+      UserID: app.getUserID(),
+    }, function (data) {
+
+    }, function (err) {
+      wx.showToast(err);
+    })
+  },
+
 
   //事件处理函数
   bindViewTap: function () {
@@ -148,6 +162,8 @@ Page({
 
   //点击了下一题
   bindNextBtnTap: function () {
+    
+    this.setStudentPress();
 
     var that = this
     that.isShowAnswer = false;
