@@ -151,6 +151,7 @@ Page({
   traceList: function (learnProcess,callback) {
     var node_list = new Array();
     for (var i in learnProcess.WordListTree) {
+      learnProcess.WordListTree[i].Class = learnProcess.WordListTree[i].Name
       node_list.push(learnProcess.WordListTree[i]);
     }
     while (node_list.length > 0) {
@@ -161,6 +162,7 @@ Page({
         }
       } else {
         for (var i in node.Children) {
+          node.Children[i].Class = node.Class;
           node_list.push(node.Children[i]);
         }
       }
@@ -174,7 +176,7 @@ Page({
       if(!this.traceList(learnProcess,function(node) {
         if (node.LearnedCount < node.SumWordCount) {
           wx.navigateTo({
-            url: '../listen-read-mode/listen-read-mode?mode=1&lid=' + node.ID + "&index=" + node.FirstUnlearnIndex,
+            url: '../listen-read-mode/listen-read-mode?mode=1&lid=' + node.ID + "&index=" + node.FirstUnlearnIndex + "&class=" + node.Class,
           })
           return true;
         }

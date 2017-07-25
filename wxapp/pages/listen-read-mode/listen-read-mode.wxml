@@ -7,7 +7,7 @@
   <view class="words-read">
     <view class="words-read-head" >
       <text>{{wordInfo.Spell}}</text>
-      <label>{{wordInfo.Classification}}</label>
+      <label wx:if="{{Classification}}">{{Classification}}</label>
       <image bindtap="collection" src="{{wordInfo.IsCollected?'../../img/icon-collect-on.png':'../../img/icon-collect-off.png'}}" ></image>
     </view>
     <!--音标-->

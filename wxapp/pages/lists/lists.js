@@ -116,20 +116,22 @@ Page({
     var index = this.data.select_index[this.data.currIndex];
     var id = this.data.currIndex == 0 ? this.data.demo_data[this.data.currIndex].Children[index].ID : this.data.demo_data[this.data.currIndex].ID;
     var query = this.data.currIndex == 0 ? '' : this.data.alpha_table[index];
+    //手动透传Class分类
+    var className = this.data.demo_data[this.data.currIndex].Name;
     switch (btn_index) {
       case "0":
         wx.navigateTo({
-          url: '../listen-read-mode/listen-read-mode?mode=1&lid=' + id + '&index=-1'
+          url: '../listen-read-mode/listen-read-mode?mode=1&lid=' + id + '&index=-1' + "&class=" + className
         })
         break;
       case "1":
         wx.navigateTo({
-          url: '../self-evaluation/self-evaluation?mode=2&lid=' + id + '&index=0&query=' + query
+          url: '../self-evaluation/self-evaluation?mode=2&lid=' + id + '&index=0&query=' + query + "&class=" + className
         })
         break;
       case "2":
         wx.navigateTo({
-          url: '../questions-practice/questions-practice?mode=2&lid=' + id + '&index=0&query=' + query
+          url: '../questions-practice/questions-practice?mode=2&lid=' + id + '&index=0&query=' + query + "&class=" + className
         })
         break;
 

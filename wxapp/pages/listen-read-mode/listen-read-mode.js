@@ -38,7 +38,8 @@ Page({
     var mode = parseInt(options.mode);
     this.setData({
       mode: mode,
-      hasTick: mode != 3 && mode != 5
+      hasTick: mode != 3 && mode != 5,
+      Classification: options.class,
     })
     if (mode == 1) {
       // 1背单词列表页
