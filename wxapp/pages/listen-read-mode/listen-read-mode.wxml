@@ -8,7 +8,7 @@
     <view class="words-read-head" >
       <text>{{wordInfo.Spell}}</text>
       <label>{{wordInfo.Classification}}</label>
-      <image bindtap="collection" src="{{collectionPic}}" ></image>
+      <image bindtap="collection" src="{{wordInfo.IsCollected?'../../img/icon-collect-on.png':'../../img/icon-collect-off.png'}}" ></image>
     </view>
     <!--音标-->
     <view class="words-read-yibiao">

@@ -1,5 +1,6 @@
 // pages/listen_read_mode/listen_read_mode.js
 var test = require('../self-evaluation/self-evaluation.js')
+var util = require('../../utils/util.js');
 var app = getApp();
 Page({
 
@@ -15,7 +16,6 @@ Page({
     wordInfo: {},
     time: 5,
     hasTick:false,
-    isCollected:false,
     progressItem: {
       progressNum: 0,
       progressAll: 0,
@@ -27,7 +27,6 @@ Page({
     },
     src: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=46',
     picture: 'http://img.zcool.cn/job/groups/b445558d077800000141f02f67a5.jpg',
-    collectionPic:'../../img/icon-collect-off.png',
     userInfo: {}
   },
 
@@ -107,22 +106,12 @@ Page({
       that.setData({
         time: this.preTime,
         wordInfo: that.data.wordInfoList[that.data.index],
-        isCollected: that.data.wordInfoList[that.data.index].IsCollected,
         src: that.data.wordInfoList[that.data.index].WordDetail.VoiceURL
       });
       wx.playBackgroundAudio({
         //播放地址
         dataUrl: that.data.src,
       })
-      if (that.data.wordInfoList[that.data.index].IsCollected){
-        that.setData({
-          collectionPic: '../../img/icon-collect-on.png'
-        });
-      }else{
-        that.setData({
-          collectionPic: '../../img/icon-collect-off.png'
-        });
-      }
       console.log(this.perNum);
       that.data.progressItem.progressNum = this.perNum;
       that.data.progressItem.progressPercent = this.perNum / that.data.progressItem.progressAll * 580;
@@ -253,52 +242,14 @@ Page({
       title: '加载中',
       mask: true,
     })
-    wx.request({
-      url: 'https://openapi.yqj.cn/MockAPI/WordLearning/GetWordList',
-      data: {
-        ListID: options.lid,
-        IsLoadExtra: true,
-        StartChar: options.query,
-        UserID: app.getUserID(),
-        mode:options.mode,
-      },
-      header: {
-        'Content-Type': 'application/json'
-      },
-      success: function (res) {
-        wx.hideLoading({});
-        var list = res.data.Data;
-        that.setWordList(list,that,index);
-        // if (options.mode == 3) {
-        //   var perNum = parseInt(options.index) + 1;
-        //   that.data.progressItem.progressNum = perNum;
-        //   that.data.progressItem.progressAll = list.length;
-        //   that.data.progressItem.progressPercent = perNum / list.length * 580;
-
-        //   that.setData({
-        //     wordInfoList: list,
-        //     wordInfo: list[options.index],
-        //     progressItem: that.data.progressItem,
-        //   });
-        //   return;
-        //  }
-        // var perNum = that.data.index + 1;
-        // that.data.jumpIndex=that.data.index;
-        // that.data.progressItem.progressNum = perNum;
-        // that.data.progressItem.progressAll = list.length;
-        // that.data.progressItem.progressPercent = perNum / list.length * 580;
-
-        // that.setData({
-        //   wordInfoList: list,
-        //   wordInfo: list[that.data.index],
-        //   progressItem: that.data.progressItem,
-        // });
-      },
-      fail: function (res) {
-        wx.hideLoading({})
-      },
-    })
-
+    util.myrequest("GetWordList", {
+      ListID: options.lid,
+      IsLoadExtra: true,
+      StartChar: options.query,
+      UserID: app.getUserID()
+    }, function (list) {
+      that.setWordList(list, that, index);
+    });
   },
   collectionWorldList: function (options) {
     var that = this;
@@ -311,35 +262,12 @@ Page({
       title: '加载中',
       mask: true,
     })
-    wx.request({
-      url: 'https://openapi.yqj.cn/MockAPI/WordLearning/GetCollectionList',
-      data: {
-        UserID: app.getUserID(),
-        BookID: app.getBookID(),
-      
-      },
-      header: {
-        'Content-Type': 'application/json'
-      },
-      success: function (res) {
-        wx.hideLoading({});
-        var list = res.data.Data;
-        that.setWordList(list, that, index);
-        if (that.data.wordInfoList[that.data.index].IsCollected) {
-          that.setData({
-            collectionPic: '../../img/icon-collect-on.png'
-          });
-        } else {
-          that.setData({
-            collectionPic: '../../img/icon-collect-off.png'
-          });
-        }
-      },
-      fail: function (res) {
-        wx.hideLoading({})
-      },
-    })
-
+    util.myrequest("GetCollectionList", {
+      UserID: app.getUserID(),
+      BookID: app.getBookID(),
+    }, function (list) {
+      that.setWordList(list, that, index);
+    });
   },
 
   nextClick: function () {
@@ -347,12 +275,11 @@ Page({
     this.jumpControl.gotoNextQues(this);
   },
   collection: function () {
-    if (this.data.isCollected){
-      console.log("yyyyyyyyy");
+    if (this.data.wordInfo.IsCollected){
+      console.log("try remove collect");
       this.rmCollection();
-     
     }else{
-      console.log("nnnnnnn");
+      console.log("try add collect");
       this.addCollection();
     }
 
@@ -365,31 +292,17 @@ Page({
       mask: true,
     })
     this.jumpControl.clearAllPending();
-    wx.request({
-      url: 'https://openapi.yqj.cn/MockAPI/WordLearning/RmvCollection',
-
-      data: {
-        UserID:app.getUserID(),
-        BookID:app.getBookID(),
-      },
-
-      header: {
-        'Content-Type': 'application/json'
-      },
-      success: function (res) {
-        wx.hideLoading({});
-        that.setData({
-         
-          collectionPic: '../../img/icon-collect-off.png'
-        });
-      },
-      fail: function (res) {
-        wx.hideLoading({})
-        that.setData({
-          collectionPic: '../../img/icon-collect-on.png'
-        });
-      },
-    })
+    util.myrequest("RmvCollection", {
+      UserID: app.getUserID(),
+      BookID: app.getBookID(),
+      WordID: this.data.wordInfo.ID
+    }, function (res) {
+      that.data.wordInfo.IsCollected = false;
+      that.setData({
+        wordInfo: that.data.wordInfo
+      });
+    }
+    );
   },
   addCollection: function () {
     var that = this;
@@ -398,31 +311,16 @@ Page({
       mask: true
     });
     this.jumpControl.clearAllPending();
-    wx.request({
-      url: 'https://openapi.yqj.cn/MockAPI/WordLearning/AddCollection',
-
-      data: {
-        UserID: app.getUserID(),
-        WordID: that.data.wordInfo.ID,
-        BookID: app.getBookID(),
-      },
-
-      header: {
-        'Content-Type': 'application/json'
-      },
-      success: function (res) {
-        wx.hideLoading({});
-        that.setData({
-          collectionPic:'../../img/icon-collect-on.png'
-        });
-        console.log("ccccccc");
-      },
-      fail: function (res) {
-        wx.hideLoading({})
-        that.setData({
-          collectionPic: '../../img/icon-collect-off.png'
-        });
-      },
-    })
+    util.myrequest("AddCollection", {
+      UserID: app.getUserID(),
+      BookID: app.getBookID(),
+      WordID: this.data.wordInfo.ID
+    }, function (res) {
+      that.data.wordInfo.IsCollected = true;
+      that.setData({
+        wordInfo: that.data.wordInfo
+      });
+    }
+    );
   },
 })
