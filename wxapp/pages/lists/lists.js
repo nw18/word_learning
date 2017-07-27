@@ -121,7 +121,7 @@ Page({
     switch (btn_index) {
       case "0":
         wx.navigateTo({
-          url: '../listen-read-mode/listen-read-mode?mode=1&lid=' + id + '&index=-1' + "&class=" + className
+          url: '../listen-read-mode/listen-read-mode?mode=1&lid=' + id + '&index=-1&query=' + query  + "&class=" + className
         })
         break;
       case "1":

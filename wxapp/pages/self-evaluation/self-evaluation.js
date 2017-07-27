@@ -52,8 +52,8 @@ Page({
   ////////////////////////////////////////////////
   onLoad: function (e) {
     console.log(e)
+    this.data.lid = e.lid;
     this.loadWordInfoList();
-
     this.setData({
       lid: e.lid,
       mode: e.mode,

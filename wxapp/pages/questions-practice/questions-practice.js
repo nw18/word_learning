@@ -29,7 +29,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (e) {
-
+    this.data.lid = e.lid;
     this.setData({
       lid: e.lid,
       mode: e.mode,

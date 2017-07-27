@@ -251,6 +251,7 @@ Page({
       title: '加载中',
       mask: true,
     })
+    this.data.lid = options.lid;
     util.myrequest("GetWordList", {
       ListID: options.lid,
       IsLoadExtra: true,
