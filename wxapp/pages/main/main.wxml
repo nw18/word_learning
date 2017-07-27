@@ -52,7 +52,7 @@
     <view id="cancelChangeBook" class="main-model-content" wx:if="{{bookIndex < 0}}" bindtap="onCancelChangeBook">
       <view class="book-label" wx:for="{{bookList}}" wx:key="*this">
         <!-- <text>{{item.Name}}</text> -->
-        <image bindtap="onBookChange" data-index="{{index}}" src="{{bookImgs[index]}}"></image>
+        <image bindtap="onBookChange" data-index="{{index}}" src="{{bookList[index].Picture}}"></image>
         <!-- <button bindtap="onBookChange" data-index="{{index}}">开始学习</button> -->
       </view>
     </view>

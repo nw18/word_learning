@@ -34,6 +34,7 @@ Page({
     } else if(this.data.bookIndex >= 0){
       this.loadLearnProcess();
     }
+    //util.get_token();
   },
 
   /**
@@ -107,7 +108,11 @@ Page({
     }, function (data) {
       data.TodayToLearnCount = 0;
       that.traceList(data,function(node){
-        node.LearnedLevel = Math.floor(node.LearnedCount * 5 / node.SumWordCount) * 2;
+        if (node.SumWordCount == 0) {
+          node.LearnedLevel = 0;
+        }else {
+          node.LearnedLevel = Math.floor(node.LearnedCount * 5 / node.SumWordCount) * 2;
+        }
         if (node.LearnedCount > 0) {
           data.TodayToLearnCount += node.SumWordCount - node.LearnedCount;
         }

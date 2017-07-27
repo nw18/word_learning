@@ -40,7 +40,7 @@ App({
   },
   // 单词作者的基本信息
   authInfo: {
-    id: 100,
+    id: util.get_auth_id(), 
     description: "从今天起\n跟赵老师一起背单词",
     head_image : "/img/auth-head.png",
     uuid: ''
