@@ -18,8 +18,8 @@
     <import src="../../wxParse/wxParse.wxml"/>
     <view class="label-content">
       <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
-    </view>
-        <!-- <text>{{quesInfo.Content}}</text> -->
+    </view> 
+
   </label>
   
 </view>
@@ -36,7 +36,6 @@
                        </view>   
             </view>
 
-            <!-- <import src="../../wxParse/wxParse.wxml"/> -->
             <view wx:elif="{{item.state == 1}}" class="sel-btn-true sel-btn" id="{{item.KeyName}}"   bindtap="bindABtnTap" > 
 
                <view class="label-ques" id="{{item.KeyName}}" >   
@@ -46,7 +45,6 @@
               <text  class="textMargin" style="color:#47d8b3">{{sureResultStr}}</text>
             </view>
 
-            <!-- <import src="../../wxParse/wxParse.wxml"/> -->
             <view wx:else="{{item.state == 2}}" class="sel-btn-flase sel-btn" id="{{item.KeyName}}"   bindtap="bindABtnTap" > 
                  <view class="label-ques" id="{{item.KeyName}}" >   
                     <text>{{item.KeyName+":\n"}}</text>
