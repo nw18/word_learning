@@ -4,6 +4,7 @@
 
 var util = require('../../utils/util.js');
 var app = getApp();
+var WxParse = require('../../wxParse/wxParse.js');
 Page({
   isShowAnswer:false,
   data: {
@@ -21,7 +22,7 @@ Page({
       progressAll: 0,
       progressPercent: 0,
     },
-
+    // article_content: "",
     btnClass: "sel-btn-true",
   },
 
@@ -37,6 +38,18 @@ Page({
       index: e.index,
     })
      this.loadQuesInfoList();
+
+     var article = '<p>阿福妈妈啊忙什么打城市的刷卡</p><p>啊打卡都没卡死</p><p>的撒毛孔打开</p><p><br /></p><p>阿卡大声可ad</p><p>啊都卡</p>';
+     /** 
+     * WxParse.wxParse(bindName , type, data, target,imagePadding) 
+     * 1.bindName绑定的数据名(必填) 
+     * 2.type可以为html或者md(必填) 
+     * 3.data为传入的具体数据(必填) 
+     * 4.target为Page对象,一般为this(必填) 
+     * 5.imagePadding为当图片自适应是左右的单一padding(默认为0,可选) 
+     */
+     var that = this;
+     WxParse.wxParse('article', 'html', article, that, 5);  
   },
 
   /**
@@ -110,44 +123,42 @@ Page({
   },
   //点击了A  B  C  D
   bindABtnTap: function (e) {
-    // wx.navigateTo({
-    //   url: '../logs/logs'
-    // })
+
     console.log(e);
     var that = this
     if (that.isShowAnswer){
+      console.log("retu---");
       return;
     }
     that.isShowAnswer = true;
-    if (e.target.id == this.data.quesInfo.AnswerList[0]){
-      console.log("正确");
-      for (var i in this.data.quesInfo.OptionList) {
-        var opt = this.data.quesInfo.OptionList[i];
-        if (e.target.id == opt.KeyName){
 
+    for (var i in this.data.quesInfo.OptionList) {
+
+      var opt = this.data.quesInfo.OptionList[i];
+      if (e.target.id == opt.KeyName || e.currentTarget.id == opt.KeyName){//找到了点击
+
+        if (opt.IsAnswer==1){//答对了
           this.data.quesInfo.OptionList[i].state = 1;
           that.setData({
             quesInfo: this.data.quesInfo,
             sureResultStr: "答对了"
           })
+        }else{//答错了
+          //找出正确答案      
+          for (var j in this.data.quesInfo.OptionList) {
+            var option = this.data.quesInfo.OptionList[j];
+            if (option.IsAnswer==1){
+              this.data.quesInfo.OptionList[j].state = 1;
+            }
+          }
+
+           this.data.quesInfo.OptionList[i].state = 2;
+           that.setData({
+             quesInfo: this.data.quesInfo,
+             sureResultStr: "正确答案"
+           })
         }
       }
-    }else{
-      console.log("错误");
-      for (var i in this.data.quesInfo.OptionList) {
-        var opt = this.data.quesInfo.OptionList[i];
-        if (e.target.id == opt.KeyName) {
-          this.data.quesInfo.OptionList[i].state = 2;
-        }
-        if (this.data.quesInfo.AnswerList[0] == opt.KeyName) {
-          this.data.quesInfo.OptionList[i].state = 1;
-        }
-      }
-      that.setData({
-        quesInfo: this.data.quesInfo,
-        sureResultStr:"正确答案"
-      })
-    
     }
 
   },
@@ -174,8 +185,17 @@ Page({
       return;
     }
     that.data.index++;
+    WxParse.wxParse('article', 'html', that.data.quesInfoList[that.data.index].Content, that, 5);
+    var temp = [];
+    for (var i in that.data.quesInfoList[that.data.index].OptionList) {
+      var optionStr = that.data.quesInfoList[that.data.index].OptionList[i].Content;
+      var optionHtml = "optionHtml" + i;
+      temp.push(WxParse.wxParse(optionHtml, 'html', optionStr, that, 5));
+    }
+
     that.setData({
       quesInfo: that.data.quesInfoList[that.data.index],
+      option_list: temp,
     })
 
     var perNum = that.data.progressItem.progressNum;
@@ -206,21 +226,31 @@ Page({
       // UserID: app.getUserID(),
     }, function (data) {
       var list = data;
-      if (list.length>1){
+      if (list.length<1){
         wx.navigateBack({})
       }
 
       var perNum = that.data.index;
-
       perNum++;
       that.data.progressItem.progressNum = perNum;
       that.data.progressItem.progressAll = list.length;
       that.data.progressItem.progressPercent = perNum / list.length * 580;
 
+      WxParse.wxParse('article', 'html', list[that.data.index].Content, that, 5);
+      
+      var temp = [];
+      for (var i in list[that.data.index].OptionList){
+        var optionStr = list[that.data.index].OptionList[i].Content;
+        var optionHtml = "optionHtml"+i;
+        temp.push(WxParse.wxParse(optionHtml, 'html', optionStr, that, 5)); 
+      }
+
       that.setData({
         quesInfoList: list,
         quesInfo: list[that.data.index],
         progressItem: that.data.progressItem,
+        option_list:temp,
+        // _data_:that.data
       })
     }, function (err) {
       wx.showToast(err);

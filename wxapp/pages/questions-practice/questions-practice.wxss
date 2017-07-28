@@ -1,3 +1,4 @@
+@import "../../wxParse/wxParse.wxss";
 .questions-praction{
     height: 100%;
     width:100%;
@@ -46,11 +47,16 @@
     height: 90%;
     width:610rpx;
     margin-left: 70rpx;
-    margin-top: 40rpx;
+    margin-top: 60rpx;
     margin-bottom: 40rpx;
     color: #666666;
     align-self: flex-start;
 }
+/* .label-content-text{
+    height: 1%;
+    width:100%;
+    background-color: #47d8b3;
+} */
 /************select btn******************/
 .ques-btn-area{
 
@@ -67,14 +73,17 @@
   margin-top: 40rpx;
   margin-left: 70rpx;
   width: 600rpx;
-  height: 80rpx;
-  padding-left: 40rpx;
-  padding-top: 36rpx;
+  height: 8%;
+  padding: 20rpx; 
   border-radius: 11rpx; 
   display:flex;
   flex-direction:row; 
   color: #666666; 
   background-color: white;
+}
+.label-ques{
+  width: 100%;
+  height: 1%;
 }
 .sel-btn image{
   width: 39rpx; 
