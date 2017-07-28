@@ -269,6 +269,10 @@ Page({
       StartChar: options.query,
       UserID: app.getUserID()
     }, function (list) {
+      if(list.size==0){
+        wx.navigateBack();
+        return
+      }
       that.setWordList(list, that, index);
     });
   },
