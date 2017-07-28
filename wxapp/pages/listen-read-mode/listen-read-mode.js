@@ -119,7 +119,12 @@ Page({
       that.setData({
         progressItem: that.data.progressItem,
       });
-
+      util.myrequest("SetWordLearned", {
+        WordID: that.data.wordInfoList[that.data.index].ID,
+        UserID: app.getUserID(),
+        BookID: app.getBookID(),
+        TreeID: parseInt(that.data.lid)
+      });
       this.switchHandler = -1;
     },
     clearAllPending: function () {
@@ -213,7 +218,7 @@ Page({
   },
 
   setWordList: function (list, that,index) {
-    if(index == undefined) {
+    if(index == undefined) { //不传Index默认给0
       index = 0;
     }
     if(index < 0) { //对于小于零的参数查找第一个未学习的位置.
@@ -237,6 +242,12 @@ Page({
       wordInfoList: list,
       wordInfo: list[index],
       progressItem: that.data.progressItem,
+    });
+    util.myrequest("SetWordLearned",{
+      WordID: list[index].ID,
+      UserID: app.getUserID(),
+      BookID: app.getBookID(),
+      TreeID: parseInt(this.data.lid)
     });
     this.jumpControl.setupTick(this);
   },
