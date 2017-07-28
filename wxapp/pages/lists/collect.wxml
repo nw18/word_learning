@@ -1,6 +1,6 @@
 <!--collect.wxml-->
 <view class="collect">
-  <view class="head">
+  <view class="head" wx:if="{{demo_data.length > 0}}">
     <navigator url="../self-evaluation/self-evaluation?mode=4&index=0&lid=-1">测试一下</navigator>
     <navigator url="../listen-read-mode/listen-read-mode?mode=4&index=0&lid=-1">再听一遍</navigator>
   </view>

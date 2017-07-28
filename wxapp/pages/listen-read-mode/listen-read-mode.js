@@ -9,7 +9,7 @@ Page({
    */
   data: {
     mode: 0,
-    lid: 12345,//外部传入的
+    lid: -1,//外部传入的
     wordInfoList: [],
     index: 0,
     jumpIndex:0,
@@ -38,6 +38,7 @@ Page({
     var mode = parseInt(options.mode);
     this.setData({
       mode: mode,
+      query: options.query,
       hasTick: mode != 3 && mode != 5,
       Classification: options.class,
     })
