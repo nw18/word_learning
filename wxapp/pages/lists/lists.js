@@ -19,6 +19,10 @@ Page({
     if(typeof(learnProcess)==undefined || !learnProcess) {
       this.loadData();
     }else {
+      app.traceList(learnProcess, function (node) {
+        node.LearnedLevel = Math.floor(node.LearnedCount * 5 / node.SumWordCount) * 2;
+        return false;
+      });
       this.setData({
         demo_data: learnProcess.WordListTree
       });
@@ -35,7 +39,7 @@ Page({
       BookID: app.getBookID(),
       UserID: app.getUserID()
     }, function (data) {
-      that.traceList(data, function (node) {
+      app.traceList(data, function (node) {
         node.LearnedLevel = Math.floor(node.LearnedCount * 5 / node.SumWordCount) * 2;
         return false;
       });

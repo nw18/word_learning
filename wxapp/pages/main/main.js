@@ -107,7 +107,7 @@ Page({
       UserID: app.getUserID()
     }, function (data) {
       data.TodayToLearnCount = 0;
-      that.traceList(data,function(node){
+      app.traceList(data,function(node){
         if (node.SumWordCount == 0) {
           node.LearnedLevel = 0;
         }else {
@@ -153,32 +153,11 @@ Page({
       url: e.target.dataset.url,
     })
   },
-  traceList: function (learnProcess,callback) {
-    var node_list = new Array();
-    for (var i in learnProcess.WordListTree) {
-      learnProcess.WordListTree[i].Class = learnProcess.WordListTree[i].Name
-      node_list.push(learnProcess.WordListTree[i]);
-    }
-    while (node_list.length > 0) {
-      var node = node_list.shift();
-      if (node.IsList) {
-        if(callback(node)){
-          return true;
-        }
-      } else {
-        for (var i in node.Children) {
-          node.Children[i].Class = node.Class;
-          node_list.push(node.Children[i]);
-        }
-      }
-    }
-    return false;
-  },
   //查找下一个要学的单词,返回{lession_id,learn_index}
   onClickBegin: function () {
     var learnProcess = this.data.learnProcess;
     if (learnProcess.LearnedCount < learnProcess.SumWordCount) {
-      if(!this.traceList(learnProcess,function(node) {
+      if(!app.traceList(learnProcess,function(node) {
         if (node.LearnedCount < node.SumWordCount) {
           wx.navigateTo({
             url: '../listen-read-mode/listen-read-mode?mode=1&lid=' + node.ID + "&index=" + node.FirstUnlearnIndex + "&class=" + node.Class,

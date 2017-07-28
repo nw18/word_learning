@@ -132,5 +132,26 @@ App({
     }else {
       this.currentList = null;
     }
+  },
+  traceList: function (learnProcess, callback) {
+    var node_list = new Array();
+    for (var i in learnProcess.WordListTree) {
+      learnProcess.WordListTree[i].Class = learnProcess.WordListTree[i].Name
+      node_list.push(learnProcess.WordListTree[i]);
+    }
+    while (node_list.length > 0) {
+      var node = node_list.shift();
+      if (node.IsWordList) {
+        if (callback(node)) {
+          return true;
+        }
+      } else {
+        for (var i in node.Children) {
+          node.Children[i].Class = node.Class;
+          node_list.push(node.Children[i]);
+        }
+      }
+    }
+    return false;
   }
 })
