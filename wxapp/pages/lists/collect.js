@@ -21,7 +21,8 @@ Page({
       title: '加载中...',
     });
     util.myrequest("GetCollectionList",{
-      UserID:app.getUserID()
+      UserID:app.getUserID(),
+      BookID:app.getBookID()
     }, function(data){
       that.setData({
         demo_data:data

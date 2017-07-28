@@ -12,7 +12,7 @@
     </view>
     <!--音标-->
     <view class="words-read-yibiao">
-        <label> {{wordInfo.WordDetail.Phonogram}}</label>
+        <label>{{wordInfo.WordDetail.Phonogram}}</label>
         <image mode="aspectFit" style="width: 40rpx; height: 40rpx; " src="../../img/voice-small.png" ></image>
     </view>
    <!--词性 -->

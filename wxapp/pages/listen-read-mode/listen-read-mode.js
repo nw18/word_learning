@@ -9,7 +9,7 @@ Page({
    */
   data: {
     mode: 0,
-    lid: 12345,//外部传入的
+    lid: -1,//外部传入的
     wordInfoList: [],
     index: 0,
     jumpIndex:0,
@@ -38,6 +38,7 @@ Page({
     var mode = parseInt(options.mode);
     this.setData({
       mode: mode,
+      query: options.query,
       hasTick: mode != 3 && mode != 5,
       Classification: options.class,
     })
@@ -103,11 +104,11 @@ Page({
       this.preTime = 5
       that.data.index++;
       // 换单词
-   
+      var wordInfo = that.data.wordInfoList[that.data.index];
       that.setData({
         time: this.preTime,
-        wordInfo: that.data.wordInfoList[that.data.index],
-        src: that.data.wordInfoList[that.data.index].WordDetail.VoiceURL
+        wordInfo: wordInfo,
+        src: wordInfo.WordDetail.VoiceURL
       });
       wx.playBackgroundAudio({
         //播放地址
@@ -120,10 +121,14 @@ Page({
         progressItem: that.data.progressItem,
       });
       util.myrequest("SetWordLearned", {
-        WordID: that.data.wordInfoList[that.data.index].ID,
+        WordID: wordInfo.ID,
         UserID: app.getUserID(),
         BookID: app.getBookID(),
         TreeID: parseInt(that.data.lid)
+      }, function (res) {
+        if (!wordInfo.IsLearned) {
+          app.setProcessChange();
+        }
       });
       this.switchHandler = -1;
     },
@@ -248,6 +253,10 @@ Page({
       UserID: app.getUserID(),
       BookID: app.getBookID(),
       TreeID: parseInt(this.data.lid)
+    },function(res) {
+      if (!list[index].IsLearned){
+        app.setProcessChange();
+      }
     });
     this.jumpControl.setupTick(this);
   },
@@ -269,6 +278,11 @@ Page({
       StartChar: options.query,
       UserID: app.getUserID()
     }, function (list) {
+       console.log("list:" + list)
+      if(list.length==0){
+        wx.navigateBack();
+        return
+      }
       that.setWordList(list, that, index);
     });
   },
@@ -322,6 +336,7 @@ Page({
       that.setData({
         wordInfo: that.data.wordInfo
       });
+      app.setCollectChange();
     }
     );
   },
