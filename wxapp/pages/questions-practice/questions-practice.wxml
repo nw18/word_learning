@@ -19,7 +19,7 @@
   
 </view>
   
-<block wx:if="{{quesInfo.Type==0}}">
+<block wx:if="{{quesInfo.Type==2||quesInfo.Type==1}}">
     <view class="ques-btn-area" >
       <block wx:key="unique" wx:for="{{quesInfo.OptionList}}" wx:for-index="idx" wx:for-item="item">
             <view  wx:if="{{item.state == 0 || !item.state}}" class="sel-btn-nor sel-btn" id="{{item.KeyName}}"   bindtap="bindABtnTap" > {{item.KeyName+"---"+item.Content}}</view>
@@ -37,7 +37,7 @@
     </view>
 
 </block>
-<block wx:elif="{{quesInfo.Type==1}}">
+<block wx:elif="{{quesInfo.Type==3}}">
     <view  class="ques-btn-tian">  
        <block wx:if="{{answerHidden==false}}">
           <view   class="answer-view  answer-view-show">{{quesInfo.AnswerContent}}tyyuuuuuuuuuuuu</view>

@@ -206,6 +206,10 @@ Page({
       // UserID: app.getUserID(),
     }, function (data) {
       var list = data;
+      if (list.length>1){
+        wx.navigateBack({})
+      }
+
       var perNum = that.data.index;
 
       perNum++;
