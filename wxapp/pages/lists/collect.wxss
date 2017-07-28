@@ -39,7 +39,14 @@
   right: 35rpx;
 }
 
+.line-1 {
+  display: flex;
+  flex-flow: row;
+  align-items: flex-start;
+}
+
 .line-1 .spell{
+  min-width: 100rpx;
   font-size: 26rpx;
   color: #333;
   font-weight: bold;
@@ -52,6 +59,7 @@
 }
 
 .line-2 text {
+  padding-right: 40rpx;
   margin-top: 10rpx;
   font-size: 26rpx;
   color: #999;

@@ -52,15 +52,12 @@ Page({
   ////////////////////////////////////////////////
   onLoad: function (e) {
     console.log(e)
-    this.data.lid = e.lid;
+    this.data.lid = parseInt(e.lid);
+    this.data.mode = parseInt(e.mode);
+    this.data.index = parseInt(e.index);
+    this.data.query = e.query;
     this.loadWordInfoList();
-    this.setData({
-      lid: e.lid,
-      mode: e.mode,
-      query: e.query,
-      index: e.index,
-    })
-
+    this.setData({});
     wx.onBackgroundAudioStop(function () {
       that.setData({
         picture: '../../img/voice-big.png',
@@ -136,14 +133,13 @@ Page({
   },
 
   loadWordInfoList:function(){
-
     var that = this;
     wx.showLoading({
       title: '加载中...',
       mask: true,
     })
     var reqStr = "GetWordList";
-    if (that.data.mode == 3){
+    if (that.data.mode == 3 || that.data.mode == 4){
       reqStr = "GetCollectionList";
     }
 
@@ -152,11 +148,12 @@ Page({
       IsLoadExtra: true,
       StartChar: that.data.query,
       UserID: app.getUserID(),
+      BookID: app.getBookID()
     }, function (data) {
+      var list = data;
       if (list.length < 1) {
         wx.navigateBack({})
       }
-
       var perNum = that.data.index;
       perNum++;
       that.data.progressItem.progressNum = perNum;
