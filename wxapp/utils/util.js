@@ -9,7 +9,7 @@ var api_roots = [
 
 var user_roots = [
   '',
-  'http://duser.yqj.cn/Token',
+  'https://duser.yqj.cn/Token',
   'https://userapi.yqj.cn/Token',
 ];
 //开发服务器(郑郑=30)
