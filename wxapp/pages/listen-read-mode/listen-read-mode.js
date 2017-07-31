@@ -42,6 +42,9 @@ Page({
       hasTick: mode != 3 && mode != 5,
       Classification: options.class,
     })
+    if (this.data.mode < 3) {
+      app.setCurrentList(null);
+    }
     if (mode == 1) {
       // 1背单词列表页
       this.reciteWordList(options);

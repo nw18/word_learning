@@ -115,21 +115,24 @@ Page({
       select_index: this.data.select_index
     });
   },
-  onClickBottomButton:function(e) {
-    var btn_index = e.target.dataset.index;
+  onClickBottomButton: function (e) {
+    //手动透传Class分类
+    var tabItem = this.data.demo_data[this.data.currIndex];
     var index = this.data.select_index[this.data.currIndex];
-    var id = this.data.currIndex == 0 ? this.data.demo_data[this.data.currIndex].Children[index].ID : this.data.demo_data[this.data.currIndex].ID;
+    var className = tabItem.Name;
+    var btn_index = e.target.dataset.index;
+    var listItem = this.data.currIndex == 0 ? tabItem.Children[index] : null;
+    var id = this.data.currIndex == 0 ? listItem.ID : tabItem.ID;
     var query = this.data.currIndex == 0 ? '' : this.data.alpha_table[index];
     if(query != '') {
       query = '&query=' + query;
     }
-    //手动透传Class分类
-    var className = this.data.demo_data[this.data.currIndex].Name;
     switch (btn_index) {
       case "0":
-        var hasPractice = this.data.currIndex == 0 ? this.data.demo_data[0].Children[index].HasPractice : false;
+        var finished = this.data.currIndex == 0 ? listItem.LearnedCount >= listItem.SumWordCount : true;
+        var hasPractice = this.data.currIndex == 0 ? listItem.HasPractice : false;
         wx.navigateTo({
-          url: '../listen-read-mode/listen-read-mode?mode=' + (hasPractice ? 1 : 2) + '&lid=' + id + '&index=-1' + "&class=" + className + query 
+          url: '../listen-read-mode/listen-read-mode?mode=' + (hasPractice ? 1 : 2) + '&lid=' + id + (finished ?'&index=0':'&index=-1') + "&class=" + className + query 
         })
         break;
       case "1":

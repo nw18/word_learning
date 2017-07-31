@@ -59,6 +59,9 @@ Page({
     this.data.query = e.query;
     this.loadWordInfoList();
     this.setData({});
+    if(this.data.mode < 3) {
+      app.setCurrentList(null);
+    }
     wx.onBackgroundAudioStop(function () {
       that.setData({
         picture: '../../img/voice-big.png',
@@ -99,7 +102,6 @@ Page({
    */
   onHide: function () {
     wx.stopBackgroundAudio();
-    app.setCurrentList(null);
   },
 
   /**
@@ -107,7 +109,6 @@ Page({
    */
   onUnload: function () {
     wx.stopBackgroundAudio();
-    app.setCurrentList(null);
   },
 
   /**
@@ -133,22 +134,11 @@ Page({
 
   loadWordInfoList:function(){
     var that = this;
-    wx.showLoading({
-      title: '加载中...',
-      mask: true,
-    })
     var reqStr = "GetWordList";
     if (that.data.mode == 3 || that.data.mode == 4){
       reqStr = "GetCollectionList";
     }
-
-    util.myrequest(reqStr, {
-      ListID: that.data.lid,
-      IsLoadExtra: true,
-      StartChar: that.data.query,
-      UserID: app.getUserID(),
-      BookID: app.getBookID()
-    }, function (data) {
+    var callBack = function (data) {
       var list = data;
       if (list.length < 1) {
         wx.navigateBack({})
@@ -165,7 +155,22 @@ Page({
         progressItem: that.data.progressItem,
       });
       app.setCurrentList(list);
-    }, function (err) {
+    };
+    if(app.getCurrentList() != null) {
+      callBack(app.getCurrentList());
+      return;
+    }
+    wx.showLoading({
+      title: '加载中...',
+      mask: true,
+    })
+    util.myrequest(reqStr, {
+      ListID: that.data.lid,
+      IsLoadExtra: true,
+      StartChar: that.data.query,
+      UserID: app.getUserID(),
+      BookID: app.getBookID()
+    },callBack , function (err) {
       wx.showToast(err);
     })
   }
