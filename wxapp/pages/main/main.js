@@ -55,6 +55,10 @@ Page({
   onShow: function () {
     if(app.isProcessOverdue()) {
       this.loadLearnProcess();
+    }else {
+      this.setData({
+        learnProcess: app.getLearnProcess()
+      });
     }
   },
 
@@ -106,15 +110,11 @@ Page({
       BookID: app.getBookID(),
       UserID: app.getUserID()
     }, function (data) {
-      data.TodayToLearnCount = 0; //未完成字段=0
       app.traceList(data,function(node){
         if (node.SumWordCount == 0) {
           node.LearnedLevel = 0;
         }else {
           node.LearnedLevel = Math.floor(node.LearnedCount * 5 / node.SumWordCount) * 2;
-        }
-        if (node.LearnedCount > 0) { //未完成累加
-          data.TodayToLearnCount += node.SumWordCount - node.LearnedCount;
         }
         return false;
       });

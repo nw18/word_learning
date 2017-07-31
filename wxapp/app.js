@@ -135,6 +135,8 @@ App({
   },
   traceList: function (learnProcess, callback) {
     var node_list = new Array();
+
+    var TodayToLearnCount = 0; //未完成字段=0
     for (var i in learnProcess.WordListTree) {
       learnProcess.WordListTree[i].Class = learnProcess.WordListTree[i].Name
       node_list.push(learnProcess.WordListTree[i]);
@@ -145,6 +147,9 @@ App({
         if (callback(node)) {
           return true;
         }
+        if (node.LearnedCount > 0) { //未完成累加
+          TodayToLearnCount += node.SumWordCount - node.LearnedCount;
+        }
       } else {
         for (var i in node.Children) {
           node.Children[i].Class = node.Class;
@@ -152,6 +157,7 @@ App({
         }
       }
     }
+    learnProcess.TodayToLearnCount = TodayToLearnCount;
     return false;
   }
 })

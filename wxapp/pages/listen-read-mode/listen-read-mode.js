@@ -192,6 +192,7 @@ Page({
    */
   onHide: function () {
     this.jumpControl.clearAllPending();
+    wx.stopVoice();
   },
 
   /**
@@ -199,6 +200,7 @@ Page({
    */
   onUnload: function () {
     this.jumpControl.clearAllPending();
+    wx.stopVoice();
   },
 
   /**
