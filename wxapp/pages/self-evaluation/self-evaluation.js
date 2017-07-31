@@ -34,7 +34,7 @@ Page({
     wx.playBackgroundAudio({
       //播放地址
       dataUrl: that.data.src,
-    })
+    });
   },
   //点击了会
   bindTrueBtnTap: function () {
@@ -52,6 +52,7 @@ Page({
   ////////////////////////////////////////////////
   onLoad: function (e) {
     console.log(e)
+    var that = this;
     this.data.lid = parseInt(e.lid);
     this.data.mode = parseInt(e.mode);
     this.data.index = parseInt(e.index);
@@ -70,7 +71,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
     var that = this
     wx.playBackgroundAudio({
       //播放地址
@@ -98,17 +98,16 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
-    // console.log("1111在此停止页面");
-    // clearInterval(this.rightInterval);
+    wx.stopBackgroundAudio();
+    app.setCurrentList(null);
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    // console.log("2222在此停止定时器页面");
-    // clearInterval(this.rightInterval);
+    wx.stopBackgroundAudio();
+    app.setCurrentList(null);
   },
 
   /**
@@ -165,6 +164,7 @@ Page({
         wordInfo: list[that.data.index],
         progressItem: that.data.progressItem,
       });
+      app.setCurrentList(list);
     }, function (err) {
       wx.showToast(err);
     })

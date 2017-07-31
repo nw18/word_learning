@@ -192,7 +192,7 @@ Page({
    */
   onHide: function () {
     this.jumpControl.clearAllPending();
-    wx.stopVoice();
+    wx.stopBackgroundAudio();
   },
 
   /**
@@ -200,7 +200,7 @@ Page({
    */
   onUnload: function () {
     this.jumpControl.clearAllPending();
-    wx.stopVoice();
+    wx.stopBackgroundAudio();
   },
 
   /**
@@ -274,19 +274,21 @@ Page({
       mask: true,
     })
     this.data.lid = options.lid;
+    var callBack = function (list) {
+      console.log("list:" + list)
+      if (list.length == 0) {
+        wx.navigateBack();
+        return
+      }
+      that.setWordList(list, that, index);
+    };
+    
     util.myrequest("GetWordList", {
       ListID: options.lid,
       IsLoadExtra: true,
       StartChar: options.query,
       UserID: app.getUserID()
-    }, function (list) {
-       console.log("list:" + list)
-      if(list.length==0){
-        wx.navigateBack();
-        return
-      }
-      that.setWordList(list, that, index);
-    });
+    }, callBack);
   },
   collectionWorldList: function (options) {
     var that = this;
