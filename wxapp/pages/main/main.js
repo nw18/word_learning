@@ -35,6 +35,12 @@ Page({
       this.loadLearnProcess();
     }
     //util.get_token();
+    
+    wx.login({
+      success: function (res) {
+        console.error(JSON.stringify(res))
+      }
+    });
   },
 
   /**
@@ -176,5 +182,10 @@ Page({
         url: '../lists/lists',
       });
     }
+  },
+  gotoHelp : function() {
+    wx.navigateTo({
+      url: '/pages/main/help',
+    })
   }
 })

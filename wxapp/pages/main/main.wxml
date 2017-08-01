@@ -1,7 +1,7 @@
 <!--main.wxml-->
 <import src="../com/com.wxml"/>
 <view class="main">
-  <image src="/img/main-head.png" mode="widthFix" class="main-head"></image>
+  <image src="/img/main-head.png" mode="widthFix" class="main-head" bindtap="gotoHelp"></image>
   <view class="main main-content1">
     <view class="main-sum">
       <view>

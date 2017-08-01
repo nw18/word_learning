@@ -11,18 +11,14 @@ Page({
     mode: 0,//外部传入的
     query: "",//外部传入的
     index: 0,//外部传入的
-
     wordInfoList:[],
     wordInfo:{},
-
     progressItem: {
       progressNum: 0,
       progressAll: 0,
       progressPercent: 0,
     },
-
-    src: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=46',
-
+    //src: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=46',
     picture: '../../img/voice-big.gif',
     userInfo: {}
   },
@@ -33,7 +29,7 @@ Page({
    
     wx.playBackgroundAudio({
       //播放地址
-      dataUrl: that.data.src,
+      dataUrl: that.data.wordInfo.WordDetail.VoiceURL,
     });
   },
   //点击了会
@@ -77,7 +73,7 @@ Page({
     var that = this
     wx.playBackgroundAudio({
       //播放地址
-      dataUrl: that.data.src,
+      dataUrl: that.data.wordInfo.WordDetail.VoiceURL,
     })
   },
 

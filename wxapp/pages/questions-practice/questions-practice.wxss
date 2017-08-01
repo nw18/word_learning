@@ -30,9 +30,9 @@
    border-radius: 10rpx; 
    /* text-align: center; */
    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
+   flex-flow: column;
+   justify-content: center;
+   align-items: center;
    /* padding-top: 12rpx; */
 }
 
