@@ -167,7 +167,7 @@ Page({
     util.myrequest(reqStr, {
       ListID: that.data.lid,
       IsLoadExtra: true,
-      StartChar: that.data.query,
+      StartChar: that.data.query == undefined || that.data.query == "undefined" ? "" : that.data.query,
       UserID: app.getUserID(),
       BookID: app.getBookID()
     },callBack , function (err) {
