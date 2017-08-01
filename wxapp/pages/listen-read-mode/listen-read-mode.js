@@ -289,7 +289,7 @@ Page({
     util.myrequest("GetWordList", {
       ListID: options.lid,
       IsLoadExtra: true,
-      StartChar: options.query,
+      StartChar: options.query == undefined || options.query == "undefined" ? "" : options.query,
       UserID: app.getUserID()
     }, callBack);
   },
