@@ -35,12 +35,11 @@ Page({
       this.loadLearnProcess();
     }
     //util.get_token();
-    
-    wx.login({
-      success: function (res) {
-        console.error(JSON.stringify(res))
-      }
-    });
+    // wx.login({
+    //   success: function (res) {
+    //     console.error(JSON.stringify(res))
+    //   }
+    // });
   },
 
   /**
