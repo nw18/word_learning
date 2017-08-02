@@ -165,7 +165,7 @@ Page({
       if(!app.traceList(learnProcess,function(node) {
         if (node.LearnedCount < node.SumWordCount) {
           wx.navigateTo({
-            url: '../listen-read-mode/listen-read-mode?mode=1&lid=' + node.ID + "&index=" + node.FirstUnlearnIndex + "&class=" + node.Class,
+            url: '../listen-read-mode/listen-read-mode?mode=1&lid=' + node.ID + "&index=-1&class=" + node.Class,
           })
           return true;
         }
