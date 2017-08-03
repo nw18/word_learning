@@ -98,7 +98,7 @@ Page({
         }, 200, that);
       }
       that.setData({
-        time: --this.preTime
+        time: this.preTime > 0 ? --this.preTime : 0
       })
     },
 
@@ -134,6 +134,14 @@ Page({
         }
       });
       this.switchHandler = -1;
+    },
+    continueTick: function(that) {
+      if (that.data.hasTick) {
+        var jumpControl = this;
+        this.tickHandler = setInterval(function () {
+          jumpControl.tickCount(that);
+        }, 1000);
+      }
     },
     clearAllPending: function () {
       if (this.tickHandler != -1) {
@@ -349,6 +357,7 @@ Page({
         wordInfo: that.data.wordInfo
       });
       app.setCollectChange();
+      that.jumpControl.continueTick(that);
     }
     );
   },
@@ -368,6 +377,7 @@ Page({
       that.setData({
         wordInfo: that.data.wordInfo
       });
+      that.jumpControl.continueTick(that);
     }
     );
   },
