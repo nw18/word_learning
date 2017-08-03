@@ -31,6 +31,9 @@ Page({
       //播放地址
       dataUrl: that.data.wordInfo.WordDetail.VoiceURL,
     });
+    that.setData({
+      picture: '../../img/voice-big.gif',
+    });
   },
   //点击了会
   bindTrueBtnTap: function () {
@@ -184,13 +187,19 @@ function knowBtnTap(e){
     return;
   }
   that.data.index++;
-  console.log("UUUUUUUUUUU"+perNum);
+
   that.data.progressItem.progressNum = perNum;
   that.data.progressItem.progressPercent = perNum / that.data.progressItem.progressAll * 580;
   that.setData({
     wordInfo: that.data.wordInfoList[that.data.index],
     progressItem: that.data.progressItem,
+    picture: '../../img/voice-big.gif',
   })
+
+  wx.playBackgroundAudio({
+    //播放地址
+    dataUrl: that.data.wordInfo.WordDetail.VoiceURL,
+  });
 }
 
 //跳转到下一个单词--共外部使用
