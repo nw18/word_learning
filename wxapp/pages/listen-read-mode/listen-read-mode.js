@@ -371,4 +371,10 @@ Page({
     }
     );
   },
+  onVoicePlay : function() {
+    wx.playBackgroundAudio({
+      //播放地址
+      dataUrl: this.data.wordInfo.WordDetail.VoiceURL,
+    });  
+  }
 })
