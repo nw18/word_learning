@@ -115,8 +115,8 @@ Page({
       });
       wx.playBackgroundAudio({
         //播放地址
-        dataUrl: that.data.wordInfo.WordDetail.VoiceURL,
-      })
+        dataUrl: wordInfo.WordDetail.VoiceURL,
+      });
       console.log(this.perNum);
       that.data.progressItem.progressNum = this.perNum;
       that.data.progressItem.progressPercent = this.perNum / that.data.progressItem.progressAll * 580;
@@ -245,21 +245,26 @@ Page({
     }
     that.data.index = index;
     var perNum = index + 1;
+    var wordInfo = list[index];
     that.data.progressItem.progressNum = perNum;
     that.data.progressItem.progressAll = list.length;
     that.data.progressItem.progressPercent = perNum / list.length * 580;
     that.setData({
       wordInfoList: list,
-      wordInfo: list[index],
+      wordInfo: wordInfo,
       progressItem: that.data.progressItem,
     });
+    wx.playBackgroundAudio({
+      //播放地址
+      dataUrl: wordInfo.WordDetail.VoiceURL,
+    });
     util.myrequest("SetWordLearned",{
-      WordID: list[index].ID,
+      WordID: wordInfo.ID,
       UserID: app.getUserID(),
       BookID: app.getBookID(),
       TreeID: parseInt(this.data.lid)
     },function(res) {
-      if (!list[index].IsLearned){
+      if (!wordInfo.IsLearned){
         app.setProcessChange();
       }
     });
