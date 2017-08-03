@@ -358,6 +358,9 @@ Page({
       });
       app.setCollectChange();
       that.jumpControl.continueTick(that);
+      wx.showToast({
+        title: '成功移除',
+      });
     }
     );
   },
@@ -378,6 +381,9 @@ Page({
         wordInfo: that.data.wordInfo
       });
       that.jumpControl.continueTick(that);
+      wx.showToast({
+        title: '成功收藏',
+      });
     }
     );
   },

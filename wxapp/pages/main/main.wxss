@@ -172,18 +172,18 @@
 }
 
 .book-label {
-  width: 300rpx;
+  width: 400rpx;
   height: 400rpx;
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: flex-end;
   margin-top: 10%;
-  background-color: white;
+  
 }
 
 .book-label image {
-  width: 300rpx;
+  width: 400rpx;
   height: 400rpx;
 }
 /*
