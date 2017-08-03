@@ -4,6 +4,7 @@ App({
   onLaunch: function() {
     //调用API从本地缓存中获取数据
     //创建用户UUID
+    var that = this;
     var userID = wx.getStorageSync("userID");
     if (typeof(userID)==undefined || !userID){
       userID = util.uuid();
@@ -17,6 +18,11 @@ App({
     if (typeof (learnInfo) != undefined && learnInfo) {
       this.learnInfo = learnInfo;
     }
+    util.myrequest("GetBookList", {
+      AuthID: that.authInfo.id
+    }, function (data) {
+      that.setBookList(data);
+    });  
   },
 
   getUserInfo: function(cb) {
