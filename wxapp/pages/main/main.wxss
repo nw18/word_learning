@@ -55,7 +55,6 @@
 
 .main-sum view {
   width: 33.33%;
-  height: 100%;
   display:  flex;
   flex-flow: column;
   align-items: center;
