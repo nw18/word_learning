@@ -56,25 +56,34 @@ function myrequest(name,data={},sucess=null,fail=null,complete=null) {
       success: function(obj) {
         console.debug(obj.statusCode + ":" + JSON.stringify(obj.data));
           if(obj.statusCode == 200) {
-          if(obj.data.Code == 0) {
-            if(sucess != null) {
-              sucess(obj.data.Data);
+            if(obj.data.Code == 0) {
+              if(sucess != null) {
+                sucess(obj.data.Data);
+              }
+            } else if (obj.data.Code == 1000) {
+              //重新获取Token
+              get_token({
+                name:name,
+                data:data,
+                sucess:sucess,
+                fail:fail,
+                complete:complete
+              })
+            }else {
+              if(fail != null){
+                fail(obj.data.Msg);
+              }
             }
-          } else if (obj.data.Code == 1000) {
+          } else if (obj.statusCode == 401) {
             //重新获取Token
             get_token({
-              name:name,
-              data:data,
-              sucess:sucess,
-              fail:fail,
-              complete:complete
+              name: name,
+              data: data,
+              sucess: sucess,
+              fail: fail,
+              complete: complete
             })
-          }else {
-            if(fail != null){
-              fail(obj.data.Msg);
-            }
-          }
-        }else {
+        } else {
           if (fail != null) {
             fail(obj.data);
           }
