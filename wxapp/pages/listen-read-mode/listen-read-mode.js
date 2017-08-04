@@ -37,12 +37,22 @@ Page({
     console.log('onLoad options:' + JSON.stringify(options));
     var mode = parseInt(options.mode);
     this.setData({
+      options:options,
       mode: mode,
       query: options.query,
       hasTick: mode != 3 && mode != 5,
       Classification: options.class,
     })
-    if (this.data.mode < 3) {
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    var mode = this.data.mode;
+    var options = this.data.options;
+    this.data.pv = wx.createAudioContext("playVoice");
+    if (mode < 3) {
       app.setCurrentList(null);
     }
     if (mode == 1) {
@@ -63,11 +73,12 @@ Page({
     }
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  playVoice: function(param) {
+    if(this.data.pv == undefined) {
+      return;
+    }
+    this.data.pv.setSrc(param.filePath);
+    this.data.pv.play();
   },
 
   jumpControl: {
@@ -113,9 +124,13 @@ Page({
         wordInfo: wordInfo,
         src: wordInfo.WordDetail.VoiceURL
       });
-      wx.playBackgroundAudio({
-        //播放地址
-        dataUrl: wordInfo.WordDetail.VoiceURL,
+      // wx.stopBackgroundAudio();
+      // wx.playBackgroundAudio({
+      //   //播放地址
+      //   dataUrl: wordInfo.WordDetail.VoiceURL,
+      // });
+      that.playVoice({
+        filePath: wordInfo.WordDetail.VoiceURL,
       });
       console.log(this.perNum);
       that.data.progressItem.progressNum = this.perNum;
@@ -203,7 +218,7 @@ Page({
    */
   onHide: function () {
     this.jumpControl.clearAllPending();
-    wx.stopBackgroundAudio();
+    //wx.stopBackgroundAudio();
   },
 
   /**
@@ -211,7 +226,7 @@ Page({
    */
   onUnload: function () {
     this.jumpControl.clearAllPending();
-    wx.stopBackgroundAudio();
+    //wx.stopBackgroundAudio();
   },
 
   /**
@@ -262,9 +277,13 @@ Page({
       wordInfo: wordInfo,
       progressItem: that.data.progressItem,
     });
-    wx.playBackgroundAudio({
-      //播放地址
-      dataUrl: wordInfo.WordDetail.VoiceURL,
+    // wx.stopBackgroundAudio();
+    // wx.playBackgroundAudio({
+    //   //播放地址
+    //   dataUrl: wordInfo.WordDetail.VoiceURL,
+    // });
+    this.playVoice({
+      filePath: wordInfo.WordDetail.VoiceURL,
     });
     util.myrequest("SetWordLearned",{
       WordID: wordInfo.ID,
@@ -388,9 +407,14 @@ Page({
     );
   },
   onVoicePlay : function() {
-    wx.playBackgroundAudio({
-      //播放地址
-      dataUrl: this.data.wordInfo.WordDetail.VoiceURL,
-    });  
+    var wordInfo = this.data.wordInfo;
+    // wx.stopBackgroundAudio();
+    // wx.playBackgroundAudio({
+    //   //播放地址
+    //   dataUrl: wordInfo.WordDetail.VoiceURL,
+    // });  
+    this.playVoice({
+      filePath: wordInfo.WordDetail.VoiceURL,
+    });
   }
 })

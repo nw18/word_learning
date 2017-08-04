@@ -14,6 +14,7 @@
     <view class="words-read-yibiao">
         <label>{{wordInfo.WordDetail.Phonogram}}</label>
         <image mode="aspectFit" style="width: 40rpx; height: 40rpx; " src="../../img/voice-small.png" bindtap="onVoicePlay"></image>
+        <audio id="playVoice"></audio>
     </view>
    <!--词性 -->
     <block wx:key="unique" wx:for="{{wordInfo.WordDetail.ExplainList}}" wx:for-index="idx" wx:for-item="item">
