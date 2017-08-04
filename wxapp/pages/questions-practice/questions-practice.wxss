@@ -116,40 +116,36 @@
 
 /************tian btn******************/
 .ques-btn-tian{
-
-  height: 300rpx;
+  position: relative;
   width:100%;
-  background-color:white;
+  background-color: white;
   display:flex;
   flex-direction:column;
 }
 
 .answer-view{
-  /* background-color: wheat; */
-  
+  /* background-color: wheat; */  
   font-size: 36rpx;
-  /* width: 200rpx;  */
-  height: 36rpx;
-  align-self: flex-end;
-  margin-right: 100rpx;
-  margin-top: 120rpx;
+  width: 100% - 140rpx; 
+  align-self: flex-start;
+  margin: 70rpx;
   display:flex;
   flex-direction:row; 
 }
-.answer-view-hidden{
+/* .answer-view-hidden{
   color: white;
 }
 .answer-view-show{
   color: #ffa732;
-}
+} */
 .ques-btn-tian-view{
   color: #ffa732;
   font-size: 36rpx;
   width: 200rpx; 
   height: 36rpx;
   align-self: flex-end;
-  margin-right: 80rpx;
-  margin-top: 50rpx;
+  margin: 50rpx;
+  margin-right: 70rpx;
   display:flex;
   flex-direction:row;
   justify-content: center;

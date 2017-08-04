@@ -38,8 +38,6 @@ Page({
       index: e.index,
     })
      this.loadQuesInfoList();
-
-     var article = '<p>阿福妈妈啊忙什么打城市的刷卡</p><p>啊打卡都没卡死</p><p>的撒毛孔打开</p><p><br /></p><p>阿卡大声可ad</p><p>啊都卡</p>';
      /** 
      * WxParse.wxParse(bindName , type, data, target,imagePadding) 
      * 1.bindName绑定的数据名(必填) 
@@ -48,8 +46,9 @@ Page({
      * 4.target为Page对象,一般为this(必填) 
      * 5.imagePadding为当图片自适应是左右的单一padding(默认为0,可选) 
      */
-     var that = this;
-     WxParse.wxParse('article', 'html', article, that, 5);  
+    //  var that = this;
+    //  var article = '<p>阿福妈妈啊忙什么打城市的刷卡</p><p>啊打卡都没卡死</p><p>的撒毛孔打开</p><p><br /></p><p>阿卡大声可ad</p><p>啊都卡</p>';
+    //  WxParse.wxParse('article', 'html', article, that, 5);  
   },
 
   /**
@@ -104,7 +103,7 @@ Page({
   setStudentPress: function () {
     var that = this
     util.myrequest("SetQuesLearned", {
-      BookID: app.getBookList(),
+      BookID: app.getBookID(),
       QuesID: that.data.quesInfo.ID,
       UserID: app.getUserID(),
     }, function (data) {
@@ -177,6 +176,7 @@ Page({
     this.setStudentPress();
 
     var that = this
+    var list = that.data.quesInfoList;
     that.isShowAnswer = false;
     if (that.data.index+1 == that.data.quesInfoList.length){
       wx.redirectTo({
@@ -193,6 +193,9 @@ Page({
       temp.push(WxParse.wxParse(optionHtml, 'html', optionStr, that, 5));
     }
 
+    if (list[that.data.index].AnswerContent != undefined) {
+      WxParse.wxParse('answer_content', 'html', list[that.data.index].AnswerContent, that, 5)
+    }
     that.setData({
       quesInfo: that.data.quesInfoList[that.data.index],
       option_list: temp,
@@ -240,7 +243,9 @@ Page({
         var optionHtml = "optionHtml"+i;
         temp.push(WxParse.wxParse(optionHtml, 'html', optionStr, that, 5)); 
       }
-
+      if (list[that.data.index].AnswerContent != undefined) {
+        WxParse.wxParse('answer_content', 'html', list[that.data.index].AnswerContent, that, 5)
+      }
       that.setData({
         quesInfoList: list,
         quesInfo: list[that.data.index],
