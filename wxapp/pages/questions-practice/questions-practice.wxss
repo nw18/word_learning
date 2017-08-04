@@ -84,6 +84,11 @@
   flex-flow: row;
   position: relative;
 }
+
+.label-ques view {
+  margin-left: 5rpx;
+}
+
 .sel-btn image{
   width: 39rpx; 
   height: 26rpx;

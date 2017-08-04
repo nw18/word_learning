@@ -1,75 +1,73 @@
 <view class="questions-praction">
-<import src="../com/com.wxml"/>
-<template is="progress-view" data="{{progressItem}}"></template>
-<view  class="ques-view-content">
+  <import src="../com/com.wxml" />
+  <template is="progress-view" data="{{progressItem}}"></template>
+  <view class="ques-view-content">
 
-  <view class="ques-view-title">
-    <text>真题</text>
-  </view>
-  <view class="ques-view-address">
-    <text>{{quesInfo.From}}</text>
-  </view>
-  <label id="label-content-id" class="label-content-bg">
+    <view class="ques-view-title">
+      <text>真题</text>
+    </view>
+    <view class="ques-view-address">
+      <text>{{quesInfo.From}}</text>
+    </view>
+    <label id="label-content-id" class="label-content-bg">
     <import src="../../wxParse/wxParse.wxml"/>
     <view class="label-content">
       <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
     </view> 
   </label>
-</view>
-  
-<block wx:if="{{quesInfo.Type==2||quesInfo.Type==1||quesInfo.Type==6}}">
-    <view class="ques-btn-area" >
+  </view>
+
+  <block wx:if="{{quesInfo.Type==2||quesInfo.Type==1||quesInfo.Type==6}}">
+    <view class="ques-btn-area">
       <block wx:key="unique" wx:for="{{quesInfo.OptionList}}" wx:for-index="idx" wx:for-item="item">
-            <import src="../../wxParse/wxParse.wxml"/>
-            <view  wx:if="{{item.state == 0 || !item.state}}" class="sel-btn-nor sel-btn" id="{{item.KeyName}}" bindtap="bindABtnTap"> 
-                    
-                       <view class="label-ques" id="{{item.KeyName}}" >   
-                          <text>{{item.KeyName+":\n"}}</text>
-                          <template is="wxParse" data="{{wxParseData:option_list[idx].nodes}}"/> 
-                       </view>   
-            </view>
-
-            <view wx:elif="{{item.state == 1}}" class="sel-btn-true sel-btn" id="{{item.KeyName}}"   bindtap="bindABtnTap" > 
-               <view class="label-ques" id="{{item.KeyName}}" >   
-                   <text>{{item.KeyName+":\n"}}</text>
-                   <template is="wxParse" data="{{wxParseData:option_list[idx].nodes}}"/> 
-               </view>   
-              <!-- <text  class="textMargin" style="color:#47d8b3">{{sureResultStr}}</text> -->
-            </view>
-            <view wx:else="{{item.state == 2}}" class="sel-btn-flase sel-btn" id="{{item.KeyName}}"   bindtap="bindABtnTap" > 
-                 <view class="label-ques" id="{{item.KeyName}}" >   
-                    <text>{{item.KeyName+":\n"}}</text>
-                     <template is="wxParse" data="{{wxParseData:option_list[idx].nodes}}"/> 
-                 </view>   
-                <!-- <text class="textMargin" style="color:#fd6d55">答错了</text> -->
-            </view>
-     </block>
+        <import src="../../wxParse/wxParse.wxml" />
+        <view wx:if="{{item.state == 0 || !item.state}}" class="sel-btn-nor sel-btn" id="{{item.KeyName}}" bindtap="bindABtnTap">
+          <view class="label-ques" id="{{item.KeyName}}">
+            <text>{{item.KeyName+":"}}</text>
+            <view><template is="wxParse" data="{{wxParseData:option_list[idx].nodes}}" /></view>
+          </view>
+        </view>
+        <view wx:elif="{{item.state == 1}}" class="sel-btn-true sel-btn" id="{{item.KeyName}}" bindtap="bindABtnTap">
+          <view class="label-ques" id="{{item.KeyName}}">
+            <text>{{item.KeyName+":"}}</text>
+            <view><template is="wxParse" data="{{wxParseData:option_list[idx].nodes}}" /></view>
+          </view>
+          <text class="textMargin" style="color:#47d8b3">{{sureResultStr}}</text>
+        </view>
+        <view wx:else="{{item.state == 2}}" class="sel-btn-flase sel-btn" id="{{item.KeyName}}" bindtap="bindABtnTap">
+          <view class="label-ques" id="{{item.KeyName}}">
+            <text>{{item.KeyName+":"}}</text>
+            <view><template is="wxParse" data="{{wxParseData:option_list[idx].nodes}}" /></view>
+          </view>
+          <text class="textMargin" style="color:#fd6d55">答错了</text>
+        </view>
+      </block>
     </view>
-</block>
+  </block>
 
-<block wx:elif="{{quesInfo.Type==3}}">
-    <view  class="ques-btn-tian">  
-       <block wx:if="{{answerHidden==false}}">
+  <block wx:elif="{{quesInfo.Type==3}}">
+    <view class="ques-btn-tian">
+      <block wx:if="{{answerHidden==false}}">
         <view class="answer-view">
-          <import src="../../wxParse/wxParse.wxml"/>
+          <import src="../../wxParse/wxParse.wxml" />
           <template is="wxParse" data="{{wxParseData:answer_content.nodes}}"></template>
         </view>
-       </block>
-       <block wx:if="{{answerHidden==true}}">
-        <view  class="ques-btn-tian-view"  bindtap="bindTianBtnTap" > 
+      </block>
+      <block wx:if="{{answerHidden==true}}">
+        <view class="ques-btn-tian-view" bindtap="bindTianBtnTap">
           <image mode="aspectFit" src="../../img/eye-normal.png"></image>
           <text>查看答案</text>
         </view>
-          <!-- <view   class="answer-view  answer-view-hidden">{{quesInfo.AnswerContent}}</view> -->
-       </block>
+        <!-- <view   class="answer-view  answer-view-hidden">{{quesInfo.AnswerContent}}</view> -->
+      </block>
     </view>
-</block>
-<block wx:else>
-  <view  > 未知 </view>
-</block>
+  </block>
+  <block wx:else>
+    <view> 未知 </view>
+  </block>
 
- <view class="ques-btn-next" >
+  <view class="ques-btn-next">
     <view class="ques-btn-next-view" bindtap="bindNextBtnTap">下一题</view>
- </view>
+  </view>
 
 </view>

@@ -1,2 +1,2 @@
 <!--help.wxml-->
-<text>help.wxml</text>
+<image src="/img/ad.jpg"  mode="widthFix" ></image>
