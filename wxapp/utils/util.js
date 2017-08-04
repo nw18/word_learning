@@ -176,11 +176,16 @@ function get_auth_id() {
   return auth_id[mode];
 }
 
+function fuck_token() {
+  token_value = "123456";
+}
+
 module.exports = {
   formatTime: formatTime,
   myrequest: myrequest,
   uuid: uuid,
   range: range,
   get_auth_id: get_auth_id,
-  get_token: get_token
+  get_token: get_token,
+  fuck_token: fuck_token
 }

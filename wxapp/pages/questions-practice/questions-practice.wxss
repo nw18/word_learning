@@ -83,7 +83,9 @@
 }
 .label-ques{
   width: 100%;
-  height: 1%;
+  display: flex;
+  flex-flow: row;
+  position: relative;
 }
 .sel-btn image{
   width: 39rpx; 
@@ -107,7 +109,9 @@
   justify-content: space-between; 
 }
 .textMargin{
-  margin-right: 30rpx;
+  font-size: 30rpx;
+  position: absolute;
+  right: 50rpx;
 }
 
 /************tian btn******************/

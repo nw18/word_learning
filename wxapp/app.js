@@ -6,7 +6,7 @@ App({
     //创建用户UUID
     var that = this;
     var userID = wx.getStorageSync("userID");
-    if (typeof(userID)==undefined || !userID){
+    if (typeof(userID)==undefined || !userID || userID == ''){
       userID = util.uuid();
       wx.setStorageSync("userID",userID);
     }
