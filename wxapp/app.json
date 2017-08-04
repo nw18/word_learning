@@ -2,22 +2,18 @@
   "pages": [
     "pages/main/main",
     "pages/lists/lists",
-    "pages/index/index",
     "pages/lists/collect",
-    "pages/logs/logs",
     "pages/self-evaluation/self-evaluation",
     "pages/learn-over/learn-over",
     "pages/questions-practice/questions-practice",
     "pages/listen-read-mode/listen-read-mode",
-    "pages/schedule/schedule",
-    "pages/self-evaluation-test/self-evaluation-test",
     "pages/main/help"
   ],
   "window": {
     "backgroundColor": "#f5f5f5",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#000000",
-    "navigationBarTitleText": "背单词",
+    "navigationBarTitleText": "",
     "navigationBarTextStyle": "white"
   }
 }

@@ -30,6 +30,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (e) {
+    wx.setNavigationBarTitle({
+      title: wx.getStorageSync("__list_name__") + ' 真题练习',
+    });
     this.data.lid = e.lid;
     this.setData({
       lid: e.lid,
@@ -106,10 +109,6 @@ Page({
       BookID: app.getBookID(),
       QuesID: that.data.quesInfo.ID,
       UserID: app.getUserID(),
-    }, function (data) {
-
-    }, function (err) {
-      wx.showToast(err);
     })
   },
 

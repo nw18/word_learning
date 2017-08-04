@@ -28,6 +28,9 @@ Page({
     })
   },
   onLoad: function (e) {
+    wx.setNavigationBarTitle({
+      title: wx.getStorageSync("__list_name__") + ' 学习完成',
+    });
     console.log(e.lid);
     this.setData({
       lid: e.lid,

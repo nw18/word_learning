@@ -57,6 +57,9 @@ Page({
   },
   ////////////////////////////////////////////////
   onLoad: function (e) {
+    wx.setNavigationBarTitle({
+      title: wx.getStorageSync("__list_name__") + ' 自评模式',
+    });
     console.log(e)
     var that = this;
     this.data.lid = parseInt(e.lid);

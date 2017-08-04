@@ -35,6 +35,9 @@ Page({
    */
   onLoad: function (options) {
     console.log('onLoad options:' + JSON.stringify(options));
+    wx.setNavigationBarTitle({
+      title: wx.getStorageSync("__list_name__") + ' 听读模式',
+    });
     var mode = parseInt(options.mode);
     this.setData({
       options:options,

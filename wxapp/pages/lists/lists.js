@@ -129,6 +129,7 @@ Page({
     }
     var finished = this.data.currIndex == 0 ? listItem.LearnedCount >= listItem.SumWordCount : true;
     var hasPractice = this.data.currIndex == 0 ? listItem.HasPractice : false;
+    wx.setStorageSync("__list_name__", listItem == null ? this.data.alpha_table[index] : listItem.Name);
     switch (btn_index) {
       case "0":
         wx.navigateTo({

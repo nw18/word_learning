@@ -164,8 +164,9 @@ Page({
     if (learnProcess.LearnedCount < learnProcess.SumWordCount) {
       if(!app.traceList(learnProcess,function(node) {
         if (node.LearnedCount < node.SumWordCount) {
+          wx.setStorageSync("__list_name__", node.Name);
           wx.navigateTo({
-            url: '../listen-read-mode/listen-read-mode?mode=1&lid=' + node.ID + "&index=-1&class=" + node.Class,
+            url: '../listen-read-mode/listen-read-mode?mode=' + (node.HasPractice?1:2) +'&lid=' + node.ID + "&index=-1&class=" + node.Class,
           })
           return true;
         }

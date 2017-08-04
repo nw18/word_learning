@@ -17,6 +17,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    wx.setStorageSync("__list_name__", "我的收藏");
     wx.showLoading({
       title: '加载中...',
     });
