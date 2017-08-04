@@ -1,2 +1,4 @@
 <!--help.wxml-->
-<image src="/img/ad.jpg"  mode="widthFix" ></image>
+<view class="root">
+<image src="/img/ad.jpg"   mode="widthFix" ></image>
+</view>

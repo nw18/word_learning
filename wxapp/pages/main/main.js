@@ -10,8 +10,7 @@ Page({
     showAD: false,
     bookIndex: app.findBookIndex(),
     bookList: app.getBookList(),
-    learnProcess: null,
-    bookImgs: ["/img/book1.png","/img/book2.png"]
+    learnProcess: null
   },
 
   /**

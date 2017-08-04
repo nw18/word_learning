@@ -1,5 +1,9 @@
 /* help.wxss */
+.root {
+  width: 100%;
+  min-height: 100%;
+}
 image {
-  width: 750rpx;
-  height: 1000rpx;
+  width: 100%;
+  min-height: 100%;
 }
