@@ -1,9 +1,60 @@
+
 /* help.wxss */
-.root {
-  width: 100%;
-  min-height: 100%;
-}
+
 image {
+  width: 750rpx;
+  height: 1000rpx;
+   z-index: -100;
+}
+.help{
+
+    height: 100%;
+    width:100%;
+    margin-top: 0rpx;
+    background-color:#f5f5f5;
+    /*display:flex;*/
+    position: relative;
+    /*flex-direction:row;*/
+}
+
+.btnleft{
+  width: 375rpx;
+  height: 100rpx;
+  left: 0rpx;
+  top: 2120rpx;
+  background-color: #6cc;
+  z-index: 100;
+  position: absolute;
+}
+
+.btnright{
+  width: 375rpx;
+  height: 100rpx;
+  left: 375rpx;
+  top: 2120rpx;
+  background-color: #6cc;
+  z-index: 100;
+  position: absolute;
+}
+
+.videoView{
+
+  width: 690rpx;
+  height: 390rpx;
+  left: 30rpx;
+  top: 740rpx;
+  background-color: #6cc;
+  z-index: 100;
+  position: absolute;
+  display:flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content: center;
+
+}
+#myVideo{
+
   width: 100%;
-  min-height: 100%;
+  height:  100%;
+
 }

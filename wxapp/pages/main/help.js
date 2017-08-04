@@ -6,7 +6,12 @@ Page({
    */
   data: {
   },
-
+  btnleftClick: function (options) {
+    console.log("btnleftClick");
+  },
+  btnrightClick: function (options) {
+    console.log("btnrightClick");
+  },
   /**
    * 生命周期函数--监听页面加载
    */
