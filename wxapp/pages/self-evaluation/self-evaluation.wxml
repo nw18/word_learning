@@ -11,4 +11,7 @@
     <button  id="self-btn-left" bindtap="bindTrueBtnTap" >会</button>
     <button id="self-btn-right" bindtap="bindFalseBtnTap" >不会</button>
   </view>
+
+  <audio id="playVoice" bindended="voiceFinshEvent" ></audio>
+
 </view>

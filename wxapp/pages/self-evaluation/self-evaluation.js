@@ -6,40 +6,47 @@ var util = require('../../utils/util.js');
 var app = getApp();
 Page({
   isKnow:false,
+  isFirst:true,
   data: {
     lid:12345,//外部传入的
     mode: 0,//外部传入的
     query: "",//外部传入的
     index: 0,//外部传入的
     wordInfoList:[],
-    wordInfo:{},
+    wordInfo:undefined,
     progressItem: {
       progressNum: 0,
       progressAll: 0,
       progressPercent: 0,
     },
     //src: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E06DCBDC9AB7C49FD713D632D313AC4858BACB8DDD29067D3C601481D36E62053BF8DFEAF74C0A5CCFADD6471160CAF3E6A&fromtag=46',
-    picture: '../../img/voice-big.gif',
+    picture: '../../img/voice-big.png',
     userInfo: {}
   },
 
   //事件处理函数
   bindImageViewTap: function () {
     var that = this
-   
-    wx.playBackgroundAudio({
-      //播放地址
-      dataUrl: that.data.wordInfo.WordDetail.VoiceURL,
-    });
-    that.setData({
-      picture: '../../img/voice-big.gif',
-    });
+    if (that.data.wordInfo.WordDetail.VoiceURL){
+
+      that.playVoice({
+        filePath: that.data.wordInfo.WordDetail.VoiceURL,
+      });
+      that.setData({
+        picture: '../../img/voice-big.gif',
+      });
+    }
+
   },
   //点击了会
   bindTrueBtnTap: function () {
     // console.log("点击了会");
     var that = this
-    knowBtnTap(this);
+    setTimeout(function () {
+      knowBtnTap(that);
+    }, 400);
+
+    // knowBtnTap(this);
   },
   //点击了不会
   bindFalseBtnTap: function () {
@@ -56,15 +63,13 @@ Page({
     this.data.mode = parseInt(e.mode);
     this.data.index = parseInt(e.index);
     this.data.query = e.query;
-    this.loadWordInfoList();
+ 
     this.setData({});
     if(this.data.mode < 3) {
       app.setCurrentList(null);
     }
     wx.onBackgroundAudioStop(function () {
-      that.setData({
-        picture: '../../img/voice-big.png',
-      });
+
       console.log('onBackgroundAudioStop')
     })
   },
@@ -73,18 +78,32 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    var that = this
-    wx.playBackgroundAudio({
-      //播放地址
-      dataUrl: that.data.wordInfo.WordDetail.VoiceURL,
-    })
+      
+  },
+  playVoice: function (param) {
+    if (this.data.pv == undefined) {
+      return;
+    }
+    this.data.pv.setSrc(param.filePath);
+    this.data.pv.play();
+  },
+  voiceFinshEvent: function () {
+    this.setData({
+      picture: '../../img/voice-big.png',
+    });
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log("--------onShow")
+    
+    if(this.isFirst){
+      this.data.pv = wx.createAudioContext("playVoice");
+      this.isFirst = false;
+      this.loadWordInfoList();
+    }
+
     if (this.isKnow==true){
       this.isKnow =false;
 
@@ -92,7 +111,6 @@ Page({
       setTimeout(function () {
         knowBtnTap(that);
       }, 400);
-    
     }
   },
 
@@ -152,8 +170,13 @@ Page({
         wordInfoList: list,
         wordInfo: list[that.data.index],
         progressItem: that.data.progressItem,
+        picture: '../../img/voice-big.gif',
       });
       app.setCurrentList(list);
+
+      that.playVoice({
+        filePath: list[that.data.index].WordDetail.VoiceURL,
+      });
     };
     if(app.getCurrentList() != null) {
       callBack(app.getCurrentList());
@@ -196,9 +219,10 @@ function knowBtnTap(e){
     picture: '../../img/voice-big.gif',
   })
 
-  wx.playBackgroundAudio({
-    //播放地址
-    dataUrl: that.data.wordInfo.WordDetail.VoiceURL,
+  console.log("knowBtnTap:" + that.data.wordInfo.WordDetail.VoiceURL);
+
+  that.playVoice({
+    filePath: that.data.wordInfo.WordDetail.VoiceURL,
   });
 }
 
