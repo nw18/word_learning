@@ -46,6 +46,7 @@
   height: 50rpx;
   position: absolute;
   right: 0rpx;
+  top: 20rpx;
 }
 /***********************音标*********************************/
 .words-read-yibiao{
@@ -66,6 +67,9 @@
   text-align: center;
 }
 .words-read-yibiao image{
+  width: 50rpx;
+  height: 50rpx;
+  padding: 5rpx;
   margin-left: 30rpx;
 }
 /***********************词性*********************************/

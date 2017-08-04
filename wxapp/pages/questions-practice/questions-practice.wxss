@@ -59,9 +59,7 @@
 } */
 /************select btn******************/
 .ques-btn-area{
-
   /*height: 600rpx;*/
-  height: 10%;
   width:100%;
   padding-bottom: 100rpx;
   background-color:white;
@@ -73,7 +71,6 @@
   margin-top: 40rpx;
   margin-left: 70rpx;
   width: 600rpx;
-  height: 8%;
   padding: 20rpx; 
   border-radius: 11rpx; 
   display:flex;

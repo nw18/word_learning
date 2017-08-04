@@ -127,22 +127,22 @@ Page({
     if(query != '') {
       query = '&query=' + query;
     }
+    var finished = this.data.currIndex == 0 ? listItem.LearnedCount >= listItem.SumWordCount : true;
+    var hasPractice = this.data.currIndex == 0 ? listItem.HasPractice : false;
     switch (btn_index) {
       case "0":
-        var finished = this.data.currIndex == 0 ? listItem.LearnedCount >= listItem.SumWordCount : true;
-        var hasPractice = this.data.currIndex == 0 ? listItem.HasPractice : false;
         wx.navigateTo({
           url: '../listen-read-mode/listen-read-mode?mode=' + (hasPractice ? 1 : 2) + '&lid=' + id + (finished ?'&index=0':'&index=-1') + "&class=" + className + query 
         })
         break;
       case "1":
         wx.navigateTo({
-          url: '../self-evaluation/self-evaluation?mode=2&lid=' + id + '&index=0' + "&class=" + className + query
+          url: '../self-evaluation/self-evaluation?mode=' + (hasPractice ? 1 : 2) + '&lid=' + id + '&index=0' + "&class=" + className + query
         })
         break;
       case "2":
         wx.navigateTo({
-          url: '../questions-practice/questions-practice?mode=2&lid=' + id + '&index=0' + "&class=" + className + query
+          url: '../questions-practice/questions-practice?mode=' + (hasPractice ? 1 : 2) + '&lid=' + id + '&index=0' + "&class=" + className + query
         })
         break;
 
