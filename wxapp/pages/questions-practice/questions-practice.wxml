@@ -32,14 +32,16 @@
             <text>{{item.KeyName+":"}}</text>
             <view><template is="wxParse" data="{{wxParseData:option_list[idx].nodes}}" /></view>
           </view>
-          <text class="textMargin" style="color:#47d8b3">{{sureResultStr}}</text>
+          <image class="textMargin" mode="scaleToFill" src="/img/icon-right.png"></image>
+          <!-- <text class="textMargin" style="color:#47d8b3">{{sureResultStr}}</text> -->
         </view>
         <view wx:else="{{item.state == 2}}" class="sel-btn-flase sel-btn" id="{{item.KeyName}}" bindtap="bindABtnTap">
           <view class="label-ques" id="{{item.KeyName}}">
             <text>{{item.KeyName+":"}}</text>
             <view><template is="wxParse" data="{{wxParseData:option_list[idx].nodes}}" /></view>
           </view>
-          <text class="textMargin" style="color:#fd6d55">答错了</text>
+          <image class="textMargin" mode="scaleToFill" src="/img/icon-wrong.png"></image>
+          <!-- <text class="textMargin" style="color:#fd6d55">答错了</text> -->
         </view>
       </block>
     </view>

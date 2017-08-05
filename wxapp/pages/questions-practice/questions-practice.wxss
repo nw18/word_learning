@@ -70,7 +70,8 @@
 .sel-btn{
   margin-top: 40rpx;
   margin-left: 70rpx;
-  width: 600rpx;
+  margin-right: 70rpx;
+  width: 100% -140rpx;
   padding: 20rpx; 
   border-radius: 11rpx; 
   display:flex;
@@ -89,12 +90,6 @@
   margin-left: 5rpx;
 }
 
-.sel-btn image{
-  width: 39rpx; 
-  height: 26rpx;
-  margin-top: 3rpx;
-  margin-left: 100rpx; 
-}
 .sel-btn-nor{
   box-shadow:-2rpx -2rpx 6rpx 6rpx whitesmoke inset;
 }
@@ -111,9 +106,12 @@
   justify-content: space-between; 
 }
 .textMargin{
-  font-size: 30rpx;
   position: absolute;
-  right: 50rpx;
+  right: 47rpx;
+  z-index: 999;
+  width: 46rpx;
+  height: 46rpx;
+  margin-top: -46rpx;
 }
 
 /************tian btn******************/
