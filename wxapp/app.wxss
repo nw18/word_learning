@@ -57,10 +57,10 @@ page {
     border-radius: 11rpx;
 }
 .view-progress-circle{
-    height: 35rpx;
-    width:35rpx;
-    margin-left: -9rpx; 
-    margin-top: -9rpx; 
+    height: 48rpx;
+    width:48rpx;
+    margin-left: -12rpx; 
+    margin-top: -12rpx; 
     background-color:#ffa732;
     border: 1px solid #ffffff;
     border-radius: 50%;
