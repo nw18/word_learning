@@ -51,10 +51,39 @@ Page({
   //点击了不会
   bindFalseBtnTap: function () {
     var that = this
-    wx.navigateTo({
-      url: '../listen-read-mode/listen-read-mode?mode=3&lid=' + that.data.lid + '&index=' + that.data.index
-    })
+    that.addCollection();
+
   },
+  addCollection: function () {
+    var that = this;
+
+    if (that.data.wordInfo.IsCollected==false){
+      util.myrequest("AddCollection", {
+        UserID: app.getUserID(),
+        BookID: app.getBookID(),
+        WordID: that.data.wordInfo.ID
+      }, function (res) {
+
+        that.data.wordInfoList[that.data.index].IsCollected = true
+        app.setCurrentList(that.data.wordInfoList);
+
+        setTimeout(function () {
+          wx.showToast({
+            title: '成功收藏',
+          });
+          wx.navigateTo({
+            url: '../listen-read-mode/listen-read-mode?mode=3&lid=' + that.data.lid + '&index=' + that.data.index
+          })
+        }, 400);
+      }
+      );
+    }else{
+      wx.navigateTo({
+        url: '../listen-read-mode/listen-read-mode?mode=3&lid=' + that.data.lid + '&index=' + that.data.index
+      })  
+    }
+  },
+
   ////////////////////////////////////////////////
   onLoad: function (e) {
     wx.setNavigationBarTitle({
