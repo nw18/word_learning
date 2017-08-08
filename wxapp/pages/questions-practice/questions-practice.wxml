@@ -64,12 +64,12 @@
       </block>
     </view>
   </block>
-  <block wx:else>
+  <block wx:elif="{{quesInfo.Type!=undefined}}">
     <view> 未知 </view>
   </block>
 
   <view class="ques-btn-next">
-    <view class="ques-btn-next-view" bindtap="bindNextBtnTap">下一题</view>
+    <view class="ques-btn-next-view" bindtap="bindNextBtnTap" hover-class="button-hover">下一题</view>
   </view>
 
 </view>

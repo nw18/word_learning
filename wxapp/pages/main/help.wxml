@@ -1,20 +1,18 @@
 <!--help.wxml-->
 
 <view class="help">
-
-  <image src="/img/ad.jpg"  mode="widthFix" ></image>
-   <view class="btnleft" bindtap="btnleftClick" ></view>
-   <view class="btnright" bindtap="btnrightClick" ></view>
-    <view class="videoView">
-               <video poster="http://images2015.cnblogs.com/blog/901564/201707/901564-20170721114724490-2053876525.png" id="myVideo" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls></video>
-    </view>
-
-
-       <!--视频DEMO代码-->
-    <!-- <view class="ords-read-video-logo">视频讲解</view>
+  <image src="/img/ad.jpg" mode="widthFix"></image>
+  <!--<view class="btnleft" bindtap="btnleftClick"></view>
+  <view class="btnright" bindtap="btnrightClick"></view> -->
+  <!-- 视频代码 -->
+  <!-- <view class="videoView">
+    <video poster="http://images2015.cnblogs.com/blog/901564/201707/901564-20170721114724490-2053876525.png" id="myVideo" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400"
+      danmu-list="{{danmuList}}" enable-danmu danmu-btn controls></video>
+  </view> -->
+  <!--视频DEMO代码-->
+  <!-- <view class="ords-read-video-logo">视频讲解</view>
     <view class="ords-read-video">
        <video id="myVideo" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls></video>
     </view> -->
 
 </view>
-

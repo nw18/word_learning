@@ -3,7 +3,6 @@
 
 image {
   width: 750rpx;
-  height: 1000rpx;
    z-index: -100;
 }
 .help{
@@ -12,9 +11,7 @@ image {
     width:100%;
     margin-top: 0rpx;
     background-color:#f5f5f5;
-    /*display:flex;*/
     position: relative;
-    /*flex-direction:row;*/
 }
 
 .btnleft{
