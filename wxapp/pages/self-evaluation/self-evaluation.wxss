@@ -38,7 +38,7 @@
   width: 250rpx;
   height: 90rpx;
   display:flex;
-  flex-dir  ection:row;
+  flex-direction:row;
   justify-content: center;
   align-items: center;
   color: #ffa732; 
