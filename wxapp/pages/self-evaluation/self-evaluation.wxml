@@ -8,8 +8,8 @@
   </view>
 
   <view class="self-btn-area" >
-    <button  id="self-btn-left" bindtap="bindTrueBtnTap" >会</button>
-    <button id="self-btn-right" bindtap="bindFalseBtnTap" >不会</button>
+    <button bindtap="bindTrueBtnTap" hover-class="button-hover">会</button>
+    <button bindtap="bindFalseBtnTap"  hover-class="button-hover">不会</button>
   </view>
 
   <audio id="playVoice" bindended="voiceFinshEvent" ></audio>
