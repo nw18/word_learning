@@ -154,7 +154,7 @@ Page({
       this.switchHandler = -1;
     },
     continueTick: function(that) {
-      if (that.data.hasTick) {
+      if (that.data.hasTick && this.perNum <= that.data.progressItem.progressAll) {
         var jumpControl = this;
         this.tickHandler = setInterval(function () {
           jumpControl.tickCount(that);
@@ -188,6 +188,9 @@ Page({
       }
     },
     gotoNextPage: function (that) {
+      if(that.hasTick) {
+        this.perNum = 99999; //防止竞争条件，当完成收藏后，当前页面已经切换到完成页。
+      }
       switch (that.data.mode) {
         case 1://背单词列表页
         case 2://背单词首字符的方式
@@ -207,6 +210,13 @@ Page({
           // })
           wx.navigateBack();
           break;
+      }
+    },
+    onRootTouch: function(that) {
+      if (this.tickHandler != -1 || this.switchHandler != -1) {
+        this.clearAllPending();
+      }else {
+        this.continueTick(that);
       }
     }
   },
@@ -320,7 +330,7 @@ Page({
       }
       that.setWordList(list, that, index);
     };
-    
+
     util.myrequest("GetWordList", {
       ListID: options.lid,
       IsLoadExtra: true,
@@ -361,7 +371,6 @@ Page({
     }
 
   },
-
   rmCollection:function(){
     var that = this;
     wx.showLoading({
@@ -380,14 +389,11 @@ Page({
       });
       app.setCollectChange();
       that.jumpControl.continueTick(that);
-
       setTimeout(function () {
         wx.showToast({
           title: '成功移除',
         });
       }, 400);
-
-
     }
     );
   },
@@ -427,5 +433,10 @@ Page({
     this.playVoice({
       filePath: wordInfo.WordDetail.VoiceURL,
     });
+  },
+  onClickBottomest: function(e) {
+    if(this.data.hasTick){
+      this.jumpControl.onRootTouch(this);
+    }
   }
 })

@@ -6,7 +6,7 @@
   </view>
 
   <view class="title">
-    恭喜你今天的单词学习完了。
+    恭喜你，今天的单词学习完了！
   </view>
 
   <button class="item1" bindtap="listenAgain">

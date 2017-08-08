@@ -1,47 +1,45 @@
+<view class="bottomest" bindtouchstart="onClickBottomest">
 <view class="listen_read_mode">
-
-<import src="../com/com.wxml"/>
-<template is="progress-view" data="{{progressItem}}"></template> 
-
+  <import src="../com/com.wxml" />
+  <template is="progress-view" data="{{progressItem}}"></template>
   <!--单词描述-->
   <view class="words-read">
-    <view class="words-read-head" >
+    <view class="words-read-head">
       <text>{{wordInfo.Spell}}</text>
       <label wx:if="{{Classification}}">{{Classification}}</label>
-      <image mode="scaleToFill" bindtap="collection" src="{{wordInfo.IsCollected?'../../img/icon-collect-on.png':'../../img/icon-collect-off.png'}}" ></image>
+      <image id="1" mode="scaleToFill" bindtap="collection" src="{{wordInfo.IsCollected?'../../img/icon-collect-on.png':'../../img/icon-collect-off.png'}}"></image>
     </view>
     <!--音标-->
     <view class="words-read-yibiao">
-        <label>{{wordInfo.WordDetail.Phonogram}}</label>
-        <image mode="scaleToFill" src="../../img/voice-small.png" bindtap="onVoicePlay"></image>
-        <audio id="playVoice"></audio>
+      <label>{{wordInfo.WordDetail.Phonogram}}</label>
+      <image id="2" mode="scaleToFill" src="../../img/voice-small.png" bindtap="onVoicePlay"></image>
+      <audio id="playVoice"></audio>
     </view>
-   <!--词性 -->
+    <!--词性 -->
     <block wx:key="unique" wx:for="{{wordInfo.WordDetail.ExplainList}}" wx:for-index="idx" wx:for-item="item">
-        <view class="words-read-cixing"> {{item.WordType+"."+item.WordExplain+"\n"}}</view>
+      <view class="words-read-cixing"> {{item.WordType+""+item.WordExplain+"\n"}}</view>
     </block>
     <!--例句-->
-    
-     <block wx:key="unique" wx:for="{{wordInfo.ExtraList}}" wx:for-index="idx" wx:for-item="item">
-     <view class="ords-read-liju-logo">{{item.Title}}</view>
+    <block wx:key="unique" wx:for="{{wordInfo.ExtraList}}" wx:for-index="idx" wx:for-item="item">
+      <view class="ords-read-liju-logo">{{item.Title}}</view>
       <view class="ords-read-liju">
-          <text wx:if="{{item.ContentType=='text/plain'}}">{{item.Content}}</text>
-          <text wx:if="{{item.ContentType=='text/*'}}">{{item.Content}}</text>
-          <video id="myVideo" wx:if="{{item.ContentType=='video/*'}}" src="{{item.Content}}" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls></video>
-          <video id="myVideo" wx:if="{{item.ContentType=='video/mp4'}}" src="{{item.Content}}" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls></video>
+        <text wx:if="{{item.ContentType=='text/plain'}}">{{item.Content}}</text>
+        <text wx:if="{{item.ContentType=='text/*'}}">{{item.Content}}</text>
+        <video id="myVideo" wx:if="{{item.ContentType=='video/*'}}" src="{{item.Content}}" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls></video>
+        <video id="myVideo" wx:if="{{item.ContentType=='video/mp4'}}" src="{{item.Content}}" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls></video>
       </view>
-     </block>
+    </block>
     <!--视频DEMO代码-->
     <!-- <view class="ords-read-video-logo">视频讲解</view>
     <view class="ords-read-video">
        <video id="myVideo" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls></video>
     </view> -->
   </view>
-  <!--下一个单词-->
-  <view class="auto-next">
-    <view  bindtap="nextClick" class="auto-next-button" hover-class="button-hover">
-        <label wx:if="{{hasTick}}">{{time}}s</label><label>下一个单词</label>
-    </view>
+</view>
+<!--下一个单词-->
+<view class="auto-next">
+  <view id="3" bindtap="nextClick" class="auto-next-button" hover-class="button-hover">
+    <label id="4" wx:if="{{hasTick}}">{{time}}s</label><label id="5">下一个单词</label>
   </view>
 </view>
-  
+</view>
