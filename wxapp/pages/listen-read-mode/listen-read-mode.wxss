@@ -1,4 +1,7 @@
 /* pages/listen_read_mode/listen_read_mode.wxss */
+text {
+  word-break: normal;
+}
 .listen_read_mode{
     height: 100%;
     width:100%;
@@ -74,11 +77,9 @@
 }
 /***********************词性*********************************/
 .words-read-cixing{
-
   color: #666666;
   margin-top: 20rpx;
   font-size: 26rpx;
-  height:40rpx;
   width:100%;
 }
 /***********************例句*********************************/
