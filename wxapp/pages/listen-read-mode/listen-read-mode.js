@@ -212,13 +212,13 @@ Page({
           break;
       }
     },
-    onRootTouch: function(that) {
+    onRootTouch: function(that,resumeable) {
       if (this.switchhandler != -1) {
         return;
       }
       if (this.tickHandler != -1 || this.switchHandler != -1) {
         this.clearAllPending();
-      }else {
+      }else if(resumeable){
         this.continueTick(that);
       }
     }
@@ -443,8 +443,8 @@ Page({
     });
   },
   onClickBottomest: function(e) {
-    if(this.data.hasTick && e.target.id != "1"){
-      this.jumpControl.onRootTouch(this);
+    if(this.data.hasTick){
+      this.jumpControl.onRootTouch(this, e.target.id == "");
     }
   }
 })
