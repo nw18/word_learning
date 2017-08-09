@@ -3,7 +3,7 @@
 
 image {
   width: 750rpx;
-  height: fit-content;
+  height: 2222rpx;
   z-index: -100;
 }
 .help{
@@ -36,11 +36,10 @@ image {
 }
 
 .videoView{
-
   width: 690rpx;
-  height: 385rpx;
+  height: 390rpx;
   left: 30rpx;
-  top: 674rpx;
+  top: 740rpx;
   background-color: #6cc;
   z-index: 100;
   position: absolute;
@@ -48,13 +47,11 @@ image {
   flex-direction:row;
   align-items: center;
   justify-content: center;
-
 }
-#myVideo{
 
+#myVideo{
   width: 100%;
   height:  100%;
-
 }
 
 text{
