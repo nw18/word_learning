@@ -44,9 +44,15 @@ Page({
   },
   btnleftClick: function (options) {
     console.log("btnleftClick");
+    wx.navigateTo({
+      url: '../commod-detail/commod-detail'
+    })
   },
   btnrightClick: function (options) {
     console.log("btnrightClick");
+    wx.navigateTo({
+      url: '../commod-detail/commod-detail'
+    })
   },
   /**
    * 生命周期函数--监听页面加载

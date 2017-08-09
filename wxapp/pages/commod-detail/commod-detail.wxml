@@ -1,0 +1,28 @@
+<!--commod-detail.wxml-->
+<view class="commod-detail">
+  <view class="commodImage">
+    <image mode="center" src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2362915585,2119928579&fm=58"></image>
+  </view>
+  <view class="commodLine"></view>
+  <view class="commodName">
+    <view class="nameDetail">
+      <text>商品名称商品名称商品名称商品名称商品名称商品名称商品名称商品名称</text>
+    </view>
+    <view class="priceDetail">
+           <text class="priceText">¥100</text> 
+          <text class="priceNum">已售11123</text>
+    </view>
+  </view>
+  <view class="commodDetail">
+       <text>详情好烦人发货润详情好烦人发货润详情好好烦人发货润好烦人发货润好烦人发货润好烦人发货润好烦人发货润好烦人发货润烦人发货润详情好烦人发货润详情好烦人发货润详情好烦人发货润详情好烦人发货润详情好烦人发货润详情好烦人发货润详情好烦人发货润</text>
+  </view>
+</view>
+
+<view class="commodBuyView">
+    <view class="buyViewTalk">咨询</view>
+    <view class="buyViewLine"></view>
+    <view class="buyViewColl">收藏</view>
+    <view bindtap="payClick" class="buyViewAdd">立即支付</view>
+</view>
+
+

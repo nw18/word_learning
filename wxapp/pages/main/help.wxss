@@ -20,7 +20,7 @@ image {
   height: 100rpx;
   left: 0rpx;
   top: 2120rpx;
-  background-color: #6cc;
+  /* background-color: #6cc; */
   z-index: 100;
   position: absolute;
 }
@@ -30,7 +30,7 @@ image {
   height: 100rpx;
   left: 375rpx;
   top: 2120rpx;
-  background-color: #6cc;
+  /* background-color: #6cc; */
   z-index: 100;
   position: absolute;
 }

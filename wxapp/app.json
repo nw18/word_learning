@@ -1,13 +1,14 @@
 {
   "pages": [
     "pages/main/main",
-    "pages/lists/lists",
+    "pages/lists/lists",  
     "pages/lists/collect",
     "pages/self-evaluation/self-evaluation",
     "pages/learn-over/learn-over",
     "pages/questions-practice/questions-practice",
     "pages/listen-read-mode/listen-read-mode",
-    "pages/main/help"
+    "pages/main/help",
+    "pages/commod-detail/commod-detail"
   ],
   "window": {
     "backgroundColor": "#f5f5f5",
