@@ -39,7 +39,7 @@
 <!--下一个单词-->
 <view class="auto-next">
   <view id="3" bindtap="nextClick" class="auto-next-button" hover-class="button-hover">
-    <label id="4" wx:if="{{hasTick}}">{{time}}s</label><label id="5">下一个单词</label>
+    <label id="4" wx:if="{{hasTick}}">({{time}}s)</label><label id="5">下一个单词</label>
   </view>
 </view>
 </view>
