@@ -3,7 +3,8 @@
 
 image {
   width: 750rpx;
-   z-index: -100;
+  height: fit-content;
+  z-index: -100;
 }
 .help{
 
@@ -37,9 +38,9 @@ image {
 .videoView{
 
   width: 690rpx;
-  height: 390rpx;
+  height: 385rpx;
   left: 30rpx;
-  top: 740rpx;
+  top: 674rpx;
   background-color: #6cc;
   z-index: 100;
   position: absolute;
@@ -54,4 +55,61 @@ image {
   width: 100%;
   height:  100%;
 
+}
+
+text{
+  word-break: break-all;
+}
+
+.type1 {
+  background-color: white;
+  padding: 80rpx 70rpx 80rpx 70rpx;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.type1 .title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.type1 .content {
+  margin-top: 30rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.type2 {
+  margin-top: 30rpx;
+  width: 100% - 60rpx;
+  padding: 30rpx;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.type3 {
+  margin: 30rpx;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+  background-color: white;
+  display: flex;
+  flex-flow: column;
+  align-content: flex-start;
+}
+
+.type3 .que{
+  font-size: 30rpx;
+  color: #333;
+  font-weight: 400;
+}
+
+.type3 .ans{
+  margin-top: 30rpx;
+  font-size: 30rpx;
+  color: #999;
 }
