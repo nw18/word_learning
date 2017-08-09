@@ -76,7 +76,7 @@ text{
 }
 
 .type1 .content {
-  margin-top: 30rpx;
+  margin-top: 60rpx;
   font-size: 30rpx;
   color: #333;
 }
