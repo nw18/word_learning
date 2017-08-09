@@ -17,8 +17,8 @@
 
 .self-view-video-avatar {
   margin-top: 190rpx;
-  width: 173rpx;
-  height: 159rpx;
+  width: 221rpx;
+  height: 221rpx;
   background-color: white;
   align-items: center;
 }
