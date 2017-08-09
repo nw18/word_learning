@@ -48,8 +48,8 @@ text {
 }
 
 .words-read-head image{
-  width: 50rpx;
-  height: 50rpx;
+  width: 60rpx;
+  height: 60rpx;
   position: absolute;
   right: 0rpx;
   top: 20rpx;

@@ -153,6 +153,7 @@ App({
         if (callback(node)) {
           return true;
         }
+        console.debug("SumWordCount:" + node.SumWordCount + " LearnedCount:" + node.LearnedCount);
         if (node.LearnedCount > 0) { //未完成累加
           TodayToLearnCount += node.SumWordCount - node.LearnedCount;
         }

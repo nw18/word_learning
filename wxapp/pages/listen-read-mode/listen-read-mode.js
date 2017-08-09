@@ -109,7 +109,8 @@ Page({
         var jumpControl = this;
         this.switchhandler = setTimeout(function () {
           jumpControl.gotoNextQues(that);
-        }, 200, that);
+          jumpControl.switchhandler = -1;
+        }, 200);
       }
       that.setData({
         time: this.preTime > 0 ? --this.preTime : 0
@@ -151,7 +152,6 @@ Page({
           app.setProcessChange();
         }
       });
-      this.switchHandler = -1;
     },
     continueTick: function(that) {
       if (that.data.hasTick && this.perNum <= that.data.progressItem.progressAll) {
@@ -213,6 +213,9 @@ Page({
       }
     },
     onRootTouch: function(that) {
+      if (this.switchhandler != -1) {
+        return;
+      }
       if (this.tickHandler != -1 || this.switchHandler != -1) {
         this.clearAllPending();
       }else {
@@ -377,23 +380,26 @@ Page({
       title: '加载中',
       mask: true,
     })
-    this.jumpControl.clearAllPending();
+    var pdid = this.data.wordInfo.ID
+    //this.jumpControl.clearAllPending();
     util.myrequest("RmvCollection", {
       UserID: app.getUserID(),
       BookID: app.getBookID(),
       WordID: this.data.wordInfo.ID
     }, function (res) {
-      that.data.wordInfo.IsCollected = false;
-      that.setData({
-        wordInfo: that.data.wordInfo
-      });
-      app.setCollectChange();
-      that.jumpControl.continueTick(that);
+      if(pdid == that.data.wordInfo.ID) {
+        that.data.wordInfo.IsCollected = false;
+        that.setData({
+          wordInfo: that.data.wordInfo
+        });
+        app.setCollectChange();
+      }
+      //that.jumpControl.continueTick(that);
       setTimeout(function () {
         wx.showToast({
           title: '成功移除',
         });
-      }, 400);
+      },1)
     }
     );
   },
@@ -403,23 +409,25 @@ Page({
       title: '加载中',
       mask: true
     });
-    this.jumpControl.clearAllPending();
+    var pdid = this.data.wordInfo.ID
+    //this.jumpControl.clearAllPending();
     util.myrequest("AddCollection", {
       UserID: app.getUserID(),
       BookID: app.getBookID(),
       WordID: this.data.wordInfo.ID
     }, function (res) {
-      that.data.wordInfo.IsCollected = true;
-      that.setData({
-        wordInfo: that.data.wordInfo
-      });
-      that.jumpControl.continueTick(that);
-
+      if (pdid == that.data.wordInfo.ID) {
+        that.data.wordInfo.IsCollected = true;
+        that.setData({
+          wordInfo: that.data.wordInfo
+        });
+      }
+      //that.jumpControl.continueTick(that);
       setTimeout(function () {
         wx.showToast({
           title: '成功收藏',
         });
-      }, 400);
+      }, 1)
     }
     );
   },
@@ -435,7 +443,7 @@ Page({
     });
   },
   onClickBottomest: function(e) {
-    if(this.data.hasTick){
+    if(this.data.hasTick && e.target.id != "1"){
       this.jumpControl.onRootTouch(this);
     }
   }
