@@ -1,17 +1,17 @@
 <view class="self-evaluation">
 
-<import src="../com/com.wxml"/>
-<template is="progress-view" data="{{progressItem}}"></template> 
+  <import src="../com/com.wxml" />
+  <template is="progress-view" data="{{progressItem}}"></template>
 
-  <view   class="self-view-video">
-    <image mode="widthFix" bindtap="bindImageViewTap" class="self-view-video-avatar" src="{{picture}}" background-size="cover" ></image>
+  <view class="self-view-video">
+    <image mode="scaleToFill" bindtap="bindImageViewTap" class="self-view-video-avatar" src="{{picture}}" background-size="cover"></image>
   </view>
 
-  <view class="self-btn-area" >
+  <view class="self-btn-area">
     <button bindtap="bindTrueBtnTap" hover-class="button-hover">会</button>
-    <button bindtap="bindFalseBtnTap"  hover-class="button-hover">不会</button>
+    <button bindtap="bindFalseBtnTap" hover-class="button-hover">不会</button>
   </view>
 
-  <audio id="playVoice" bindended="voiceFinshEvent" ></audio>
+  <audio id="playVoice" bindended="voiceFinshEvent"></audio>
 
 </view>
