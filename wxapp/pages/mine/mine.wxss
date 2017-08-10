@@ -1,0 +1,175 @@
+/* mine.wxss */
+
+.mine{
+    height: 100%;
+    width:100%;
+    background-color:white;
+    display: flex;
+    flex-direction: column;
+    /* position: relative; */
+}
+.mineHeader{
+    width:100%;
+    height: 360rpx;
+    background: #6cc;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+.mineHeader1{
+    height: 220rpx;
+    width:100%;
+    background-color: yellow;
+    display: flex;
+    flex-direction: row;
+    /* align-content: center; */
+    /* justify-content: center; */
+}
+.mineHeader1 image{
+    margin-left: 30rpx;
+    margin-top: 50rpx;
+    height: 140rpx;
+    width: 140rpx;
+    border-radius: 50%;
+}
+.mineHeaderBgView{
+
+    margin-left: 30rpx;
+    margin-top: 70rpx;
+    height: 100rpx;
+    width: 340rpx;
+    background: yellowgreen;
+    display: flex;
+    flex-direction: column;
+    justify-content:  space-between ;  
+}
+.mineText{
+    color: white;
+}
+
+.mineHeaderMessage{
+
+    top: 20rpx;
+    left: 680rpx;
+    height: 50rpx;
+    width: 50rpx;
+    background-color: yellowgreen;
+    position: absolute;
+}
+
+.mineHeaderSet{
+    margin-left: 60rpx;
+    margin-top: 70rpx;
+    height: 100rpx;
+    width: 100rpx;
+    background-color: white;
+}
+
+.mineHeader2{
+    height: 140rpx;
+    width:100%;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+}
+.mineHeader2Cell{
+    height: 100%;
+    width:33.33%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 1rpx #e5e5e5 solid;
+}
+.mineHeaderText1{
+  font-size: 44rpx;
+  color: #ffa530;
+}
+
+.mineHeaderText2{
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  color: #333333;
+}
+
+
+.mineLine{
+    width:100%;
+    height: 25rpx;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    justify-content:  space-between ;  
+}
+.mineline1{
+    width:100%;
+    height: 1rpx;
+     background-color: #e5e5e5; 
+    /* background-color: red; */
+    /* margin-top: 0rpx; */
+
+}
+
+.mineline2{
+    width:100%;
+    height: 2rpx;
+     background-color: #e5e5e5; 
+    /* margin-top: 24rpx; */
+    /* background-color: blue; */
+}
+
+.mineListCell{
+    width:100%;
+    height: 100rpx;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+}
+.mineListIcon{
+
+    width:70rpx;
+    height: 70rpx;
+    margin-left: 40rpx;  
+    background-color: blue;
+}
+
+.mineListText{
+  color: #333333;
+  margin-left: 40rpx;  
+}
+
+.mineListArrow{
+
+    width:50rpx;
+    height: 50rpx;
+    margin-left: 350rpx; 
+    background-color: black; 
+}
+
+.mineList1{
+    width:100%;
+    height: 300rpx;
+    background-color: white;
+} 
+/* .mineOrder{
+
+
+} */
+.mineCoure{
+    border-top: 1rpx #e5e5e5 solid;
+    border-bottom: 1rpx #e5e5e5 solid;
+}
+/* .mineColl{
+
+  
+} */
+
+.mineList2{
+    width:100%;
+    height: 100rpx;
+}
+.mineSet{
+    border-bottom: 1rpx #e5e5e5 solid;
+}

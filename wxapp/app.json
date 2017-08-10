@@ -1,15 +1,35 @@
 {
   "pages": [
+    "pages/mine/mine",
     "pages/main/main",
-    "pages/lists/lists",  
+    "pages/lists/lists",
     "pages/lists/collect",
     "pages/self-evaluation/self-evaluation",
     "pages/learn-over/learn-over",
     "pages/questions-practice/questions-practice",
     "pages/listen-read-mode/listen-read-mode",
     "pages/main/help",
-    "pages/commod-detail/commod-detail"
+    "pages/commod-detail/commod-detail",
+    "pages/shop-car/shop-car",
+    "pages/mine/mine"
   ],
+  "tabBar": {
+    "list": [
+      {
+                "pagePath": "pages/mine/mine",
+                "text": "个人中心"
+
+      },
+      {
+        "pagePath": "pages/shop-car/shop-car",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/main/main",
+        "text": "首页"
+      }
+    ]
+  },
   "window": {
     "backgroundColor": "#f5f5f5",
     "backgroundTextStyle": "light",

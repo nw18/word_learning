@@ -1,0 +1,67 @@
+<!--mine.wxml-->
+<view class="mine">
+  <view class="mineHeader">
+    <view class="mineHeader1">
+       <image mode="widthFix" src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2362915585,2119928579&fm=58"></image>
+       <view class="mineHeaderBgView">
+              <text class="mineText"> 姓名</text>
+              <text class="mineText"> 18232531326</text>  
+       </view>
+       <view class="mineHeaderSet"></view>
+        
+    </view>
+    <view class="mineHeader2">
+        <view class=" mineHeader2Cell">
+          <text class="mineHeaderText1">¥50</text>
+          <text class="mineHeaderText2">易币</text>
+        </view>
+
+        <view class=" mineHeader2Cell">
+          <text class="mineHeaderText1">150张</text>
+          <text class="mineHeaderText2">优惠卷</text>
+        </view>
+
+        <view class=" mineHeader2Cell">
+          <text class="mineHeaderText1">50</text>
+          <text class="mineHeaderText2">积分</text>
+        </view>
+    </view>
+  </view>
+
+  <view class="mineLine">
+    <view class="mineline1"></view>
+    <view class="mineline2"></view>
+  </view>
+
+  <view class="mineList1">
+       <view bindtap="mineOrderClick" class="mineOrder mineListCell">
+          <view class="mineListIcon"></view>
+          <text class="mineListText" > 我的订单</text>
+          <view class="mineListArrow"></view>
+      </view> 
+      <view bindtap="mineCoureClick" class="mineCoure mineListCell">
+          <view class="mineListIcon"></view>
+          <text class="mineListText"> 我的课程</text>
+          <view class="mineListArrow"></view>
+     </view>
+      <view bindtap="mineCollClick" class="mineColl mineListCell">
+          <view class="mineListIcon"></view>
+          <text class="mineListText"> 我的收藏</text>
+          <view class="mineListArrow"></view>
+      </view>
+  </view>
+
+  <view class="mineLine">
+    <view class="mineline1"></view>
+    <view class="mineline2"></view>
+  </view>
+
+  <view class="mineList2">
+      <view bindtap="mineSetClick" class="mineSet mineListCell">
+          <view class="mineListIcon"></view>
+          <text class="mineListText"> 我的设置</text>
+          <view class="mineListArrow"></view>
+      </view>
+  </view>
+</view>
+ <view class="mineHeaderMessage"></view>
