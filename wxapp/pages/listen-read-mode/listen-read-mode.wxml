@@ -39,7 +39,9 @@
 <!--下一个单词-->
 <view class="auto-next">
   <view id="3" bindtap="nextClick" class="auto-next-button" hover-class="button-hover">
-    <label id="4" wx:if="{{hasTick}}">({{time}}s)</label><label id="5">下一个单词</label>
+    <label id="4" wx:if="{{hasTick}}">({{time}}秒)</label><label id="5">{{mode!= 3 && index >= wordInfoList.length - 1 && wordInfoList.length != 0 ? '完成学习':'下一个单词'}}</label>
   </view>
+  <navigator url="../listen-read-mode/listen-read-mode?mode=4&index=0&lid=-1" redirect="true" wx:if="{{mode>=4 && index >= wordInfoList.length - 1 && wordInfoList.length != 0}}" class="auto-next-button" hover-class="button-hover">再听一遍</navigator>
+  <navigator url="../self-evaluation/self-evaluation?mode=4&index=0&lid=-1" redirect="true" wx:if="{{mode>=4 && index >= wordInfoList.length - 1 && wordInfoList.length != 0}}" class="auto-next-button" hover-class="button-hover">测试一下</navigator>
 </view>
 </view>

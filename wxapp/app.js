@@ -55,7 +55,6 @@ App({
   learnInfo: {
     bookID: -1, //当前学习的BookID
     bookList: [ // 当前老师的著作列表
-
     ]
   },
   changeMark: [

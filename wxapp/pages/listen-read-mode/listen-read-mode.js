@@ -126,6 +126,7 @@ Page({
       that.setData({
         time: this.preTime,
         wordInfo: wordInfo,
+        index: that.data.index,
         src: wordInfo.WordDetail.VoiceURL
       });
       // wx.stopBackgroundAudio();
@@ -291,6 +292,7 @@ Page({
     that.setData({
       wordInfoList: list,
       wordInfo: wordInfo,
+      index: that.data.index,
       progressItem: that.data.progressItem,
     });
     // wx.stopBackgroundAudio();

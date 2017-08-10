@@ -158,6 +158,9 @@ text {
   background-color:#ffa732;
   border-radius: 10rpx;
 }
+.auto-next navigator {
+  margin-top: 20rpx;
+}
 
 .bottomest {
   display: block;
