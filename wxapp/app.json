@@ -11,14 +11,17 @@
     "pages/main/help",
     "pages/commod-detail/commod-detail",
     "pages/shop-car/shop-car",
-    "pages/mine/mine"
+    "pages/mine/mine",
+    "pages/mine/mine-coll/mine-coll",
+    "pages/mine/mine-coure/mine-coure",
+    "pages/mine/mine-order/mine-order",
+    "pages/mine/mine-set/mine-set"
   ],
   "tabBar": {
     "list": [
       {
-                "pagePath": "pages/mine/mine",
-                "text": "个人中心"
-
+        "pagePath": "pages/mine/mine",
+        "text": "个人中心"
       },
       {
         "pagePath": "pages/shop-car/shop-car",

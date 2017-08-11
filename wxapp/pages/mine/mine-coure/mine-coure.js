@@ -1,4 +1,4 @@
-// mine.js
+// mine-coure.js
 Page({
 
   /**
@@ -6,30 +6,6 @@ Page({
    */
   data: {
   
-  },
-  mineOrderClick: function () {
-    console.log("mineOrderClick");
-    wx.navigateTo({
-      url: './mine-coll/mine-coll',
-    })
-  },
-  mineCoureClick: function () {
-    console.log("mineCoureClick");
-    wx.navigateTo({
-      url: './mine-coure/mine-coure',
-    })
-  },
-  mineCollClick: function () {
-    console.log("mineCollClick");
-    wx.navigateTo({
-      url: './mine-coll/mine-coll',
-    })
-  },
-  mineSetClick: function () {
-    console.log("mineSetClick");
-    wx.navigateTo({
-      url: './mine-set/mine-set',
-    })
   },
 
   /**
