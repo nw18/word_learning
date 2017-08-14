@@ -5,14 +5,27 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    CourseList:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    wx.request({
+      url: 'http://userapi.yqj.cn/MockAPI/Account/Course/CourseList',
+      data: {},
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          CourseList: res.data.Data.CourseList
+        });
+      }
+    })
   },
 
   /**

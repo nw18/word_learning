@@ -1,2 +1,27 @@
 <!--mine-coure.wxml-->
-<text>mine-coure.wxml</text>
+<view class="mine-coure">
+  <view wx:for="{{CourseList}}" wx:for-index="idx" wx:for-item="itemName">
+    <view class="CourseListView">
+        <view class="CourseImage"></view>
+        <view class="CourseConnect">
+
+            <text id="CourseName">{{itemName.CourseName}}</text>
+
+            <view wx:if="{{itemName.CourseType == 1}}">
+                <text>录播课</text>
+            </view>
+            <view wx:elif="{{itemName.CourseType == 2}}"> 
+                <text id="zhibo">直播课</text>
+                <text>课程时间:{{itemName.CourseBeginTime}}</text>
+            </view>
+            <view wx:else> 
+                   <text id="lubo">录播课</text>
+            </view>
+
+            <view id="jindu">已学{{}}</view>
+
+        </view>
+    </view>
+  </view>
+</view>
+
