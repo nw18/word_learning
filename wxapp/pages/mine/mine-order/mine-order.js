@@ -5,14 +5,27 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    OrderList:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    wx.request({
+      url: 'http://shopapi.yqj.cn/MockAPI/BuyService/Order/UserOrder_List',
+      data: {},
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data.Data.OrderList)
+        that.setData({
+          OrderList: res.data.Data.OrderList
+        });
+      }
+    })
   },
 
   /**

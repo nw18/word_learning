@@ -1,2 +1,53 @@
 <!--mine-order.wxml-->
-<text>mine-order.wxml</text>
+<view class="mine-order">
+  <view wx:for="{{OrderList}}" wx:for-index="idx" wx:for-item="itemName">
+      <view class="orderListListView">
+          <view class="orderListLine"></view>
+          <view class="orderListConcent">
+              <view class="orderConcent1">
+                <text class="orderID">订单编号:{{itemName.OrderID}}</text>
+                
+                <view wx:if="{{itemName.OrderStatus == 1}}"> <text class="orderState"  style="color:#fea72f">待支付</text> </view>
+                <view wx:elif="{{itemName.OrderStatus == 2}}"> <text class="orderState"  style="color:#fea72f">待待收货</text> </view>
+                <view wx:else> <text class="orderState"  style="color:#999999">已完成</text> </view>
+              </view>
+
+              <view class="orderConcent2">
+                    <view wx:for="{{itemName.ProductList}}" wx:for-index="idx" wx:for-item="itemName">
+                      <view class="productListView">
+                          <view class="productImage" >
+                            <image mode="widthFix" src="{{itemName.ProductPic}}"></image>
+                          </view>
+
+                          <view class="productConcent">
+                              <text id="ProductName">{{itemName.ProductName}}</text>
+                              <text id="SellMoney">金额:¥{{itemName.SellMoney/100.00}}</text>
+                              <text id="ProductNum">数量: {{itemName.ProductNum}}</text>
+                          </view>
+                      </view>
+                    </view>
+              </view>
+
+              <view class="orderConcent3">
+                <text id="TotalNum">共计{{itemName.TotalNum}}个商品，合计{{itemName.TotalSellMoney/100.00}}元</text>
+
+                <view wx:if="{{itemName.OrderStatus == 1}}">
+                    <view class="OrderStatus1">
+                      <view class="OrderBtn1">取消订单</view>
+                      <view class="OrderBtn2">去支付</view>
+                    </view>
+                </view>
+                <view wx:elif="{{itemName.OrderStatus == 2}}"> 
+                    <view class="OrderBtn2">确认收货</view>
+                </view>
+                <view wx:else> 
+                </view>
+
+           
+              </view>
+          </view>
+
+      </view>
+  </view>
+
+</view>

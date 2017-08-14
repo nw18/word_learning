@@ -1,1 +1,151 @@
 /* mine-order.wxss */
+
+.mine-order{
+    height: 100%;
+    width:100%;
+    background-color:white;
+    display: flex;
+    flex-direction: column;
+}
+
+.orderListListView{
+
+    height: auto;
+    width:100%;
+    background-color:white;
+}
+
+.orderListLine{
+    height: 30rpx;
+    width:100%;
+    background-color: #f2f2f2;
+    border-top: 1rpx #e5e5e5 solid;
+    border-bottom: 1rpx #e5e5e5 solid;
+}
+
+.orderListConcent{
+    height: auto;
+    width:100%;
+}
+
+.orderConcent1{
+    height: 70rpx;
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+    justify-content: space-between;
+}
+.orderID{
+  color: #666;
+  font-size: 32rpx;
+  margin-left: 30rpx;
+}
+
+.orderState{
+  font-size: 32rpx;
+  margin-right: 30rpx;
+}
+
+.orderConcent2{
+    height: auto;
+    width:100%;
+    border-top: 1rpx #e5e5e5 solid;
+    border-bottom: 1rpx #e5e5e5 solid;
+    padding-bottom: 30rpx;
+}
+.productListView{
+    display: flex;
+    flex-direction: row;
+}
+.productImage{
+    background-color: cadetblue;
+    height: 200rpx;
+    width: 150rpx;
+    border-radius: 10rpx;
+    margin-left: 30rpx;
+    margin-top: 30rpx;
+  
+}
+
+.productImage image{
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx;
+}
+.productConcent{
+
+   height: 200rpx;
+   width: 540rpx;
+   margin-left: 30rpx;
+   margin-top: 30rpx; 
+   display: flex;
+   flex-direction: column;
+}
+
+#ProductName{
+    margin-top: 30rpx; 
+    color: #333;
+    font-size: 30rpx;
+}
+#SellMoney{
+
+    margin-top: 55rpx; 
+    color: #fd5756;
+    font-size: 30rpx;
+}
+#ProductNum{
+
+    margin-top: 20rpx; 
+    color: #999999;
+    font-size: 30rpx;
+}
+
+.orderConcent3{
+    height: 90rpx;
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+}
+#TotalNum{
+
+  color: #999999;
+  font-size: 30rpx;
+  margin-left: 30rpx;
+}
+.OrderStatus1{
+    width:100%;
+    display: flex;
+    flex-direction: row;
+}
+.OrderBtn1{
+  color: #999999;
+  font-size: 32rpx;
+
+  height: 50rpx;
+  width: 170rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center; 
+  align-items: center;
+  border-radius: 25rpx;
+  border: 1px solid #999999;
+  margin-left: 10rpx; 
+}
+
+.OrderBtn2{
+  color: white;
+  font-size: 32rpx;
+  background-color: #ffa62f;
+  height: 50rpx;
+  width: 170rpx;
+  display: flex;
+  flex-direction: row;
+   justify-content: center; 
+  align-items: center;
+   border-radius: 25rpx;
+   margin-left: 10rpx; 
+}
