@@ -5,14 +5,27 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    CollectList:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+   wx.request({
+    url: 'http://userapi.yqj.cn/MockAPI/Account/Collect/List',
+    data: {},
+    header: {
+      'content-type': 'application/json'
+    },
+    success: function (res) {
+      console.log(res.data.Data.CollectList)
+      that.setData({
+        CollectList: res.data.Data.CollectList
+      });
+    }
+  })
   },
 
   /**

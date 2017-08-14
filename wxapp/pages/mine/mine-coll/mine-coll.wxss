@@ -1,1 +1,71 @@
 /* mine-coll.wxss */
+.mine-coll{
+    height: 100%;
+    width:100%;
+    background-color:white;
+    display: flex;
+    flex-direction: column;
+}
+.collectListView{
+
+    height: 270rpx;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.collecLine{
+    background-color: #f2f2f2;
+    height: 15rpx;
+    width:100%;
+}
+
+.collecConnect{
+    background-color: white;
+    height: 255rpx;
+    width:100%;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.collecImage{
+    width:195rpx; 
+    margin: 30rpx;
+    background-color: yellow;
+}
+
+.collecTextView{
+    width:480rpx;
+    display: flex;
+    flex-direction: column;
+}
+.collecTime{
+    font-size: 20rpx;
+    color: #666;
+    margin-left: 10rpx;
+    margin-top: 30rpx;
+}
+.collecLessonName{
+    font-size: 32rpx;
+    color: #333;
+    margin-left: 10rpx;
+    margin-top: 30rpx;
+    word-break: break-all;
+    width: 460rpx;
+    
+}
+.collecBtn{
+    background-color: #fa8d1d;
+    color: white;
+    font-size: 32rpx;
+    margin-top: 20rpx;
+    margin-left: 320rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top:  12rpx;
+    padding-bottom: 12rpx;
+    border-radius: 10rpx;
+}

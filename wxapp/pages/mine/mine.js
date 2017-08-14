@@ -10,7 +10,7 @@ Page({
   mineOrderClick: function () {
     console.log("mineOrderClick");
     wx.navigateTo({
-      url: './mine-coll/mine-coll',
+      url: './mine-order/mine-order',
     })
   },
   mineCoureClick: function () {

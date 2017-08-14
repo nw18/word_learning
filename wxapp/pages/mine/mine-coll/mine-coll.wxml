@@ -1,2 +1,21 @@
 <!--mine-coll.wxml-->
-<text>mine-coll.wxml</text>
+<view class="mine-coll">
+   <view wx:for="{{CollectList}}" wx:for-index="idx" wx:for-item="itemName">
+     <view class="collectListView">
+          <view class="collecLine"></view>
+          <view class="collecConnect">
+             <view class="collecImage"></view>
+             <view class="collecTextView">
+                <text class="collecTime" >时间 2017-12-1</text>
+                <text class="collecLessonName">时课时04是的04时04是的课时04是的课时04是的课时04是的</text>
+                <view class="collecBtn">
+                    取消收藏
+                </view>
+             </view>
+          </view>
+     </view>
+  </view> 
+</view>
+
+
+
