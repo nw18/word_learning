@@ -12,10 +12,14 @@
             </view>
             <view wx:elif="{{itemName.CourseType == 2}}"> 
                 <text id="zhibo">直播课</text>
-                <text>课程时间:{{itemName.CourseBeginTime}}</text>
+                <text id="CourseTime">课程时间:{{itemName.CourseBeginTime}}至{{itemName.CourseEndTime}}</text>
             </view>
             <view wx:else> 
-                   <text id="lubo">录播课</text>
+                  <view class="CourseView">
+                    <text id="lubo">录播课</text>
+                    <text id="CourseTime">课程时间:{{itemName.CourseBeginTime}}至{{itemName.CourseEndTime}}</text>
+                  </view>
+
             </view>
 
             <view id="jindu">已学{{}}</view>

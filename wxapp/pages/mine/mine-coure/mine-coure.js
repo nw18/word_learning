@@ -1,4 +1,5 @@
 // mine-coure.js
+var util = require('../../../utils/util.js')
 Page({
 
   /**
@@ -6,6 +7,8 @@ Page({
    */
   data: {
     CourseList:[],
+    CourseBeginTime:"",
+    CourseEndTime:"",
   },
 
   /**
@@ -21,6 +24,48 @@ Page({
       },
       success: function (res) {
         console.log(res)
+
+        if (typeof String.prototype.endsWith != 'function') {
+          String.prototype.endsWith = function (str) {
+            return this.slice(-str.length) == str;
+          };
+        }
+        
+        if (typeof Number.prototype.asDate != 'function') {
+          Number.prototype.asDate = function (str) {
+            var date = new Date();
+            date.setTime(this * 1000);
+            return date;
+          };
+        }
+
+        for (var i = 0; i < res.data.Data.CourseList.length; i++) {
+          var man = res.data.Data.CourseList[i];
+          //为所有的对象添加clone方法，即给内置原型(object,Array,function)增加原型属性,该方法很强大，也很危险
+          // if (typeof Object.prototype.clone === "undefined") {
+          //   Object.prototype.clone = function () { };
+          // }
+          for (var i in man) {
+            if (man.hasOwnProperty(i)) { //filter,只输出man的私有属性
+        
+              if (i.endsWith("Time") ){
+
+              
+                var timeLong = man[i];
+                // var date = new Date();
+                // date.setTime(timeLong*1000);
+                var timeStr = util.formatTime(timeLong.asDate())
+                man[i] = timeStr;
+                console.log(i, ":", man[i]);
+                // console.log(timeStr);
+
+              }
+            };
+          }
+
+
+        };
+
         that.setData({
           CourseList: res.data.Data.CourseList
         });

@@ -61,9 +61,23 @@
   padding-right:  10rpx;
   margin-top: 10rpx;
 }
+.CourseView{
+
+    display: flex;
+    flex-direction: column;
+     /* justify-content: center; */
+    align-items: flex-start;
+}
+
+#CourseTime{
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  color: #333333;
+}
+
 
 #jindu{
-  margin-top: 30rpx;
+  margin-top: 20rpx;
   font-size: 22rpx;
   color: #666666;
 }
