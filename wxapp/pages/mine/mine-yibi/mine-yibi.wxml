@@ -1,0 +1,28 @@
+<!--mine-yibi.wxml-->
+<view class="mine-yibi">
+    <view class="yibiHeader">
+        <text id="UWCName">{{Account[0].UWCName[0]}}</text>
+        <text id="Blasnce">{{Account[0].Blasnce/100.00}}</text>
+    </view>
+    <view class="yibiLineView"></view>
+
+    <view class="yibiShuomingView">
+      <text id="xuanze">请选择充值金额</text>
+      <text id="shuoming">易币说明></text>
+    </view>
+
+    <view class="yibiListView">
+      <view id="yibiListImage"></view>
+      <text id="chong">充值100</text>
+      <text id="song">送20</text>
+      <view id="gou">购买</view>
+    </view>
+    <view class="yibiListView">
+      <view id="yibiListImage"></view>
+      <text id="chong">充值1000</text>
+      <text id="song">送200</text>
+      <view id="gou">购买</view>
+    </view>
+
+
+</view>

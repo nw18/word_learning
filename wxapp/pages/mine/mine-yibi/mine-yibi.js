@@ -1,60 +1,31 @@
-// mine.js
+// mine-yibi.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    Account:[],
   },
-  mineOrderClick: function () {
-    console.log("mineOrderClick");
-    wx.navigateTo({
-      url: './mine-order/mine-order',
-    })
-  },
-  mineCoureClick: function () {
-    console.log("mineCoureClick");
-    wx.navigateTo({
-      url: './mine-coure/mine-coure',
-    })
-  },
-  mineCollClick: function () {
-    console.log("mineCollClick");
-    wx.navigateTo({
-      url: './mine-coll/mine-coll',
-    })
-  },
-  mineSetClick: function () {
-    console.log("mineSetClick");
-    wx.navigateTo({
-      url: './mine-set/mine-set',
-    })
-  },
-
-  mineYibiClick: function () {
-    console.log("mineYibiClick");
-    wx.navigateTo({
-      url: './mine-yibi/mine-yibi',
-    })
-  },
-  
-  mineCardClick: function () {
-    wx.navigateTo({
-      url: './mine-card/mine-card',
-    })
-  },
-
-  mineScoreClick: function () {
-
-  },
-
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    wx.request({
+      url: 'http://userapi.yqj.cn/MockAPI/Account/Wallet/Account',
+      data: {},
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data.Data)
+        that.setData({
+          Account: res.data.Data
+        });
+      }
+    })
   },
 
   /**

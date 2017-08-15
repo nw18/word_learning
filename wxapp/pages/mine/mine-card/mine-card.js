@@ -1,4 +1,4 @@
-// mine.js
+// mine-card.js
 Page({
 
   /**
@@ -7,48 +7,6 @@ Page({
   data: {
   
   },
-  mineOrderClick: function () {
-    console.log("mineOrderClick");
-    wx.navigateTo({
-      url: './mine-order/mine-order',
-    })
-  },
-  mineCoureClick: function () {
-    console.log("mineCoureClick");
-    wx.navigateTo({
-      url: './mine-coure/mine-coure',
-    })
-  },
-  mineCollClick: function () {
-    console.log("mineCollClick");
-    wx.navigateTo({
-      url: './mine-coll/mine-coll',
-    })
-  },
-  mineSetClick: function () {
-    console.log("mineSetClick");
-    wx.navigateTo({
-      url: './mine-set/mine-set',
-    })
-  },
-
-  mineYibiClick: function () {
-    console.log("mineYibiClick");
-    wx.navigateTo({
-      url: './mine-yibi/mine-yibi',
-    })
-  },
-  
-  mineCardClick: function () {
-    wx.navigateTo({
-      url: './mine-card/mine-card',
-    })
-  },
-
-  mineScoreClick: function () {
-
-  },
-
 
   /**
    * 生命周期函数--监听页面加载

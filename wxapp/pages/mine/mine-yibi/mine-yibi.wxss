@@ -1,0 +1,106 @@
+/* mine-yibi.wxss */
+.mine-yibi{
+    height: 100%;
+    width:100%;
+    background-color:white;
+    display: flex;
+    flex-direction: column;
+}
+
+.yibiHeader{
+    height: 300rpx;
+    width:100%;
+    background-color: #66cecc;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    /* align-items: center; */
+}
+
+#UWCName{
+  color: white;
+  font-size: 32rpx;
+  margin-top: 70rpx;
+  margin-left: 40rpx;
+}
+
+#Blasnce{
+  color: white;
+  font-size: 72rpx;
+  margin-top: 20rpx;
+  margin-left: 40rpx;
+}
+
+.yibiLineView{
+    height: 30rpx;
+    width:100%;
+    background-color: #f2f2f2;
+    border-top: 1rpx #e5e5e5 solid;
+    border-bottom: 1rpx #e5e5e5 solid;
+}
+
+.yibiShuomingView{
+
+    height: 120rpx;
+    width:100%;
+    border-bottom: 1rpx #e5e5e5 solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#xuanze{
+  color: #333;
+  font: 34rpx;
+  margin-left: 30rpx;
+}
+
+#shuoming{
+  color: #999999;
+  font: 30rpx;
+  margin-right: 30rpx;
+}
+
+.yibiListView{
+    height: 120rpx;
+    width:100%;
+    border-bottom: 1rpx #e5e5e5 solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#yibiListImage{
+
+  height: 50rpx;
+  width: 50rpx;
+  margin-left: 30rpx;
+  background-color: yellow;
+}
+#chong{
+  color: #666;
+  font: 34rpx;
+  width: 200rpx;
+  margin-left: 30rpx;
+}
+#song{
+  color: #ffa52d;
+  font: 34rpx;
+  margin-left: 60rpx;
+  width: 200rpx;
+}
+#gou{
+
+  color: white;
+  font: 34rpx;
+  background-color: #ffa62f;
+  height: 60rpx;
+  width: 150rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30rpx;
+}

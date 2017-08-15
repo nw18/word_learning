@@ -11,17 +11,17 @@
         
     </view>
     <view class="mineHeader2">
-        <view class=" mineHeader2Cell">
+        <view bindtap="mineYibiClick" class=" mineHeader2Cell">
           <text class="mineHeaderText1">¥50</text>
           <text class="mineHeaderText2">易币</text>
         </view>
 
-        <view class=" mineHeader2Cell">
+        <view bindtap="mineCardClick" class=" mineHeader2Cell">
           <text class="mineHeaderText1">150张</text>
           <text class="mineHeaderText2">优惠卷</text>
         </view>
 
-        <view class=" mineHeader2Cell">
+        <view bindtap="mineScoreClick" class=" mineHeader2Cell">
           <text class="mineHeaderText1">50</text>
           <text class="mineHeaderText2">积分</text>
         </view>

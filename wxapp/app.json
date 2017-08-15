@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/mine/mine-coure/mine-coure",
+    "pages/mine/mine-yibi/mine-yibi",
     "pages/mine/mine",
     "pages/main/main",
     "pages/lists/lists",
@@ -16,7 +16,9 @@
     "pages/mine/mine-coll/mine-coll",
     "pages/mine/mine-coure/mine-coure",
     "pages/mine/mine-order/mine-order",
-    "pages/mine/mine-set/mine-set"
+    "pages/mine/mine-set/mine-set",
+  
+    "pages/mine/mine-card/mine-card"
   ],
   "tabBar": {
     "list": [
