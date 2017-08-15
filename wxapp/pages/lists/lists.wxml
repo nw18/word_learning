@@ -35,11 +35,12 @@
       </block>
   </view>
   
-  <view class="lists-buttons">
+  <view class="lists-buttons {{currIndex!=0 ? 'lists-buttons-low' : ''}}">
     <button class="yellow-button" bindtap="onClickBottomButton" data-index="0">开始学习</button>
     <button class="yellow-button" bindtap="onClickBottomButton" data-index="1">测试一下</button>
+    <!-- 只有核心词汇有真题  -->
     <button class="yellow-button" bindtap="onClickBottomButton" data-index="2" wx:if="{{currIndex==0 && demo_data[0].Children[select_index[0]].HasPractice}}">真题练习</button>
-    <button class="gray-button" wx:if="{{currIndex!=0 || !demo_data[0].Children[select_index[0]].HasPractice}}">真题练习</button>
+    <button class="gray-button" wx:if="{{currIndex==0 && !demo_data[0].Children[select_index[0]].HasPractice}}">真题练习</button>
   </view>
 </view>
 

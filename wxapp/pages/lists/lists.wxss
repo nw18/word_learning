@@ -117,6 +117,10 @@
   border-top: lightgray solid 1px;
 }
 
+.lists-buttons-low {
+  height: 200rpx;
+}
+
 .lists-buttons button{
   width: 600rpx;
   margin-top: 20rpx;
