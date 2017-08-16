@@ -64,4 +64,4 @@
       </view>
   </view>
 </view>
- <view class="mineHeaderMessage"></view>
+ <view bindtap="mineMessClick" class="mineHeaderMessage"></view>

@@ -1,0 +1,21 @@
+<!--mine-message.wxml-->
+<view class="mine-message">
+  <view wx:for="{{MessageList}}" wx:for-index="idx" wx:for-item="itemName">
+      <view class="messageLine"></view>
+      <view class="messageConnect">
+        <view class="messageBg1">
+          <view class="messageImage"></view>
+        </view>
+        
+        <view class="messageBg2">
+          <view class="messageTop">
+            <text id="Title">{{itemName.Title}}</text>
+            <text id="PublishTime">{{itemName.PublishTime}}</text>
+          </view>
+          <view class="messageBottom">
+             <text id="Content">{{itemName.Content}}</text> 
+          </view>
+        </view>
+      </view>
+  </view>
+</view>

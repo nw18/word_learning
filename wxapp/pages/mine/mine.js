@@ -49,7 +49,11 @@ Page({
 
   },
 
-
+  mineMessClick: function () {
+    wx.navigateTo({
+      url: './mine-message/mine-message',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

@@ -1,0 +1,82 @@
+/* mine-message.wxss */
+.mine-message{
+    height: 100%;
+    width:100%;
+    background-color:#f2f2f2;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+.messageLine{
+    height: 30rpx;
+    width:100%;
+    background-color: #f2f2f2;
+    border-top: 1rpx #e5e5e5 solid;
+    border-bottom: 1rpx #e5e5e5 solid;
+}
+.messageConnect{
+    height: 145rpx;
+    width:100%;
+    background-color: white;
+    border-bottom: 1rpx #e5e5e5 solid;
+    display: flex;
+    flex-direction: row;
+}
+.messageBg1{
+
+    height: 145rpx;
+    width:145rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+
+}
+.messageImage{
+    height: 90rpx;
+    width:90rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    background-color: gainsboro;
+    border-radius: 45rpx;
+}
+
+.messageBg2{
+    height: 145rpx;
+    width:605rpx;
+}
+
+.messageTop{
+    height: 50%;
+    width:605rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+}
+#Title{
+  margin-top: 30rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+#PublishTime{
+  margin-top: 30rpx;
+  margin-right: 30rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.messageBottom{
+    height: 50%;
+    width:605rpx;
+    display: flex;
+    flex-direction: column;
+}
+#Content{
+   margin-top: 5rpx; 
+  font-size: 28rpx;
+  color: #666;
+}
+
