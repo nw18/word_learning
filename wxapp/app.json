@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/mine/mine-message/mine-message",
     "pages/mine/mine",
     "pages/main/main",
     "pages/lists/lists",
@@ -18,7 +17,8 @@
     "pages/mine/mine-order/mine-order",
     "pages/mine/mine-set/mine-set",
     "pages/mine/mine-card/mine-card",
-    "pages/mine/mine-message/mine-message"
+    "pages/mine/mine-message/mine-message",
+    "pages/mine/mine-user/mine-user"
   ],
   "tabBar": {
     "list": [

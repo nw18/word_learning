@@ -1,0 +1,20 @@
+<!--mine-user.wxml-->
+<view class="mine-user">
+    <view class="userLineView"></view>
+    <view id="HeadPic" class="userListView"> <text>头像</text> <view class="userImageView"></view></view>
+    <view id="RealName" class="userListView"><text>姓名</text>  <text>{{UserInnfo.RealName}}</text></view>
+    <view id="Sex" class="userListView"><text>性别</text>  <text>{{UserInnfo.Sex}}</text></view>
+    <view id="Birthday" class="userListView"><text>生日</text>  <text>{{UserInnfo.Birthday}}</text></view>
+
+    <view class="userLineView"></view>
+    <view id="GradeName" class="userListView"><text>年级</text>  <text>{{UserInnfo.GradeName}}</text></view>
+    <view id="JXJDHFName" class="userListView"><text>学制</text>  <text>{{UserInnfo.JXJDHFName}}</text></view>
+    <view id="SchoolName" class="userListView"><text>学校</text>  <text>{{UserInnfo.SchoolName}}</text></view>
+
+    <view class="userLineView"></view>
+    <view id="ChineseVID" class="userListView"><text>语文版本</text>  <text>{{UserInnfo.ChineseVID}}</text></view>
+    <view id="MathVID" class="userListView"><text>数学版本</text>  <text>{{UserInnfo.MathVID}}</text></view>
+    <view id="EnglishVID" class="userListView"><text>英语版本</text>  <text>{{UserInnfo.EnglishVID}}</text></view>
+
+
+</view>

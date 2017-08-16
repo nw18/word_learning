@@ -44,7 +44,11 @@ Page({
       url: './mine-card/mine-card',
     })
   },
-
+  mineUserClick: function () {
+    wx.navigateTo({
+      url: './mine-user/mine-user',
+    })
+  },
   mineScoreClick: function () {
 
   },

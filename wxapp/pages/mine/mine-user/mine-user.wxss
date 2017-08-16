@@ -1,0 +1,41 @@
+/* mine-user.wxss */
+.mine-user{
+    height: 100%;
+    width:100%;
+    background-color:#f2f2f2;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20rpx;
+}
+
+.userLineView{
+
+    height: 30rpx;
+    width:100%;
+    background-color:#f2f2f2;
+}
+.userImageView{
+    height: 80rpx;
+    width:80rpx;
+    background-color:#f2f2f2;
+    border-radius: 40rpx;
+    margin-right: 30rpx;
+}
+.userListView{
+
+    height: 100rpx;
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1rpx #e5e5e5 solid;
+}
+.userListView text{
+
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  color: #333;
+  font-size: 32rpx;
+}

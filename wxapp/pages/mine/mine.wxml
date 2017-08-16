@@ -7,7 +7,7 @@
               <text class="mineText"> 姓名</text>
               <text class="mineText"> 18232531326</text>  
        </view>
-       <view class="mineHeaderSet"></view>
+       <view bindtap="mineUserClick" class="mineHeaderSet"></view>
         
     </view>
     <view class="mineHeader2">
