@@ -1,8 +1,9 @@
 <!--mine-yibi.wxml-->
 <view class="mine-yibi">
     <view class="yibiHeader">
-        <text id="UWCName">{{Account[0].UWCName[0]}}</text>
-        <text id="Blasnce">{{Account[0].Blasnce/100.00}}</text>
+        <text id="UWCName">{{Account[0].UWCName[0]}}11</text>
+        <text id="Blasnce">{{Account[0].Blasnce/100.00}}22</text>
+        <text id="mingxi" bindtap="mingxiClick" >明细</text>
     </view>
     <view class="yibiLineView"></view>
 

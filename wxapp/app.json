@@ -18,7 +18,9 @@
     "pages/mine/mine-set/mine-set",
     "pages/mine/mine-card/mine-card",
     "pages/mine/mine-message/mine-message",
-    "pages/mine/mine-user/mine-user"
+    "pages/mine/mine-user/mine-user",
+    "pages/mine/mine-yibi/mine-yibi",
+    "pages/mine/mine-yibi/mine-yibi-detail"
   ],
   "tabBar": {
     "list": [

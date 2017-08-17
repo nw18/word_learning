@@ -1,12 +1,11 @@
-// mine-message.js
-var util = require('../../../utils/util.js')
+// mine-yibi-detail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    MessageList:[],
+    DetailList:{},
   },
 
   /**
@@ -15,7 +14,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     wx.request({
-      url: 'http://userapi.yqj.cn/MockAPI/Account/Message/Msg_List',
+      url: 'http://userapi.yqj.cn/MockAPI/Account/Wallet/Detail',
       data: {},
       header: {
         'content-type': 'application/json'
@@ -37,8 +36,8 @@ Page({
           };
         }
 
-        for (var i = 0; i < res.data.Data.length; i++) {
-          var man = res.data.Data[i];
+        for (var i = 0; i < res.data.Data.DetailList.length; i++) {
+          var man = res.data.Data.DetailList[i];
           //为所有的对象添加clone方法，即给内置原型(object,Array,function)增加原型属性,该方法很强大，也很危险
           // if (typeof Object.prototype.clone === "undefined") {
           //   Object.prototype.clone = function () { };
@@ -62,7 +61,7 @@ Page({
         };
 
         that.setData({
-          MessageList: res.data.Data
+          DetailList: res.data.Data.DetailList
         });
       }
     })

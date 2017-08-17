@@ -61,7 +61,12 @@
   font: 30rpx;
   margin-right: 30rpx;
 }
-
+#mingxi{
+  color: #999999;
+  font: 30rpx;
+  margin-left: 650rpx;
+  margin-top: -150rpx;
+}
 .yibiListView{
     height: 120rpx;
     width:100%;

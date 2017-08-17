@@ -1,0 +1,24 @@
+<!--mine-yibi-detail.wxml-->
+<view class="mine-yibi-detail">
+  <view wx:for="{{DetailList}}" wx:for-index="idx" wx:for-item="itemName">
+
+
+      <view class="detailList">
+          <view class="detailList1">
+            <text id="Remark">{{itemName.Remark}}</text>
+          </view>
+          <view class="detailList2">
+              <text id="LogTime">{{itemName.LogTime}}</text>
+
+              <view wx:if="{{length > 5}}"> 
+                  <text class="Point shouru">+{{itemName.Point}}</text>
+              </view>
+              <view wx:else> 
+                  <text class="Point zhichu">-{{itemName.Point}}</text>
+              </view>
+        
+          </view>
+      </view>
+
+  </view>
+</view>
