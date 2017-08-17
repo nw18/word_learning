@@ -20,7 +20,8 @@
     "pages/mine/mine-message/mine-message",
     "pages/mine/mine-user/mine-user",
     "pages/mine/mine-yibi/mine-yibi",
-    "pages/mine/mine-yibi/mine-yibi-detail"
+    "pages/mine/mine-yibi/mine-yibi-detail",
+    "pages/mine/mine-score/mine-score"
   ],
   "tabBar": {
     "list": [

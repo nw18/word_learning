@@ -50,7 +50,9 @@ Page({
     })
   },
   mineScoreClick: function () {
-
+    wx.navigateTo({
+      url: './mine-score/mine-score',
+    })
   },
 
   mineMessClick: function () {
