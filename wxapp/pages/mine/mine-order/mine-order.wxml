@@ -3,7 +3,7 @@
   <view wx:for="{{OrderList}}" wx:for-index="idx" wx:for-item="itemName">
       <view class="orderListListView">
           <view class="orderListLine"></view>
-          <view class="orderListConcent">
+          <view bindtap="orderListClick" id="{{itemName.OrderID}}" class="orderListConcent">
               <view class="orderConcent1">
                 <text class="orderID">订单编号:{{itemName.OrderID}}</text>
                 

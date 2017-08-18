@@ -1,0 +1,52 @@
+<!--mine-order-detail.wxml-->
+<view class="mine-order-detail">
+
+    <view class="orderDetail1">
+        <text id="OrderID">订单号：{{orderInfo.OrderID}}</text>
+        <text id="OrderStatus">已完成</text>
+        <text id="CreateTime">购买时间：{{orderInfo.CreateTime}}</text>
+    </view>
+
+    <!-- <view class="orderDetailLine"></view>
+
+    <view class="orderDetail2">
+        <text id="">收货人信息</text>
+        <view class="line"></view>
+        <text id="UserNamePhone">哈哈 123476555</text>
+        <text id="Address">北京市海淀区的急跌后</text>
+        <view class="line"></view>
+        <text id="">配送状态:配送中</text>
+        <text id="">配送方式:顺丰快递</text>
+        <text id="">货运单号:3467688</text>
+        <view class="line"></view>
+        <text id="">发票类型:</text>
+        <text id="">收货人信息</text>
+    </view> -->
+
+    <view class="orderDetailLine"></view>
+
+     <view class="orderDetail3">
+         <view class="xiangQing">商品详情</view>
+
+        <view wx:for="{{orderInfo.ProductList}}" wx:for-index="idx" wx:for-item="itemName">
+            <view class="orderListView">
+                  <view class="listView1">
+                    <image src="{{itemName.ProductPic}}"></image>
+                  </view>
+                  <view class="listView2">
+                      <text id="ProductName">{{itemName.ProductName}}</text>
+                      <text id="ProductNum">数量：{{itemName.ProductNum}}</text>
+                      <text id="SellMoney">金额：¥{{itemName.SellMoney/100.0}}</text>
+                  </view>
+            </view>
+        </view>
+        
+    </view> 
+
+
+    <view class="orderDetail4">
+        <text id="TotalSellMoney">商品总金额：{{orderInfo.TotalSellMoney}}</text>
+        <text id="PaymentType">支付方式：{{orderInfo.PaymentType}}</text>
+        <text id="PayTime">支付时间：{{orderInfo.PayTime}}</text>
+    </view>
+</view>

@@ -7,7 +7,13 @@ Page({
   data: {
     OrderList:[],
   },
+  orderListClick: function (options) {
 
+    console.log(options.currentTarget.id);
+    wx.navigateTo({
+      url: './mine-order-detail',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

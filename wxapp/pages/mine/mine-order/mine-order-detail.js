@@ -1,11 +1,11 @@
-// mine-score.js
+// mine-order-detail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    orderInfo:{},
   },
 
   /**
@@ -14,7 +14,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     wx.request({
-      url: 'http://userapi.yqj.cn/MockAPI/Account/Wallet/Account',
+      url: 'http://shopapi.yqj.cn/MockAPI/BuyService/Order/Order_Info',
       data: {},
       header: {
         'content-type': 'application/json'
@@ -22,7 +22,7 @@ Page({
       success: function (res) {
         console.log(res.data.Data)
         that.setData({
-          Account: res.data.Data
+          orderInfo: res.data.Data
         });
       }
     })

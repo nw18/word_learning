@@ -21,7 +21,9 @@
     "pages/mine/mine-user/mine-user",
     "pages/mine/mine-yibi/mine-yibi",
     "pages/mine/mine-yibi/mine-yibi-detail",
-    "pages/mine/mine-score/mine-score"
+    "pages/mine/mine-score/mine-score",
+    "pages/mine/mine-card/mine-card-activa",
+    "pages/mine/mine-order/mine-order-detail"
   ],
   "tabBar": {
     "list": [

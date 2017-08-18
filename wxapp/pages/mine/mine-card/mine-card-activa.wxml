@@ -1,0 +1,11 @@
+<!--mine-card-activa.wxml-->
+<view class="mine-card-activa">
+  <view class="acrivaCont">
+    <view class="inputView">
+      <input bindblur="bindblurEventHandle" placeholder="  请输入您要兑换的券码"  type="text" />
+    </view>
+     
+     <view bindtap="sureClick" class="queding">确定</view>
+  </view>
+
+</view>

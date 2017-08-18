@@ -1,31 +1,28 @@
-// mine-score.js
+// mine-card-activa.js
 Page({
 
   /**
    * 页面的初始数据
    */
+  inputText:"",
   data: {
   
+  },
+
+  bindblurEventHandle: function (event) {
+  
+    this.inputText = event.detail.value;
+  },
+
+  sureClick: function () {
+    console.log(this.inputText);
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    wx.request({
-      url: 'http://userapi.yqj.cn/MockAPI/Account/Wallet/Account',
-      data: {},
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        console.log(res.data.Data)
-        that.setData({
-          Account: res.data.Data
-        });
-      }
-    })
+  
   },
 
   /**

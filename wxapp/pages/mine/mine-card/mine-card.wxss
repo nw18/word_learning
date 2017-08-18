@@ -1,1 +1,80 @@
 /* mine-card.wxss */
+#jihuo{
+  color: #333333;
+  font-size: 32rpx;
+  margin-left: 570rpx
+}
+.mine-card{
+
+    height: 100%;
+    width:100%;
+    background-color:#f2f2f2;
+    display: flex;
+    flex-direction: row
+}
+
+.cardListView{
+
+    height: 240rpx;
+    width:100%;
+    display: flex;
+    flex-direction: row
+}
+
+.cardListConnect{
+
+    overflow:auto;
+    height: 210rpx;
+    margin-top: 30rpx;
+    width:690rpx;
+    margin-left: 30rpx;
+    background-color:white;
+    display: flex;
+    flex-direction: row;
+    border-radius: 10rpx;
+}
+
+.Connect1{
+
+    height: 210rpx;
+    width:210rpx;
+    background-color: orange;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+#Price{
+  color: white;
+  font-size: 62rpx;
+}
+#youhuiquan{
+  margin-top: 10rpx;
+  color: white;
+  font-size: 32rpx;
+}
+
+.Connect2{
+
+    height: 210rpx;
+    width:480rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    padding-left: 30rpx;
+}
+#CategoryName{
+  color: #333333;
+  font-size: 32rpx;
+}
+#UseMinMoney{
+  margin-top: 30rpx;
+  color: #fda62e;
+  font-size: 28rpx;
+}
+#StartEndTime{
+  margin-top: 15rpx;
+  color: #666666;
+  font-size: 28rpx;
+}

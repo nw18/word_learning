@@ -1,2 +1,22 @@
 <!--mine-card.wxml-->
-<text>mine-card.wxml</text>
+<text bindtap="jihuoClick" id="jihuo">优惠券激活</text>
+<view class="mine-card">
+  <view wx:for="{{VoucherList}}" wx:for-index="idx" wx:for-item="itemName">
+      <view class="cardListView">
+          <view class="cardListConnect">
+                <view class="Connect1">
+                    <text id="Price">¥{{itemName.Price}}</text>
+                    <text id="youhuiquan">优惠券</text>
+                </view>
+                <view class="Connect2">
+                    <text  id="CategoryName">{{itemName.CategoryName}}</text>
+                    <text  id="UseMinMoney">满{{itemName.UseMinMoney}}可使用</text>
+                    <text  id="StartEndTime">有效期:{{itemName.StartTime+"---"+itemName.EndTime}}</text>
+                </view>
+          </view>
+      </view>
+  </view>  
+</view>
+
+
+
