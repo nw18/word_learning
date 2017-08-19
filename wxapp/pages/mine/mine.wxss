@@ -19,13 +19,12 @@
 .mineHeader1{
     height: 220rpx;
     width:100%;
-    background-color: yellow;
     display: flex;
     flex-direction: row;
     /* align-content: center; */
     /* justify-content: center; */
 }
-.mineHeader1 image{
+#userImage{
     margin-left: 30rpx;
     margin-top: 50rpx;
     height: 140rpx;
@@ -38,7 +37,6 @@
     margin-top: 70rpx;
     height: 100rpx;
     width: 340rpx;
-    background: yellowgreen;
     display: flex;
     flex-direction: column;
     justify-content:  space-between ;  
@@ -53,18 +51,28 @@
     left: 680rpx;
     height: 50rpx;
     width: 50rpx;
-    background-color: yellowgreen;
-    position: absolute;
+    position: absolute; 
 }
+.mineHeaderMessage image{
 
-.mineHeaderSet{
+    height: 50rpx;
+    width: 50rpx; 
+}
+.mineHeaderSetQQ{
     margin-left: 60rpx;
-    margin-top: 70rpx;
+    margin-top: 70rpx; 
     height: 100rpx;
     width: 100rpx;
-    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
+#mineSetImage{
+    height: 60rpx;
+    width: 60rpx;
 
+}
 .mineHeader2{
     height: 140rpx;
     width:100%;
@@ -132,9 +140,16 @@
     width:70rpx;
     height: 70rpx;
     margin-left: 40rpx;  
-    background-color: blue;
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+    align-items: center;
 }
 
+.mineListIcon image{
+    width:70rpx;
+    height: 70rpx;
+}
 .mineListText{
   color: #333333;
   margin-left: 40rpx;  
@@ -145,9 +160,11 @@
     width:50rpx;
     height: 50rpx;
     margin-left: 350rpx; 
-    background-color: black; 
 }
-
+.mineListArrow image{
+     width:50rpx;
+    height: 50rpx;
+}
 .mineList1{
     width:100%;
     height: 300rpx;
