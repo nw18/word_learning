@@ -1,2 +1,45 @@
 <!--shop-car.wxml-->
-<text>shop-car.wxml</text>
+<view class="shop-car">
+    <text bindtap="editBtnClick" id="edit">{{carState}}</text>
+
+    <view wx:for="{{carList}}" wx:for-index="idx" wx:for-item="itemName">
+      <view class="carListView">
+
+          <view class="listView1">
+              <block wx:if="{{itemName.state==1}}">
+                    <checkbox bindtap="checkboxClick" id="{{itemName.pruduceId}}" value="{{itemName.pruduceId}}" checked="ture"/>
+              </block>
+
+              <block wx:else>
+                   <checkbox bindtap="checkboxClick" id="{{itemName.pruduceId}}" value="{{itemName.pruduceId}}" />
+              </block>
+       
+               <image src="{{itemName.picture}}"></image>
+          </view>
+          <view class="listView2"> 
+            <text id="pruduceName">{{itemName.pruduceName}}</text>
+            <text id="price">{{itemName.price}}</text>
+            <view class="numView">
+                <view id="{{itemName.pruduceId}}" bindtap="numAddClick" class="numAdd">+</view>
+                <view class="numCount">{{itemName.num}}</view>
+                <view id="{{itemName.pruduceId}}" bindtap="numJianClick" class="numJian">-</view>
+
+            </view>
+          </view>
+      </view>
+    </view>
+
+
+    <view class="bottomView">
+        <view class="bottomView1">
+        <checkbox-group bindchange="allCheckboxChange">
+            <label class="checkboxLabel" >
+              <checkbox value="{{quanxuan}}" />全选
+            </label>
+          </checkbox-group>
+        </view>
+        <view bindtap="finishBtnClick" class="bottomView2">
+          <text>{{carBtnState}}</text>
+        </view>
+    </view>
+</view>
