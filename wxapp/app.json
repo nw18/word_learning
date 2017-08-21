@@ -22,7 +22,8 @@
     "pages/mine/mine-yibi/mine-yibi-detail",
     "pages/mine/mine-score/mine-score",
     "pages/mine/mine-card/mine-card-activa",
-    "pages/mine/mine-order/mine-order-detail"
+    "pages/mine/mine-order/mine-order-detail",
+    "pages/tab-class/tab-class"
   ],
   "tabBar": {
     "color": "#999999",
@@ -31,22 +32,26 @@
       {
         "pagePath": "pages/main/main",
         "text": "首页",
-        "iconPath":"/img/tabber-page.png",
+        "iconPath": "/img/tabber-page.png",
         "selectedIconPath": "/img/tabber-page-sel.png"
+      },
+      {
+        "pagePath": "pages/tab-class/tab-class",
+        "text": "分类",
+        "iconPath": "/img/tabber-class.png",
+        "selectedIconPath": "/img/tabber-class-sel.png"
       },
       {
         "pagePath": "pages/shop-car/shop-car",
         "text": "购物车",
         "iconPath": "/img/tabber-shop.png",
         "selectedIconPath": "/img/tabber-shop-sel.png"
-
       },
       {
         "pagePath": "pages/mine/mine",
         "text": "个人中心",
         "iconPath": "/img/tabber-mine.png",
         "selectedIconPath": "/img/tabber-mine-sel.png"
-
       }
     ]
   },

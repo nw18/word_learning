@@ -1,0 +1,12 @@
+<!--tab-class.wxml-->
+<view class="tab-class">
+    <view class="searchView"></view>
+    <view class="connectView">
+        <view class="muneView">
+          <view wx:for="{{CatagoryList}}" wx:for-index="idx" wx:for-item="itemName">
+               <view id="{{itemName.CategoryID}}" class="catagoryListView">{{itemName.CategoryName}}</view>
+          </view>  
+        </view>
+        <view class="classView"></view> 
+    </view>
+</view>
