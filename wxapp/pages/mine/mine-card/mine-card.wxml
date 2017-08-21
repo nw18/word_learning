@@ -4,7 +4,7 @@
   <view wx:for="{{VoucherList}}" wx:for-index="idx" wx:for-item="itemName">
       <view class="cardListView">
           <view class="cardListConnect">
-                <view class="Connect1">
+                <view class="Connect1" style="background-image:url('/img/mine-card-icon.png')">
                     <text id="Price">¥{{itemName.Price}}</text>
                     <text id="youhuiquan">优惠券</text>
                 </view>

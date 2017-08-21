@@ -11,11 +11,15 @@
     height: 430rpx;
     width:690rpx;
     margin-left: 30rpx;
-    background-color:white;
+    /* background-color:white; */
     display: flex;
     flex-direction: column;
     justify-content: center;
+    /* background-size:430rpx 690rpx;  */
+    background-size:cover;
 }
+
+
 .inputView{
   height: 100rpx;
   width:90%;

@@ -79,11 +79,20 @@
 
 #yibiListImage{
 
-  height: 50rpx;
-  width: 50rpx;
+  height: 48rpx;
+  width: 48rpx;
   margin-left: 30rpx;
-  background-color: yellow;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
+#yibiListImage image{
+
+  height: 48rpx;
+  width: 48rpx;
+}
+
 #chong{
   color: #666;
   font: 34rpx;

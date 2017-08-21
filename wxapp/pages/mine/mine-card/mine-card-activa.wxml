@@ -1,6 +1,6 @@
 <!--mine-card-activa.wxml-->
 <view class="mine-card-activa">
-  <view class="acrivaCont">
+   <view  class="acrivaCont" style="background-image:url('/img/mine-card-jihuo.png')"> 
     <view class="inputView">
       <input bindblur="bindblurEventHandle" placeholder="  请输入您要兑换的券码"  type="text" />
     </view>

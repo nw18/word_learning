@@ -1,6 +1,7 @@
 <!--mine-yibi.wxml-->
 <view class="mine-yibi">
     <view class="yibiHeader">
+      
         <text id="UWCName">{{Account[0].UWCName[0]}}11</text>
         <text id="Blasnce">{{Account[0].Blasnce/100.00}}22</text>
         <text id="mingxi" bindtap="mingxiClick" >明细</text>
@@ -13,13 +14,17 @@
     </view>
 
     <view class="yibiListView">
-      <view id="yibiListImage"></view>
+      <view id="yibiListImage">
+        <image mode="widthFix" src="../../../img/mine-yibi-chong1.png"></image>
+      </view>
       <text id="chong">充值100</text>
       <text id="song">送20</text>
       <view id="gou">购买</view>
     </view>
     <view class="yibiListView">
-      <view id="yibiListImage"></view>
+      <view id="yibiListImage">
+          <image mode="widthFix" src="../../../img/mine-yibi-chong2.png"></image>
+      </view>
       <text id="chong">充值1000</text>
       <text id="song">送200</text>
       <view id="gou">购买</view>

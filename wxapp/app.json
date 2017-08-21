@@ -31,21 +31,21 @@
       {
         "pagePath": "pages/main/main",
         "text": "首页",
-        "iconPath":"/img/icon-right.png",
-        "selectedIconPath": "/img/icon-right.png"
+        "iconPath":"/img/tabber-page.png",
+        "selectedIconPath": "/img/tabber-page-sel.png"
       },
       {
         "pagePath": "pages/shop-car/shop-car",
         "text": "购物车",
-        "iconPath": "/img/icon-right.png",
-        "selectedIconPath": "/img/icon-right.png"
+        "iconPath": "/img/tabber-shop.png",
+        "selectedIconPath": "/img/tabber-shop-sel.png"
 
       },
       {
         "pagePath": "pages/mine/mine",
         "text": "个人中心",
-        "iconPath": "/img/icon-right.png",
-        "selectedIconPath": "/img/icon-right.png"
+        "iconPath": "/img/tabber-mine.png",
+        "selectedIconPath": "/img/tabber-mine-sel.png"
 
       }
     ]
