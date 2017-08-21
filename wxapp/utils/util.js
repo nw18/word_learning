@@ -1,12 +1,21 @@
 var mode = 1;
 var token_key = "__token__";
 var token_value = undefined;
-var api_roots = [
+var open_api_roots = [
   'https://openapi.yqj.cn/MockAPI/WordLearning/', //模拟数据地址
   'https://dopen.yqj.cn/api/WordLearning/', //开发服务器地址
   'https://openapi.yqj.cn/api/WordLearning/', //正式地址
 ];
-
+var shop_api_roots = [
+  'https://shopapi.yqj.cn/MockAPI/', //模拟数据地址
+  'https://dshopapi.yqj.cn/api/', //开发服务器地址
+  'https://shopapi.yqj.cn/api/', //正式地址
+];
+var user_api_roots = [
+  'https://userapi.yqj.cn/MockAPI/', //模拟数据地址
+  'https://duserapi.yqj.cn/api/', //开发服务器地址
+  'https://userapi.yqj.cn/api/', //正式地址
+];
 var user_roots = [
   '',
   'https://duser.yqj.cn/Token',
@@ -33,7 +42,7 @@ function formatNumber(n) {
   return n[1] ? n : '0' + n
 }
 
-function myrequest(name,data={},sucess=null,fail=null,complete=null) {
+function myrequest(name, data = {}, sucess = null, fail = null, complete = null) {
   if(token_value == undefined 
       && ((token_value = wx.getStorageSync(token_key)) == undefined
           || token_value == "")) {
@@ -46,8 +55,28 @@ function myrequest(name,data={},sucess=null,fail=null,complete=null) {
       complete: complete
     })
   }else {
+    // user:dnedui/ddefr 
+    // shop: dnedui / ddefr 
+    var apiWay = 0;
+    if (name.indexOf("user:") == 0){
+      apiWay = 1;
+      name = name.substr(5);
+    } 
+    if (name.indexOf("shop:") == 0) {
+      apiWay = 2;
+      name = name.substr(5);
+    } 
+    var myUrl = "";
+    if (apiWay == 1) {
+      myUrl = shop_api_roots[mode] + name;
+    } else if (apiWay == 2) {
+      myUrl = user_api_roots[mode] + name;
+    } else {
+      myUrl = open_api_roots[mode] + name;
+    }
     wx.request({
-      url: api_roots[mode] + name,
+
+      url: myUrl,
       data: data,
       header: {
         'Content-type': 'application/json',
