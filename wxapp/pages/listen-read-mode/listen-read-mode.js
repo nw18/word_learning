@@ -108,6 +108,10 @@ Page({
         this.clearAllPending();
         var jumpControl = this;
         this.switchhandler = setTimeout(function () {
+          //定时器必须为空,否则可能会冲突!!!
+          if(jumpControl.tickHandler != -1) {
+            return;
+          }
           jumpControl.gotoNextQues(that);
           jumpControl.switchhandler = -1;
         }, 200);
@@ -363,8 +367,11 @@ Page({
   },
 
   nextClick: function () {
-    this.jumpControl.clearAllPending();
-    this.jumpControl.gotoNextQues(this);
+    var that = this;
+    setTimeout(function () {
+      that.jumpControl.clearAllPending();
+      that.jumpControl.gotoNextQues(that);
+    },1);
   },
   collection: function () {
     if (this.data.wordInfo.IsCollected){

@@ -14,7 +14,7 @@ var user_roots = [
 ];
 //开发服务器(郑郑=30)
 var auth_id = [
-  100,30,0
+  100,30,42
 ]
 
 function formatTime(date) {
