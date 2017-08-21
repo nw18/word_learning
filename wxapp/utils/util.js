@@ -1,10 +1,10 @@
-var mode = 1;
+var mode = 2;
 var token_key = "__token__";
 var token_value = undefined;
 var api_roots = [
   'https://openapi.yqj.cn/MockAPI/WordLearning/', //模拟数据地址
   'https://dopen.yqj.cn/api/WordLearning/', //开发服务器地址
-  'https://openapi.yqj.cn/api/WordLearning/', //正式地址
+  'https://open.yqj.cn/api/WordLearning/', //正式地址
 ];
 
 var user_roots = [
