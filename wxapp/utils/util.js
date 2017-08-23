@@ -10,7 +10,16 @@ var api_roots = [
 var user_roots = [
   '',
   'https://duser.yqj.cn/Token',
-  'https://userapi.yqj.cn/Token',
+  'https://user.yqj.cn/Token',
+];
+var client_info = [
+  {},
+  {
+    client_id: 'yqj201707261616526939', //开发服务器
+    client_secret: "21e14de99bce493c88dfe04fe6a15af6"},
+  {
+    client_id: 'yqj201708231032042213', //正式服务器
+    client_secret: "f82f4e59ff3c4ac4a0d7e82752a18e74"}
 ];
 //开发服务器(郑郑=30)
 var auth_id = [
@@ -117,8 +126,8 @@ function get_token(preq) {
       header: {
         'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
       },data : {
-        'client_id': 'yqj201707261616526939', //开发服务器
-        'client_secret': "21e14de99bce493c88dfe04fe6a15af6",
+        'client_id': client_info[mode].client_id, //开发服务器
+        'client_secret': client_info[mode].client_secret,
         // 'client_id': 'yqj201707261712349267', //测试服务器
         // 'client_secret': "76265031958d4572b76acfd743d69cda",
         'grant_type': 'client_credentials'

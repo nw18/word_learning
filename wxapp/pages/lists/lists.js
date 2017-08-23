@@ -8,7 +8,7 @@ Page({
    */
   data: {
     alpha_table: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(""),
-    select_index: [0,1,2],
+    select_index: [0,0,0],
     currIndex: 0
   },
   /**
