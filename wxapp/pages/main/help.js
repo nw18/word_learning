@@ -43,12 +43,14 @@ Page({
     ]
   },
   btnleftClick: function (options) {
+    return;
     console.log("btnleftClick");
     wx.navigateTo({
       url: '../commod-detail/commod-detail'
     })
   },
   btnrightClick: function (options) {
+    return;
     console.log("btnrightClick");
     wx.navigateTo({
       url: '../commod-detail/commod-detail'
