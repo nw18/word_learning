@@ -18,21 +18,23 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    if (this.data.bookList.length == 0) {
-      wx.showLoading("加载中...");
-      util.myrequest("GetBookList", {
-        AuthID: app.authInfo.id
-      }, function (data) {
-        that.setData({
-          bookList: data
+    setTimeout(function () {
+      if (that.data.bookList.length == 0) {
+        wx.showLoading("加载中...");
+        util.myrequest("GetBookList", {
+          AuthID: app.authInfo.id
+        }, function (data) {
+          that.setData({
+            bookList: data
+          });
+          app.setBookList(data);
+        }, function (err) {
+          wx.showToast(err);
         });
-        app.setBookList(data);
-      }, function (err) {
-        wx.showToast(err);
-      });
-    } else if(this.data.bookIndex >= 0){
-      this.loadLearnProcess();
-    }
+      } else if (that.data.bookIndex >= 0){
+        that.loadLearnProcess();
+      }
+    }, 400)
     //util.get_token();
     // wx.login({
     //   success: function (res) {
